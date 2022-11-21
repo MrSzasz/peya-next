@@ -1,10 +1,11 @@
 import Head from "next/head";
 import Header from "../Header/Header";
 import Footer from "../Footer/Footer";
+
 const Layout = ({
   children,
   title = "NextJS project",
-  desc = "First project with NextJS"
+  desc = "First project with NextJS",
 }) => {
   return (
     <>
@@ -16,7 +17,7 @@ const Layout = ({
 
       <Header />
       {children}
-      <Footer/>
+      <Footer />
     </>
   );
 };

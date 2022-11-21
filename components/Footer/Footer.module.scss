@@ -1,0 +1,42 @@
+.footer {
+    display: flex;
+    justify-content: space-between;
+    padding: 3em;
+    position: relative;
+    background-color: #100423;
+    color: #ffffff;
+    height: 20em;
+    width: 100%;
+
+    .leftFooterContainer {
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        width: fit-content;
+        align-items: center;
+        gap: 3em;
+
+        .logo {
+            width: 300px;
+            height: 60px;
+            background-color: red;
+        }
+    }
+
+    .rightFooterContainer {
+        width: fit-content;
+
+        .storeLinks {
+            display: flex;
+            justify-content: space-between;
+            gap: 3em;
+
+            .logoStore {
+                width: 250px;
+                height: 75px;
+                background-color: red;
+            }
+        }
+
+    }
+}

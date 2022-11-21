@@ -1,9 +1,10 @@
 import Layout from "../components/Layout/Layout"
+import styles from './index.module.scss';
 
 const Home = () => {
   return (
     <Layout>
-      <h1>main page</h1>
+      <main className={styles.mainContainer}></main>
     </Layout>
   )
 }
