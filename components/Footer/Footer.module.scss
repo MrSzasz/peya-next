@@ -1,12 +1,13 @@
+@import "../../styles/variables";
+
 .footer {
     display: flex;
     justify-content: space-between;
     padding-block: 2em;
     padding-inline: 10%;
     position: relative;
-    background-color: #100423;
-    color: #ffffff;
-
+    background-color: $dark;
+    color: $white;
     width: 100%;
 
     .leftFooterContainer {

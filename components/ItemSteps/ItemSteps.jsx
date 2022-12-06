@@ -1,11 +1,11 @@
 import styles from './ItemSteps.module.scss';
 
-const ItemSteps = () => {
+const ItemSteps = ({img, imgAlt, title, text}) => {
   return (
     <div className={styles.mainCard}>
-      <img src="" alt="Logo paso 1" />
-      <h3>Registrate</h3>
-      <p>Completa tus datos</p>
+      <img src={img} alt={imgAlt} />
+      <h3>{title}</h3>
+      <p>{text}</p>
     </div>
   );
 };

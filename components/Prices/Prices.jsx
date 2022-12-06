@@ -4,12 +4,12 @@ import styles from "./Prices.module.scss";
 
 const Prices = () => {
   return (
-    <section>
+    <section className={styles.pricesContainer}>
       <h2>Costos</h2>
       <h3>La tarjeta con la tasa más baja del mercado</h3>
       <PriceTable />
       <div className={styles.tableButtonContainer}>
-        <MainButton />
+        <MainButton color="buttonNoBg" text="Ver más costos" />
       </div>
     </section>
   );

@@ -1,10 +1,10 @@
 import styles from "./TableRow.module.scss";
 
-const TableRow = () => {
+const TableRow = ({type, price}) => {
   return (
     <div className={styles.tableRow}>
-      <p className={styles.tableRowLeft}>Cargo por reposición (deteriorada)</p>
-      <p className={styles.tableRowRight}>¡Gratis!</p>
+      <p className={styles.tableRowLeft}>{type}</p>
+      <p className={styles.tableRowRight}>{price}</p>
     </div>
   );
 };

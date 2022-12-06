@@ -1,7 +1,13 @@
-.tableButtonContainer{
-    width: 100%;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    padding-block: 1em;
+.pricesContainer {
+    h3 {
+        font-size: 1.5em;
+    }
+
+    .tableButtonContainer {
+        width: 100%;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        padding-block: 1em;
+    }
 }

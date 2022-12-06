@@ -4,7 +4,7 @@ import styles from "./Cashback.module.scss";
 const Cashback = () => {
   return (
     <section className={styles.cashbackContainer}>
-      <div>
+      <div className={styles.cashbackTopText}>
         <h2>Cashback todos los días</h2>
         <p>Dentro y fuera de la app</p>
       </div>

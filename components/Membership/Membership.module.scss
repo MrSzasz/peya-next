@@ -1,7 +1,9 @@
+@import "../../styles/variables";
+
 .membershipContainer {
     width: 100%;
     height: fit-content;
-    background-color: #FA0050;
+    background-color: $red;
     // background-image: radial-gradient(#ffffff 1.3px, #FA0050 1.3px);
     // background-size: 26px 26px;
     display: flex;
@@ -11,11 +13,13 @@
     .rightMembershipContent {
         display: flex;
         flex-direction: column;
-        color: white;
+        color: $white;
 
-        p{
+        p {
             font-size: 2.5em;
+
             span {
+                font-family: textaHeavy;
                 font-weight: bold;
             }
         }

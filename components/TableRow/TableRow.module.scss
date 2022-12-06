@@ -1,3 +1,6 @@
+@import "../../styles/variables";
+
+
 .tableRow {
     width: 100%;
     display: flex;
@@ -6,11 +9,25 @@
     align-items: center;
     border-bottom: 1px solid rgba(0, 0, 0, 0.2);
 
-    &:nth-child(odd) {
+    &:nth-child(even) {
         background: #FBFBFB;
+    }
+
+    &:nth-child(2),
+    &:nth-child(3) {
+        .tableRowRight {
+            font-size: 1.25em;
+            font-family: textaHeavy;
+            color: $red;
+        }
     }
 
     .tableRowRight {
         text-align: end;
+
+    }
+
+    .tableRowLeft {
+        font-family: textaHeavy;
     }
 }

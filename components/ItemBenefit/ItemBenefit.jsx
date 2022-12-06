@@ -1,8 +1,8 @@
-const ItemBenefit = () => {
+const ItemBenefit = ({img, imgAlt, text}) => {
   return (
     <div>
-      <img src="" alt="Sin burocracia item" />
-      <p>Sin burocracia y 100% digital.</p>
+      <img src={img} alt={imgAlt} />
+      <p>{text}</p>
     </div>
   );
 };

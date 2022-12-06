@@ -1,4 +1,7 @@
+@import "../../styles/variables";
+
 .priceTableContainer {
+    padding-top: 1em;
 
     .tableRow {
         width: 100%;
@@ -8,12 +11,27 @@
         padding-block: 1em;
         border-bottom: 1px solid rgba(0, 0, 0, 0.2);
 
-        &:nth-child(odd) {
+        .underlineFirstRow {
+            color: #00000080;
+        }
+
+        &:nth-child(even) {
             background: #FBFBFB;
         }
 
         .tableRowRight {
             text-align: end;
+            line-height: 120%;
+
+            span {
+                font-size: 1.25em;
+                font-family: textaHeavy;
+                color: $red;
+            }
+        }
+
+        .tableRowLeft {
+            font-family: textaHeavy;
         }
     }
 }

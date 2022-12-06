@@ -1,5 +1,7 @@
+@import "../../styles/variables";
+
 .stepsContainer {
-    background-color: blue;
+    background-color: $blue;
     display: flex;
     flex-direction: column;
     justify-content: center;
@@ -8,11 +10,15 @@
     padding-inline: 15%;
     padding-block: 2em;
 
+    h2 {
+        color: $white;
+    }
+
     .itemStepsContainer {
         width: 100%;
         display: flex;
         justify-content: center;
-        align-items: center;
+        align-items: stretch;
         gap: 1.5em;
     }
 
@@ -20,7 +26,11 @@
         display: flex;
         justify-content: center;
         align-items: center;
-        color: white;
+        color: $white;
         gap: 2em;
+    }
+
+    h3 {
+        font-size: 1.5em;
     }
 }
