@@ -4,9 +4,25 @@
 
 @font-face {
     font-family: textaRegular;
-    src:url("../assets/fonts/TextaAlt-Regular_0.otf");
+    src: url("../assets/fonts/TextaAlt-Regular_0.otf");
 }
 
-html{
+$primary-color: #004ADD;
+
+html {
     font-family: textaRegular;
+    scroll-behavior: smooth;
+}
+
+h2 {
+    color: #004ADD;
+    font-weight: 600;
+    font-size: 3em;
+    height: fit-content;
+    padding: 0;
+}
+
+section {
+    padding-inline: 10%;
+    padding-block: 2em;
 }

@@ -2,10 +2,23 @@
     display: flex;
     justify-content: center;
     align-items: center;
-    background-color: #004ADD;
     border-radius: 50px;
     padding-inline: 2.5em;
     padding-block: .5em;
     width: fit-content;
+}
+
+.buttonWhite {
+    background-color: #ffffff;
+    color: #004ADD;
+}
+
+.buttonBlue {
+    background-color: #004ADD;
     color: #ffffff;
+}
+
+.buttonNoBg {
+    color: #004ADD;
+    border: 2px solid #004ADD;
 }

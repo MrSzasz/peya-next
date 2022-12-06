@@ -6,9 +6,13 @@ const Footer = () => {
     <footer className={styles.footer}>
       <div className={styles.leftFooterContainer}>
         <div className={styles.logo}></div>
+        <p>Pedidos Ya © 2010 - 2022</p>
+      </div>
+      <div className={styles.centerFooterContainer}>
         <ul>
           <li>Términos y condiciones</li>
           <li>Tasas y tarifas</li>
+          <li>Preguntas frecuentes</li>
           <li>Centro de ayuda</li>
         </ul>
       </div>
@@ -18,7 +22,7 @@ const Footer = () => {
           <div className={styles.logoStore}></div>
         </div>
       </div>
-      <GoToTop/>
+      <GoToTop />
     </footer>
   );
 };

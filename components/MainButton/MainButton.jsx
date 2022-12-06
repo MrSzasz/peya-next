@@ -1,9 +1,11 @@
-import styles from './MainButton.module.scss'
+import styles from "./MainButton.module.scss";
 
-const MainButton = () => {
+const MainButton = ({ color = "buttonWhite" }) => {
   return (
-    <button className={styles.mainButton}>Pedir Ya</button>
-  )
-}
+    <button className={`${styles.mainButton} ${styles[color]}`}>
+      Pedir Ya
+    </button>
+  );
+};
 
-export default MainButton
+export default MainButton;

@@ -1,0 +1,13 @@
+.secureCardContainer {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+
+    img {
+        border-radius: 1.5em;
+    }
+
+    .rightSecureCardContent {
+        width: 50%;
+    }
+}

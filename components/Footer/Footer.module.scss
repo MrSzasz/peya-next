@@ -1,11 +1,12 @@
 .footer {
     display: flex;
     justify-content: space-between;
-    padding: 3em;
+    padding-block: 2em;
+    padding-inline: 10%;
     position: relative;
     background-color: #100423;
     color: #ffffff;
-    height: 20em;
+
     width: 100%;
 
     .leftFooterContainer {
@@ -16,11 +17,13 @@
         align-items: center;
         gap: 3em;
 
-        .logo {
-            width: 300px;
-            height: 60px;
-            background-color: red;
+        p {
+            width: max-content;
         }
+    }
+
+    .centerFooterContainer {
+        width: fit-content;
     }
 
     .rightFooterContainer {
@@ -29,14 +32,7 @@
         .storeLinks {
             display: flex;
             justify-content: space-between;
-            gap: 3em;
-
-            .logoStore {
-                width: 250px;
-                height: 75px;
-                background-color: red;
-            }
+            gap: 1em;
         }
-
     }
 }

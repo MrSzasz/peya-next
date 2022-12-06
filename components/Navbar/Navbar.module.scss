@@ -1,22 +1,34 @@
-.navbar {
-    background-color: #FFFFFF;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    padding-inline: 2em;
-    padding-block: 1em;
+@import "../../styles/_variables.scss";
 
-    .logo {
-        width: 300px;
-        height: 60px;
-        background-color: red;
-    }
+.navbar {
+    background-color: $blue;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding-block: 1em;
+    padding-inline: 10%;
 
     .linksContainer {
-        width: 100%;
+        width: fit-content;
         display: flex;
-        justify-content: space-between;
+        justify-content: center;
         align-items: center;
-        padding-inline: 3em;
+        gap: 2em;
+
+        .logo {
+            width: 300px;
+            height: 60px;
+            background-color: red;
+        }
+
+        .linksContainerList {
+            width: fit-content;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            gap: 2em;
+            padding-inline: 3em;
+            color: white;
+        }
     }
 }

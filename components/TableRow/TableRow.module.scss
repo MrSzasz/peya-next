@@ -1,0 +1,16 @@
+.tableRow {
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    padding-block: 1em;
+    align-items: center;
+    border-bottom: 1px solid rgba(0, 0, 0, 0.2);
+
+    &:nth-child(odd) {
+        background: #FBFBFB;
+    }
+
+    .tableRowRight {
+        text-align: end;
+    }
+}

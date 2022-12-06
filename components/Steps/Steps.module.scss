@@ -1,0 +1,26 @@
+.stepsContainer {
+    background-color: blue;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 1em;
+    padding-inline: 15%;
+    padding-block: 2em;
+
+    .itemStepsContainer {
+        width: 100%;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        gap: 1.5em;
+    }
+
+    .stepsDownloads {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        color: white;
+        gap: 2em;
+    }
+}

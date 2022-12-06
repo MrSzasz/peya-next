@@ -1,0 +1,23 @@
+.membershipContainer {
+    width: 100%;
+    height: fit-content;
+    background-color: #FA0050;
+    // background-image: radial-gradient(#ffffff 1.3px, #FA0050 1.3px);
+    // background-size: 26px 26px;
+    display: flex;
+    justify-content: space-between;
+    padding-block: 1em;
+
+    .rightMembershipContent {
+        display: flex;
+        flex-direction: column;
+        color: white;
+
+        p{
+            font-size: 2.5em;
+            span {
+                font-weight: bold;
+            }
+        }
+    }
+}
