@@ -10,7 +10,8 @@ const Membership = () => {
         </p>
         <MainButton />
       </div>
-      <img src="" alt="Tarjeta y smartphone Pedidos Ya" />
+      <div className={styles.phoneImage}></div>
+      {/* <img src="/images/membershipImg.png" alt="Tarjeta y smartphone Pedidos Ya" /> */}
     </section>
   );
 };

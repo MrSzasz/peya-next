@@ -35,3 +35,12 @@
         }
     }
 }
+
+
+@media (max-width: 500px) {
+    .priceTableContainer {
+        .tableRow {
+            gap: 4em;
+        }
+    }
+}

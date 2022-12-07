@@ -31,3 +31,10 @@
         font-family: textaHeavy;
     }
 }
+
+
+@media (max-width: 500px) {
+    .tableRow {
+        gap: 2em;
+    }
+}

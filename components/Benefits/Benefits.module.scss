@@ -26,3 +26,21 @@
         border-radius: 1.5em;
     }
 }
+
+@media (max-width: 500px) {
+    .benefitsContainer {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        width: 100%;
+
+        .rightBenefits {
+            width: 100%;
+
+            h2 {
+                width: 100%;
+                line-height: 49px;
+            }
+        }
+    }
+}

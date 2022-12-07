@@ -1,26 +1,58 @@
 .secureCardContainer {
-    display: flex;
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    grid-template-rows: repeat(2, fit-content);
     justify-content: space-between;
     align-items: center;
-
-
+    column-gap: 5em;
 
     img {
+        grid-column: 1/2;
+        grid-row: 1/3;
         border-radius: 1.5em;
     }
 
-    .rightSecureCardContent {
-        width: 50%;
+    h2 {
+        line-height: 49px;
+        grid-column: 2/3;
+        grid-row: 1/2;
+    }
+
+    .benefitsList {
+        grid-column: 2/3;
+        grid-row: 2/3;
         display: flex;
         flex-direction: column;
         justify-content: center;
         gap: 1em;
+        font-size: 1.25em;
+        padding-top: 1em;
+    }
+}
+
+
+@media (max-width: 500px) {
+    .secureCardContainer {
+        display: grid;
+        grid-template-columns: 1fr;
+        grid-template-rows: repeat(3, fit-content);
+        justify-content: space-between;
+        align-items: center;
+        flex-direction: column;
+
+        img {
+            width: 100%;
+            border-radius: 1.5em;
+            grid-row: 2/3;
+        }
 
         h2 {
             line-height: 49px;
+            grid-row: 1/2;
         }
 
         .benefitsList {
+            grid-row: 3/4;
             display: flex;
             flex-direction: column;
             justify-content: center;

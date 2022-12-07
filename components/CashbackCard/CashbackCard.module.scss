@@ -54,3 +54,27 @@
         font-family: textaBold;
     }
 }
+
+
+@media (max-width: 500px) {
+    .cashbackCardContainer {
+        max-width: 16em;
+        width: 100%;
+        min-height: 16em;
+
+        h2 {
+            font-size: 6em;
+        }
+
+        .textTop {
+            font-weight: bold;
+            font-size: 1.75em;
+            font-family: textaBold;
+        }
+
+        .textBottom {
+            font-size: 1.25em;
+            font-family: textaBold;
+        }
+    }
+}

@@ -1,0 +1,7 @@
+.goToMain {
+    display: none;
+
+    &:focus {
+        display: contents;
+    }
+}

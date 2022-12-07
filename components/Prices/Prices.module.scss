@@ -11,3 +11,13 @@
         padding-block: 1em;
     }
 }
+
+@media (max-width: 500px) {
+    .pricesContainer {
+
+        h2,
+        h3 {
+            text-align: center;
+        }
+    }
+}

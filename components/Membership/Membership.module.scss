@@ -9,6 +9,10 @@
     display: flex;
     justify-content: space-between;
     padding-block: 1em;
+    overflow: hidden;
+
+    background-image: url("/images/membershipBg.png");
+    background-position: center;
 
     .rightMembershipContent {
         display: flex;
@@ -21,6 +25,31 @@
             span {
                 font-family: textaHeavy;
                 font-weight: bold;
+            }
+        }
+    }
+    // .phoneImage{
+    //     height: 100px;
+    //     width: 25%;
+    //     background-image: url("/images/membershipImg.png");
+    //     background-position: center;
+    //     background-repeat: no-repeat;
+    //     background-size: contain;
+    //     // background-attachment: fixed;
+    // }
+}
+
+
+@media (max-width: 500px) {
+    .membershipContainer {
+        flex-direction: column;
+        gap: 1em;
+
+        .rightMembershipContent {
+            gap: 1em;
+
+            p {
+                line-height: 1em;
             }
         }
     }

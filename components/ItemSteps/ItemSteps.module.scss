@@ -14,9 +14,15 @@
     gap: 1em;
     text-align: center;
 
+    img {
+        padding: 1.5em;
+        height: 8em;
+    }
+
     h3 {
         font-size: 1.5em;
         font-weight: bold;
         color: $blue;
+
     }
 }

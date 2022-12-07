@@ -1,6 +1,7 @@
 import Head from "next/head";
 import Header from "../Header/Header";
 import Footer from "../Footer/Footer";
+import Hidden from "../Hidden/Hidden";
 
 const Layout = ({
   children,
@@ -15,6 +16,7 @@ const Layout = ({
         <link rel="icon" href="/favicon.ico" />
       </Head>
 
+      <Hidden />
       <Header />
       {children}
       <Footer />
