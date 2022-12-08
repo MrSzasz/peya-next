@@ -22,6 +22,10 @@
     src: url("../assets/fonts/TextaAlt-Black_0.otf");
 }
 
+:root {
+    --swiper-theme-color: white !important;
+}
+
 html {
     font-family: textaRegular;
     scroll-behavior: smooth;
@@ -39,4 +43,12 @@ h2 {
 section {
     padding-inline: 10%;
     padding-block: 2em;
+}
+
+
+@media (max-width: 500px) {
+    section {
+        padding-inline: 5%;
+        padding-block: 2em;
+    }
 }

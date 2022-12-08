@@ -1,5 +1,5 @@
 import MainButton from "../MainButton/MainButton";
-import styles from "./Membership.module.scss"
+import styles from "./Membership.module.scss";
 
 const Membership = () => {
   return (
@@ -11,7 +11,10 @@ const Membership = () => {
         <MainButton />
       </div>
       <div className={styles.phoneImage}></div>
-      {/* <img src="/images/membershipImg.png" alt="Tarjeta y smartphone Pedidos Ya" /> */}
+      <img
+        src="/images/membershipImg.png"
+        alt="Tarjeta y smartphone Pedidos Ya"
+      />
     </section>
   );
 };

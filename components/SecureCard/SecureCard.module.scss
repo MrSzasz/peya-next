@@ -2,14 +2,14 @@
     display: grid;
     grid-template-columns: repeat(2, 1fr);
     grid-template-rows: repeat(2, fit-content);
-    justify-content: space-between;
+    justify-content: center;
     align-items: center;
     column-gap: 5em;
+    row-gap: 0;
 
     img {
         grid-column: 1/2;
         grid-row: 1/3;
-        border-radius: 1.5em;
     }
 
     h2 {
@@ -40,18 +40,22 @@
         align-items: center;
         flex-direction: column;
 
-        img {
+        .secureCardImg {
             width: 100%;
-            border-radius: 1.5em;
+            grid-column: 1/2;
             grid-row: 2/3;
         }
 
         h2 {
             line-height: 49px;
+            grid-column: 1/2;
             grid-row: 1/2;
+            text-align: start;
+            width: 75%;
         }
 
         .benefitsList {
+            grid-column: 1/2;
             grid-row: 3/4;
             display: flex;
             flex-direction: column;
