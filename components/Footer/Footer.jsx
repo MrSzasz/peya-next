@@ -1,4 +1,3 @@
-import GoToTop from "../GoToTop/GoToTop";
 import styles from "./Footer.module.scss";
 
 const Footer = () => {
@@ -24,7 +23,6 @@ const Footer = () => {
           <img src="/images/footerApple.png" alt="Descargar App Apple" />
         </div>
       </div>
-      <GoToTop />
     </footer>
   );
 };

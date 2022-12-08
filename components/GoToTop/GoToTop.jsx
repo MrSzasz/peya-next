@@ -1,11 +1,20 @@
-import styles from './GoToTop.module.scss'
+import $ from "jquery";
+import styles from "./GoToTop.module.scss";
 
 const GoToTop = () => {
-  return (
-    <a href='#nav' className={styles.goToTop}>
-        <img src="/icons/footer/Arrow.svg" alt="Ir arriba" />
-    </a>
-  )
-}
+  $(window).on("scroll", () => {
+    if ($(window).scrollTop() > 200) {
+      $("#goToTopButton").fadeIn();
+    } else {
+      $("#goToTopButton").fadeOut();
+    }
+  });
 
-export default GoToTop
+  return (
+    <a href="#nav" id="goToTopButton" className={styles.goToTop}>
+      <img src="/icons/footer/Arrow.svg" alt="Ir arriba" />
+    </a>
+  );
+};
+
+export default GoToTop;

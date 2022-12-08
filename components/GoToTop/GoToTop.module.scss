@@ -1,5 +1,7 @@
 .goToTop{
-    position: absolute;
+    position: fixed;
+    display: none;
+    z-index: 10;
     bottom: 2em;
     right: 2em;
     display: flex;

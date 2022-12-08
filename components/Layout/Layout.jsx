@@ -3,6 +3,11 @@ import Header from "../Header/Header";
 import Footer from "../Footer/Footer";
 import Hidden from "../Hidden/Hidden";
 
+import dynamic from "next/dynamic";
+const DynamicGoToTop = dynamic(() => import("../GoToTop/GoToTop"), {
+  ssr: false,
+});
+
 const Layout = ({
   children,
   title = "NextJS project",
@@ -19,6 +24,7 @@ const Layout = ({
       <Hidden />
       <Header />
       {children}
+      <DynamicGoToTop />
       <Footer />
     </>
   );
