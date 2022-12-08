@@ -1,6 +1,10 @@
 @import "../../styles/_variables.scss";
 
 .navbar {
+    position: fixed;
+    top: 0;
+    width: 100%;
+    z-index: 10;
     background-color: $blue;
     display: flex;
     justify-content: space-between;

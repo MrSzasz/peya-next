@@ -1,6 +1,5 @@
-.goToTop{
+.goToTop {
     position: fixed;
-    display: none;
     z-index: 10;
     bottom: 2em;
     right: 2em;
@@ -12,4 +11,17 @@
     width: 3em;
     background-color: #004ADD;
     color: #ffffff;
+    display: none;
+}
+
+@media (max-width: 500px) {
+    .goToTop {
+        height: 2.5em;
+        width: 2.5em;
+
+        img {
+            width: 1.5em;
+            height: 1.5em;
+        }
+    }
 }

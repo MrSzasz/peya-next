@@ -7,9 +7,19 @@ import MainButton from "../MainButton/MainButton";
 const Hero = () => {
   return (
     // <section className={styles.heroContainer}>
-    <section className={styles.heroContainer}>
+    <section id="hero" className={styles.heroContainer}>
       <SliderComponent>
         <SwiperSlide>
+          <div className={styles.heroSliderContainer}>
+            <div className={styles.heroContentLeft}>
+              <h1>Llegó tu Visa Crédito PedidosYa Pagos</h1>
+              <h3>Con beneficios en restaurantes y supermercados</h3>
+              <MainButton />
+            </div>
+            <img src="/images/hero.png" alt="hero" />
+          </div>
+        </SwiperSlide>
+        {/* <SwiperSlide>
           <div className={styles.heroContentLeft}>
             <h1>Llegó tu Visa Crédito PedidosYa Pagos</h1>
             <h3>Con beneficios en restaurantes y supermercados</h3>
@@ -24,15 +34,7 @@ const Hero = () => {
             <MainButton />
           </div>
           <img src="/images/hero.png" alt="hero" />
-        </SwiperSlide>
-        <SwiperSlide>
-          <div className={styles.heroContentLeft}>
-            <h1>Llegó tu Visa Crédito PedidosYa Pagos</h1>
-            <h3>Con beneficios en restaurantes y supermercados</h3>
-            <MainButton />
-          </div>
-          <img src="/images/hero.png" alt="hero" />
-        </SwiperSlide>
+        </SwiperSlide> */}
       </SliderComponent>
     </section>
   );
