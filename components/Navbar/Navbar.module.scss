@@ -33,20 +33,44 @@
     .menuNavbar {
         display: none;
     }
+
+    .hiddenMenuContainer {
+        display: none;
+        position: absolute;
+        top: 70px;
+        left: 0;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        background-color: $blue;
+        height: calc(100vh - 70px);
+        width: 100%;
+        gap: 3em;
+
+        .hiddenLinksContainerList {
+            width: 100%;
+            height: fit-content;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            gap: 3em;
+
+            li {
+                font-family: textaHeavy;
+                font-size: 2em;
+                color: white;
+            }
+        }
+    }
 }
 
 @media (max-width: 500px) {
 
     .navbar {
-        background-color: $blue;
-        display: flex;
-        justify-content: space-between;
-        align-items: center;
-        padding-block: 1em;
-        padding-inline: 10%;
-
         img {
-            width: 50%;
+            width: 65%;
         }
 
         .linksContainer {
@@ -54,7 +78,13 @@
         }
 
         .menuNavbar {
+            width: fit-content;
             display: contents;
+            width: 10px;
+        }
+
+        .hiddenMenuContainer {
+            display: none;
         }
     }
 }

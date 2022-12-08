@@ -19,22 +19,26 @@ const Hero = () => {
             <img src="/images/hero.png" alt="hero" />
           </div>
         </SwiperSlide>
-        {/* <SwiperSlide>
-          <div className={styles.heroContentLeft}>
-            <h1>Llegó tu Visa Crédito PedidosYa Pagos</h1>
-            <h3>Con beneficios en restaurantes y supermercados</h3>
-            <MainButton />
+        <SwiperSlide>
+          <div className={styles.heroSliderContainer}>
+            <div className={styles.heroContentLeft}>
+              <h1>Llegó tu Visa Crédito PedidosYa Pagos</h1>
+              <h3>Con beneficios en restaurantes y supermercados</h3>
+              <MainButton />
+            </div>
+            <img src="/images/hero.png" alt="hero" />
           </div>
-          <img src="/images/hero.png" alt="hero" />
         </SwiperSlide>
         <SwiperSlide>
-          <div className={styles.heroContentLeft}>
-            <h1>Llegó tu Visa Crédito PedidosYa Pagos</h1>
-            <h3>Con beneficios en restaurantes y supermercados</h3>
-            <MainButton />
+          <div className={styles.heroSliderContainer}>
+            <div className={styles.heroContentLeft}>
+              <h1>Llegó tu Visa Crédito PedidosYa Pagos</h1>
+              <h3>Con beneficios en restaurantes y supermercados</h3>
+              <MainButton />
+            </div>
+            <img src="/images/hero.png" alt="hero" />
           </div>
-          <img src="/images/hero.png" alt="hero" />
-        </SwiperSlide> */}
+        </SwiperSlide>
       </SliderComponent>
     </section>
   );

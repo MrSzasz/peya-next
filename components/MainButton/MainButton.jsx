@@ -1,8 +1,10 @@
 import styles from "./MainButton.module.scss";
 
-const MainButton = ({ color = "buttonWhite", text = "Pedir Ya" }) => {
+const MainButton = ({ id, color = "buttonWhite", text = "Pedir Ya" }) => {
   return (
-    <button className={`${styles.mainButton} ${styles[color]}`}>{text}</button>
+    <button id={id} className={`${styles.mainButton} ${styles[color]}`}>
+      {text}
+    </button>
   );
 };
 

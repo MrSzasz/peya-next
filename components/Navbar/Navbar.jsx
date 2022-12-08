@@ -1,8 +1,18 @@
+import $ from "jquery";
+import { useEffect } from "react";
 import { AiOutlineMenu } from "react-icons/ai";
 import MainButton from "../MainButton/MainButton";
 import styles from "./Navbar.module.scss";
 
 const Navbar = () => {
+  useEffect(() => {
+    $("#hideMenuButton").on("click", () => {
+      $("#hideMenuContainer").slideToggle().css({
+        display: "flex"
+      });
+    });
+  }, []);
+
   return (
     <nav id="nav" className={styles.navbar}>
       <img src="/images/peyaPagosLogo.png" alt="Ir al inicio" />
@@ -15,9 +25,18 @@ const Navbar = () => {
         </ul>
         <MainButton />
       </div>
-      <button className={styles.menuNavbar}>
+      <button id="hideMenuButton" className={styles.menuNavbar}>
         <AiOutlineMenu color="#ffffff" size={40} />
       </button>
+      <div id="hideMenuContainer" className={styles.hiddenMenuContainer}>
+        <ul className={styles.hiddenLinksContainerList}>
+          <li>Cashback</li>
+          <li>Beneficios</li>
+          <li>Tarjeta</li>
+          <li>Costos</li>
+        </ul>
+        <MainButton />
+      </div>
     </nav>
   );
 };
