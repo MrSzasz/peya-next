@@ -35,7 +35,6 @@
     }
 
     .hiddenMenuContainer {
-        display: none;
         position: absolute;
         top: 70px;
         left: 0;
@@ -47,6 +46,7 @@
         height: calc(100vh - 70px);
         width: 100%;
         gap: 3em;
+        display: none;
 
         .hiddenLinksContainerList {
             width: 100%;
