@@ -5,10 +5,14 @@ import MainButton from "../MainButton/MainButton";
 import styles from "./Navbar.module.scss";
 
 const Navbar = () => {
+  const hideNavMenu = () => {
+    $("#hideMenuContainer").slideToggle();
+  };
+
   useEffect(() => {
     $("#hideMenuButton").on("click", () => {
       $("#hideMenuContainer").slideToggle().css({
-        display: "flex"
+        display: "flex",
       });
     });
   }, []);
@@ -30,10 +34,10 @@ const Navbar = () => {
       </button>
       <div id="hideMenuContainer" className={styles.hiddenMenuContainer}>
         <ul className={styles.hiddenLinksContainerList}>
-          <li>Cashback</li>
-          <li>Beneficios</li>
-          <li>Tarjeta</li>
-          <li>Costos</li>
+          <li onClick={hideNavMenu}>Cashback</li>
+          <li onClick={hideNavMenu}>Beneficios</li>
+          <li onClick={hideNavMenu}>Tarjeta</li>
+          <li onClick={hideNavMenu}>Costos</li>
         </ul>
         <MainButton />
       </div>
