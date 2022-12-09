@@ -22,6 +22,7 @@ const Layout = ({
       </Head>
 
       <Hidden />
+      
       <Header />
       {children}
       <DynamicGoToTop />

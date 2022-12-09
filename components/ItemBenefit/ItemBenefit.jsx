@@ -1,6 +1,6 @@
-import styles from './ItemBenefit.module.scss';
+import styles from "./ItemBenefit.module.scss";
 
-const ItemBenefit = ({img, imgAlt, text}) => {
+const ItemBenefit = ({ img, imgAlt, text }) => {
   return (
     <div className={styles.itemBenefitContainer}>
       <img src={img} alt={imgAlt} />

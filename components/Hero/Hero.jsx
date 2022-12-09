@@ -6,7 +6,6 @@ import MainButton from "../MainButton/MainButton";
 
 const Hero = () => {
   return (
-    // <section className={styles.heroContainer}>
     <section id="hero" className={styles.heroContainer}>
       <SliderComponent>
         <SwiperSlide>

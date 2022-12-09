@@ -1,6 +1,6 @@
-import styles from './ItemSteps.module.scss';
+import styles from "./ItemSteps.module.scss";
 
-const ItemSteps = ({img, imgAlt, title, text}) => {
+const ItemSteps = ({ img, imgAlt, title, text }) => {
   return (
     <div className={styles.mainCard}>
       <img src={img} alt={imgAlt} />

@@ -1,6 +1,6 @@
 import styles from "./CashbackCard.module.scss";
 
-const CashbackCard = ({number, textTop, img, altImg, textBottom}) => {
+const CashbackCard = ({ number, textTop, img, altImg, textBottom }) => {
   return (
     <div className={styles.cashbackCardContainer}>
       <h2>{number}%</h2>

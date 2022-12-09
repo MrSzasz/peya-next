@@ -4,7 +4,11 @@ import styles from "./SecureCard.module.scss";
 const SecureCard = () => {
   return (
     <section className={styles.secureCardContainer}>
-      <img className={styles.secureCardImg} src="/images/secureCardImg.png" alt="Tarjeta física" />
+      <img
+        className={styles.secureCardImg}
+        src="/images/secureCardImg.png"
+        alt="Tarjeta física"
+      />
       <h2>La tarjeta más segura</h2>
       <div className={styles.benefitsList}>
         <ItemBenefit
