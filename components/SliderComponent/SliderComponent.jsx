@@ -7,7 +7,10 @@ const SliderComponent = ({ children }) => {
   return (
     <Swiper
       slidesPerView={1}
-      pagination={true}
+      // pagination={true}
+      pagination={{
+        clickable: true,
+      }}
       modules={[Pagination, Autoplay]}
       spaceBetween={30}
       loop={true}
