@@ -19,13 +19,23 @@ const Navbar = () => {
 
   return (
     <nav id="nav" className={styles.navbar}>
-      <img src="/images/peyaPagosLogo.png" alt="Ir al inicio" />
+      <a href="#hero">
+        <img src="/images/peyaPagosLogo.png" alt="Ir al inicio" />
+      </a>
       <div className={styles.linksContainer}>
         <ul className={styles.linksContainerList}>
-          <li>Cashback</li>
-          <li>Beneficios</li>
-          <li>Tarjeta</li>
-          <li>Costos</li>
+          <li>
+            <a href="#cashbackSection">Cashback</a>
+          </li>
+          <li>
+            <a href="#benefitsSection">Beneficios</a>
+          </li>
+          <li>
+            <a href="#secureCardSection">Tarjeta</a>
+          </li>
+          <li>
+            <a href="#pricesSection">Costos</a>
+          </li>
         </ul>
         <MainButton />
       </div>

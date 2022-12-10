@@ -4,7 +4,7 @@ import { motion } from "framer-motion";
 
 const SecureCard = () => {
   return (
-    <section className={styles.secureCardContainer}>
+    <section id="secureCardSection" className={styles.secureCardContainer}>
       <img
         className={styles.secureCardImg}
         src="/images/secureCardImg.png"
@@ -26,6 +26,7 @@ const SecureCard = () => {
             stiffness: 500,
           },
         }}
+        viewport={{ once: true }}
         exit={{
           transform: "translateX(0%)",
           opacity: 1,
@@ -50,6 +51,7 @@ const SecureCard = () => {
             stiffness: 500,
           },
         }}
+        viewport={{ once: true }}
         exit={{
           transform: "translateX(0%)",
           opacity: 1,

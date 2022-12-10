@@ -1,3 +1,5 @@
+@import "../../styles/variables";
+
 .mainButton {
     display: flex;
     justify-content: center;
@@ -11,16 +13,33 @@
 }
 
 .buttonWhite {
-    background-color: #ffffff;
-    color: #004ADD;
+    background-color: $white;
+    color: $blue;
+    transition: ease all .25s;
+
+    &:hover {
+        background-color: $whiteHover;
+    }
 }
 
 .buttonBlue {
-    background-color: #004ADD;
-    color: #ffffff;
+    background-color: $blue;
+    color: $white;
+    transition: ease all .25s;
+
+    &:hover {
+        background-color: $blueHover;
+        color: $white;
+    }
 }
 
 .buttonNoBg {
-    color: #004ADD;
-    border: 2px solid #004ADD;
+    color: $blue;
+    border: 2px solid $blue;
+    transition: ease all .25s;
+
+    &:hover {
+        background-color: $blueHover;
+        color: $white;
+    }
 }

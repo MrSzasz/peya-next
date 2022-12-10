@@ -1,8 +1,19 @@
+@import "../../styles/_variables.scss";
+
 .goToMain {
-    display: none;
-    margin-top: 80px;
+    width: 100%;
+    position: fixed;
+    top: 0;
+    right: 0;
+    text-align: center;
+    background-color: $white;
+    color: $blue;
+    padding: .5em;
+    translate: 0 -100%;
+    transition: translate .25s ease-in-out;
+    z-index: 20;
 
     &:focus {
-        display: contents;
+        translate: 0;
     }
 }

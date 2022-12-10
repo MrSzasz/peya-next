@@ -1,37 +1,41 @@
 @import "../../styles/variables";
 
-.membershipContainer {
-    width: 100%;
-    height: fit-content;
-    display: flex;
-    justify-content: space-between;
-    padding-block: 1em;
-    background-image: url("/images/membershipBg.png");
-    background-position: center;
-    position: relative;
-    margin-top: 5em;
+.membershipContainerWrapper {
     overflow: hidden;
+    padding-top: 1em;
 
-    .rightMembershipContent {
+    .membershipContainer {
+        width: 100%;
+        height: fit-content;
         display: flex;
-        flex-direction: column;
-        color: $white;
+        justify-content: space-between;
+        padding-block: 1em;
+        background-image: url("/images/membershipBg.png");
+        background-position: center;
+        position: relative;
+        margin-top: 5em;
 
-        p {
-            font-size: 2.5em;
+        .rightMembershipContent {
+            display: flex;
+            flex-direction: column;
+            color: $white;
 
-            span {
-                font-family: textaHeavy;
-                font-weight: bold;
+            p {
+                font-size: 2.5em;
+
+                span {
+                    font-family: textaHeavy;
+                    font-weight: bold;
+                }
             }
         }
-    }
 
-    img {
-        position: absolute;
-        right: 8em;
-        height: 15em;
-        bottom: 0;
+        img {
+            position: absolute;
+            right: 8em;
+            height: 15em;
+            bottom: 0;
+        }
     }
 }
 

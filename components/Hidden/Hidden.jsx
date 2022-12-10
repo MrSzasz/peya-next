@@ -2,7 +2,7 @@ import styles from "./Hidden.module.scss";
 
 const Hidden = () => {
   return (
-    <a id="hiddenTop" href="#main" className={styles.goToMain}>
+    <a id="hiddenTop" href="#cashbackSection" className={styles.goToMain}>
       Saltar al contenido principal
     </a>
   );

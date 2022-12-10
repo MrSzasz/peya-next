@@ -30,6 +30,12 @@ html {
     font-family: textaRegular;
     scroll-behavior: smooth;
     overflow-x: hidden;
+    scroll-padding-top: 70px;
+}
+
+*:focus-visible,
+*:active {
+    outline: 2px solid #b0c7f4;
 }
 
 h2 {

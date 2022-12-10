@@ -5,7 +5,7 @@ import { motion } from "framer-motion";
 
 const Benefits = () => {
   return (
-    <section className={styles.benefitsContainer}>
+    <section id="benefitsSection" className={styles.benefitsContainer}>
       <motion.div
         key={1}
         className={styles.rightBenefits}
@@ -23,6 +23,7 @@ const Benefits = () => {
             stiffness: 500,
           },
         }}
+        viewport={{ once: true }}
         exit={{
           transform: "translateX(0%)",
           opacity: 1,
@@ -65,6 +66,7 @@ const Benefits = () => {
             stiffness: 500,
           },
         }}
+        viewport={{ once: true }}
         exit={{
           transform: "translateX(0%)",
           opacity: 1,

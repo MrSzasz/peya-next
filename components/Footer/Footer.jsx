@@ -3,7 +3,9 @@ import styles from "./Footer.module.scss";
 const Footer = () => {
   return (
     <footer className={styles.footer}>
-      <img src="/images/peyaPagosLogo.png" alt="Logo PedidosYa Pagos" />
+      <a href="#hero">
+        <img src="/images/peyaPagosLogo.png" alt="Logo PedidosYa Pagos" />
+      </a>
       <p className={styles.disclaimer}>Pedidos Ya © 2010 - 2022</p>
       <div className={styles.centerFooterContainer}>
         <ul>

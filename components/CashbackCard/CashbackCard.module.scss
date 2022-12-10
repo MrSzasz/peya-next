@@ -6,6 +6,7 @@
     max-width: 14em;
     width: 100%;
     min-height: fit-content;
+    height: 100%;
     padding: 1.5em 1em;
     display: flex;
     flex-direction: column;
@@ -14,27 +15,6 @@
     text-align: start;
     color: $blue;
     gap: .5em;
-
-    &:nth-child(2),
-    &:nth-child(3) {
-        color: $white;
-
-        h2 {
-            color: $white;
-        }
-    }
-
-    &:nth-child(2) {
-        background-color: $red;
-    }
-
-    &:nth-child(3) {
-        background-color: $blue;
-
-        img {
-            display: none;
-        }
-    }
 
     h2 {
         font-size: 5em;
@@ -54,6 +34,26 @@
     }
 }
 
+.secondCashbackCard,
+.thirdCashbackCard {
+    color: $white;
+
+    h2 {
+        color: $white;
+    }
+}
+
+.secondCashbackCard {
+    background-color: $red;
+}
+
+.thirdCashbackCard {
+    background-color: $blue;
+
+    img {
+        display: none;
+    }
+}
 
 @media (max-width: 500px) {
     .cashbackCardContainer {

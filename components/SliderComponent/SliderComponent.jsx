@@ -7,7 +7,6 @@ const SliderComponent = ({ children }) => {
   return (
     <Swiper
       slidesPerView={1}
-      // pagination={true}
       pagination={{
         clickable: true,
       }}

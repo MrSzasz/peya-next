@@ -14,7 +14,14 @@
     gap: 1em;
     text-align: center;
 
+    &:hover {
+        .mainCardImg {
+            transform: scale(1.2);
+        }
+    }
+
     img {
+        transition: ease all .75s;
         padding: 1.5em;
         height: 8em;
     }
