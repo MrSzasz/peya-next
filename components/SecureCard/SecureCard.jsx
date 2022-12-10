@@ -1,5 +1,6 @@
 import ItemBenefit from "../ItemBenefit/ItemBenefit";
 import styles from "./SecureCard.module.scss";
+import { motion } from "framer-motion";
 
 const SecureCard = () => {
   return (
@@ -9,8 +10,51 @@ const SecureCard = () => {
         src="/images/secureCardImg.png"
         alt="Tarjeta física"
       />
-      <h2>La tarjeta más segura</h2>
-      <div className={styles.benefitsList}>
+      <motion.h2
+        key={3}
+        initial={{
+          transform: "translateX(+100%)",
+          opacity: 0,
+        }}
+        whileInView={{
+          transform: "translateX(0%)",
+          opacity: 1,
+          transition: {
+            duration: 1,
+            type: "tween",
+            damping: 25,
+            stiffness: 500,
+          },
+        }}
+        exit={{
+          transform: "translateX(0%)",
+          opacity: 1,
+        }}
+      >
+        La tarjeta más segura
+      </motion.h2>
+      <motion.div
+        className={styles.benefitsList}
+        key={4}
+        initial={{
+          transform: "translateX(+100%)",
+          opacity: 0,
+        }}
+        whileInView={{
+          transform: "translateX(0%)",
+          opacity: 1,
+          transition: {
+            duration: 1,
+            type: "tween",
+            damping: 25,
+            stiffness: 500,
+          },
+        }}
+        exit={{
+          transform: "translateX(0%)",
+          opacity: 1,
+        }}
+      >
         <ItemBenefit
           text={"Con la seguridad de Visa y el respaldo de Banesco"}
           img={"/icons/secureCard/icon1.svg"}
@@ -31,7 +75,7 @@ const SecureCard = () => {
           img={"/icons/secureCard/icon4.svg"}
           alt={"Icono precios bajos"}
         />
-      </div>
+      </motion.div>
     </section>
   );
 };
