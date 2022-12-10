@@ -9,15 +9,15 @@ const DynamicGoToTop = dynamic(() => import("../GoToTop/GoToTop"), {
 
 const Layout = ({
   children,
-  title = "NextJS project",
-  desc = "First project with NextJS",
+  title = "PedidosYa Pagos",
+  desc = "PedidosYa Pagos",
 }) => {
   return (
     <>
       <Head>
         <title>{title}</title>
         <meta name="description" content={desc} />
-        <link rel="icon" href="/favicon.ico" />
+        <link rel="icon" href="/icon.png" />
       </Head>
       <Header />
       {children}

@@ -42,33 +42,22 @@
 
 @media (max-width: 500px) {
     .membershipContainer {
-        margin-top: 0;
-        height: fit-content;
         flex-direction: column;
-        gap: 1em;
-        padding-bottom: 15em;
-        overflow: hidden;
-        background-image: url("/images/membershipBgMobile.png");
-        background-position: bottom;
+        background-image: url("/images/membershipBgMobile.png") !important;
+        background-position: bottom !important;
+        background-size: 50%;
+        padding-bottom: 0 !important;
 
         .rightMembershipContent {
             gap: 1em;
 
             p {
                 line-height: 1em;
-
-                span {
-                    font-family: textaHeavy;
-                    font-weight: bold;
-                }
             }
         }
 
-        img {
-            position: absolute;
-            right: 3%;
-            height: fit-content;
-            width: 100%;
+        .membershipCardImg {
+            position: static !important;
         }
     }
 }

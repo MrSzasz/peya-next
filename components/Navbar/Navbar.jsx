@@ -44,10 +44,18 @@ const Navbar = () => {
       </button>
       <div id="hideMenuContainer" className={styles.hiddenMenuContainer}>
         <ul className={styles.hiddenLinksContainerList}>
-          <li onClick={hideNavMenu}>Cashback</li>
-          <li onClick={hideNavMenu}>Beneficios</li>
-          <li onClick={hideNavMenu}>Tarjeta</li>
-          <li onClick={hideNavMenu}>Costos</li>
+          <li onClick={hideNavMenu}>
+            <a href="#cashbackSection">Cashback</a>
+          </li>
+          <li onClick={hideNavMenu}>
+            <a href="#benefitsSection">Beneficios</a>
+          </li>
+          <li onClick={hideNavMenu}>
+            <a href="#secureCardSection">Tarjeta</a>
+          </li>
+          <li onClick={hideNavMenu}>
+            <a href="#pricesSection">Costos</a>
+          </li>
         </ul>
         <MainButton />
       </div>

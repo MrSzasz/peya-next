@@ -13,8 +13,8 @@ const Membership = () => {
             </p>
             <MainButton />
           </div>
-          <div className={styles.phoneImage}></div>
           <motion.img
+            className={styles.membershipCardImg}
             src="/images/membershipImg.png"
             alt="Tarjeta y smartphone Pedidos Ya"
             key={5}
