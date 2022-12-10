@@ -41,23 +41,27 @@
 
 
 @media (max-width: 500px) {
-    .membershipContainer {
-        flex-direction: column;
-        background-image: url("/images/membershipBgMobile.png") !important;
-        background-position: bottom !important;
-        background-size: 50%;
-        padding-bottom: 0 !important;
+    .membershipContainerWrapper {
+        .membershipContainer {
+            flex-direction: column;
+            background-image: url("/images/membershipBgMobile.png");
+            background-position: bottom;
+            background-size: 50%;
+            padding-bottom: 0;
+            margin-top: 0em;
 
-        .rightMembershipContent {
-            gap: 1em;
 
-            p {
-                line-height: 1em;
+            .rightMembershipContent {
+                gap: 1em;
+
+                p {
+                    line-height: 1em;
+                }
             }
-        }
 
-        .membershipCardImg {
-            position: static !important;
+            .membershipCardImg {
+                position: static;
+            }
         }
     }
 }
