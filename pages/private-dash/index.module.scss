@@ -1,0 +1,103 @@
+@import "../../styles/variables";
+
+.dashContainer {
+    background-color: $dark;
+    color: $white;
+    text-align: center;
+
+    .goToMain {
+        justify-self: flex-start;
+        width: 100%;
+        background-color: $blue;
+        color: $white;
+        display: flex;
+        align-items: center;
+        gap: .5em;
+        transition: ease all .25s;
+        padding: .5em;
+
+        &:hover {
+            gap: 1em;
+        }
+    }
+
+    .sectionsContainer {
+        .dashSectionTop {
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            gap: 1em;
+
+            form {
+                width: fit-content;
+                height: fit-content;
+                padding: 1em;
+                border-radius: 1.5em;
+                background-color: $blue;
+                display: flex;
+                justify-content: center;
+                align-items: center;
+                gap: 1em;
+
+                input {
+                    padding: .5em 1em;
+                }
+
+                button {
+                    background-color: $white;
+                    color: $blue;
+                    padding: .5em 1em;
+                    border-radius: 1.5em;
+                }
+            }
+        }
+    }
+
+    .dashSliderContainer {
+        padding-inline: 10%;
+
+        h2 {
+            width: 100%;
+            text-align: center;
+        }
+    }
+}
+
+
+@media (max-width: 500px) {
+    .dashContainer {
+
+        h2 {
+            font-size: 2.5em;
+            line-height: 1em;
+        }
+
+        .sectionsContainer {
+            .dashSectionTop {
+                padding-inline: 5%;
+
+                form {
+                    flex-direction: column;
+
+                    input {
+                        padding: .5em;
+                    }
+
+                    button {
+                        width: 100%;
+                        padding: .5em;
+                    }
+                }
+            }
+        }
+
+        .dashSliderContainer {
+            padding-inline: 5%;
+
+            h2 {
+                padding-block: 1em .5em;
+            }
+        }
+    }
+}

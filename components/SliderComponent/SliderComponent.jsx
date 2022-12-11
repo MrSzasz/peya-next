@@ -6,6 +6,7 @@ import "swiper/css/pagination";
 const SliderComponent = ({ children }) => {
   return (
     <Swiper
+      
       slidesPerView={1}
       pagination={{
         clickable: true,

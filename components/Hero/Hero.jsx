@@ -44,3 +44,14 @@ const Hero = () => {
 };
 
 export default Hero;
+
+/*
+
+  {
+    url: "http...",
+    imgAlt: "alt",
+    title: "title",
+    subtitle: "subtitle"
+  } 
+
+*/

@@ -9,7 +9,26 @@ import Steps from "../components/Steps/Steps";
 import Prices from "../components/Prices/Prices";
 import Hero from "../components/Hero/Hero";
 
+import { collection, getDocs, getFirestore } from "firebase/firestore"; // Importamos lo necesario
+import { useEffect, useState } from "react";
+
 const Home = () => {
+  const [promoDataFromDB, setPromoDataFromDB] = useState([]);
+
+  const getProductsFromFirebase = async () => {
+    const db = getFirestore();
+
+    const queryCollection = collection(db, "promos");
+
+    await getDocs(queryCollection).then((res) =>
+      setPromoDataFromDB(res.docs.map((item) => ({ ...item.data(), id: item.id })))
+    );
+  };
+
+  useEffect(() => {
+    getProductsFromFirebase();
+  }, []);
+
   return (
     <Layout>
       <main className={styles.mainContainer}>
@@ -18,7 +37,7 @@ const Home = () => {
         <Benefits />
         <Membership />
         <SecureCard />
-        <PromoCarousel />
+        <PromoCarousel imagesArray={promoDataFromDB}/>
         <Steps />
         <Prices />
       </main>
