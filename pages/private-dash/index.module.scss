@@ -5,6 +5,12 @@
     color: $white;
     text-align: center;
 
+    span {
+        font-size: 1.1em;
+        font-family: textaHeavy;
+        color: $red;
+    }
+
     .goToMain {
         justify-self: flex-start;
         width: 100%;
@@ -45,7 +51,7 @@
                     flex-direction: column;
                     justify-content: center;
 
-                    .altGroup {
+                    .inputGroupWithLabel {
                         display: flex;
                         align-items: center;
                         gap: 1em;
@@ -55,8 +61,9 @@
 
                 input[type="file"] {
                     padding: .5em 1em;
+                    cursor: pointer;
                 }
-                
+
                 input[type="text"] {
                     width: 75%;
                     color: black;
@@ -113,6 +120,27 @@
                     }
                 }
             }
+        }
+
+        .goToEdit {
+            @extend .goToMain;
+            margin-block: 1em;
+            border-radius: 1.5em;
+            text-align: center;
+            width: fit-content;
+            margin-inline: auto;
+            padding: 1em 1.5em;
+            background-color: $red;
+        }
+
+        .saveDataInFB {
+            @extend .goToEdit;
+            background-color: green;
+            width: 75%;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            font-size: 1.25em;
         }
     }
 
