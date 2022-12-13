@@ -268,7 +268,10 @@ const index = () => {
                     className={styles.heroImageCard}
                     key={`${i}${Math.random()}`}
                   >
-                    <img src={image.previewUrl} alt={image.imgAlt} />
+                    <img
+                      src={image.previewUrl || image.url}
+                      alt={image.imgAlt}
+                    />
                     <button
                       onClick={() => handleDelete(image.previewUrl, "hero")}
                     >
