@@ -75,6 +75,7 @@ const index = () => {
   const saveDataInArray = (
     e,
     location,
+    mobile,
     imageFile,
     imageAlt,
     heroTitle,
@@ -89,6 +90,7 @@ const index = () => {
           {
             previewUrl: e.target.result,
             url: imageFile,
+            mobile: mobile,
             imgAlt: imageAlt,
             title: heroTitle,
             subtitle: heroSubtitle,
@@ -102,6 +104,7 @@ const index = () => {
           ...arrayWithPromosData,
           {
             previewUrl: e.target.result,
+            mobile: mobile,
             url: imageFile,
             imgAlt: imageAlt,
           },
@@ -138,6 +141,7 @@ const index = () => {
             url: generatedFirebaseUrl,
             imgAlt: dataToUpload.imgAlt,
             title: dataToUpload.title,
+            mobile: dataToUpload.mobile,
             subtitle: dataToUpload.subtitle,
             buttonLink: dataToUpload.buttonLink,
           }).then(console.log("done"));
@@ -160,6 +164,7 @@ const index = () => {
           await addDoc(collection(db, firebaseCollectionName), {
             url: generatedFirebaseUrl,
             imgAlt: dataToUpload.imgAlt,
+            mobile: dataToUpload.mobile,
           }).then(console.log("done"));
         }
       } else {
@@ -214,6 +219,7 @@ const index = () => {
                 saveDataInArray(
                   e,
                   "hero",
+                  null,
                   $("#heroImg").prop("files")[0],
                   $("#heroAlt").val().trim(),
                   $("#heroTitle").val().trim(),
@@ -343,6 +349,7 @@ const index = () => {
                 saveDataInArray(
                   e,
                   "promos",
+                  ($("#promosMobile:checked").val() !== "on") & null,
                   $("#promosImg").prop("files")[0],
                   $("#promosAlt").val().trim()
                 )
@@ -352,6 +359,14 @@ const index = () => {
                 <div className={styles.inputGroupWithLabel}>
                   <label htmlFor="promosAlt">ALT: </label>
                   <input type="text" name="promosAlt" id="promosAlt" required />
+                </div>
+                <div className={styles.inputGroupWithLabel}>
+                  <label htmlFor="promosMobile">¿ES MOBILE? </label>
+                  <input
+                    type="checkbox"
+                    name="promosMobile"
+                    id="promosMobile"
+                  />
                 </div>
                 <input
                   type="file"
