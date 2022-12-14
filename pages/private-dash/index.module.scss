@@ -1,5 +1,22 @@
 @import "../../styles/variables";
 
+.userLoading {
+    position: fixed;
+    width: 100vw;
+    height: 100vh;
+    background-color: black;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    backdrop-filter: blur(5px);
+
+    h2 {
+        font-size: 2em;
+        font-family: textaHeavy;
+    }
+}
+
 .dashContainer {
     background-color: $dark;
     color: $white;
@@ -24,6 +41,29 @@
 
         &:hover {
             gap: 1em;
+        }
+    }
+
+    .logOutContainer {
+        width: 100%;
+        height: fit-content;
+        padding-top: 1em;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+
+        button {
+            background-color: $red;
+            color: $white;
+            font-family: textaHeavy;
+            padding: 1em 2em;
+            border-radius: 1.5em;
+            transition: ease all .25s;
+
+            &:hover {
+                background-color: #c4003e
+            }
         }
     }
 

@@ -9,12 +9,28 @@ import { Swiper, SwiperSlide } from "swiper/react";
 import { Pagination, Autoplay } from "swiper";
 import "swiper/css";
 import Link from "next/link";
+import { useAppContext } from "../../context/AppContext";
+import { useRouter } from "next/router";
 
 const index = () => {
   const [arrayWithHeroData, setArrayWithHeroData] = useState([]);
   const [arrayWithPromosData, setArrayWithPromosData] = useState([]);
   const [loading, setLoading] = useState(true);
+  const [userLoading, setUserLoading] = useState(true);
 
+  const { userLogged, userLogOut } = useAppContext();
+
+  const router = useRouter();
+
+  // =============================================================================================================================== //
+  // =========================================== PEDIR DATOS A FIREBASE ============================================================ //
+  // =============================================================================================================================== //
+
+  const handleLogOut = async () => {
+    await userLogOut().then(() => {
+      router.push("/");
+    });
+  };
   // =============================================================================================================================== //
   // =========================================== PEDIR DATOS A FIREBASE ============================================================ //
   // =============================================================================================================================== //
@@ -182,6 +198,15 @@ const index = () => {
   // =============================================================================================================================== //
 
   useEffect(() => {
+    const getUserFromStorage = localStorage.getItem("userData");
+    if (userLogged === null && getUserFromStorage === "null") {
+      router.push("/");
+    } else {
+      setUserLoading(false);
+    }
+  }, []);
+
+  useEffect(() => {
     getProductsFromFirebase("hero");
     getProductsFromFirebase("promos");
   }, []);
@@ -193,260 +218,294 @@ const index = () => {
   // =============================================================================================================================== //
 
   return (
-    <div className={styles.dashContainer}>
-      <Link href="/" className={styles.goToMain}>
-        <AiOutlineLeft />
-        Volver a la página principal
-      </Link>
-      <div className={styles.sectionsContainer}>
-        <section className={styles.dashHeroSectionContainer}>
-          <div className={styles.dashSectionTop}>
-            <h2>Agregar al Hero</h2>
-            <p>
-              Para subir imágenes al hero se deberá seleccionar la imagen
-              deseada, agregar el titulo principal, subtitulo y el link al que
-              se redirigirá, la vista previa se actualiza cuando agrega los
-              datos, podrá cancelar la subida de cada uno eliminándola de la
-              lista de imágenes, <span>SOLAMENTE CUANDO ESTÉ SEGURO</span>puede
-              dar <span>DOBLE CLICK</span> en subir para aplicar los cambios.
-              <br />
-              También puede eliminar las páginas que se encuentren en la base de
-              datos haciendo click en el botón
-              <span>EDITAR PÁGINAS GUARDADAS</span>
-            </p>
-            <form
-              onSubmit={(e) =>
-                saveDataInArray(
-                  e,
-                  "hero",
-                  false,
-                  $("#heroImg").prop("files")[0],
-                  $("#heroAlt").val().trim(),
-                  $("#heroTitle").val().trim(),
-                  $("#heroSubtitle").val().trim(),
-                  $("#heroLink").val().trim()
-                )
-              }
-            >
-              <div className={styles.inputGroup}>
-                <div className={styles.inputGroupWithLabel}>
-                  <label htmlFor="heroTitle">TITLE: </label>
-                  <input type="text" name="heroTitle" id="heroTitle" required />
-                </div>
-                <div className={styles.inputGroupWithLabel}>
-                  <label htmlFor="heroSubtitle">SUBTITLE: </label>
-                  <input
-                    type="text"
-                    name="heroSubtitle"
-                    id="heroSubtitle"
-                    required
-                  />
-                </div>
-                <div className={styles.inputGroupWithLabel}>
-                  <label htmlFor="heroLink">LINK: </label>
-                  <input type="text" name="heroLink" id="heroLink" required />
-                </div>
-                <div className={styles.inputGroupWithLabel}>
-                  <label htmlFor="heroAlt">ALT: </label>
-                  <input type="text" name="heroAlt" id="heroAlt" required />
-                </div>
-                <input
-                  type="file"
-                  name="heroImg"
-                  id="heroImg"
-                  accept="image/*"
-                  required
-                  onChange={(e) => {
-                    if (e.target.files[0].size > 5242880) {
-                      alert("El archivo debe pesar menos de 5MB");
-                      e.target.value = "";
-                    }
-                  }}
-                />
-              </div>
-              <button type="submit">Agregar</button>
-            </form>
-            <div className={styles.heroImageList}>
-              {arrayWithHeroData
-                .filter((data) => data.id == null)
-                .map((image, i) => (
-                  <div
-                    className={styles.heroImageCard}
-                    key={`${i}${Math.random()}`}
-                  >
-                    <img
-                      src={image.previewUrl || image.url}
-                      alt={image.imgAlt}
+    <>
+      {userLoading ? (
+        <div className={styles.userLoading}>
+          <h2>Cargando usuario...</h2>
+        </div>
+      ) : (
+        <div className={styles.dashContainer}>
+          <Link href="/" className={styles.goToMain}>
+            <AiOutlineLeft />
+            Volver a la página principal
+          </Link>
+          <div className={styles.logOutContainer}>
+            <button onClick={handleLogOut}>Cerrar sesión</button>
+          </div>
+          <div className={styles.sectionsContainer}>
+            <section className={styles.dashHeroSectionContainer}>
+              <div className={styles.dashSectionTop}>
+                <h2>Agregar al Hero</h2>
+                <p>
+                  Para subir imágenes al hero se deberá seleccionar la imagen
+                  deseada, agregar el titulo principal, subtitulo y el link al
+                  que se redirigirá, la vista previa se actualiza cuando agrega
+                  los datos, podrá cancelar la subida de cada uno eliminándola
+                  de la lista de imágenes,{" "}
+                  <span>SOLAMENTE CUANDO ESTÉ SEGURO</span>
+                  puede dar <span>DOBLE CLICK</span> en subir para aplicar los
+                  cambios.
+                  <br />
+                  También puede eliminar las páginas que se encuentren en la
+                  base de datos haciendo click en el botón
+                  <span>EDITAR PÁGINAS GUARDADAS</span>
+                </p>
+                <form
+                  onSubmit={(e) =>
+                    saveDataInArray(
+                      e,
+                      "hero",
+                      false,
+                      $("#heroImg").prop("files")[0],
+                      $("#heroAlt").val().trim(),
+                      $("#heroTitle").val().trim(),
+                      $("#heroSubtitle").val().trim(),
+                      $("#heroLink").val().trim()
+                    )
+                  }
+                >
+                  <div className={styles.inputGroup}>
+                    <div className={styles.inputGroupWithLabel}>
+                      <label htmlFor="heroTitle">TITLE: </label>
+                      <input
+                        type="text"
+                        name="heroTitle"
+                        id="heroTitle"
+                        required
+                      />
+                    </div>
+                    <div className={styles.inputGroupWithLabel}>
+                      <label htmlFor="heroSubtitle">SUBTITLE: </label>
+                      <input
+                        type="text"
+                        name="heroSubtitle"
+                        id="heroSubtitle"
+                        required
+                      />
+                    </div>
+                    <div className={styles.inputGroupWithLabel}>
+                      <label htmlFor="heroLink">LINK: </label>
+                      <input
+                        type="text"
+                        name="heroLink"
+                        id="heroLink"
+                        required
+                      />
+                    </div>
+                    <div className={styles.inputGroupWithLabel}>
+                      <label htmlFor="heroAlt">ALT: </label>
+                      <input type="text" name="heroAlt" id="heroAlt" required />
+                    </div>
+                    <input
+                      type="file"
+                      name="heroImg"
+                      id="heroImg"
+                      accept="image/*"
+                      required
+                      onChange={(e) => {
+                        if (e.target.files[0].size > 5242880) {
+                          alert("El archivo debe pesar menos de 5MB");
+                          e.target.value = "";
+                        }
+                      }}
                     />
-                    <button
-                      onClick={() => handleDelete(image.previewUrl, "hero")}
-                    >
-                      <AiOutlineDelete />
-                      BORRAR
-                    </button>
                   </div>
-                ))}
-            </div>
-          </div>
-          <div className={styles.dashSliderContainer}>
-            <h2>Vista previa</h2>
-            {loading ? (
-              <Loading />
-            ) : (
-              <Swiper
-                spaceBetween={50}
-                slidesPerView={1}
-                pagination={{
-                  clickable: true,
-                }}
-                modules={[Pagination, Autoplay]}
-                loop={true}
-                autoplay={{
-                  delay: 40000,
-                  disableOnInteraction: false,
-                }}
-              >
-                {arrayWithHeroData.map((item, i) => (
-                  <SwiperSlide key={i}>
-                    <SwiperSlide>
-                      <img
-                        src={item.previewUrl || item.url}
-                        alt={item.imgAlt}
-                      />
-                    </SwiperSlide>
-                  </SwiperSlide>
-                ))}
-              </Swiper>
-            )}
-          </div>
-          <Link className={styles.goToEdit} href={"private-dash/edit/hero"}>
-            Editar imágenes guardadas
-            <AiOutlineRight />
-          </Link>
-          <button
-            className={styles.saveDataInFB}
-            onClick={() => saveDataToFirebase("hero")}
-          >
-            Guardar imágenes en base de datos
-          </button>
-        </section>
-
-        <section className={styles.dashHeroSectionContainer}>
-          <div className={styles.dashSectionTop}>
-            <h2>Agregar a las promos</h2>
-            <p>
-              Para subir imágenes a las promos se deberá seleccionar la imagen
-              deseada, la vista previa se actualiza cuando agrega una nueva
-              imagen, podrá cancelar la subida de la imagen eliminándola de la
-              lista de imágenes, <span>SOLAMENTE CUANDO ESTÉ SEGURO</span> puede
-              dar <span>DOBLE CLICK</span> en subir para aplicar los cambios.
-              <br /> También puede eliminar las imágenes que se encuentren en la
-              base de datos haciendo click en el botón{" "}
-              <span>EDITAR IMÁGENES GUARDADAS</span>
-            </p>
-            <form
-              onSubmit={(e) =>
-                saveDataInArray(
-                  e,
-                  "promos",
-                  e.target.elements[1].checked,
-                  $("#promosImg").prop("files")[0],
-                  $("#promosAlt").val().trim()
-                )
-              }
-            >
-              <div className={styles.inputGroup}>
-                <div className={styles.inputGroupWithLabel}>
-                  <label htmlFor="promosAlt">ALT: </label>
-                  <input type="text" name="promosAlt" id="promosAlt" required />
+                  <button type="submit">Agregar</button>
+                </form>
+                <div className={styles.heroImageList}>
+                  {arrayWithHeroData
+                    .filter((data) => data.id == null)
+                    .map((image, i) => (
+                      <div
+                        className={styles.heroImageCard}
+                        key={`${i}${Math.random()}`}
+                      >
+                        <img
+                          src={image.previewUrl || image.url}
+                          alt={image.imgAlt}
+                        />
+                        <button
+                          onClick={() => handleDelete(image.previewUrl, "hero")}
+                        >
+                          <AiOutlineDelete />
+                          BORRAR
+                        </button>
+                      </div>
+                    ))}
                 </div>
-                <div className={styles.inputGroupWithLabel}>
-                  <label htmlFor="promosMobile">¿ES MOBILE? </label>
-                  <input
-                    type="checkbox"
-                    name="promosMobile"
-                    id="promosMobile"
-                  />
-                </div>
-                <input
-                  type="file"
-                  name="promosImg"
-                  id="promosImg"
-                  accept="image/*"
-                  required
-                  onChange={(e) => {
-                    if (e.target.files[0].size > 5242880) {
-                      alert("El archivo debe pesar menos de 5MB");
-                      e.target.value = "";
-                    }
-                  }}
-                />
               </div>
-              <button type="submit">Agregar</button>
-            </form>
-            <div className={styles.heroImageList}>
-              {arrayWithPromosData
-                .filter((data) => data.id == null)
-                .map((image, i) => (
-                  <div
-                    className={styles.heroImageCard}
-                    key={`${i}${Math.random()}`}
+              <div className={styles.dashSliderContainer}>
+                <h2>Vista previa</h2>
+                {loading ? (
+                  <Loading />
+                ) : (
+                  <Swiper
+                    spaceBetween={50}
+                    slidesPerView={1}
+                    pagination={{
+                      clickable: true,
+                    }}
+                    modules={[Pagination, Autoplay]}
+                    loop={true}
+                    autoplay={{
+                      delay: 40000,
+                      disableOnInteraction: false,
+                    }}
                   >
-                    <img src={image.previewUrl} alt={image.imgAlt} />
-                    <button
-                      onClick={() => handleDelete(image.previewUrl, "promos")}
-                    >
-                      <AiOutlineDelete />
-                      BORRAR
-                    </button>
-                  </div>
-                ))}
-            </div>
-          </div>
-          <div className={styles.dashSliderContainer}>
-            <h2>Vista previa</h2>
-            {loading ? (
-              <Loading />
-            ) : (
-              <Swiper
-                spaceBetween={50}
-                slidesPerView={1}
-                pagination={{
-                  clickable: true,
-                }}
-                modules={[Pagination, Autoplay]}
-                loop={true}
-                autoplay={{
-                  delay: 40000,
-                  disableOnInteraction: false,
-                }}
+                    {arrayWithHeroData.map((item, i) => (
+                      <SwiperSlide key={i}>
+                        <SwiperSlide>
+                          <img
+                            src={item.previewUrl || item.url}
+                            alt={item.imgAlt}
+                          />
+                        </SwiperSlide>
+                      </SwiperSlide>
+                    ))}
+                  </Swiper>
+                )}
+              </div>
+              <Link className={styles.goToEdit} href={"private-dash/edit/hero"}>
+                Editar imágenes guardadas
+                <AiOutlineRight />
+              </Link>
+              <button
+                className={styles.saveDataInFB}
+                onClick={() => saveDataToFirebase("hero")}
               >
-                {arrayWithPromosData.map((item, i) => (
-                  <SwiperSlide key={i}>
-                    <SwiperSlide>
-                      <img
-                        src={item.previewUrl || item.url}
-                        alt={item.imgAlt}
+                Guardar imágenes en base de datos
+              </button>
+            </section>
+
+            <section className={styles.dashHeroSectionContainer}>
+              <div className={styles.dashSectionTop}>
+                <h2>Agregar a las promos</h2>
+                <p>
+                  Para subir imágenes a las promos se deberá seleccionar la
+                  imagen deseada, la vista previa se actualiza cuando agrega una
+                  nueva imagen, podrá cancelar la subida de la imagen
+                  eliminándola de la lista de imágenes,{" "}
+                  <span>SOLAMENTE CUANDO ESTÉ SEGURO</span> puede dar{" "}
+                  <span>DOBLE CLICK</span> en subir para aplicar los cambios.
+                  <br /> También puede eliminar las imágenes que se encuentren
+                  en la base de datos haciendo click en el botón{" "}
+                  <span>EDITAR IMÁGENES GUARDADAS</span>
+                </p>
+                <form
+                  onSubmit={(e) =>
+                    saveDataInArray(
+                      e,
+                      "promos",
+                      e.target.elements[1].checked,
+                      $("#promosImg").prop("files")[0],
+                      $("#promosAlt").val().trim()
+                    )
+                  }
+                >
+                  <div className={styles.inputGroup}>
+                    <div className={styles.inputGroupWithLabel}>
+                      <label htmlFor="promosAlt">ALT: </label>
+                      <input
+                        type="text"
+                        name="promosAlt"
+                        id="promosAlt"
+                        required
                       />
-                    </SwiperSlide>
-                  </SwiperSlide>
-                ))}
-              </Swiper>
-            )}
+                    </div>
+                    <div className={styles.inputGroupWithLabel}>
+                      <label htmlFor="promosMobile">¿ES MOBILE? </label>
+                      <input
+                        type="checkbox"
+                        name="promosMobile"
+                        id="promosMobile"
+                      />
+                    </div>
+                    <input
+                      type="file"
+                      name="promosImg"
+                      id="promosImg"
+                      accept="image/*"
+                      required
+                      onChange={(e) => {
+                        if (e.target.files[0].size > 5242880) {
+                          alert("El archivo debe pesar menos de 5MB");
+                          e.target.value = "";
+                        }
+                      }}
+                    />
+                  </div>
+                  <button type="submit">Agregar</button>
+                </form>
+                <div className={styles.heroImageList}>
+                  {arrayWithPromosData
+                    .filter((data) => data.id == null)
+                    .map((image, i) => (
+                      <div
+                        className={styles.heroImageCard}
+                        key={`${i}${Math.random()}`}
+                      >
+                        <img src={image.previewUrl} alt={image.imgAlt} />
+                        <button
+                          onClick={() =>
+                            handleDelete(image.previewUrl, "promos")
+                          }
+                        >
+                          <AiOutlineDelete />
+                          BORRAR
+                        </button>
+                      </div>
+                    ))}
+                </div>
+              </div>
+              <div className={styles.dashSliderContainer}>
+                <h2>Vista previa</h2>
+                {loading ? (
+                  <Loading />
+                ) : (
+                  <Swiper
+                    spaceBetween={50}
+                    slidesPerView={1}
+                    pagination={{
+                      clickable: true,
+                    }}
+                    modules={[Pagination, Autoplay]}
+                    loop={true}
+                    autoplay={{
+                      delay: 40000,
+                      disableOnInteraction: false,
+                    }}
+                  >
+                    {arrayWithPromosData.map((item, i) => (
+                      <SwiperSlide key={i}>
+                        <SwiperSlide>
+                          <img
+                            src={item.previewUrl || item.url}
+                            alt={item.imgAlt}
+                          />
+                        </SwiperSlide>
+                      </SwiperSlide>
+                    ))}
+                  </Swiper>
+                )}
+              </div>
+              <Link
+                className={styles.goToEdit}
+                href={"private-dash/edit/promos"}
+              >
+                Editar imágenes guardadas
+                <AiOutlineRight />
+              </Link>
+              <button
+                className={styles.saveDataInFB}
+                onClick={() => saveDataToFirebase("promos")}
+              >
+                Guardar imágenes en base de datos
+              </button>
+            </section>
           </div>
-          <Link className={styles.goToEdit} href={"private-dash/edit/promos"}>
-            Editar imágenes guardadas
-            <AiOutlineRight />
-          </Link>
-          <button
-            className={styles.saveDataInFB}
-            onClick={() => saveDataToFirebase("promos")}
-          >
-            Guardar imágenes en base de datos
-          </button>
-        </section>
-      </div>
-    </div>
+        </div>
+      )}
+    </>
   );
 };
 
