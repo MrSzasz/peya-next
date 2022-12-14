@@ -3,41 +3,30 @@ import SliderComponent from "../SliderComponent/SliderComponent";
 import styles from "./Hero.module.scss";
 import "swiper/css";
 import MainButton from "../MainButton/MainButton";
+import Loading from "../Loading/Loading";
 
-const Hero = () => {
+const Hero = ({ imagesArray }) => {
   return (
     <section id="hero" className={styles.heroContainer}>
       <SliderComponent>
-        <SwiperSlide>
-          <div className={styles.heroSliderContainer}>
-            <div className={styles.heroContentLeft}>
-              <h1>Llegó tu Visa Crédito PedidosYa Pagos</h1>
-              <h3>Con beneficios en restaurantes y supermercados</h3>
-              <MainButton />
-            </div>
-            <img src="/images/hero.png" alt="hero" />
+        {imagesArray.length === 0 ? (
+          <div className={styles.heroLoading}>
+            <Loading />
           </div>
-        </SwiperSlide>
-        <SwiperSlide>
-          <div className={styles.heroSliderContainer}>
-            <div className={styles.heroContentLeft}>
-              <h1>Llegó tu Visa Crédito PedidosYa Pagos</h1>
-              <h3>Con beneficios en restaurantes y supermercados</h3>
-              <MainButton />
-            </div>
-            <img src="/images/hero.png" alt="hero" />
-          </div>
-        </SwiperSlide>
-        <SwiperSlide>
-          <div className={styles.heroSliderContainer}>
-            <div className={styles.heroContentLeft}>
-              <h1>Llegó tu Visa Crédito PedidosYa Pagos</h1>
-              <h3>Con beneficios en restaurantes y supermercados</h3>
-              <MainButton />
-            </div>
-            <img src="/images/hero.png" alt="hero" />
-          </div>
-        </SwiperSlide>
+        ) : (
+          imagesArray.map((data) => (
+            <SwiperSlide key={data.id}>
+              <div className={styles.heroSliderContainer}>
+                <div className={styles.heroContentLeft}>
+                  <h1>{data.title}</h1>
+                  <h3>{data.subtitle}</h3>
+                  <MainButton />
+                </div>
+                <img src={data.url} alt={data.imgAlt} />
+              </div>
+            </SwiperSlide>
+          ))
+        )}
       </SliderComponent>
     </section>
   );

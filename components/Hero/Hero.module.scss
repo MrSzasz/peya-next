@@ -2,11 +2,24 @@
 
 .heroContainer {
     margin-top: 72px;
+    min-height: 75vh;
     height: fit-content;
     background-color: $blue;
     padding-inline: 0;
     padding-bottom: 0;
     position: relative;
+
+    .heroLoading {
+        width: 100%;
+        min-height: 75vh;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        color: $white;
+        font-size: 2em;
+        font-family: textaHeavy;
+    }
 
     .heroContentLeft {
         position: absolute;
