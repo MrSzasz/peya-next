@@ -17,14 +17,14 @@ const PromoCarousel = ({ imagesArray }) => {
           ? imagesArray
               .filter((item) => item.mobile === true)
               .map((item) => (
-                <SwiperSlide>
+                <SwiperSlide key={item.id}>
                   <img src={item.url} alt={item.imgAlt} />
                 </SwiperSlide>
               ))
           : imagesArray
               .filter((item) => item.mobile !== true)
               .map((item) => (
-                <SwiperSlide>
+                <SwiperSlide key={item.id}>
                   <img src={item.url} alt={item.imgAlt} />
                 </SwiperSlide>
               ))}
