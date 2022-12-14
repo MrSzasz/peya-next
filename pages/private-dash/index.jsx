@@ -219,7 +219,7 @@ const index = () => {
                 saveDataInArray(
                   e,
                   "hero",
-                  null,
+                  false,
                   $("#heroImg").prop("files")[0],
                   $("#heroAlt").val().trim(),
                   $("#heroTitle").val().trim(),
@@ -349,7 +349,7 @@ const index = () => {
                 saveDataInArray(
                   e,
                   "promos",
-                  ($("#promosMobile:checked").val() !== "on") & null,
+                  e.target.elements[1].checked,
                   $("#promosImg").prop("files")[0],
                   $("#promosAlt").val().trim()
                 )

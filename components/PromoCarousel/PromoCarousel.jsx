@@ -1,8 +1,15 @@
+import { useEffect, useState } from "react";
 import { SwiperSlide } from "swiper/react";
 import SliderComponent from "../SliderComponent/SliderComponent";
 import styles from "./PromoCarousel.module.scss";
 
 const PromoCarousel = ({ imagesArray }) => {
+  const [windowWidth, setWindowWidth] = useState(null);
+
+  useEffect(() => {
+    setWindowWidth(window.innerWidth);
+  }, []);
+
   return (
     <section className={styles.promoCarouselContainer}>
       <SliderComponent>
@@ -11,16 +18,16 @@ const PromoCarousel = ({ imagesArray }) => {
             <img src={item.url} alt={item.imgAlt} />
           </SwiperSlide>
         ))} */}
-        {window.innerWidth < 500
+        {windowWidth < 500
           ? imagesArray
-              .filter((item) => item.mobile === "on")
+              .filter((item) => item.mobile === true)
               .map((item) => (
                 <SwiperSlide>
                   <img src={item.url} alt={item.imgAlt} />
                 </SwiperSlide>
               ))
           : imagesArray
-              .filter((item) => item.mobile !== "on")
+              .filter((item) => item.mobile !== true)
               .map((item) => (
                 <SwiperSlide>
                   <img src={item.url} alt={item.imgAlt} />

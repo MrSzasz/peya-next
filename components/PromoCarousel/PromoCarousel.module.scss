@@ -1,5 +1,13 @@
 .promoCarouselContainer {
     padding-inline: 15%;
+    border-radius: 1.5em;
+    overflow: hidden;
+
+    img {
+        margin-inline: auto;
+        border-radius: 1.5em;
+        overflow: hidden;
+    }
 }
 
 @media (max-width: 500px) {
