@@ -199,6 +199,9 @@ const index = () => {
 
   useEffect(() => {
     const getUserFromStorage = localStorage.getItem("userData");
+    getUserFromStorage
+      ? console.log(getUserFromStorage)
+      : localStorage.setItem("userData", "null");
     if (userLogged === null && getUserFromStorage === "null") {
       router.push("/");
     } else {

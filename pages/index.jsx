@@ -37,6 +37,9 @@ const Home = () => {
   };
 
   useEffect(() => {
+    localStorage.getItem("userData")
+      ? console.log(localStorage.getItem("userData"))
+      : localStorage.setItem("userData", "null");
     getProductsFromFirebase("hero");
     getProductsFromFirebase("promos");
   }, []);
@@ -44,7 +47,7 @@ const Home = () => {
   return (
     <Layout>
       <main className={styles.mainContainer}>
-        <Hero imagesArray={heroDataFromDB}/>
+        <Hero imagesArray={heroDataFromDB} />
         <Cashback />
         <Benefits />
         <Membership />
