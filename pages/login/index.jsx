@@ -6,7 +6,7 @@ import { BiError } from "react-icons/bi";
 import { useRouter } from "next/router";
 
 const index = () => {
-  const { userLogged, userLogin } = useAppContext();
+  const { userLogin } = useAppContext();
   const [errorMsg, setErrorMsg] = useState("");
   const router = useRouter();
 
