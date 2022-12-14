@@ -187,9 +187,48 @@
     .dashSliderContainer {
         padding-inline: 10%;
 
+        .heroSliderContainer {
+            background-color: $blue;
+            .heroContentLeft {
+                position: absolute;
+                width: 35em;
+                display: flex;
+                flex-direction: column;
+                justify-content: flex-start;
+                align-items: flex-start;
+                gap: 1em;
+                top: 50%;
+                transform: translateY(-50%);
+                left: 1em;
+                padding-left: calc(10% - 3em);
+                text-align: left;
+
+                h1 {
+                    line-height: 1em;
+                    color: $white;
+                    font-size: 3em;
+                    height: fit-content;
+                    font-family: textaHeavy;
+                }
+
+                h3 {
+                    width: 75%;
+                    line-height: 1em;
+                    color: $white;
+                    font-size: 1.5em;
+                    height: fit-content;
+                    font-family: textaRegular;
+                }
+            }
+        }
+
         h2 {
             width: 100%;
             text-align: center;
+        }
+
+        img{
+            margin-inline: auto;
         }
     }
 }
@@ -224,6 +263,23 @@
 
         .dashSliderContainer {
             padding-inline: 5%;
+
+            .heroSliderContainer {
+                .heroContentLeft {
+                    width: 100%;
+                    position: static;
+                    align-items: center;
+                    text-align: center;
+                    padding-block: 1em;
+                    transform: translate(0);
+                }
+
+                img {
+                    height: 20em;
+                    object-fit: cover;
+                    object-position: right;
+                }
+            }
 
             h2 {
                 padding-block: 1em .5em;

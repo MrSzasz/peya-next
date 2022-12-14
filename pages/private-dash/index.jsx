@@ -11,6 +11,7 @@ import "swiper/css";
 import Link from "next/link";
 import { useAppContext } from "../../context/AppContext";
 import { useRouter } from "next/router";
+import MainButton from "../../components/MainButton/MainButton";
 
 const index = () => {
   const [arrayWithHeroData, setArrayWithHeroData] = useState([]);
@@ -356,19 +357,32 @@ const index = () => {
                     }}
                   >
                     {arrayWithHeroData.map((item, i) => (
+                      // <SwiperSlide key={i}>
+                      //   <img
+                      //     src={item.previewUrl || item.url}
+                      //     alt={item.imgAlt}
+                      //   />
+                      // </SwiperSlide>
                       <SwiperSlide key={i}>
-                        <SwiperSlide>
-                          <img
-                            src={item.previewUrl || item.url}
-                            alt={item.imgAlt}
-                          />
-                        </SwiperSlide>
+                        <div className={styles.heroSliderContainer}>
+                          <div className={styles.heroContentLeft}>
+                            <h1>{item.title}</h1>
+                            <h3>{item.subtitle}</h3>
+                            <MainButton />
+                          </div>
+                          <img src={item.url} alt={item.imgAlt} />
+                        </div>
                       </SwiperSlide>
                     ))}
                   </Swiper>
                 )}
               </div>
-              <Link className={styles.goToEdit} href={"private-dash/edit/hero"}>
+              {/* <Link className={styles.goToEdit} href={"private-dash/edit/hero"}> */}
+              <Link
+                className={styles.goToEdit}
+                href={"private-dash/edit/hero"}
+                // href={"private-dash/edit/hero.html"}
+              >
                 Editar imágenes guardadas
                 <AiOutlineRight />
               </Link>
@@ -480,12 +494,10 @@ const index = () => {
                   >
                     {arrayWithPromosData.map((item, i) => (
                       <SwiperSlide key={i}>
-                        <SwiperSlide>
-                          <img
-                            src={item.previewUrl || item.url}
-                            alt={item.imgAlt}
-                          />
-                        </SwiperSlide>
+                        <img
+                          src={item.previewUrl || item.url}
+                          alt={item.imgAlt}
+                        />
                       </SwiperSlide>
                     ))}
                   </Swiper>
@@ -494,6 +506,7 @@ const index = () => {
               <Link
                 className={styles.goToEdit}
                 href={"private-dash/edit/promos"}
+                // href={"private-dash/edit/promos.html"}
               >
                 Editar imágenes guardadas
                 <AiOutlineRight />
