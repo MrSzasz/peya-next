@@ -100,11 +100,6 @@ const hero = () => {
                 arrayFromFB.map((data) => (
                   <div key={data.id} className={styles.heroCard}>
                     <img src={data.url} />
-                    <div className={styles.bottomContentHeroCard}>
-                      <h3>Titulo: {data.title}</h3>
-                      <h3>Subtitulo: {data.subtitle}</h3>
-                      <h3>Link del botón: {data.buttonLink}</h3>
-                    </div>
                     <button
                       data-loading="false"
                       onClick={(e) => handleDelete(e, data.id)}

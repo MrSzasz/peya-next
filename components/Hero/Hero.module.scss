@@ -7,6 +7,7 @@
     padding-inline: 0;
     padding-bottom: 0;
     position: relative;
+    cursor: pointer;
 
     .heroLoading {
         width: 100%;
@@ -19,66 +20,13 @@
         font-size: 2em;
         font-family: textaHeavy;
     }
-
-    .heroContentLeft {
-        position: absolute;
-        width: 35em;
-        display: flex;
-        flex-direction: column;
-        justify-content: center;
-        gap: 1em;
-        top: 50%;
-        transform: translateY(-50%);
-        left: 3em;
-        padding-left: calc(10% - 3em);
-
-        img {
-            max-width: 50%;
-        }
-
-        h1 {
-            line-height: 1em;
-            color: $white;
-            font-size: 3em;
-            height: fit-content;
-            font-family: textaHeavy;
-        }
-
-        h3 {
-            width: 75%;
-            line-height: 1em;
-            color: $white;
-            font-size: 1.5em;
-            height: fit-content;
-            font-family: textaRegular;
-        }
-    }
 }
 
 @media (max-width: 500px) {
-    .heroSliderContainer {
-        .heroContentLeft {
-
+    .heroContainer {
+        img {
             width: 100%;
-            position: static;
-            align-items: center;
-            text-align: center;
-            padding-block: 1em;
-            transform: translate(0);
-        }
-
-        img {
-            &:first-child {
-                width: 50%;
-                height: fit-content;
-                object-fit: contain;
-            }
-        }
-
-        img {
-            height: 20em;
-            object-fit: cover;
-            object-position: right;
+            height: fit-content;
         }
     }
 }

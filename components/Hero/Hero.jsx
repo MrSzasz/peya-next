@@ -4,8 +4,15 @@ import styles from "./Hero.module.scss";
 import "swiper/css";
 import MainButton from "../MainButton/MainButton";
 import Loading from "../Loading/Loading";
+import { useEffect, useState } from "react";
 
 const Hero = ({ imagesArray }) => {
+  const [windowWidth, setWindowWidth] = useState(null);
+
+  useEffect(() => {
+    setWindowWidth(window.innerWidth);
+  }, []);
+
   return (
     <section id="hero" className={styles.heroContainer}>
       <SliderComponent>
@@ -13,20 +20,22 @@ const Hero = ({ imagesArray }) => {
           <div className={styles.heroLoading}>
             <Loading />
           </div>
+        ) : windowWidth < 500 ? (
+          imagesArray
+            .filter((item) => item.mobile === true)
+            .map((item) => (
+              <SwiperSlide key={item.id}>
+                <img src={item.url} alt={item.imgAlt} />
+              </SwiperSlide>
+            ))
         ) : (
-          imagesArray.map((data) => (
-            <SwiperSlide key={data.id}>
-              <div className={styles.heroSliderContainer}>
-                <div className={styles.heroContentLeft}>
-                  {data?.topImg ? <img src={data.topImg} /> : null}
-                  <h1>{data.title}</h1>
-                  <h3>{data.subtitle}</h3>
-                  <MainButton />
-                </div>
-                <img src={data.url} alt={data.imgAlt} />
-              </div>
-            </SwiperSlide>
-          ))
+          imagesArray
+            .filter((item) => item.mobile !== true)
+            .map((item) => (
+              <SwiperSlide key={item.id}>
+                <img src={item.url} alt={item.imgAlt} />
+              </SwiperSlide>
+            ))
         )}
       </SliderComponent>
     </section>

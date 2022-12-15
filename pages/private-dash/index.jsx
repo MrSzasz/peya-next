@@ -89,16 +89,7 @@ const index = () => {
   // =========================================== GUARDA LOS DATOS EN EL ARRAY ====================================================== //
   // =============================================================================================================================== //
 
-  const saveDataInArray = (
-    e,
-    location,
-    mobile,
-    imageFile,
-    imageAlt,
-    heroTitle,
-    heroSubtitle,
-    heroButtonLink
-  ) => {
+  const saveDataInArray = (e, location, mobile, imageFile, imageAlt, link) => {
     e.preventDefault();
     if (location === "hero") {
       readImageAndConvertToSrc(imageFile, (e) => {
@@ -109,9 +100,7 @@ const index = () => {
             url: imageFile,
             mobile: mobile,
             imgAlt: imageAlt,
-            title: heroTitle,
-            subtitle: heroSubtitle,
-            buttonLink: heroButtonLink,
+            link: link,
           },
         ]);
       });
@@ -121,8 +110,8 @@ const index = () => {
           ...arrayWithPromosData,
           {
             previewUrl: e.target.result,
-            mobile: mobile,
             url: imageFile,
+            mobile: mobile,
             imgAlt: imageAlt,
           },
         ]);
@@ -157,10 +146,8 @@ const index = () => {
           await addDoc(collection(db, firebaseCollectionName), {
             url: generatedFirebaseUrl,
             imgAlt: dataToUpload.imgAlt,
-            title: dataToUpload.title,
             mobile: dataToUpload.mobile,
-            subtitle: dataToUpload.subtitle,
-            buttonLink: dataToUpload.buttonLink,
+            link: dataToUpload.link,
           }).then(console.log("done"));
         }
       } else if (firebaseCollectionName === "promos") {
@@ -242,10 +229,10 @@ const index = () => {
                 <h2>Agregar al Hero</h2>
                 <p>
                   Para subir imágenes al hero se deberá seleccionar la imagen
-                  deseada, agregar el titulo principal, subtitulo y el link al
-                  que se redirigirá, la vista previa se actualiza cuando agrega
+                  deseada, seleccionar si es unicamente para la versión mobile y el link al
+                  que se redirigirá al hacer click, la vista previa se actualiza cuando agrega
                   los datos, podrá cancelar la subida de cada uno eliminándola
-                  de la lista de imágenes,{" "}
+                  de la lista de imágenes.<br/>
                   <span>SOLAMENTE CUANDO ESTÉ SEGURO</span>
                   puede dar <span>DOBLE CLICK</span> en subir para aplicar los
                   cambios.
@@ -259,32 +246,24 @@ const index = () => {
                     saveDataInArray(
                       e,
                       "hero",
-                      false,
+                      e.target.elements[1].checked,
                       $("#heroImg").prop("files")[0],
                       $("#heroAlt").val().trim(),
-                      $("#heroTitle").val().trim(),
-                      $("#heroSubtitle").val().trim(),
                       $("#heroLink").val().trim()
                     )
                   }
                 >
                   <div className={styles.inputGroup}>
                     <div className={styles.inputGroupWithLabel}>
-                      <label htmlFor="heroTitle">TITLE: </label>
-                      <input
-                        type="text"
-                        name="heroTitle"
-                        id="heroTitle"
-                        required
-                      />
+                      <label htmlFor="heroAlt">ALT: </label>
+                      <input type="text" name="heroAlt" id="heroAlt" required />
                     </div>
                     <div className={styles.inputGroupWithLabel}>
-                      <label htmlFor="heroSubtitle">SUBTITLE: </label>
+                      <label htmlFor="heroMobile">¿ES MOBILE? </label>
                       <input
-                        type="text"
-                        name="heroSubtitle"
-                        id="heroSubtitle"
-                        required
+                        type="checkbox"
+                        name="heroMobile"
+                        id="heroMobile"
                       />
                     </div>
                     <div className={styles.inputGroupWithLabel}>
@@ -296,10 +275,6 @@ const index = () => {
                         required
                       />
                     </div>
-                    <div className={styles.inputGroupWithLabel}>
-                      <label htmlFor="heroAlt">ALT: </label>
-                      <input type="text" name="heroAlt" id="heroAlt" required />
-                    </div>
                     <input
                       type="file"
                       name="heroImg"
@@ -307,7 +282,7 @@ const index = () => {
                       accept="image/*"
                       required
                       onChange={(e) => {
-                        if (e.target.files[0].size > 5242880) {
+                        if (e.target.files[0].size > 7340032) {
                           alert("El archivo debe pesar menos de 5MB");
                           e.target.value = "";
                         }
@@ -357,21 +332,11 @@ const index = () => {
                     }}
                   >
                     {arrayWithHeroData.map((item, i) => (
-                      // <SwiperSlide key={i}>
-                      //   <img
-                      //     src={item.previewUrl || item.url}
-                      //     alt={item.imgAlt}
-                      //   />
-                      // </SwiperSlide>
                       <SwiperSlide key={i}>
-                        <div className={styles.heroSliderContainer}>
-                          <div className={styles.heroContentLeft}>
-                            <h1>{item.title}</h1>
-                            <h3>{item.subtitle}</h3>
-                            <MainButton />
-                          </div>
-                          <img src={item.url} alt={item.imgAlt} />
-                        </div>
+                        <img
+                          src={item.previewUrl || item.url}
+                          alt={item.imgAlt}
+                        />
                       </SwiperSlide>
                     ))}
                   </Swiper>
@@ -443,7 +408,7 @@ const index = () => {
                       accept="image/*"
                       required
                       onChange={(e) => {
-                        if (e.target.files[0].size > 5242880) {
+                        if (e.target.files[0].size > 7340032) {
                           alert("El archivo debe pesar menos de 5MB");
                           e.target.value = "";
                         }
