@@ -345,7 +345,6 @@ const index = () => {
               <Link
                 className={styles.goToEdit}
                 href={"private-dash/edit/hero"}
-                // href={"private-dash/edit/hero.html"}
               >
                 Editar imágenes guardadas
                 <AiOutlineRight />
@@ -470,7 +469,6 @@ const index = () => {
               <Link
                 className={styles.goToEdit}
                 href={"private-dash/edit/promos"}
-                // href={"private-dash/edit/promos.html"}
               >
                 Editar imágenes guardadas
                 <AiOutlineRight />
