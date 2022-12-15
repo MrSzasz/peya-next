@@ -32,6 +32,10 @@
         left: 3em;
         padding-left: calc(10% - 3em);
 
+        img {
+            max-width: 50%;
+        }
+
         h1 {
             line-height: 1em;
             color: $white;
@@ -61,6 +65,14 @@
             text-align: center;
             padding-block: 1em;
             transform: translate(0);
+        }
+
+        img {
+            &:first-child {
+                width: 50%;
+                height: fit-content;
+                object-fit: contain;
+            }
         }
 
         img {

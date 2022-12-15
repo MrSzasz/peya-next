@@ -18,6 +18,7 @@ const Hero = ({ imagesArray }) => {
             <SwiperSlide key={data.id}>
               <div className={styles.heroSliderContainer}>
                 <div className={styles.heroContentLeft}>
+                  {data?.topImg ? <img src={data.topImg} /> : null}
                   <h1>{data.title}</h1>
                   <h3>{data.subtitle}</h3>
                   <MainButton />
