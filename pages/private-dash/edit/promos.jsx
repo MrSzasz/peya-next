@@ -79,8 +79,8 @@ const hero = () => {
         </div>
       ) : (
         <div className={styles.editContainer}>
-          {/* <Link href="/private-dash" className={styles.goToMain}> */}
-          <Link href="/private-dash.html" className={styles.goToMain}>
+          <Link href="/private-dash" className={styles.goToMain}>
+          {/* <Link href="/private-dash.html" className={styles.goToMain}> */}
             <AiOutlineLeft />
             Volver a la página principal
           </Link>
