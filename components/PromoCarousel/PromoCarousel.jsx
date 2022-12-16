@@ -38,6 +38,9 @@ const PromoCarousel = ({ loading, imagesArray }) => {
         ) : windowWidth > 500 ? (
           imagesArray
             .filter((item) => item.device === false)
+            .sort(function (a, b) {
+              return a.sort - b.sort;
+            })
             .map((filteredItem) => (
               <SwiperSlide key={filteredItem.id}>
                 <img src={filteredItem.url} alt={filteredItem.imgAlt} />
@@ -46,6 +49,9 @@ const PromoCarousel = ({ loading, imagesArray }) => {
         ) : (
           imagesArray
             .filter((item) => item.device === true)
+            .sort(function (a, b) {
+              return a.sort - b.sort;
+            })
             .map((filteredItem) => (
               <SwiperSlide key={filteredItem.id}>
                 <img src={filteredItem.url} alt={filteredItem.imgAlt} />
