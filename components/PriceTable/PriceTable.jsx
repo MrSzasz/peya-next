@@ -29,10 +29,12 @@ const PriceTable = () => {
       <TableRow
         type={"Cargo por reposición (deteriorada)"}
         price={"¡Gratis!"}
+        special={true}
       />
       <TableRow
         type={"Cargo por investigación de reclamos"}
         price={"¡Gratis!"}
+        special={true}
       />
       <TableRow type={"Tasa de interés anual"} price={"20%"} />
 

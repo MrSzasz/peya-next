@@ -51,6 +51,9 @@
 
 @media (max-width: 500px) {
     .stepsContainer {
+        padding-inline: 0;
+        // padding-inline: 7%;
+
         .itemStepsContainer {
             align-items: center;
             flex-direction: column;

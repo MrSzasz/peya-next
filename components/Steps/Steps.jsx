@@ -11,6 +11,7 @@ const Steps = () => {
           text={"Completa tus datos"}
           img={"/icons/steps/icon1.svg"}
           imgAlt={"Registro"}
+          special={true}
         />
         <ItemSteps
           title={"Recibe"}
@@ -19,6 +20,7 @@ const Steps = () => {
           }
           img={"/icons/steps/icon2.svg"}
           imgAlt={"Envio"}
+          second={true}
         />
         <ItemSteps
           title={"Compra ya"}

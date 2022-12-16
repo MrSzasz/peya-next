@@ -1,10 +1,16 @@
 import $ from "jquery";
-import { useEffect } from "react";
+import { useEffect, useState } from "react";
 import { AiOutlineMenu } from "react-icons/ai";
 import MainButton from "../MainButton/MainButton";
 import styles from "./Navbar.module.scss";
 
 const Navbar = () => {
+  const [windowWidth, setWindowWidth] = useState(null);
+
+  useEffect(() => {
+    setWindowWidth(window.innerWidth);
+  }, []);
+
   const hideNavMenu = () => {
     $("#hideMenuContainer").slideToggle();
   };
@@ -20,7 +26,7 @@ const Navbar = () => {
   return (
     <nav id="nav" className={styles.navbar}>
       <a href="#hero">
-        <img src="/images/peyaPagosLogo.png" alt="Ir al inicio" />
+        <img src={windowWidth > 500 ? "/images/peyaPagosLogo.png" : "/images/logoMobile.svg" } alt="Ir al inicio" />
       </a>
       <div className={styles.linksContainer}>
         <ul className={styles.linksContainerList}>

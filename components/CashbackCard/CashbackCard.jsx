@@ -12,7 +12,7 @@ const CashbackCard = ({
     <div className={`${styles.cashbackCardContainer} ${styles[position]}`}>
       <h2>{number}%</h2>
       <p className={styles.textTop}>{textTop}</p>
-      <img src={img} alt={altImg} />
+      <img className={`${styles.cashbackCardImage} ${styles[position]}`} src={img} alt={altImg} />
       <p className={styles.textBottom}>{textBottom}</p>
     </div>
   );

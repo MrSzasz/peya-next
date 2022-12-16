@@ -40,8 +40,8 @@ const Home = () => {
     localStorage.getItem("userData")
       ? console.log(localStorage.getItem("userData"))
       : localStorage.setItem("userData", "null");
-    getProductsFromFirebase("hero");
-    getProductsFromFirebase("promos");
+    // getProductsFromFirebase("hero");
+    // getProductsFromFirebase("promos");
   }, []);
 
   return (
