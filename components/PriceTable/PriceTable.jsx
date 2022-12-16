@@ -1,14 +1,16 @@
-import $ from "jquery";
-import { useEffect } from "react";
+import $, { data } from "jquery";
+import { useEffect, useState } from "react";
 import MainButton from "../MainButton/MainButton";
 import TableRow from "../TableRow/TableRow";
 import styles from "./PriceTable.module.scss";
 
 const PriceTable = () => {
+  const [dataText, setDataText] = useState(false);
+
   useEffect(() => {
     $("#showFullTableButton").on("click", () => {
-      $("#showFullTableButton").fadeOut();
-      $("#hiddenTableId").slideDown(1000);
+      setDataText((current) => !current);
+      $("#hiddenTableId").slideToggle(1000);
     });
   }, []);
 
@@ -38,7 +40,11 @@ const PriceTable = () => {
       />
       <TableRow type={"Tasa de interés anual"} price={"20%"} />
 
-      <div id="hiddenTableId" className={styles.hiddenRowsTable}>
+      <div
+        id="hiddenTableId"
+        className={styles.hiddenRowsTable}
+        data-toggled={"closed"}
+      >
         <TableRow type={"Tiempo de financiamiento"} price={"60 días"} />
         <TableRow
           type={"Seguro contra robo y fraude (mensual)"}
@@ -66,7 +72,7 @@ const PriceTable = () => {
         <MainButton
           id="showFullTableButton"
           color="buttonNoBg"
-          text="Ver más costos"
+          text={dataText ? "Ver menos" : "Ver más costos"}
         />
       </div>
     </div>

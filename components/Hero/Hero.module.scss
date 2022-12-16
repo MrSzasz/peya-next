@@ -1,763 +1,186 @@
-// @import "../../styles/variables";
-
-// .heroContainer {
-//     margin-top: 72px;
-//     height: fit-content;
-//     background-color: $blue;
-//     padding-inline: 0;
-//     padding-bottom: 0;
-//     position: relative;
-
-//     .heroLoading {
-//         width: 100%;
-//         min-height: 75vh;
-//         display: flex;
-//         flex-direction: column;
-//         justify-content: center;
-//         align-items: center;
-//         color: $white;
-//         font-size: 2em;
-//         font-family: textaHeavy;
-//     }
-
-//     .heroContentLeft {
-//         position: absolute;
-//         width: 35em;
-//         display: flex;
-//         flex-direction: column;
-//         justify-content: center;
-//         gap: 1em;
-//         top: 50%;
-//         transform: translateY(-50%);
-//         left: 3em;
-//         padding-left: calc(10% - 3em);
-
-//         h1 {
-//             line-height: 1em;
-//             color: $white;
-//             font-size: 3em;
-//             height: fit-content;
-//             font-family: textaHeavy;
-//         }
-
-//         h3 {
-//             width: 75%;
-//             line-height: 1em;
-//             color: $white;
-//             font-size: 1.5em;
-//             height: fit-content;
-//             font-family: textaRegular;
-//         }
-//     }
-// }
-
-// @media (max-width: 500px) {
-//     .heroSliderContainer {
-//         .heroContentLeft {
-
-//             width: 100%;
-//             position: static;
-//             align-items: center;
-//             text-align: center;
-//             padding-block: 1em;
-//             transform: translate(0);
-//         }
-
-//         img {
-//             height: 20em;
-//             object-fit: cover;
-//             object-position: right;
-//         }
-//     }
-// }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-// @import "../../styles/variables";
-
-// .heroContainer {
-//     margin-top: 72px;
-//     height: fit-content;
-//     background-color: $blue;
-//     padding-inline: 0;
-//     padding-bottom: 0;
-//     position: relative;
-
-//     .heroLoading {
-//         width: 100%;
-//         min-height: 75vh;
-//         display: flex;
-//         flex-direction: column;
-//         justify-content: center;
-//         align-items: center;
-//         color: $white;
-//         font-size: 2em;
-//         font-family: textaHeavy;
-//     }
-
-//     .heroSliderContainer {
-//         height: 70vh;
-//         padding-inline: 10%;
-//         display: grid;
-//         grid-template-columns: repeat(2, 50%);
-
-//         .heroContentLeft {
-//             // position: absolute;
-//             width: fit-content;
-//             display: flex;
-//             flex-direction: column;
-//             justify-content: center;
-//             gap: 1em;
-
-//             // top: 50%;
-//             // transform: translateY(-50%);
-//             // left: 3em;
-//             // padding-left: calc(10% - 3em);
-//             img {
-//                 width: 50%;
-//             }
-
-//             h1 {
-//                 line-height: 1em;
-//                 color: $white;
-//                 font-size: 3em;
-//                 height: fit-content;
-//                 font-family: textaHeavy;
-//             }
-
-//             h3 {
-//                 width: 75%;
-//                 line-height: 1em;
-//                 color: $white;
-//                 font-size: 1.5em;
-//                 height: fit-content;
-//                 font-family: textaRegular;
-//             }
-//         }
-
-//         .img {
-//             height: 100%;
-//             min-width: fit-content;
-//             width: 100%;
-//             display: flex;
-//             justify-content: flex-end;
-//         }
-
-//         .contenidoNuevo {
-//             height: 20px;
-//             width: 20px;
-//             background-color: black;
-//             align-self: center;
-//             justify-self: flex-end;
-//         }
-//     }
-
-//     .heroSliderContainerButtonCenter {
-//         @extend .heroSliderContainer;
-//         justify-content: center;
-//         align-items: center;
-
-//         button {
-//             margin: auto;
-//             margin-bottom: 2.5em;
-//         }
-//     }
-// }
-
-// @media (max-width: 500px) {
-//     .heroSliderContainer {
-//         .heroContentLeft {
-
-//             width: 100%;
-//             position: static;
-//             align-items: center;
-//             text-align: center;
-//             padding-block: 1em;
-//             transform: translate(0);
-//         }
-
-//         img {
-//             height: 20em;
-//             object-fit: cover;
-//             object-position: right;
-//         }
-//     }
-
-
-
-
-
-
-
-
-//     .heroContainer {
-//         margin-top: 72px;
-//         height: fit-content;
-//         background-color: $blue;
-//         padding-inline: 0;
-//         padding-bottom: 0;
-//         position: relative;
-
-//         // .heroLoading {
-//         //     width: 100%;
-//         //     min-height: 75vh;
-//         //     display: flex;
-//         //     flex-direction: column;
-//         //     justify-content: center;
-//         //     align-items: center;
-//         //     color: $white;
-//         //     font-size: 2em;
-//         //     font-family: textaHeavy;
-//         // }
-
-//         .heroSliderContainer {
-//             min-height: 70vh;
-//             height: fit-content;
-//             padding-inline: 0;
-//             display: grid;
-//             grid-template-columns: 100%;
-//             grid-template-rows: repeat(3, fit-content);
-
-//             .heroContentLeft {
-//                 // position: absolute;
-//                 width: fit-content;
-//                 display: flex;
-//                 flex-direction: column;
-//                 justify-content: center;
-//                 gap: 1em;
-//                 grid-template-columns: 1/2;
-//                 grid-template-rows: 1/2;
-//                 padding-inline: 5%;
-
-//                 // top: 50%;
-//                 // transform: translateY(-50%);
-//                 // left: 3em;
-//                 // padding-left: calc(10% - 3em);
-//                 img {
-//                     width: auto;
-//                     height: 10%;
-//                 }
-
-//                 h1 {
-//                     line-height: 1em;
-//                     color: $white;
-//                     font-size: 3em;
-//                     height: fit-content;
-//                     font-family: textaHeavy;
-//                 }
-
-//                 h3 {
-//                     width: 100%;
-//                     line-height: 1em;
-//                     color: $white;
-//                     font-size: 1.5em;
-//                     height: fit-content;
-//                     font-family: textaRegular;
-//                 }
-//             }
-
-//             .img {
-//                 height: 100%;
-//                 min-width: fit-content;
-//                 width: 100%;
-//                 display: flex;
-//                 justify-content: flex-end;
-//                 grid-template-columns: 1/2;
-//                 grid-template-rows: 2/3;
-//             }
-
-//             .contenidoNuevo {
-//                 height: 20px;
-//                 width: 20px;
-//                 background-color: black;
-//                 align-self: center;
-//                 justify-self: flex-end;
-//             }
-
-//             .heroImgCenter {
-//                 object-fit: contain;
-//                 height: fit-content;
-//                 padding-block: 1em;
-//                 padding-inline: 5%;
-//             }
-//         }
-//     }
-
-//     .heroImgBottom {
-//         background-color: red;
-//         object-position: right;
-//         justify-self: self-end;
-//     }
-// }
-
-
-
-
-@import "../../styles/variables";
-
-// .heroContainer {
-//     margin-top: 72px;
-//     height: fit-content;
-//     background-color: $blue;
-//     padding-inline: 0;
-//     padding-bottom: 0;
-//     position: relative;
-
-//     .heroLoading {
-//         width: 100%;
-//         min-height: 75vh;
-//         display: flex;
-//         flex-direction: column;
-//         justify-content: center;
-//         align-items: center;
-//         color: $white;
-//         font-size: 2em;
-//         font-family: textaHeavy;
-//     }
-
-//     .heroSliderContainer {
-//         height: 70vh;
-//         padding-inline: 10%;
-//         display: grid;
-//         grid-template-columns: repeat(2, 50%);
-
-//         .heroContentLeft {
-//             // position: absolute;
-//             width: fit-content;
-//             display: flex;
-//             flex-direction: column;
-//             justify-content: center;
-//             gap: 1em;
-
-//             // top: 50%;
-//             // transform: translateY(-50%);
-//             // left: 3em;
-//             // padding-left: calc(10% - 3em);
-//             img {
-//                 width: 50%;
-//             }
-
-//             h1 {
-//                 line-height: 1em;
-//                 color: $white;
-//                 font-size: 3em;
-//                 height: fit-content;
-//                 font-family: textaHeavy;
-//             }
-
-//             h3 {
-//                 width: 75%;
-//                 line-height: 1em;
-//                 color: $white;
-//                 font-size: 1.5em;
-//                 height: fit-content;
-//                 font-family: textaRegular;
-//             }
-//         }
-
-//         .img {
-//             height: 100%;
-//             min-width: fit-content;
-//             width: 100%;
-//             display: flex;
-//             justify-content: flex-end;
-//         }
-
-//         .contenidoNuevo {
-//             height: 20px;
-//             width: 20px;
-//             background-color: black;
-//             align-self: center;
-//             justify-self: flex-end;
-//         }
-//     }
-
-//     .heroSliderContainerButtonCenter {
-//         @extend .heroSliderContainer;
-//         justify-content: center;
-//         align-items: center;
-
-//         button {
-//             margin: auto;
-//             margin-bottom: 2.5em;
-//         }
-//     }
-// }
-
-// @media (max-width: 500px) {
-//     .heroSliderContainer {
-//         max-height: 100vh;
-//         height: 100vh;
-
-//         .heroContentLeft {
-//             width: 100%;
-//             position: static;
-//             align-items: center;
-//             text-align: center;
-//             padding-block: 1em;
-//             transform: translate(0);
-//         }
-
-//         img {
-//             height: 20em;
-//             object-fit: cover;
-//             object-position: right;
-//         }
-//     }
-
-
-
-
-
-
-
-
-//     .heroContainer {
-//         margin-top: 30px;
-//         height: fit-content;
-//         background-color: $blue;
-//         padding-inline: 0;
-//         padding-bottom: 0;
-//         position: relative;
-
-//         // .heroLoading {
-//         //     width: 100%;
-//         //     min-height: 75vh;
-//         //     display: flex;
-//         //     flex-direction: column;
-//         //     justify-content: center;
-//         //     align-items: center;
-//         //     color: $white;
-//         //     font-size: 2em;
-//         //     font-family: textaHeavy;
-//         // }
-
-//         .heroSliderContainer {
-//             min-height: 70vh;
-//             height: fit-content;
-//             padding-inline: 0;
-//             display: grid;
-//             grid-template-columns: 100%;
-//             grid-template-rows: repeat(3, fit-content);
-
-//             .heroContentLeft {
-//                 // position: absolute;
-//                 width: fit-content;
-//                 display: flex;
-//                 flex-direction: column;
-//                 justify-content: center;
-//                 gap: 1em;
-//                 grid-template-columns: 1/2;
-//                 grid-template-rows: 1/2;
-//                 padding-inline: 5%;
-
-//                 // top: 50%;
-//                 // transform: translateY(-50%);
-//                 // left: 3em;
-//                 // padding-left: calc(10% - 3em);
-//                 img {
-//                     width: auto;
-//                     height: 6vh;
-//                 }
-
-//                 h1 {
-//                     line-height: 1em;
-//                     color: $white;
-//                     font-size: 2.5em;
-//                     height: fit-content;
-//                     font-family: textaHeavy;
-//                 }
-
-//                 h3 {
-//                     width: 100%;
-//                     line-height: 1em;
-//                     color: $white;
-//                     font-size: 1.5em;
-//                     height: fit-content;
-//                     font-family: textaRegular;
-//                 }
-//             }
-
-//             .img {
-//                 height: 100%;
-//                 min-width: fit-content;
-//                 width: 100%;
-//                 display: flex;
-//                 justify-content: flex-end;
-//                 grid-template-columns: 1/2;
-//                 grid-template-rows: 2/3;
-//             }
-
-//             .contenidoNuevo {
-//                 height: 20px;
-//                 width: 20px;
-//                 background-color: black;
-//                 align-self: center;
-//                 justify-self: flex-end;
-//             }
-
-//             .heroImgCenter {
-//                 object-fit: contain;
-//                 height: fit-content;
-//                 padding-block: 1em;
-//                 padding-inline: 5%;
-//                 // height: 20vh;
-//                 margin: auto;
-//                 width: 80%;
-//             }
-//         }
-//     }
-
-//     .heroImgBottom {
-//         object-position: right;
-//         justify-self: self-end;
-//     }
-
-//     .heroImgTop {
-//         height: 5vh;
-//     }
-// }
-
-/* ================================================================================================================================= */
-/* ================================================================================================================================= */
-/* ================================================================================================================================= */
-
-// ===== Boton arriba, imagen
-
-.heroContainer {
-    background-color: $blue;
-    padding: 0;
-
-    .testheroSliderContainer,
-    .testheroSliderContainerButtonBottom {
-
-        display: flex;
-        // flex-direction: column;
-        justify-content: space-between;
-        // align-items: center;
-        // padding-inline: 5%;
-        height: 80vh;
-        background-color: $blue;
-        width: 80%;
-        margin: auto;
-
-
-        .testheroTopContainer {
-            // padding-inline: 5%;
-            // justify-self: center;
-            // background-color: red;
-            display: flex;
-            flex-direction: column;
-            justify-content: center;
-            align-items: flex-start;
-            // align-items: center;
-            flex-basis: 100%;
-            gap: 1em;
-            // text-align: center;
-            flex-basis: 100%;
-            flex-grow: 1;
-            max-width: 50%;
-
-            h1 {
-                line-height: 1em;
-                color: $white;
-                font-size: 3em;
-                height: fit-content;
-                font-family: textaHeavy;
-            }
-
-            h3 {
-                width: 100%;
-                line-height: 1em;
-                color: $white;
-                font-size: 1.5em;
-                height: fit-content;
-                font-family: textaRegular;
-            }
-
-            img {
-                width: auto;
-                height: 10%;
-            }
-        }
-
-        .heroImgBottom__bottom {
-            // height: fit-content;
-            height: 100%;
-            object-fit: contain;
-            object-position: bottom;
-            width: auto;
-            padding-top: 10%;
-            // flex-grow: 2;
-        }
-
-        .heroImgBottom__center {
-            // height: fit-content;
-            height: 80%;
-            object-fit: contain;
-            object-position: center;
-            width: auto;
-            padding-top: 10%;
-            // flex-grow: 2;
-        }
-    }
-
-    .testheroSliderContainerButtonBottom {
-
-        .testheroTopContainer {
-            // background-color: red;
-
-            .heroImgTop {
-                height: 4em;
-                width: 100%;
-                object-fit: contain;
-            }
-        }
-
-
-        .testheroImgCenter {
-            width: 80%;
-            object-fit: contain;
-            height: fit-content;
-            padding-block: 1em;
-        }
-    }
-}
-
-@media (max-width: 500px) {
-
-    .heroContainer {
-        background-color: $blue;
-        padding: 0;
-        padding-top: 4em;
-
-        .testheroSliderContainer,
-        .testheroSliderContainerButtonBottom {
-            display: flex;
-            flex-direction: column;
-            justify-content: space-between;
-            align-items: center;
-            // padding-inline: 5%;
-            height: 80vh;
-            background-color: $blue;
-            width: 100%;
-
-
-            .testheroTopContainer {
-                padding-inline: 5%;
-                justify-self: center;
-                // background-color: red;
-                display: flex;
-                flex-direction: column;
-                justify-content: center;
-                align-items: center;
-                flex-basis: 100%;
-                gap: 1em;
-                text-align: center;
-                flex-basis: 100%;
-                flex-grow: 1;
-                max-width: 100%;
-
-                h1 {
-                    line-height: 1em;
-                    color: $white;
-                    font-size: 2.25em;
-                    height: fit-content;
-                    font-family: textaHeavy;
-                }
-
-                h3 {
-                    width: 100%;
-                    line-height: 1em;
-                    color: $white;
-                    font-size: 1.5em;
-                    height: fit-content;
-                    font-family: textaRegular;
-                }
-
-                // img {
-                //     width: auto;
-                //     height: 10%;
-                // }
-            }
-
-            .heroImgBottom {
-                // height: fit-content;
-                height: 150%;
-                object-fit: cover;
-                object-position: right;
-                width: 100vw;
-                flex-grow: 2;
-            }
-        }
-
-        .testheroSliderContainerButtonBottom {
-
-            .testheroTopContainer {
-                // background-color: red;
-
-                .heroImgTop {
-                    height: 4em;
-                    width: 100%;
-                    object-fit: contain;
-                }
-            }
-
-            .heroImgTop {
-                height: 4em;
-                width: 100%;
-                object-fit: contain;
-            }
-
-            .testheroImgCenter {
-                width: 80%;
-                object-fit: contain;
-                height: fit-content;
-                padding-block: 1em;
-            }
-        }
-
-        .heroImgTop {
-            height: 10vw !important;
-            width: 100%;
-            object-fit: contain;
-            margin-top: 1em;
-        }
-
-        .bottomButtonContainer {
-            margin-bottom: 5em;
-        }
-
-        .heroImgBottom__center {
-            // width: 80%;
-            height: 70vw !important;
-            // background-color: red;
-        }
-    }
-}
-
-// ===== Boton abajo
+ @import "../../styles/variables";
+
+ .heroContainer {
+     background-color: $blue;
+     padding: 0;
+
+     .heroSliderContainer,
+     .heroSliderContainerButtonBottom {
+
+         display: flex;
+         justify-content: space-between;
+         height: 80vh;
+         background-color: $blue;
+         width: 80%;
+         margin: auto;
+
+         .heroTopContainer {
+             display: flex;
+             flex-direction: column;
+             justify-content: center;
+             align-items: flex-start;
+             flex-basis: 100%;
+             gap: 1em;
+             flex-basis: 100%;
+             flex-grow: 1;
+             max-width: 50%;
+
+             h1 {
+                 line-height: 1em;
+                 color: $white;
+                 font-size: 3em;
+                 height: fit-content;
+                 font-family: textaHeavy;
+             }
+
+             h3 {
+                 width: 100%;
+                 line-height: 1em;
+                 color: $white;
+                 font-size: 1.5em;
+                 height: fit-content;
+                 font-family: textaRegular;
+             }
+
+             img {
+                 width: auto;
+                 height: 10%;
+             }
+         }
+
+         .heroImgBottom__bottom {
+             height: 100%;
+             object-fit: contain;
+             object-position: bottom;
+             width: auto;
+             padding-top: 10%;
+         }
+
+         .heroImgBottom__center {
+             height: 80%;
+             object-fit: contain;
+             object-position: center;
+             width: auto;
+             padding-top: 10%;
+         }
+     }
+
+     .heroSliderContainerButtonBottom {
+
+         .heroTopContainer {
+             .heroImgTop {
+                 height: 4em;
+                 width: 100%;
+                 object-fit: contain;
+             }
+         }
+
+
+         .testheroImgCenter {
+             width: 80%;
+             object-fit: contain;
+             height: fit-content;
+             padding-block: 1em;
+         }
+     }
+ }
+
+ @media (max-width: 500px) {
+
+     .heroContainer {
+         background-color: $blue;
+         padding: 0;
+         padding-top: 4em;
+
+         .heroSliderContainer,
+         .heroSliderContainerButtonBottom {
+             display: flex;
+             flex-direction: column;
+             justify-content: space-between;
+             align-items: center;
+             height: 80vh;
+             background-color: $blue;
+             width: 100%;
+
+
+             .heroTopContainer {
+                 padding-inline: 5%;
+                 justify-self: center;
+                 display: flex;
+                 flex-direction: column;
+                 justify-content: center;
+                 align-items: center;
+                 flex-basis: 100%;
+                 gap: 1em;
+                 text-align: center;
+                 flex-basis: 100%;
+                 flex-grow: 1;
+                 max-width: 100%;
+
+                 h1 {
+                     line-height: 1em;
+                     color: $white;
+                     font-size: 2.25em;
+                     height: fit-content;
+                     font-family: textaHeavy;
+                 }
+
+                 h3 {
+                     width: 100%;
+                     line-height: 1em;
+                     color: $white;
+                     font-size: 1.5em;
+                     height: fit-content;
+                     font-family: textaRegular;
+                 }
+             }
+
+             .heroImgBottom {
+                 height: 150%;
+                 object-fit: cover;
+                 object-position: right;
+                 width: 100vw;
+                 flex-grow: 2;
+             }
+         }
+
+         .heroSliderContainerButtonBottom {
+
+             .heroTopContainer {
+                 .heroImgTop {
+                     height: 4em;
+                     width: 100%;
+                     object-fit: contain;
+                 }
+             }
+
+             .heroImgTop {
+                 height: 4em;
+                 width: 100%;
+                 object-fit: contain;
+             }
+
+             .testheroImgCenter {
+                 width: 80%;
+                 object-fit: contain;
+                 height: fit-content;
+                 padding-block: 1em;
+             }
+         }
+
+         .heroImgTop {
+             height: 10vw !important;
+             width: 100%;
+             object-fit: contain;
+             margin-top: 1em;
+         }
+
+         .bottomButtonContainer {
+             margin-bottom: 5em;
+         }
+
+         .heroImgBottom__center {
+             height: 70vw !important;
+         }
+     }
+ }

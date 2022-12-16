@@ -12,7 +12,6 @@ const SliderComponent = ({ children }) => {
       }}
       modules={[Pagination, Autoplay]}
       spaceBetween={30}
-      // loop={true}
       autoplay={{
         delay: 4000,
         disableOnInteraction: false,

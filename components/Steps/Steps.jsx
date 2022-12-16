@@ -9,7 +9,7 @@ const Steps = () => {
         <ItemSteps
           title={"Registrate"}
           text={"Completa tus datos"}
-          img={"/icons/steps/icon1.svg"}
+          img={"/icons/steps/icon1new.svg"}
           imgAlt={"Registro"}
           special={true}
         />

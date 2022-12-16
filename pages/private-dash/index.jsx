@@ -18,23 +18,18 @@ const index = () => {
   const [loading, setLoading] = useState(true);
   const [userLoading, setUserLoading] = useState(true);
   const [selectedDevice, setSelectedDevice] = useState(null);
+  const [lastOrderNumberHero, setLastOrderNumberHero] = useState();
+  const [lastOrderNumberPromos, setLastOrderNumberPromos] = useState();
 
   const { userLogged, userLogOut } = useAppContext();
 
   const router = useRouter();
-
-  // =============================================================================================================================== //
-  // =========================================== PEDIR DATOS A FIREBASE ============================================================ //
-  // =============================================================================================================================== //
 
   const handleLogOut = async () => {
     await userLogOut().then(() => {
       router.push("/");
     });
   };
-  // =============================================================================================================================== //
-  // =========================================== PEDIR DATOS A FIREBASE ============================================================ //
-  // =============================================================================================================================== //
 
   const getProductsFromFirebase = async (collectionToUse) => {
     const db = getFirestore();
@@ -42,26 +37,39 @@ const index = () => {
     if (collectionToUse === "hero") {
       const queryCollection = collection(db, collectionToUse);
 
-      await getDocs(queryCollection).then((res) =>
+      await getDocs(queryCollection).then((res) => {
         setArrayWithHeroData(
           res.docs.map((item) => ({ ...item.data(), id: item.id }))
-        )
-      );
+        );
+
+        let heroOrderedCollection = res.docs
+          .map((item) => ({ ...item.data(), id: item.id }))
+          .sort(function (a, b) {
+            return a.sort - b.sort;
+          });
+        const lastHero =
+          heroOrderedCollection[heroOrderedCollection.length - 1];
+        setLastOrderNumberHero(lastHero.sort);
+      });
     } else {
       const queryCollection = collection(db, collectionToUse);
 
-      await getDocs(queryCollection).then((res) =>
+      await getDocs(queryCollection).then((res) => {
         setArrayWithPromosData(
           res.docs.map((item) => ({ ...item.data(), id: item.id }))
-        )
-      );
+        );
+        let promosOrderedCollection = res.docs
+          .map((item) => ({ ...item.data(), id: item.id }))
+          .sort(function (a, b) {
+            return a.sort - b.sort;
+          });
+        const lastPromos =
+          promosOrderedCollection[promosOrderedCollection.length - 1];
+        setLastOrderNumberPromos(lastPromos.sort);
+      });
     }
     setLoading(false);
   };
-
-  // =============================================================================================================================== //
-  // =========================================== BORRAR DATOS DEL ARRAY LOCAL ====================================================== //
-  // =============================================================================================================================== //
 
   const handleDelete = (url, location) => {
     if (location === "hero") {
@@ -75,31 +83,24 @@ const index = () => {
     }
   };
 
-  // =============================================================================================================================== //
-  // =========================================== SUBE IMÁGENES A STORAGE Y DEVUELVE CALLBACK ======================================= //
-  // =============================================================================================================================== //
-
   const readImageAndConvertToSrc = (file, callback) => {
     const reader = new FileReader();
     reader.onloadend = callback;
     reader.readAsDataURL(file);
   };
 
-  // =============================================================================================================================== //
-  // =========================================== GUARDA LOS DATOS EN EL ARRAY ====================================================== //
-  // =============================================================================================================================== //
-
   const saveDataInArray = (
     e,
-    location, // hero o promos
-    device, // mobile o desktop
-    imageFile, // imagen principal
+    location,
+    device,
+    imageFile,
+    order,
     imageAlt,
     heroTitle,
     heroSubtitle,
     heroButtonLink,
     heroPosition,
-    imageFileTop, // imagen secundaria
+    imageFileTop,
     mobileButtonPosition,
     desktopImagePosition
   ) => {
@@ -112,6 +113,7 @@ const index = () => {
               {
                 previewUrl: e.target.result,
                 url: imageFile,
+                order: order,
                 topUrl: imageFileTop,
                 device: device,
                 imgAlt: imageAlt,
@@ -130,6 +132,7 @@ const index = () => {
               {
                 previewUrl: e.target.result,
                 url: imageFile,
+                order: order,
                 device: device,
                 imgAlt: imageAlt,
                 title: heroTitle,
@@ -149,6 +152,7 @@ const index = () => {
             previewUrl: e.target.result,
             device: device,
             url: imageFile,
+            order: order,
             imgAlt: imageAlt,
           },
         ]);
@@ -159,10 +163,6 @@ const index = () => {
     setLoading(false);
   };
 
-  // =============================================================================================================================== //
-  // =========================================== GUARDA EL ARRAY EN FIREBASE ======================================================= //
-  // =============================================================================================================================== //
-
   const saveDataToFirebase = async (firebaseCollectionName) => {
     try {
       if (firebaseCollectionName === "hero") {
@@ -170,8 +170,6 @@ const index = () => {
           (dataToUpload) => dataToUpload.id == null
         )) {
           if (dataToUpload.topUrl != null) {
-            // ======= generar url
-
             const generatedFirebaseUrl = await uploadFileToFirebase(
               dataToUpload.url,
               firebaseCollectionName
@@ -181,12 +179,11 @@ const index = () => {
               firebaseCollectionName
             );
 
-            // ======== usar url y subir a fb {url: generatedFirebaseUrl, imgAlt: imgAlt}
-
             const db = await getFirestore();
 
             await addDoc(collection(db, firebaseCollectionName), {
               url: generatedFirebaseUrl,
+              order: dataToUpload.order,
               topUrl: generatedTopFirebaseUrl,
               imgAlt: dataToUpload.imgAlt,
               title: dataToUpload.title,
@@ -198,19 +195,16 @@ const index = () => {
               desktopImagePosition: dataToUpload.desktopImagePosition || null,
             }).then(console.log("done"));
           } else {
-            // ======= generar url
-
             const generatedFirebaseUrl = await uploadFileToFirebase(
               dataToUpload.url,
               firebaseCollectionName
             );
 
-            // ======== usar url y subir a fb {url: generatedFirebaseUrl, imgAlt: imgAlt}
-
             const db = await getFirestore();
 
             await addDoc(collection(db, firebaseCollectionName), {
               url: generatedFirebaseUrl,
+              order: dataToUpload.order,
               imgAlt: dataToUpload.imgAlt,
               topUrl: null,
               title: dataToUpload.title,
@@ -227,19 +221,16 @@ const index = () => {
         for (const dataToUpload of arrayWithPromosData.filter(
           (dataToUpload) => dataToUpload.id == null
         )) {
-          // ======= generar url
-
           const generatedFirebaseUrl = await uploadFileToFirebase(
             dataToUpload.url,
             firebaseCollectionName
           );
 
-          // ======== usar url y subir a fb {url: generatedFirebaseUrl, imgAlt: imgAlt}
-
           const db = await getFirestore();
 
           await addDoc(collection(db, firebaseCollectionName), {
             url: generatedFirebaseUrl,
+            order: dataToUpload.order,
             imgAlt: dataToUpload.imgAlt,
             device: dataToUpload.device,
           }).then(console.log("done"));
@@ -258,10 +249,6 @@ const index = () => {
     $("#promosImg").val("");
   };
 
-  // =============================================================================================================================== //
-  // =========================================== PEDIR DATOS DE LA BASE DE DATOS =================================================== //
-  // =============================================================================================================================== //
-
   useEffect(() => {
     const getUserFromStorage = localStorage.getItem("userData");
     getUserFromStorage
@@ -275,8 +262,8 @@ const index = () => {
   }, []);
 
   useEffect(() => {
-    // getProductsFromFirebase("hero");
-    // getProductsFromFirebase("promos");
+    getProductsFromFirebase("hero");
+    getProductsFromFirebase("promos");
   }, []);
 
   useEffect(() => {
@@ -284,12 +271,6 @@ const index = () => {
       setSelectedDevice($("#heroDevice").val());
     });
   });
-
-  // =============================================================================================================================== //
-  // =============================================================================================================================== //
-  // =========================================== CÓDIGO DEL COMPONENTE ============================================================= //
-  // =============================================================================================================================== //
-  // =============================================================================================================================== //
 
   return (
     <>
@@ -331,6 +312,7 @@ const index = () => {
                       "hero",
                       $("#heroDevice option:selected").val(),
                       $("#heroImg").prop("files")[0],
+                      Number($("#heroOrder").val().trim()),
                       $("#heroAlt").val().trim(),
                       $("#heroTitle").val().trim(),
                       $("#heroSubtitle").val().trim(),
@@ -361,6 +343,16 @@ const index = () => {
                         required
                       />
                     </div>
+                    <div className={styles.inputGroupWithLabel}>
+                      <label htmlFor="heroOrder">*POSICIÓN: </label>
+                      <input
+                        type="number"
+                        name="heroOrder"
+                        id="heroOrder"
+                        required
+                      />
+                    </div>
+                    <small>Ultima posición: {lastOrderNumberHero}</small>
                     <div className={styles.inputGroupWithLabel}>
                       <label htmlFor="heroLink">*LINK: </label>
                       <input
@@ -428,8 +420,6 @@ const index = () => {
                     </div>
 
                     {selectedDevice === "mobile" ? (
-                      // boton arriba o abajo SOLO MOBILE
-
                       <div className={styles.inputGroupWithLabel}>
                         <label htmlFor="heroMobile_button">*BOTÓN: </label>
                         <select
@@ -443,8 +433,6 @@ const index = () => {
                         </select>
                       </div>
                     ) : (
-                      // imagen arriba o abajo SOLO DESKTOP
-
                       <div className={styles.inputGroupWithLabel}>
                         <label htmlFor="heroDesktopImage">*IMÁGEN: </label>
                         <select
@@ -492,37 +480,6 @@ const index = () => {
                   </div>
                 </div>
               </div>
-              {/* <div className={styles.dashSliderContainer}>
-                <h2>Vista previa</h2>
-                {loading ? (
-                  <Loading />
-                ) : (
-                  <Swiper
-                    spaceBetween={50}
-                    slidesPerView={1}
-                    pagination={{
-                      clickable: true,
-                    }}
-                    modules={[Pagination, Autoplay]}
-                    loop={true}
-                    autoplay={{
-                      delay: 40000,
-                      disableOnInteraction: false,
-                    }}
-                  >
-                    {arrayWithHeroData.map((item, i) => (
-                      <SwiperSlide key={i}>
-                        <SwiperSlide>
-                          <img
-                            src={item.previewUrl || item.url}
-                            alt={item.imgAlt}
-                          />
-                        </SwiperSlide>
-                      </SwiperSlide>
-                    ))}
-                  </Swiper>
-                )}
-              </div> */}
               <Link className={styles.goToEdit} href={"private-dash/edit/hero"}>
                 Editar imágenes guardadas
                 <AiOutlineRight />
@@ -570,6 +527,16 @@ const index = () => {
                         required
                       />
                     </div>
+                    <div className={styles.inputGroupWithLabel}>
+                      <label htmlFor="promosOrder">*POSICIÓN: </label>
+                      <input
+                        type="number"
+                        name="promosOrder"
+                        id="promosOrder"
+                        required
+                      />
+                    </div>
+                    <small>Ultima posición: {lastOrderNumberPromos}</small>
                     <div className={styles.inputGroupWithLabel}>
                       <label htmlFor="promosMobile">¿ES MOBILE? </label>
                       <input
@@ -619,37 +586,6 @@ const index = () => {
                     ))}
                 </div>
               </div>
-              {/* <div className={styles.dashSliderContainer}>
-                <h2>Vista previa</h2>
-                {loading ? (
-                  <Loading />
-                ) : (
-                  <Swiper
-                    spaceBetween={50}
-                    slidesPerView={1}
-                    pagination={{
-                      clickable: true,
-                    }}
-                    modules={[Pagination, Autoplay]}
-                    loop={true}
-                    autoplay={{
-                      delay: 40000,
-                      disableOnInteraction: false,
-                    }}
-                  >
-                    {arrayWithPromosData.map((item, i) => (
-                      <SwiperSlide key={i}>
-                        <SwiperSlide>
-                          <img
-                            src={item.previewUrl || item.url}
-                            alt={item.imgAlt}
-                          />
-                        </SwiperSlide>
-                      </SwiperSlide>
-                    ))}
-                  </Swiper>
-                )}
-              </div> */}
               <Link
                 className={styles.goToEdit}
                 href={"private-dash/edit/promos"}

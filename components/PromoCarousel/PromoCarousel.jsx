@@ -13,23 +13,6 @@ const PromoCarousel = ({ loading, imagesArray }) => {
 
   return (
     <section className={styles.promoCarouselContainer}>
-      {/* <SliderComponent>
-        {windowWidth > 500
-          ? imagesArray
-              .filter((item) => item.device === "mobile")
-              .map((item) => ( 
-                <SwiperSlide key={item.id}>
-                  <img src={item.url} alt={item.imgAlt} />
-                </SwiperSlide>
-              ))
-          : imagesArray
-              .filter((item) => item.device !== "mobile")
-              .map((item) => (
-                <SwiperSlide key={item.id}>
-                  <img src={item.url} alt={item.imgAlt} />
-                </SwiperSlide>
-              ))}
-      </SliderComponent> */}
       <SliderComponent>
         {imagesArray.length === 0 ? (
           <SwiperSlide>

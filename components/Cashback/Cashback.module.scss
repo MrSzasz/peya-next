@@ -1,46 +1,46 @@
-.cashbackContainer {
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    text-align: center;
-    gap: 1em;
+ .cashbackContainer {
+     display: flex;
+     flex-direction: column;
+     justify-content: center;
+     align-items: center;
+     text-align: center;
+     gap: 1em;
 
-    .cashbackTopText {
-        p {
-            font-size: 1.5em;
-        }
-    }
+     .cashbackTopText {
+         p {
+             font-size: 1.5em;
+         }
+     }
 
-    .cashbackCardsMainContainer {
-        min-width: 100%;
-        width: fit-content;
-        display: flex;
-        justify-content: center;
-        gap: 2em;
-        align-items: stretch;
-    }
-}
+     .cashbackCardsMainContainer {
+         min-width: 100%;
+         width: fit-content;
+         display: flex;
+         justify-content: center;
+         gap: 2em;
+         align-items: stretch;
+     }
+ }
 
-@media (max-width: 500px) {
-    .cashbackContainer {
-        .cashbackTopText {
-            h2 {
-                font-size: 2.75em;
-                line-height: 1em;
-            }
+ @media (max-width: 500px) {
+     .cashbackContainer {
+         .cashbackTopText {
+             h2 {
+                 font-size: 2.75em;
+                 line-height: 1em;
+             }
 
-            p {
-                font-size: 1.5em;
-                padding-bottom: 1em;
-            }
-        }
+             p {
+                 font-size: 1.5em;
+                 padding-bottom: 1em;
+             }
+         }
 
-        .cashbackCardsMainContainer {
-            min-width: 100%;
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-        }
-    }
-}
+         .cashbackCardsMainContainer {
+             min-width: 100%;
+             display: flex;
+             flex-direction: column;
+             align-items: center;
+         }
+     }
+ }

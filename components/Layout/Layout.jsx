@@ -17,7 +17,7 @@ const Layout = ({
       <Head>
         <title>{title}</title>
         <meta name="description" content={desc} />
-        <link rel="icon" href="/icon.png" />
+        <link rel="icon" href="/icon.ico" />
       </Head>
       <Header />
       {children}

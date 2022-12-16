@@ -35,4 +35,3 @@ export const AppContext = ({ children }) => {
   );
 };
 
-// export default AppContext;

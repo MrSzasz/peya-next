@@ -1,100 +1,100 @@
-@import "../../styles/variables";
+ @import "../../styles/variables";
 
-.cashbackCardContainer {
-    background-color: #00F9D2;
-    border-radius: 1.5em;
-    max-width: 14em;
-    width: 100%;
-    min-height: fit-content;
-    height: 100%;
-    padding: 1.5em 1em;
-    display: flex;
-    flex-direction: column;
-    justify-content: stretch;
-    align-items: flex-start;
-    text-align: start;
-    color: $blue;
-    gap: .5em;
+ .cashbackCardContainer {
+     background-color: #00F9D2;
+     border-radius: 1.5em;
+     max-width: 14em;
+     width: 100%;
+     min-height: fit-content;
+     height: 100%;
+     padding: 1.5em 1em;
+     display: flex;
+     flex-direction: column;
+     justify-content: stretch;
+     align-items: flex-start;
+     text-align: start;
+     color: $blue;
+     gap: .5em;
 
-    h2 {
-        font-size: 5em;
-        line-height: 4rem;
-    }
+     h2 {
+         font-size: 5em;
+         line-height: 4rem;
+     }
 
-    .textTop {
-        font-weight: bold;
-        font-size: 1.25em;
-    }
+     .textTop {
+         font-weight: bold;
+         font-size: 1.25em;
+     }
 
-    .textBottom {
-        font-size: .9em;
-        width: 85%;
-        line-height: 120%;
-        font-family: textaBold;
-    }
+     .textBottom {
+         font-size: .9em;
+         width: 85%;
+         line-height: 120%;
+         font-family: textaBold;
+     }
 
-    .cashbackCardImage {
-        height: 1.25em;
-    }
+     .cashbackCardImage {
+         height: 1.25em;
+     }
 
-    .firstCashbackCard {
-        height: 1.5em;
-    }
+     .firstCashbackCard {
+         height: 1.5em;
+     }
 
-    .secondCashbackCard {
+     .secondCashbackCard {
 
-        height: 1em;
-    }
-}
+         height: 1em;
+     }
+ }
 
-.secondCashbackCard,
-.thirdCashbackCard {
-    color: $white;
+ .secondCashbackCard,
+ .thirdCashbackCard {
+     color: $white;
 
-    h2 {
-        color: $white;
-    }
-}
+     h2 {
+         color: $white;
+     }
+ }
 
-.secondCashbackCard {
-    background-color: $red;
-}
+ .secondCashbackCard {
+     background-color: $red;
+ }
 
-.thirdCashbackCard {
-    background-color: $blue;
+ .thirdCashbackCard {
+     background-color: $blue;
 
-    img {
-        display: none;
-    }
-}
+     img {
+         display: none;
+     }
+ }
 
-@media (max-width: 500px) {
-    .cashbackCardContainer {
-        max-width: 100%;
-        min-width: 100%;
-        width: 100%;
-        justify-content: space-evenly;
-        align-self: stretch;
-        min-height: fit-content;
-        width: 90vw;
-        height: 80vw;
-        padding: 2em;
+ @media (max-width: 500px) {
+     .cashbackCardContainer {
+         max-width: 100%;
+         min-width: 100%;
+         width: 100%;
+         justify-content: space-evenly;
+         align-self: stretch;
+         min-height: fit-content;
+         width: 90vw;
+         height: 80vw;
+         padding: 2em;
 
-        h2 {
-            font-size: 30vw;
-            line-height: 4rem;
-        }
+         h2 {
+             font-size: 30vw;
+             line-height: 4rem;
+         }
 
-        .textTop {
-            font-weight: bold;
-            font-size: 1.75em;
-            font-family: textaBold;
-        }
+         .textTop {
+             font-weight: bold;
+             font-size: 1.75em;
+             font-family: textaBold;
+         }
 
-        .textBottom {
-            font-size: 1.25em;
-            font-family: textaBold;
-            width: 100%;
-        }
-    }
-}
+         .textBottom {
+             font-size: 1.25em;
+             font-family: textaBold;
+             width: 100%;
+         }
+     }
+ }
