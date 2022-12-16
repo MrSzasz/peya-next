@@ -104,50 +104,59 @@ const index = () => {
     desktopImagePosition
   ) => {
     e.preventDefault();
-    // if (location === "hero") {
-    //   readImageAndConvertToSrc(imageFile, (e) => {
-    //     setArrayWithHeroData([
-    //       ...arrayWithHeroData,
-    //       {
-    //         previewUrl: e.target.result,
-    //         url: imageFile,
-    //         device: device,
-    //         imgAlt: imageAlt,
-    //         title: heroTitle,
-    //         subtitle: heroSubtitle,
-    //         buttonLink: heroButtonLink,
-    //       },
-    //     ]);
-    //   });
-    // } else if (location === "promos") {
-    //   readImageAndConvertToSrc(imageFile, (e) => {
-    //     setArrayWithPromosData([
-    //       ...arrayWithPromosData,
-    //       {
-    //         previewUrl: e.target.result,
-    //         device: device,
-    //         url: imageFile,
-    //         imgAlt: imageAlt,
-    //       },
-    //     ]);
-    //   });
-    // } else {
-    //   return new Error("Hubo un error, por favor vuelva a intentar más tarde");
-    // }
-    // setLoading(false);
-    console.table(
-      location,
-      device,
-      imageFile,
-      imageAlt,
-      heroTitle,
-      heroSubtitle,
-      heroButtonLink,
-      heroPosition,
-      imageFileTop,
-      mobileButtonPosition,
-      desktopImagePosition
-    );
+    if (location === "hero") {
+      Boolean(imageFileTop)
+        ? readImageAndConvertToSrc(imageFile, (e) => {
+            setArrayWithHeroData([
+              ...arrayWithHeroData,
+              {
+                previewUrl: e.target.result,
+                url: imageFile,
+                topUrl: imageFileTop,
+                device: device,
+                imgAlt: imageAlt,
+                title: heroTitle,
+                subtitle: heroSubtitle,
+                buttonLink: heroButtonLink,
+                heroPosition: heroPosition,
+                mobileButtonPosition: mobileButtonPosition,
+                desktopImagePosition: desktopImagePosition,
+              },
+            ]);
+          })
+        : readImageAndConvertToSrc(imageFile, (e) => {
+            setArrayWithHeroData([
+              ...arrayWithHeroData,
+              {
+                previewUrl: e.target.result,
+                url: imageFile,
+                device: device,
+                imgAlt: imageAlt,
+                title: heroTitle,
+                subtitle: heroSubtitle,
+                buttonLink: heroButtonLink,
+                heroPosition: heroPosition,
+                mobileButtonPosition: mobileButtonPosition,
+                desktopImagePosition: desktopImagePosition,
+              },
+            ]);
+          });
+    } else if (location === "promos") {
+      readImageAndConvertToSrc(imageFile, (e) => {
+        setArrayWithPromosData([
+          ...arrayWithPromosData,
+          {
+            previewUrl: e.target.result,
+            device: device,
+            url: imageFile,
+            imgAlt: imageAlt,
+          },
+        ]);
+      });
+    } else {
+      return new Error("Hubo un error, por favor vuelva a intentar más tarde");
+    }
+    setLoading(false);
   };
 
   // =============================================================================================================================== //
@@ -160,25 +169,59 @@ const index = () => {
         for (const dataToUpload of arrayWithHeroData.filter(
           (dataToUpload) => dataToUpload.id == null
         )) {
-          // ======= generar url
+          if (dataToUpload.topUrl != null) {
+            // ======= generar url
 
-          const generatedFirebaseUrl = await uploadFileToFirebase(
-            dataToUpload.url,
-            firebaseCollectionName
-          );
+            const generatedFirebaseUrl = await uploadFileToFirebase(
+              dataToUpload.url,
+              firebaseCollectionName
+            );
+            const generatedTopFirebaseUrl = await uploadFileToFirebase(
+              dataToUpload.topUrl,
+              firebaseCollectionName
+            );
 
-          // ======== usar url y subir a fb {url: generatedFirebaseUrl, imgAlt: imgAlt}
+            // ======== usar url y subir a fb {url: generatedFirebaseUrl, imgAlt: imgAlt}
 
-          const db = await getFirestore();
+            const db = await getFirestore();
 
-          await addDoc(collection(db, firebaseCollectionName), {
-            url: generatedFirebaseUrl,
-            imgAlt: dataToUpload.imgAlt,
-            title: dataToUpload.title,
-            device: dataToUpload.device,
-            subtitle: dataToUpload.subtitle,
-            buttonLink: dataToUpload.buttonLink,
-          }).then(console.log("done"));
+            await addDoc(collection(db, firebaseCollectionName), {
+              url: generatedFirebaseUrl,
+              topUrl: generatedTopFirebaseUrl,
+              imgAlt: dataToUpload.imgAlt,
+              title: dataToUpload.title,
+              device: dataToUpload.device,
+              subtitle: dataToUpload.subtitle,
+              buttonLink: dataToUpload.buttonLink,
+              heroPosition: dataToUpload.heroPosition,
+              mobileButtonPosition: dataToUpload.mobileButtonPosition || null,
+              desktopImagePosition: dataToUpload.desktopImagePosition || null,
+            }).then(console.log("done"));
+          } else {
+            // ======= generar url
+
+            const generatedFirebaseUrl = await uploadFileToFirebase(
+              dataToUpload.url,
+              firebaseCollectionName
+            );
+
+            // ======== usar url y subir a fb {url: generatedFirebaseUrl, imgAlt: imgAlt}
+
+            const db = await getFirestore();
+
+            await addDoc(collection(db, firebaseCollectionName), {
+              url: generatedFirebaseUrl,
+              imgAlt: dataToUpload.imgAlt,
+              topUrl: null,
+              title: dataToUpload.title,
+              device: dataToUpload.device,
+              subtitle: dataToUpload.subtitle,
+              buttonLink: dataToUpload.buttonLink,
+              heroPosition: dataToUpload.heroPosition,
+              mobileButtonPosition: dataToUpload.mobileButtonPosition || null,
+              desktopImagePosition: dataToUpload.desktopImagePosition || null,
+            }).then(console.log("done"));
+          }
         }
       } else if (firebaseCollectionName === "promos") {
         for (const dataToUpload of arrayWithPromosData.filter(
@@ -233,8 +276,10 @@ const index = () => {
   }, []);
 
   useEffect(() => {
-    setSelectedDevice($("#heroDevice").find(":selected").val());
-  }, []);
+    $("#heroDevice").on("change", function () {
+      setSelectedDevice($("#heroDevice").val());
+    });
+  });
 
   // =============================================================================================================================== //
   // =============================================================================================================================== //
@@ -368,8 +413,8 @@ const index = () => {
                     <div className={styles.inputGroupWithLabel}>
                       <label htmlFor="heroDevice">*DISPOSITIVO: </label>
                       <select name="heroDevice" id="heroDevice" required>
-                        <option value="mobile">MOBILE</option>
                         <option value="desktop">DESKTOP</option>
+                        <option value="mobile">MOBILE</option>
                       </select>
                     </div>
 
@@ -381,6 +426,7 @@ const index = () => {
                         <select
                           name="heroMobile_button"
                           id="heroMobile_button"
+                          defaultValue="top"
                           required
                         >
                           <option value="top">ARRIBA</option>
@@ -395,6 +441,7 @@ const index = () => {
                         <select
                           name="heroDesktopImage"
                           id="heroDesktopImage"
+                          defaultValue="center"
                           required
                         >
                           <option value="center">CENTRO</option>

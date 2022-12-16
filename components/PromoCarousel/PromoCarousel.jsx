@@ -15,14 +15,14 @@ const PromoCarousel = ({ imagesArray }) => {
       <SliderComponent>
         {windowWidth < 500
           ? imagesArray
-              .filter((item) => item.mobile === true)
+              .filter((item) => item.device === "mobile")
               .map((item) => (
                 <SwiperSlide key={item.id}>
                   <img src={item.url} alt={item.imgAlt} />
                 </SwiperSlide>
               ))
           : imagesArray
-              .filter((item) => item.mobile !== true)
+              .filter((item) => item.device !== "mobile")
               .map((item) => (
                 <SwiperSlide key={item.id}>
                   <img src={item.url} alt={item.imgAlt} />

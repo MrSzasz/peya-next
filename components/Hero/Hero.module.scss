@@ -637,9 +637,6 @@
             }
         }
 
-        button {
-            margin-bottom: 2em;
-        }
 
         .testheroImgCenter {
             width: 80%;
@@ -728,8 +725,10 @@
                 }
             }
 
-            button {
-                margin-bottom: 2em;
+            .heroImgTop {
+                height: 4em;
+                width: 100%;
+                object-fit: contain;
             }
 
             .testheroImgCenter {
@@ -738,6 +737,23 @@
                 height: fit-content;
                 padding-block: 1em;
             }
+        }
+
+        .heroImgTop {
+            height: 10vw !important;
+            width: 100%;
+            object-fit: contain;
+            margin-top: 1em;
+        }
+
+        .bottomButtonContainer {
+            margin-bottom: 5em;
+        }
+
+        .heroImgBottom__center {
+            // width: 80%;
+            height: 70vw !important;
+            // background-color: red;
         }
     }
 }
