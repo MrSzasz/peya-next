@@ -23,7 +23,7 @@ const Hero = ({ imagesArray }) => {
           </SwiperSlide>
         ) : windowWidth > 500 ? (
           imagesArray
-            .filter((item) => item.device !== "mobile")
+            .filter((item) => item.device !== "mobile" && item.id !== "links")
             .sort(function (a, b) {
               return a.sort - b.sort;
             })
@@ -89,7 +89,7 @@ const Hero = ({ imagesArray }) => {
             ))
         ) : (
           imagesArray
-            .filter((item) => item.device === "mobile")
+            .filter((item) => item.device === "mobile" && item.id !== "links")
             .sort(function (a, b) {
               return a.sort - b.sort;
             })

@@ -2,7 +2,7 @@ import MainButton from "../MainButton/MainButton";
 import styles from "./Membership.module.scss";
 import { motion } from "framer-motion";
 
-const Membership = () => {
+const Membership = ({pedirYa="#"}) => {
   return (
     <>
       <div className={styles.membershipContainerWrapper}>
@@ -11,7 +11,7 @@ const Membership = () => {
             <p>
               Membresía <span>¡GRATIS!</span> por un año
             </p>
-            <MainButton />
+            <MainButton href={pedirYa} />
           </div>
           <motion.img
             className={styles.membershipCardImg}

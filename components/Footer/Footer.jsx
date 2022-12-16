@@ -1,7 +1,7 @@
 import Link from "next/link";
 import styles from "./Footer.module.scss";
 
-const Footer = () => {
+const Footer = ({androidLink="#", appleLink="#"}) => {
   return (
     <footer className={styles.footer}>
       <a href="#hero">
@@ -20,10 +20,10 @@ const Footer = () => {
       </div>
       <div className={styles.rightFooterContainer}>
         <div className={styles.storeLinks}>
-          <Link href={"#"}>
+          <Link href={androidLink}>
             <img src="/images/footerAndroid.png" alt="Descargar App Android" />
           </Link>
-          <Link href={"#"}>
+          <Link href={appleLink}>
             <img src="/images/footerApple.png" alt="Descargar App Apple" />
           </Link>
         </div>

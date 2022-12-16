@@ -70,7 +70,7 @@ const PriceTable = () => {
       </div>
       <div className={styles.tableButtonContainer}>
         <MainButton
-          href={"no"}
+          href={"tableAction"}
           id="showFullTableButton"
           color="buttonNoBg"
           text={dataText ? "Ver menos" : "Ver más costos"}

@@ -9,8 +9,11 @@ const DynamicGoToTop = dynamic(() => import("../GoToTop/GoToTop"), {
 
 const Layout = ({
   children,
-  title = "PedidosYa Pagos - Pide Ya tu Visa Crédito | PedidosYa",
-  desc = "PedidosYa Pagos",
+  title = "PedidosYa Pagos - Pide Ya tu Visa Crédito | PedidosYa",
+  desc = "Accede a Cashback todos los días, dentro y fuera de la app",
+  pedirYa,
+  androidLink = "#",
+  appleLink = "#",
 }) => {
   return (
     <>
@@ -19,10 +22,10 @@ const Layout = ({
         <meta name="description" content={desc} />
         <link rel="icon" href="/icon.ico" />
       </Head>
-      <Header />
+      <Header pedirYa={pedirYa} />
       {children}
       <DynamicGoToTop />
-      <Footer />
+      <Footer androidLink={androidLink} appleLink={appleLink} />
     </>
   );
 };

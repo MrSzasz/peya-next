@@ -9,7 +9,7 @@ const MainButton = ({
 }) => {
   return (
     <>
-      {href != "#" ? (
+      {href === "tableAction" ? (
         <button id={id} className={`${styles.mainButton} ${styles[color]}`}>
           {text}
         </button>

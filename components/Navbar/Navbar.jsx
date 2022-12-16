@@ -4,7 +4,7 @@ import { AiOutlineMenu } from "react-icons/ai";
 import MainButton from "../MainButton/MainButton";
 import styles from "./Navbar.module.scss";
 
-const Navbar = () => {
+const Navbar = ({ pedirYa="#" }) => {
   const [windowWidth, setWindowWidth] = useState(null);
 
   useEffect(() => {
@@ -26,7 +26,14 @@ const Navbar = () => {
   return (
     <nav id="nav" className={styles.navbar}>
       <a href="#hero">
-        <img src={windowWidth > 500 ? "/images/peyaPagosLogo.png" : "/images/logoMobile.svg" } alt="Ir al inicio" />
+        <img
+          src={
+            windowWidth > 500
+              ? "/images/peyaPagosLogo.png"
+              : "/images/logoMobile.svg"
+          }
+          alt="Ir al inicio"
+        />
       </a>
       <div className={styles.linksContainer}>
         <ul className={styles.linksContainerList}>
@@ -43,7 +50,7 @@ const Navbar = () => {
             <a href="#pricesSection">Costos</a>
           </li>
         </ul>
-        <MainButton />
+        <MainButton href={pedirYa} />
       </div>
       <button id="hideMenuButton" className={styles.menuNavbar}>
         <AiOutlineMenu color="#ffffff" size={40} />
@@ -63,7 +70,7 @@ const Navbar = () => {
             <a href="#pricesSection">Costos</a>
           </li>
         </ul>
-        <MainButton />
+        <MainButton href={pedirYa} />
       </div>
     </nav>
   );

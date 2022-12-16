@@ -3,7 +3,7 @@ import MainButton from "../MainButton/MainButton";
 import styles from "./Benefits.module.scss";
 import { motion } from "framer-motion";
 
-const Benefits = () => {
+const Benefits = ({pedirYa="#"}) => {
   return (
     <section id="benefitsSection" className={styles.benefitsContainer}>
       <motion.div
@@ -47,7 +47,7 @@ const Benefits = () => {
             alt={"Icono descuentos"}
           />
         </div>
-        <MainButton color="buttonBlue" />
+        <MainButton href={pedirYa} color="buttonBlue" />
       </motion.div>
       <motion.div
         key={2}

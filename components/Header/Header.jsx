@@ -1,11 +1,11 @@
 import Hidden from "../Hidden/Hidden";
 import Navbar from "../Navbar/Navbar";
 
-const Header = () => {
+const Header = ({pedirYa}) => {
   return (
     <header>
       <Hidden />
-      <Navbar />
+      <Navbar pedirYa={pedirYa}/>
     </header>
   );
 };

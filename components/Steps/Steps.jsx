@@ -2,7 +2,7 @@ import Link from "next/link";
 import ItemSteps from "../ItemSteps/ItemSteps";
 import styles from "./Steps.module.scss";
 
-const Steps = () => {
+const Steps = ({androidLink="#", appleLink="#"}) => {
   return (
     <section className={styles.stepsContainer}>
       <h2>Disfrutala ya</h2>
@@ -33,10 +33,10 @@ const Steps = () => {
       <div className={styles.stepsDownloads}>
         <h3>Descarga la App</h3>
         <div className={styles.stepsDownloadsIcons}>
-          <Link href="#">
+          <Link href={androidLink}>
             <img src="/images/stepsAndroid.png" alt="Link Google Play" />
           </Link>
-          <Link href="#">
+          <Link href={appleLink}>
             <img src="/images/stepsApple.png" alt="Link App Store" />
           </Link>
         </div>
