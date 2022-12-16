@@ -3,10 +3,11 @@ import SliderComponent from "../SliderComponent/SliderComponent";
 import styles from "./Hero.module.scss";
 import "swiper/css";
 import MainButton from "../MainButton/MainButton";
-import Loading from "../Loading/Loading";
 import { useEffect, useState } from "react";
+import SkeletonLoader from "../SkeletonLoader/SkeletonLoader";
+import { motion } from "framer-motion";
 
-const Hero = ({ imagesArray }) => {
+const Hero = ({ loading, imagesArray }) => {
   const [windowWidth, setWindowWidth] = useState(null);
 
   useEffect(() => {
@@ -104,64 +105,124 @@ buttonLink, desktopImagePosition, device, heroPosition, imgAlt, mobileButtonPosi
     // </section>
     <section id="hero" className={styles.heroContainer}>
       <SliderComponent>
-        {windowWidth > 500
-          ? imagesArray
-              .filter((item) => item.device !== "mobile")
-              .map((data) => (
-                <SwiperSlide>
-                  <div className={styles.testheroSliderContainer}>
-                    <div className={styles.testheroTopContainer}>
-                      {data.topUrl !== null ? (
-                        <img src={data.topUrl} className={styles.heroImgTop} />
-                      ) : null}
-                      <h1>{data.title}</h1>
-                      <h3>{data.subtitle}</h3>
-                      <MainButton />
-                    </div>
-                    <img
-                      src={data.url}
-                      alt={data.imgAlt}
-                      className={
-                        data.desktopImagePosition === "bottom"
-                          ? styles.heroImgBottom__bottom
-                          : styles.heroImgBottom__center
-                      }
-                    />
+        {imagesArray.length === 0 ? (
+          <SwiperSlide>
+            <SkeletonLoader locationClass={"skeletonHeroContainer"} />
+          </SwiperSlide>
+        ) : windowWidth > 500 ? (
+          imagesArray
+            .filter((item) => item.device !== "mobile")
+            .map((data) => (
+              <SwiperSlide>
+                <div className={styles.testheroSliderContainer}>
+                  <div className={styles.testheroTopContainer}>
+                    {data.topUrl !== null ? (
+                      <img src={data.topUrl} className={styles.heroImgTop} />
+                    ) : null}
+                    <h1>{data.title}</h1>
+                    <h3>{data.subtitle}</h3>
+                    <MainButton />
                   </div>
-                </SwiperSlide>
-              ))
-          : imagesArray
-              .filter((item) => item.device === "mobile")
-              .map((data) => (
-                <SwiperSlide>
-                  <div className={styles.testheroSliderContainer}>
-                    <div className={styles.testheroTopContainer}>
-                      {data.topUrl !== null ? (
-                        <img src={data.topUrl} className={styles.heroImgTop} />
-                      ) : null}
-                      <h1>{data.title}</h1>
-                      <h3>{data.subtitle}</h3>
-                      {data.mobileButtonPosition === "top" ? (
-                        <MainButton />
-                      ) : undefined}
-                    </div>
-                    <img
+                  {data.desktopImagePosition === "bottom" ? (
+                    <motion.img
                       src={data.url}
                       alt={data.imgAlt}
-                      className={
-                        data.desktopImagePosition === "bottom"
-                          ? styles.heroImgBottom__bottom
-                          : styles.heroImgBottom__center
-                      }
+                      className={styles.heroImgBottom__bottom}
+                      initial={{
+                        transform: "translateY(+100%)",
+                      }}
+                      transition={{ delay: 5 }}
+                      whileInView={{
+                        transform: "translateY(0%)",
+                        transition: {
+                          duration: 1,
+                          type: "tween",
+                          damping: 25,
+                          stiffness: 500,
+                        },
+                      }}
+                      viewport={{ once: true }}
+                      exit={{
+                        transform: "translateY(0%)",
+                      }}
                     />
-                    {data.mobileButtonPosition === "bottom" ? (
-                      <div className={styles.bottomButtonContainer}>
-                        <MainButton />
-                      </div>
+                  ) : (
+                    <motion.img
+                      src={data.url}
+                      alt={data.imgAlt}
+                      className={styles.heroImgBottom__center}
+                      initial={{
+                        transform: "translateX(+100%)",
+                      }}
+                      whileInView={{
+                        transform: "translateX(0%)",
+                        transition: {
+                          duration: 1,
+                          type: "tween",
+                          damping: 25,
+                          stiffness: 500,
+                        },
+                      }}
+                      viewport={{ once: true }}
+                      exit={{
+                        transform: "translateY(0%)",
+                      }}
+                    />
+                  )}
+                </div>
+              </SwiperSlide>
+            ))
+        ) : (
+          imagesArray
+            .filter((item) => item.device === "mobile")
+            .map((data) => (
+              <SwiperSlide>
+                <div className={styles.testheroSliderContainer}>
+                  <div className={styles.testheroTopContainer}>
+                    {data.topUrl !== null ? (
+                      <img src={data.topUrl} className={styles.heroImgTop} />
+                    ) : null}
+                    <h1>{data.title}</h1>
+                    <h3>{data.subtitle}</h3>
+                    {data.mobileButtonPosition === "top" ? (
+                      <MainButton />
                     ) : undefined}
                   </div>
-                </SwiperSlide>
-              ))}
+                  <motion.img
+                    src={data.url}
+                    alt={data.imgAlt}
+                    className={
+                      data.desktopImagePosition === "bottom"
+                        ? styles.heroImgBottom__bottom
+                        : styles.heroImgBottom__center
+                    }
+                    initial={{
+                      transform: "translateX(+100%)",
+                    }}
+                    transition={{ delay: 5 }}
+                    whileInView={{
+                      transform: "translateX(0%)",
+                      transition: {
+                        duration: 1,
+                        type: "tween",
+                        damping: 25,
+                        stiffness: 500,
+                      },
+                    }}
+                    viewport={{ once: true }}
+                    exit={{
+                      transform: "translateX(0%)",
+                    }}
+                  />
+                  {data.mobileButtonPosition === "bottom" ? (
+                    <div className={styles.bottomButtonContainer}>
+                      <MainButton />
+                    </div>
+                  ) : undefined}
+                </div>
+              </SwiperSlide>
+            ))
+        )}
       </SliderComponent>
     </section>
   );

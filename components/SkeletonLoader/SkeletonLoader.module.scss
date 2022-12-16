@@ -1,0 +1,133 @@
+@import "../../styles/variables";
+
+.skeletonContainer {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    height: 20em;
+    width: 100%;
+    background-color: $blue;
+    margin-bottom: 2em;
+    gap: 3em;
+    border-radius: 1.5em;
+    padding: 2em;
+    height: 20em !important;
+
+    .skeletonLeft {
+        display: flex;
+        flex-direction: column;
+        width: 40%;
+        gap: 1em;
+
+        .skeletonTitle {
+            display: flex;
+            height: 2.3em;
+            background: white;
+            background: linear-gradient(110deg, rgba(236, 236, 236, .7) 8%, rgba(245, 245, 245, .8) 18%, rgba(236, 236, 236, .7) 33%);
+            border-radius: 5px;
+            background-size: 200% 100%;
+            animation: 1.5s shine linear infinite;
+        }
+
+        .skeletonSubtitle {
+            display: flex;
+            height: .8em;
+            width: 80%;
+            background: white;
+            background: linear-gradient(110deg, rgba(236, 236, 236, .7) 8%, rgba(245, 245, 245, .8) 18%, rgba(236, 236, 236, .7) 33%);
+            border-radius: 5px;
+            background-size: 200% 100%;
+            animation: 1.5s shine linear infinite;
+        }
+    }
+
+    .skeletonRight {
+        display: flex;
+        height: 100%;
+        width: 50%;
+        background: white;
+        background: linear-gradient(110deg, rgba(236, 236, 236, .7) 8%, rgba(245, 245, 245, .8) 18%, rgba(236, 236, 236, .7) 33%);
+        border-radius: 5px;
+        background-size: 500% 100%;
+        animation: 4s shine2 linear infinite;
+    }
+
+    @keyframes shine {
+        to {
+            background-position-x: -200%;
+        }
+    }
+
+    @keyframes shine2 {
+        to {
+            background-position-x: -250%;
+        }
+    }
+}
+
+.skeletonHeroContainer {
+    // @extend .skeletonContainer;
+    min-height: 70vh !important;
+    // padding-top: 10em;
+    padding-bottom: 0;
+    margin-top: 2em;
+
+    .skeletonLeft {
+        display: flex;
+        flex-direction: column;
+        width: 40%;
+        gap: 2em;
+
+    }
+}
+
+.skeletonPromoContainer {
+    @extend .skeletonContainer;
+    height: 13em;
+}
+
+
+
+@media (max-width: 500px) {
+    .skeletonContainer {
+        height: auto !important;
+
+        .skeletonLeft {
+            width: 60%;
+        }
+    }
+
+    .skeletonHeroContainer {
+        // @extend .skeletonContainer;
+        min-height: 70vh !important;
+        // padding-top: 10em;
+        padding-bottom: 0;
+        margin-top: 2em;
+        flex-direction: column;
+
+        .skeletonLeft {
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            width: 100%;
+            gap: 2em;
+
+            .skeletonTitle {
+                height: 2.3em;
+                width: 100%;
+            }
+        }
+
+        .skeletonRight {
+            display: flex;
+            height: 20em;
+            width: 100%;
+        }
+    }
+
+    .skeletonPromoContainer {
+        height: 12em !important;
+        padding: 1.5em !important;
+    }
+}

@@ -1,10 +1,11 @@
 import { useEffect, useState } from "react";
 import { SwiperSlide } from "swiper/react";
+import SkeletonLoader from "../SkeletonLoader/SkeletonLoader";
 import SliderComponent from "../SliderComponent/SliderComponent";
 import styles from "./PromoCarousel.module.scss";
 
-const PromoCarousel = ({ imagesArray }) => {
-  const [windowWidth, setWindowWidth] = useState(null);
+const PromoCarousel = ({ loading, imagesArray }) => {
+  const [windowWidth, setWindowWidth] = useState(1000);
 
   useEffect(() => {
     setWindowWidth(window.innerWidth);
@@ -12,11 +13,11 @@ const PromoCarousel = ({ imagesArray }) => {
 
   return (
     <section className={styles.promoCarouselContainer}>
-      <SliderComponent>
-        {windowWidth < 500
+      {/* <SliderComponent>
+        {windowWidth > 500
           ? imagesArray
               .filter((item) => item.device === "mobile")
-              .map((item) => (
+              .map((item) => ( 
                 <SwiperSlide key={item.id}>
                   <img src={item.url} alt={item.imgAlt} />
                 </SwiperSlide>
@@ -28,6 +29,29 @@ const PromoCarousel = ({ imagesArray }) => {
                   <img src={item.url} alt={item.imgAlt} />
                 </SwiperSlide>
               ))}
+      </SliderComponent> */}
+      <SliderComponent>
+        {imagesArray.length === 0 ? (
+          <SwiperSlide>
+            <SkeletonLoader locationClass={"skeletonPromosContainer"} />
+          </SwiperSlide>
+        ) : windowWidth > 500 ? (
+          imagesArray
+            .filter((item) => item.device === false)
+            .map((filteredItem) => (
+              <SwiperSlide key={filteredItem.id}>
+                <img src={filteredItem.url} alt={filteredItem.imgAlt} />
+              </SwiperSlide>
+            ))
+        ) : (
+          imagesArray
+            .filter((item) => item.device === true)
+            .map((filteredItem) => (
+              <SwiperSlide key={filteredItem.id}>
+                <img src={filteredItem.url} alt={filteredItem.imgAlt} />
+              </SwiperSlide>
+            ))
+        )}
       </SliderComponent>
     </section>
   );

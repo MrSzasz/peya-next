@@ -252,6 +252,10 @@ const index = () => {
     } catch (err) {
       console.error(err);
     }
+    alert("Completo");
+    $("#heroImg").val("");
+    $("#heroImgTop").val("");
+    $("#promosImg").val("");
   };
 
   // =============================================================================================================================== //
@@ -379,13 +383,18 @@ const index = () => {
                         accept="image/*"
                         required
                         onChange={(e) => {
-                          if (e.target.files[0].size > 7340032) {
-                            alert("El archivo debe pesar menos de 7MB");
+                          if (e.target.files[0].size > 4718592) {
+                            alert("El archivo debe pesar menos de 4MB");
                             e.target.value = "";
                           }
                         }}
                       />
                     </div>
+                    <p>
+                      Lo mejor siempre es que el formato de la imagen sea JPG y
+                      este comprimida, eso beneficia al usuario final con la
+                      carga de datos
+                    </p>
                     <div className={styles.inputGroupWithLabel}>
                       <label htmlFor="heroImgTop">IMÁGEN SUPERIOR: </label>
                       <input
@@ -394,8 +403,8 @@ const index = () => {
                         id="heroImgTop"
                         accept="image/*"
                         onChange={(e) => {
-                          if (e.target.files[0].size > 7340032) {
-                            alert("El archivo debe pesar menos de 7MB");
+                          if (e.target.files[0].size > 4718592) {
+                            alert("El archivo debe pesar menos de 4MB");
                             e.target.value = "";
                           }
                         }}
@@ -457,25 +466,30 @@ const index = () => {
                   {arrayWithHeroData.length !== 0 ? (
                     <h2>Lista de imágenes</h2>
                   ) : null}
-                  {arrayWithHeroData
-                    .filter((data) => data.id == null)
-                    .map((image, i) => (
-                      <div
-                        className={styles.heroImageCard}
-                        key={`${i}${Math.random()}`}
-                      >
-                        <img
-                          src={image.previewUrl || image.url}
-                          alt={image.imgAlt}
-                        />
-                        <button
-                          onClick={() => handleDelete(image.previewUrl, "hero")}
+                  <div className={styles.heroImageListContainer}>
+                    {arrayWithHeroData
+                      .filter((data) => data.id == null)
+                      .map((image, i) => (
+                        <div
+                          className={styles.heroImageCard}
+                          key={`${i}${Math.random()}`}
                         >
-                          <AiOutlineDelete />
-                          BORRAR
-                        </button>
-                      </div>
-                    ))}
+                          <img
+                            src={image.previewUrl || image.url}
+                            alt={image.imgAlt}
+                          />
+                          <button
+                            className={styles.heroCardDeleteButton}
+                            onClick={() =>
+                              handleDelete(image.previewUrl, "hero")
+                            }
+                          >
+                            <AiOutlineDelete />
+                            BORRAR
+                          </button>
+                        </div>
+                      ))}
+                  </div>
                 </div>
               </div>
               {/* <div className={styles.dashSliderContainer}>
@@ -593,6 +607,7 @@ const index = () => {
                       >
                         <img src={image.previewUrl} alt={image.imgAlt} />
                         <button
+                          className={styles.heroCardDeleteButton}
                           onClick={() =>
                             handleDelete(image.previewUrl, "promos")
                           }

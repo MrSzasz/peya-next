@@ -131,39 +131,37 @@
                 width: 100%;
                 height: fit-content;
                 display: flex;
+                flex-direction: column;
                 justify-content: center;
                 align-items: center;
                 gap: 1em;
 
-                .heroImageCard {
-                    position: relative;
-                    overflow: hidden;
-                    border-radius: 1.5em;
 
-                    &:hover {
-                        button {
-                            transform: translateX(0%);
-                        }
-                    }
+                .heroImageListContainer {
+                    width: 100%;
+                    height: fit-content;
+                    display: flex;
+                    justify-content: center;
+                    align-items: center;
+                    gap: 1em;
 
-                    img {
-                        width: 20em;
-                        height: auto;
-                    }
-
-                    button {
-                        transition: ease-in-out all .25s;
-                        position: absolute;
+                    .heroImageCard {
+                        position: relative;
+                        overflow: hidden;
+                        border-radius: 1.5em;
                         display: flex;
                         flex-direction: column;
                         justify-content: center;
                         align-items: center;
-                        width: 100%;
-                        height: 100%;
-                        background-color: rgba(255, 0, 0, .75);
-                        top: 0;
-                        right: 0;
-                        transform: translateX(100%);
+                        background-color: white;
+                        padding: 1em;
+
+                        img {
+                            width: 20em;
+                            height: auto;
+                        }
+
+                        
                     }
                 }
             }
@@ -198,6 +196,15 @@
             width: 100%;
             text-align: center;
         }
+    }
+    .heroCardDeleteButton {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        width: 100%;
+        height: 100%;
+        padding: 1em;
+        background-color: rgba(255, 0, 0, .75);
     }
 }
 
@@ -236,5 +243,14 @@
                 padding-block: 1em .5em;
             }
         }
+    }
+    .heroCardDeleteButton {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        width: 100%;
+        height: 100%;
+        padding: 1em;
+        background-color: rgba(255, 0, 0, .75);
     }
 }

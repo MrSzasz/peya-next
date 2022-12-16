@@ -11,10 +11,14 @@ import Hero from "../components/Hero/Hero";
 
 import { collection, getDocs, getFirestore } from "firebase/firestore"; // Importamos lo necesario
 import { useEffect, useState } from "react";
+import SliderComponent from "../components/SliderComponent/SliderComponent";
+import { SwiperSlide } from "swiper/react";
+import SkeletonLoader from "../components/SkeletonLoader/SkeletonLoader";
 
 const Home = () => {
   const [heroDataFromDB, setHeroDataFromDB] = useState([]);
   const [promoDataFromDB, setPromoDataFromDB] = useState([]);
+  const [loading, setLoading] = useState(true);
 
   const getProductsFromFirebase = async (location) => {
     const db = getFirestore();
@@ -34,6 +38,10 @@ const Home = () => {
         )
       );
     }
+
+    setTimeout(() => {
+      setLoading(false);
+    }, 2000);
   };
 
   useEffect(() => {
@@ -47,12 +55,12 @@ const Home = () => {
   return (
     <Layout>
       <main className={styles.mainContainer}>
-        <Hero imagesArray={heroDataFromDB} />
+        <Hero loading={loading} imagesArray={heroDataFromDB} />
         <Cashback />
         <Benefits />
         <Membership />
         <SecureCard />
-        <PromoCarousel imagesArray={promoDataFromDB} />
+        <PromoCarousel loading={loading} imagesArray={promoDataFromDB} />
         <Steps />
         <Prices />
       </main>
