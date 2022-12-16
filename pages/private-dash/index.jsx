@@ -17,6 +17,7 @@ const index = () => {
   const [arrayWithPromosData, setArrayWithPromosData] = useState([]);
   const [loading, setLoading] = useState(true);
   const [userLoading, setUserLoading] = useState(true);
+  const [selectedDevice, setSelectedDevice] = useState(null);
 
   const { userLogged, userLogOut } = useAppContext();
 
@@ -90,46 +91,63 @@ const index = () => {
 
   const saveDataInArray = (
     e,
-    location,
-    mobile,
-    imageFile,
+    location, // hero o promos
+    device, // mobile o desktop
+    imageFile, // imagen principal
     imageAlt,
     heroTitle,
     heroSubtitle,
-    heroButtonLink
+    heroButtonLink,
+    heroPosition,
+    imageFileTop, // imagen secundaria
+    mobileButtonPosition,
+    desktopImagePosition
   ) => {
     e.preventDefault();
-    if (location === "hero") {
-      readImageAndConvertToSrc(imageFile, (e) => {
-        setArrayWithHeroData([
-          ...arrayWithHeroData,
-          {
-            previewUrl: e.target.result,
-            url: imageFile,
-            mobile: mobile,
-            imgAlt: imageAlt,
-            title: heroTitle,
-            subtitle: heroSubtitle,
-            buttonLink: heroButtonLink,
-          },
-        ]);
-      });
-    } else if (location === "promos") {
-      readImageAndConvertToSrc(imageFile, (e) => {
-        setArrayWithPromosData([
-          ...arrayWithPromosData,
-          {
-            previewUrl: e.target.result,
-            mobile: mobile,
-            url: imageFile,
-            imgAlt: imageAlt,
-          },
-        ]);
-      });
-    } else {
-      return new Error("Hubo un error, por favor vuelva a intentar más tarde");
-    }
-    setLoading(false);
+    // if (location === "hero") {
+    //   readImageAndConvertToSrc(imageFile, (e) => {
+    //     setArrayWithHeroData([
+    //       ...arrayWithHeroData,
+    //       {
+    //         previewUrl: e.target.result,
+    //         url: imageFile,
+    //         device: device,
+    //         imgAlt: imageAlt,
+    //         title: heroTitle,
+    //         subtitle: heroSubtitle,
+    //         buttonLink: heroButtonLink,
+    //       },
+    //     ]);
+    //   });
+    // } else if (location === "promos") {
+    //   readImageAndConvertToSrc(imageFile, (e) => {
+    //     setArrayWithPromosData([
+    //       ...arrayWithPromosData,
+    //       {
+    //         previewUrl: e.target.result,
+    //         device: device,
+    //         url: imageFile,
+    //         imgAlt: imageAlt,
+    //       },
+    //     ]);
+    //   });
+    // } else {
+    //   return new Error("Hubo un error, por favor vuelva a intentar más tarde");
+    // }
+    // setLoading(false);
+    console.table(
+      location,
+      device,
+      imageFile,
+      imageAlt,
+      heroTitle,
+      heroSubtitle,
+      heroButtonLink,
+      heroPosition,
+      imageFileTop,
+      mobileButtonPosition,
+      desktopImagePosition
+    );
   };
 
   // =============================================================================================================================== //
@@ -157,7 +175,7 @@ const index = () => {
             url: generatedFirebaseUrl,
             imgAlt: dataToUpload.imgAlt,
             title: dataToUpload.title,
-            mobile: dataToUpload.mobile,
+            device: dataToUpload.device,
             subtitle: dataToUpload.subtitle,
             buttonLink: dataToUpload.buttonLink,
           }).then(console.log("done"));
@@ -180,7 +198,7 @@ const index = () => {
           await addDoc(collection(db, firebaseCollectionName), {
             url: generatedFirebaseUrl,
             imgAlt: dataToUpload.imgAlt,
-            mobile: dataToUpload.mobile,
+            device: dataToUpload.device,
           }).then(console.log("done"));
         }
       } else {
@@ -210,8 +228,12 @@ const index = () => {
   }, []);
 
   useEffect(() => {
-    getProductsFromFirebase("hero");
-    getProductsFromFirebase("promos");
+    // getProductsFromFirebase("hero");
+    // getProductsFromFirebase("promos");
+  }, []);
+
+  useEffect(() => {
+    setSelectedDevice($("#heroDevice").find(":selected").val());
   }, []);
 
   // =============================================================================================================================== //
@@ -240,36 +262,40 @@ const index = () => {
               <div className={styles.dashSectionTop}>
                 <h2>Agregar al Hero</h2>
                 <p>
-                  Para subir imágenes al hero se deberá seleccionar la imagen
-                  deseada, agregar el titulo principal, subtitulo y el link al
-                  que se redirigirá, la vista previa se actualiza cuando agrega
-                  los datos, podrá cancelar la subida de cada uno eliminándola
-                  de la lista de imágenes,{" "}
-                  <span>SOLAMENTE CUANDO ESTÉ SEGURO</span>
-                  puede dar <span>DOBLE CLICK</span> en subir para aplicar los
-                  cambios.
+                  Para generar un hero se deberá seleccionar la imagen
+                  principal, agregar el titulo, subtitulo, link y la posición en
+                  el slider, deberá seleccionar si el mismo sera mobile o
+                  desktop junto a la posición de la imagen principal (desktop) y
+                  del botón (mobile), podrá cancelar la subida de cada uno
+                  eliminándola de la lista de imágenes,
+                  <span> SOLAMENTE CUANDO ESTÉ SEGURO </span>
+                  puede dar click en subir para aplicar los cambios.
                   <br />
                   También puede eliminar las páginas que se encuentren en la
                   base de datos haciendo click en el botón
-                  <span>EDITAR PÁGINAS GUARDADAS</span>
+                  <span> EDITAR PÁGINAS GUARDADAS</span>
                 </p>
                 <form
                   onSubmit={(e) =>
                     saveDataInArray(
                       e,
                       "hero",
-                      false,
+                      $("#heroDevice option:selected").val(),
                       $("#heroImg").prop("files")[0],
                       $("#heroAlt").val().trim(),
                       $("#heroTitle").val().trim(),
                       $("#heroSubtitle").val().trim(),
-                      $("#heroLink").val().trim()
+                      $("#heroLink").val().trim(),
+                      $("#heroPosition").val().trim(),
+                      $("#heroImgTop").prop("files")[0],
+                      $("#heroMobile_button option:selected").val(),
+                      $("#heroDesktopImage option:selected").val()
                     )
                   }
                 >
                   <div className={styles.inputGroup}>
                     <div className={styles.inputGroupWithLabel}>
-                      <label htmlFor="heroTitle">TITLE: </label>
+                      <label htmlFor="heroTitle">*TITLE: </label>
                       <input
                         type="text"
                         name="heroTitle"
@@ -278,7 +304,7 @@ const index = () => {
                       />
                     </div>
                     <div className={styles.inputGroupWithLabel}>
-                      <label htmlFor="heroSubtitle">SUBTITLE: </label>
+                      <label htmlFor="heroSubtitle">*SUBTITLE: </label>
                       <input
                         type="text"
                         name="heroSubtitle"
@@ -287,7 +313,7 @@ const index = () => {
                       />
                     </div>
                     <div className={styles.inputGroupWithLabel}>
-                      <label htmlFor="heroLink">LINK: </label>
+                      <label htmlFor="heroLink">*LINK: </label>
                       <input
                         type="text"
                         name="heroLink"
@@ -296,26 +322,94 @@ const index = () => {
                       />
                     </div>
                     <div className={styles.inputGroupWithLabel}>
-                      <label htmlFor="heroAlt">ALT: </label>
+                      <label htmlFor="heroAlt">*ALT: </label>
                       <input type="text" name="heroAlt" id="heroAlt" required />
                     </div>
-                    <input
-                      type="file"
-                      name="heroImg"
-                      id="heroImg"
-                      accept="image/*"
-                      required
-                      onChange={(e) => {
-                        if (e.target.files[0].size > 5242880) {
-                          alert("El archivo debe pesar menos de 5MB");
-                          e.target.value = "";
-                        }
-                      }}
-                    />
+                    <div className={styles.inputGroupWithLabel}>
+                      <label htmlFor="heroImg">*IMÁGEN PRINCIPAL: </label>
+                      <input
+                        type="file"
+                        name="heroImg"
+                        id="heroImg"
+                        accept="image/*"
+                        required
+                        onChange={(e) => {
+                          if (e.target.files[0].size > 7340032) {
+                            alert("El archivo debe pesar menos de 7MB");
+                            e.target.value = "";
+                          }
+                        }}
+                      />
+                    </div>
+                    <div className={styles.inputGroupWithLabel}>
+                      <label htmlFor="heroImgTop">IMÁGEN SUPERIOR: </label>
+                      <input
+                        type="file"
+                        name="heroImgTop"
+                        id="heroImgTop"
+                        accept="image/*"
+                        onChange={(e) => {
+                          if (e.target.files[0].size > 7340032) {
+                            alert("El archivo debe pesar menos de 7MB");
+                            e.target.value = "";
+                          }
+                        }}
+                      />
+                    </div>
+                    <div className={styles.inputGroupWithLabel}>
+                      <label htmlFor="heroPosition">*POSICIÓN: </label>
+                      <input
+                        type="number"
+                        name="heroPosition"
+                        id="heroPosition"
+                        required
+                      />
+                    </div>
+                    <div className={styles.inputGroupWithLabel}>
+                      <label htmlFor="heroDevice">*DISPOSITIVO: </label>
+                      <select name="heroDevice" id="heroDevice" required>
+                        <option value="mobile">MOBILE</option>
+                        <option value="desktop">DESKTOP</option>
+                      </select>
+                    </div>
+
+                    {selectedDevice === "mobile" ? (
+                      // boton arriba o abajo SOLO MOBILE
+
+                      <div className={styles.inputGroupWithLabel}>
+                        <label htmlFor="heroMobile_button">*BOTÓN: </label>
+                        <select
+                          name="heroMobile_button"
+                          id="heroMobile_button"
+                          required
+                        >
+                          <option value="top">ARRIBA</option>
+                          <option value="bottom">ABAJO</option>
+                        </select>
+                      </div>
+                    ) : (
+                      // imagen arriba o abajo SOLO DESKTOP
+
+                      <div className={styles.inputGroupWithLabel}>
+                        <label htmlFor="heroDesktopImage">*IMÁGEN: </label>
+                        <select
+                          name="heroDesktopImage"
+                          id="heroDesktopImage"
+                          required
+                        >
+                          <option value="center">CENTRO</option>
+                          <option value="bottom">ABAJO</option>
+                        </select>
+                      </div>
+                    )}
                   </div>
                   <button type="submit">Agregar</button>
+                  <small>* requerido</small>
                 </form>
                 <div className={styles.heroImageList}>
+                  {arrayWithHeroData.length !== 0 ? (
+                    <h2>Lista de imágenes</h2>
+                  ) : null}
                   {arrayWithHeroData
                     .filter((data) => data.id == null)
                     .map((image, i) => (
@@ -337,7 +431,7 @@ const index = () => {
                     ))}
                 </div>
               </div>
-              <div className={styles.dashSliderContainer}>
+              {/* <div className={styles.dashSliderContainer}>
                 <h2>Vista previa</h2>
                 {loading ? (
                   <Loading />
@@ -367,7 +461,7 @@ const index = () => {
                     ))}
                   </Swiper>
                 )}
-              </div>
+              </div> */}
               <Link className={styles.goToEdit} href={"private-dash/edit/hero"}>
                 Editar imágenes guardadas
                 <AiOutlineRight />
@@ -387,12 +481,12 @@ const index = () => {
                   Para subir imágenes a las promos se deberá seleccionar la
                   imagen deseada, la vista previa se actualiza cuando agrega una
                   nueva imagen, podrá cancelar la subida de la imagen
-                  eliminándola de la lista de imágenes,{" "}
-                  <span>SOLAMENTE CUANDO ESTÉ SEGURO</span> puede dar{" "}
-                  <span>DOBLE CLICK</span> en subir para aplicar los cambios.
+                  eliminándola de la lista de imágenes,
+                  <span> SOLAMENTE CUANDO ESTÉ SEGURO</span> puede dar click en
+                  subir para aplicar los cambios.
                   <br /> También puede eliminar las imágenes que se encuentren
-                  en la base de datos haciendo click en el botón{" "}
-                  <span>EDITAR IMÁGENES GUARDADAS</span>
+                  en la base de datos haciendo click en el botón
+                  <span> EDITAR IMÁGENES GUARDADAS</span>
                 </p>
                 <form
                   onSubmit={(e) =>
@@ -430,8 +524,8 @@ const index = () => {
                       accept="image/*"
                       required
                       onChange={(e) => {
-                        if (e.target.files[0].size > 5242880) {
-                          alert("El archivo debe pesar menos de 5MB");
+                        if (e.target.files[0].size > 7340032) {
+                          alert("El archivo debe pesar menos de 7MB");
                           e.target.value = "";
                         }
                       }}
@@ -440,6 +534,9 @@ const index = () => {
                   <button type="submit">Agregar</button>
                 </form>
                 <div className={styles.heroImageList}>
+                  {arrayWithPromosData.length !== 0 ? (
+                    <h2>Lista de imágenes</h2>
+                  ) : null}
                   {arrayWithPromosData
                     .filter((data) => data.id == null)
                     .map((image, i) => (
@@ -460,7 +557,7 @@ const index = () => {
                     ))}
                 </div>
               </div>
-              <div className={styles.dashSliderContainer}>
+              {/* <div className={styles.dashSliderContainer}>
                 <h2>Vista previa</h2>
                 {loading ? (
                   <Loading />
@@ -490,7 +587,7 @@ const index = () => {
                     ))}
                   </Swiper>
                 )}
-              </div>
+              </div> */}
               <Link
                 className={styles.goToEdit}
                 href={"private-dash/edit/promos"}

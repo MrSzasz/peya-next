@@ -82,6 +82,7 @@
                 border-radius: 1.5em;
                 background-color: $blue;
                 display: flex;
+                flex-direction: column;
                 justify-content: center;
                 align-items: center;
                 gap: 1em;
@@ -115,6 +116,12 @@
                 button {
                     background-color: $white;
                     color: $blue;
+                    padding: .5em 1em;
+                    border-radius: 1.5em;
+                }
+
+                select {
+                    color: black;
                     padding: .5em 1em;
                     border-radius: 1.5em;
                 }
