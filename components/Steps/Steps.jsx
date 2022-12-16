@@ -24,7 +24,7 @@ const Steps = () => {
         />
         <ItemSteps
           title={"Compra ya"}
-          text={"¡Listo! Pueden disfrutar de tus cashbacks todos los días"}
+          text={"¡Listo! Puedes disfrutar de tus cashbacks todos los días"}
           img={"/icons/steps/icon3.svg"}
           imgAlt={"Uso"}
         />
