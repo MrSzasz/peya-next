@@ -36,7 +36,7 @@ const Hero = ({ imagesArray }) => {
                     ) : null}
                     <h1>{data.title}</h1>
                     <h3>{data.subtitle}</h3>
-                    <MainButton />
+                    <MainButton href={data.buttonLink} />
                   </div>
                   {data.desktopImagePosition === "bottom" ? (
                     <motion.img
@@ -103,7 +103,7 @@ const Hero = ({ imagesArray }) => {
                     <h1>{data.title}</h1>
                     <h3>{data.subtitle}</h3>
                     {data.mobileButtonPosition === "top" ? (
-                      <MainButton />
+                      <MainButton href={data.buttonLink} />
                     ) : undefined}
                   </div>
                   <motion.img
@@ -134,7 +134,7 @@ const Hero = ({ imagesArray }) => {
                   />
                   {data.mobileButtonPosition === "bottom" ? (
                     <div className={styles.bottomButtonContainer}>
-                      <MainButton />
+                      <MainButton href={data.buttonLink} />
                     </div>
                   ) : undefined}
                 </div>

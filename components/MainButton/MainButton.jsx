@@ -1,10 +1,28 @@
+import Link from "next/link";
 import styles from "./MainButton.module.scss";
 
-const MainButton = ({ id, color = "buttonWhite", text = "Pedir Ya" }) => {
+const MainButton = ({
+  href = "#",
+  id,
+  color = "buttonWhite",
+  text = "Pedir Ya",
+}) => {
   return (
-    <button id={id} className={`${styles.mainButton} ${styles[color]}`}>
-      {text}
-    </button>
+    <>
+      {href != "#" ? (
+        <button id={id} className={`${styles.mainButton} ${styles[color]}`}>
+          {text}
+        </button>
+      ) : (
+        <Link
+          href={href}
+          id={id}
+          className={`${styles.mainButton} ${styles[color]}`}
+        >
+          {text}
+        </Link>
+      )}
+    </>
   );
 };
 

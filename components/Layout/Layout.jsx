@@ -9,7 +9,7 @@ const DynamicGoToTop = dynamic(() => import("../GoToTop/GoToTop"), {
 
 const Layout = ({
   children,
-  title = "PedidosYa Pagos",
+  title = "PedidosYa Pagos - Pide Ya tu Visa Crédito | PedidosYa",
   desc = "PedidosYa Pagos",
 }) => {
   return (

@@ -1,3 +1,4 @@
+import Link from "next/link";
 import ItemSteps from "../ItemSteps/ItemSteps";
 import styles from "./Steps.module.scss";
 
@@ -9,7 +10,7 @@ const Steps = () => {
         <ItemSteps
           title={"Registrate"}
           text={"Completa tus datos"}
-          img={"/icons/steps/icon1new.svg"}
+          img={"/icons/steps/icon1.svg"}
           imgAlt={"Registro"}
           special={true}
         />
@@ -32,8 +33,12 @@ const Steps = () => {
       <div className={styles.stepsDownloads}>
         <h3>Descarga la App</h3>
         <div className={styles.stepsDownloadsIcons}>
-          <img src="/images/stepsAndroid.png" alt="Link Google Play" />
-          <img src="/images/stepsApple.png" alt="Link App Store" />
+          <Link href="#">
+            <img src="/images/stepsAndroid.png" alt="Link Google Play" />
+          </Link>
+          <Link href="#">
+            <img src="/images/stepsApple.png" alt="Link App Store" />
+          </Link>
         </div>
       </div>
     </section>
