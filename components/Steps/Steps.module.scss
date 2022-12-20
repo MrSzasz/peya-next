@@ -1,0 +1,79 @@
+@import "../../styles/variables";
+
+.stepsContainer {
+    background-color: $blue;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 1em;
+    padding-inline: 15%;
+    padding-block: 2em;
+
+    h2 {
+        color: $white;
+    }
+
+    .itemStepsContainer {
+        width: 100%;
+        display: flex;
+        justify-content: center;
+        align-items: stretch;
+        gap: 1.5em;
+    }
+
+    .stepsDownloads {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        color: $white;
+        gap: 3.5em;
+        padding-top: 1em;
+
+        h3 {
+            width: 100%;
+        }
+
+        .stepsDownloadsIcons {
+            width: 100%;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            gap: 2em;
+
+            a {
+                width: fit-content;
+                height: fit-content;
+                width: 9em;
+
+                img {
+                    width: auto;
+                    object-fit: contain;
+                    height: 100%;
+                }
+            }
+        }
+    }
+
+    h3 {
+        font-size: 1.5em;
+    }
+}
+
+
+@media (max-width: 500px) {
+    .stepsContainer {
+        padding-inline: 0;
+
+        .itemStepsContainer {
+            align-items: center;
+            flex-direction: column;
+        }
+
+        .stepsDownloads {
+            flex-direction: column;
+            gap: .5em;
+            text-align: center;
+        }
+    }
+}

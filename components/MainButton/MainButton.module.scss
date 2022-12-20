@@ -1,0 +1,45 @@
+@import "../../styles/variables";
+
+.mainButton {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-radius: 50px;
+    padding-inline: 2.5em;
+    padding-block: .5em;
+    width: fit-content;
+    font-weight: bold;
+    font-size: 1em;
+}
+
+.buttonWhite {
+    background-color: $white;
+    color: $blue;
+    transition: ease all .25s;
+
+    &:hover {
+        background-color: $whiteHover;
+    }
+}
+
+.buttonBlue {
+    background-color: $blue;
+    color: $white;
+    transition: ease all .25s;
+
+    &:hover {
+        background-color: $blueHover;
+        color: $white;
+    }
+}
+
+.buttonNoBg {
+    color: $blue;
+    border: 2px solid $blue;
+    transition: ease all .25s;
+
+    &:hover {
+        background-color: $blueHover;
+        color: $white;
+    }
+}

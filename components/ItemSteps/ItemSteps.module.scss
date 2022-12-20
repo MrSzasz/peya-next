@@ -1,0 +1,102 @@
+@import "../../styles/variables";
+
+.mainCard {
+    max-width: 14em;
+    width: 100%;
+    min-height: fit-content;
+    background-color: $white;
+    padding: 1em;
+    border-radius: 1.5em;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between !important;
+    align-items: center;
+    gap: 1em;
+    text-align: center;
+
+    .mainCardImgContainer {
+        min-height: 8em;
+    }
+
+    .mainCardImg {
+        transition: ease all .75s;
+        padding: 1.5em;
+        height: 8em;
+        position: relative;
+    }
+
+    .mainCardImgSpecial {
+        @extend .mainCardImg;
+        margin-left: 8%;
+    }
+
+    .mainCardImgSecond {
+        transition: ease all .75s;
+        padding: 1.5em;
+        height: 7.25em;
+        position: relative;
+    }
+
+    &:hover {
+        .mainCardImg {
+            transform: scale(1.2);
+        }
+
+        .mainCardImgSpecial {
+            transform: scale(1.2);
+        }
+    }
+
+    h3 {
+        font-size: 1.5em;
+        font-weight: bold;
+        color: $blue;
+    }
+
+    .mainCardBottomText {
+        height: 50%;
+        display: flex;
+        flex-direction: column;
+        justify-content: flex-start;
+        min-height: 7em;
+    }
+}
+
+
+@media (max-width: 500px) {
+    .mainCard {
+        max-width: 100%;
+        width: 100%;
+        min-height: fit-content;
+        background-color: $white;
+        padding: 1em;
+        border-radius: 1.5em;
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between !important;
+        align-items: center;
+        gap: 1em;
+        text-align: center;
+
+        width: 86vw;
+        height: 86vw;
+        justify-content: center;
+
+        .mainCardImgContainer {
+            min-height: 8em;
+        }
+
+        .mainCardImg {
+            transition: ease all .75s;
+            padding: 1.5em;
+            height: 8em;
+            position: relative;
+        }
+
+        .mainCardImgSpecial {
+            @extend .mainCardImg;
+            margin-left: 5%;
+            height: 9em;
+        }
+    }
+}

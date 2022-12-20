@@ -1,0 +1,58 @@
+@import "../../styles/variables";
+
+.priceTableContainer {
+    padding-top: 1em;
+
+    .tableRow {
+        width: 100%;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        padding-block: 1em;
+        border-bottom: 1px solid rgba(0, 0, 0, 0.2);
+
+        .underlineFirstRow {
+            color: #00000080;
+        }
+
+        &:nth-child(even) {
+            background: #FBFBFB;
+        }
+
+        .tableRowRight {
+            text-align: end;
+            line-height: 120%;
+
+            span {
+                font-size: 1.25em;
+                font-family: textaHeavy;
+                color: $red;
+            }
+        }
+
+        .tableRowLeft {
+            font-family: textaHeavy;
+        }
+    }
+
+    .hiddenRowsTable {
+        display: none;
+    }
+
+    .tableButtonContainer {
+        width: 100%;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        padding-block: 1em;
+    }
+}
+
+
+@media (max-width: 500px) {
+    .priceTableContainer {
+        .tableRow {
+            gap: 4em;
+        }
+    }
+}

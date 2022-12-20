@@ -1,0 +1,83 @@
+@import "../../styles/variables";
+
+.loginContainer {
+    width: 100%;
+    height: 100vh;
+    background-color: $dark;
+    color: $white;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    padding-inline: 10%;
+
+    form {
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        padding: 1em 1.5em;
+        background-color: $blue;
+        color: white;
+        border-radius: 1.5em;
+        min-width: 20em;
+        width: 50%;
+        gap: 1em;
+
+        h2 {
+            font-size: 1.5em;
+            font-family: textaHeavy;
+        }
+
+        .errorContainer {
+            background-color: red;
+            width: 100%;
+            height: fit-content;
+            text-align: center;
+            border-radius: 1.5em;
+
+            h2 {
+                display: flex;
+                justify-content: center;
+                align-items: center;
+                gap: .5em;
+                color: white;
+            }
+        }
+
+        .inputGroup {
+            width: 100%;
+            height: fit-content;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+
+            label {
+                width: fit-content;
+                font-family: textaHeavy;
+                text-transform: uppercase;
+                font-size: 1.25em;
+            }
+
+            input {
+                width: 100%;
+                padding: 1em .5em;
+                color: black;
+            }
+        }
+
+        button {
+            background-color: $red;
+            color: $white;
+            border-radius: 1.5em;
+            width: fit-content;
+            transition: ease all .25s;
+            padding: .5em 1em;
+
+            &:hover {
+                background-color: #c4003e;
+            }
+        }
+    }
+}

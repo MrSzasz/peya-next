@@ -1,0 +1,38 @@
+@import "../../styles/variables";
+
+
+.tableRow {
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    padding-block: 1em;
+    align-items: center;
+    border-bottom: 1px solid rgba(0, 0, 0, 0.2);
+
+    &:nth-child(even) {
+        background: #FBFBFB;
+    }
+
+    .tableRowRightSpecial {
+        font-size: 1.25em;
+        font-family: textaHeavy;
+        color: $red;
+        text-align: end;
+    }
+
+
+    .tableRowRight {
+        text-align: end;
+    }
+
+    .tableRowLeft {
+        font-family: textaHeavy;
+    }
+}
+
+
+@media (max-width: 500px) {
+    .tableRow {
+        gap: 2em;
+    }
+}

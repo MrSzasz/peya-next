@@ -1,0 +1,15 @@
+.pricesContainer {
+    h3 {
+        font-size: 1.5em;
+    }
+}
+
+@media (max-width: 500px) {
+    .pricesContainer {
+
+        h2,
+        h3 {
+            text-align: center;
+        }
+    }
+}

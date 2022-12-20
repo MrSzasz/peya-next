@@ -1,0 +1,186 @@
+ @import "../../styles/variables";
+
+ .heroContainer {
+     background-color: $blue;
+     padding: 0;
+
+     .heroSliderContainer,
+     .heroSliderContainerButtonBottom {
+
+         display: flex;
+         justify-content: space-between;
+         height: 80vh;
+         background-color: $blue;
+         width: 80%;
+         margin: auto;
+
+         .heroTopContainer {
+             display: flex;
+             flex-direction: column;
+             justify-content: center;
+             align-items: flex-start;
+             flex-basis: 100%;
+             gap: 1em;
+             flex-basis: 100%;
+             flex-grow: 1;
+             max-width: 50%;
+
+             h1 {
+                 line-height: 1em;
+                 color: $white;
+                 font-size: 3em;
+                 height: fit-content;
+                 font-family: textaHeavy;
+             }
+
+             h3 {
+                 width: 100%;
+                 line-height: 1em;
+                 color: $white;
+                 font-size: 1.5em;
+                 height: fit-content;
+                 font-family: textaRegular;
+             }
+
+             img {
+                 width: auto;
+                 height: 10%;
+             }
+         }
+
+         .heroImgBottom__bottom {
+             height: 100%;
+             object-fit: contain;
+             object-position: bottom;
+             width: auto;
+             padding-top: 10%;
+         }
+
+         .heroImgBottom__center {
+             height: 80%;
+             object-fit: contain;
+             object-position: center;
+             width: auto;
+             padding-top: 10%;
+         }
+     }
+
+     .heroSliderContainerButtonBottom {
+
+         .heroTopContainer {
+             .heroImgTop {
+                 height: 4em;
+                 width: 100%;
+                 object-fit: contain;
+             }
+         }
+
+
+         .testheroImgCenter {
+             width: 80%;
+             object-fit: contain;
+             height: fit-content;
+             padding-block: 1em;
+         }
+     }
+ }
+
+ @media (max-width: 500px) {
+
+     .heroContainer {
+         background-color: $blue;
+         padding: 0;
+         padding-top: 4em;
+
+         .heroSliderContainer,
+         .heroSliderContainerButtonBottom {
+             display: flex;
+             flex-direction: column;
+             justify-content: space-between;
+             align-items: center;
+             height: 80vh;
+             background-color: $blue;
+             width: 100%;
+
+
+             .heroTopContainer {
+                 padding-inline: 5%;
+                 justify-self: center;
+                 display: flex;
+                 flex-direction: column;
+                 justify-content: center;
+                 align-items: center;
+                 flex-basis: 100%;
+                 gap: 1em;
+                 text-align: center;
+                 flex-basis: 100%;
+                 flex-grow: 1;
+                 max-width: 100%;
+
+                 h1 {
+                     line-height: 1em;
+                     color: $white;
+                     font-size: 2.25em;
+                     height: fit-content;
+                     font-family: textaHeavy;
+                 }
+
+                 h3 {
+                     width: 100%;
+                     line-height: 1em;
+                     color: $white;
+                     font-size: 1.5em;
+                     height: fit-content;
+                     font-family: textaRegular;
+                 }
+             }
+
+             .heroImgBottom {
+                 height: 150%;
+                 object-fit: cover;
+                 object-position: right;
+                 width: 100vw;
+                 flex-grow: 2;
+             }
+         }
+
+         .heroSliderContainerButtonBottom {
+
+             .heroTopContainer {
+                 .heroImgTop {
+                     height: 4em;
+                     width: 100%;
+                     object-fit: contain;
+                 }
+             }
+
+             .heroImgTop {
+                 height: 4em;
+                 width: 100%;
+                 object-fit: contain;
+             }
+
+             .testheroImgCenter {
+                 width: 80%;
+                 object-fit: contain;
+                 height: fit-content;
+                 padding-block: 1em;
+             }
+         }
+
+         .heroImgTop {
+             height: 10vw !important;
+             width: 100%;
+             object-fit: contain;
+             margin-top: 1em;
+         }
+
+         .bottomButtonContainer {
+             margin-bottom: 5em;
+         }
+
+         .heroImgBottom__center {
+             height: 70vw !important;
+         }
+     }
+ }

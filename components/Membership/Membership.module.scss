@@ -1,0 +1,67 @@
+@import "../../styles/variables";
+
+.membershipContainerWrapper {
+    overflow: hidden;
+    padding-top: 1em;
+
+    .membershipContainer {
+        width: 100%;
+        height: fit-content;
+        display: flex;
+        justify-content: space-between;
+        padding-block: 1em;
+        background-image: url("/images/membershipBg.png");
+        background-position: center;
+        position: relative;
+        margin-top: 6em;
+
+        .rightMembershipContent {
+            display: flex;
+            flex-direction: column;
+            color: $white;
+
+            p {
+                font-size: 2.5em;
+
+                span {
+                    font-family: textaHeavy;
+                    font-weight: bold;
+                }
+            }
+        }
+
+        img {
+            position: absolute;
+            right: 8em;
+            height: 15em;
+            bottom: 0;
+        }
+    }
+}
+
+
+@media (max-width: 500px) {
+    .membershipContainerWrapper {
+        .membershipContainer {
+            flex-direction: column;
+            background-image: url("/images/membershipBgMobile.png");
+            background-position: bottom;
+            background-size: 50%;
+            padding-bottom: 0;
+            margin-top: 0em;
+
+
+            .rightMembershipContent {
+                gap: 1em;
+
+                p {
+                    line-height: 1em;
+                }
+            }
+
+            .membershipCardImg {
+                position: static;
+            }
+        }
+    }
+}

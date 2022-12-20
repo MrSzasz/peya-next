@@ -1,0 +1,10 @@
+.loadingContainer {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 1em;
+    width: 100%;
+    height: fit-content;
+    padding-block: 2em;
+}
