@@ -8,7 +8,13 @@ import PromoCarousel from "../components/PromoCarousel/PromoCarousel";
 import Steps from "../components/Steps/Steps";
 import Prices from "../components/Prices/Prices";
 import Hero from "../components/Hero/Hero";
-import { collection, getDocs, getFirestore, doc, getDoc } from "firebase/firestore"; // Importamos lo necesario
+import {
+  collection,
+  getDocs,
+  getFirestore,
+  doc,
+  getDoc,
+} from "firebase/firestore"; // Importamos lo necesario
 import { useEffect, useState } from "react";
 
 const Home = () => {
@@ -54,7 +60,7 @@ const Home = () => {
 
   useEffect(() => {
     localStorage.getItem("userData")
-      ? console.log(localStorage.getItem("userData"))
+      ? console.log("data loaded")
       : localStorage.setItem("userData", "null");
     getProductsFromFirebase("hero");
     getProductsFromFirebase("promos");

@@ -28,7 +28,7 @@ const Hero = ({ imagesArray }) => {
               return a.sort - b.sort;
             })
             .map((data) => (
-              <SwiperSlide>
+              <SwiperSlide key={data.id}>
                 <div className={styles.heroSliderContainer}>
                   <div className={styles.heroTopContainer}>
                     {data.topUrl !== null ? (
@@ -94,7 +94,7 @@ const Hero = ({ imagesArray }) => {
               return a.sort - b.sort;
             })
             .map((data) => (
-              <SwiperSlide>
+              <SwiperSlide key={data.id}>
                 <div className={styles.heroSliderContainer}>
                   <div className={styles.heroTopContainer}>
                     {data.topUrl !== null ? (
