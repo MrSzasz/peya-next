@@ -34,10 +34,10 @@ const Steps = ({androidLink="#", appleLink="#"}) => {
         <h3>Descarga la App</h3>
         <div className={styles.stepsDownloadsIcons}>
           <Link href={androidLink}>
-            <img src="/images/stepsAndroid.png" alt="Link Google Play" />
+            <img src="/images/stepsAndroid.svg" alt="Link Google Play" />
           </Link>
           <Link href={appleLink}>
-            <img src="/images/stepsApple.png" alt="Link App Store" />
+            <img src="/images/stepsApple.svg" alt="Link App Store" />
           </Link>
         </div>
       </div>

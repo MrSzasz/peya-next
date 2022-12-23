@@ -5,7 +5,7 @@ const Footer = ({androidLink="#", appleLink="#"}) => {
   return (
     <footer className={styles.footer}>
       <a href="#hero">
-        <img src="/images/peyaPagosLogo.png" alt="Logo PedidosYa Pagos" />
+        <img src="/images/peyaPagosLogo.svg" alt="Logo PedidosYa Pagos" />
       </a>
       <p className={styles.disclaimer}>Pedidos Ya © 2010 - 2022</p>
       <div className={styles.centerFooterContainer}>
@@ -21,10 +21,10 @@ const Footer = ({androidLink="#", appleLink="#"}) => {
       <div className={styles.rightFooterContainer}>
         <div className={styles.storeLinks}>
           <Link href={androidLink}>
-            <img src="/images/footerAndroid.png" alt="Descargar App Android" />
+            <img src="/images/footerAndroid.svg" alt="Descargar App Android" />
           </Link>
           <Link href={appleLink}>
-            <img src="/images/footerApple.png" alt="Descargar App Apple" />
+            <img src="/images/footerApple.svg" alt="Descargar App Apple" />
           </Link>
         </div>
       </div>

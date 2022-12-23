@@ -29,7 +29,7 @@ const Navbar = ({ pedirYa="#" }) => {
         <img
           src={
             windowWidth > 500
-              ? "/images/peyaPagosLogo.png"
+              ? "/images/peyaPagosLogo.svg"
               : "/images/logoMobile.svg"
           }
           alt="Ir al inicio"
