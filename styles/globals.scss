@@ -26,6 +26,10 @@
     --swiper-theme-color: white !important;
 }
 
+#promosCarouselId .swiper-pagination-bullet-active {
+    background-color: #004ADD !important;
+}
+
 html {
     font-family: textaRegular;
     scroll-behavior: smooth;

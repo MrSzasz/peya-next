@@ -28,7 +28,7 @@ const Footer = () => {
             </a>
           </li>
           <li>
-            <a href="pedidosya://onlinehelp">Centro de ayuda</a>
+            <a href="pedidosya://onlinehelp">Preguntas frecuentes</a>
           </li>
         </ul>
       </div>
@@ -36,7 +36,7 @@ const Footer = () => {
         <div className={styles.storeLinks}>
           <Link
             href={
-              "https://play.google.com/store/apps/details?utm_medium=landing&utm_source=peya&utm_campaign=issuing&utm_content=download"
+              "https://play.google.com/store/apps/details?id=com.pedidosya&hl=es&referrer=pycat=retention&utm_medium=landing&utm_source=peya&utm_campaign=issuing&utm_content=download"
             }
           >
             <img src="/images/footerAndroid.svg" alt="Descargar App Android" />

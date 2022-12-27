@@ -3,7 +3,7 @@ import { Pagination, Autoplay } from "swiper";
 import "swiper/css";
 import "swiper/css/pagination";
 
-const SliderComponent = ({ children }) => {
+const SliderComponent = ({ children, id }) => {
   return (
     <Swiper
       slidesPerView={1}
@@ -16,6 +16,7 @@ const SliderComponent = ({ children }) => {
         delay: 4000,
         disableOnInteraction: false,
       }}
+      id={id}
     >
       {children}
     </Swiper>

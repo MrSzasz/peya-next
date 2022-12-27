@@ -35,7 +35,7 @@ const Steps = () => {
         <div className={styles.stepsDownloadsIcons}>
           <Link
             href={
-              "https://play.google.com/store/apps/details?utm_medium=landing&utm_source=peya&utm_campaign=issuing&utm_content=download"
+              "https://play.google.com/store/apps/details?id=com.pedidosya&hl=es&referrer=pycat=retention&utm_medium=landing&utm_source=peya&utm_campaign=issuing&utm_content=download"
             }
           >
             <img src="/images/stepsAndroid.svg" alt="Link Google Play" />

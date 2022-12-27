@@ -50,7 +50,11 @@ const Navbar = () => {
             <a href="#pricesSection">Costos</a>
           </li>
         </ul>
-        <MainButton href={"https://www.pedidosya.com/fintech/cards/redirector?utm_medium=landing&utm_source=peya&utm_campaign=issuing&utm_content=head"} />
+        <MainButton
+          href={
+            "https://app.adjust.com/jsr?url=https%3A%2F%2Fpwdh.adj.st%2Ffintech%2Fcards%2Fredirector%3Fadj_t%3D6t2xp9f_a7g3qbs%26adj_deep_link%3Dpedidosya%253A%252F%252Ffintech%252Fcards%252Fredirector%26adj_campaign%3Dtest%26adj_adgroup%3Dtest%26adj_creative%3Dtest"
+          }
+        />
       </div>
       <button id="hideMenuButton" className={styles.menuNavbar}>
         <AiOutlineMenu color="#ffffff" size={40} />
@@ -70,7 +74,12 @@ const Navbar = () => {
             <a href="#pricesSection">Costos</a>
           </li>
         </ul>
-        <MainButton href={"https://www.pedidosya.com/fintech/cards/redirector?utm_medium=landing&utm_source=peya&utm_campaign=issuing&utm_content=head"} />
+        <MainButton
+          href={
+            "pedidosya://fintech/cards/redirector?utm_medium=landing&utm_source=peya&utm_campaign=issuing&utm_content=head"
+          }
+          color="navbar"
+        />
       </div>
     </nav>
   );

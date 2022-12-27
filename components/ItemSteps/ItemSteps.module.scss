@@ -79,7 +79,7 @@
         text-align: center;
 
         width: 86vw;
-        height: 86vw;
+        height: fit-content;
         justify-content: center;
 
         .mainCardImgContainer {
@@ -97,6 +97,15 @@
             @extend .mainCardImg;
             margin-left: 5%;
             height: 9em;
+        }
+
+        .mainCardBottomText {
+            font-size: 1.15em;
+
+            p {
+                font-size: 1.3em;
+                line-height: 1.1em;
+            }
         }
     }
 }

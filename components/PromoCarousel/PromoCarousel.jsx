@@ -13,7 +13,7 @@ const PromoCarousel = ({ imagesArray }) => {
 
   return (
     <section className={styles.promoCarouselContainer}>
-      <SliderComponent>
+      <SliderComponent id={"promosCarouselId"}>
         {imagesArray.length === 0 ? (
           <SwiperSlide>
             <SkeletonLoader locationClass={"skeletonPromosContainer"} />
@@ -41,12 +41,15 @@ const PromoCarousel = ({ imagesArray }) => {
               </SwiperSlide>
             ))
         )}
+        <div className={styles.moreInfoLinkCarouselContainer}>
+          <a
+            href="http://bit.ly/3YAXlzq"
+            className={styles.moreInfoLinkCarousel}
+          >
+            Más información
+          </a>
+        </div>
       </SliderComponent>
-      <div className={styles.moreInfoLinkCarouselContainer}>
-        <a href="http://bit.ly/3YAXlzq" className={styles.moreInfoLinkCarousel}>
-          Más información
-        </a>
-      </div>
     </section>
   );
 };

@@ -43,3 +43,14 @@
         color: $white;
     }
 }
+
+.navbar {
+    background-color: $white;
+    color: $blue;
+    transition: ease all .25s;
+    font-size: 1.4em;
+
+    &:hover {
+        background-color: $whiteHover;
+    }
+}
