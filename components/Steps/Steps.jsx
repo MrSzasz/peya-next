@@ -8,7 +8,7 @@ const Steps = ({androidLink="#", appleLink="#"}) => {
       <h2>Disfrutala ya</h2>
       <div className={styles.itemStepsContainer}>
         <ItemSteps
-          title={"Registrate"}
+          title={"Regístrate"}
           text={"Completa tus datos"}
           img={"/icons/steps/icon1.svg"}
           imgAlt={"Registro"}
@@ -20,7 +20,7 @@ const Steps = ({androidLink="#", appleLink="#"}) => {
             "Activamos tu tarjeta virtual en el acto mientras enviamos la física en 72hs máximo"
           }
           img={"/icons/steps/icon2.svg"}
-          imgAlt={"Envio"}
+          imgAlt={"Envío"}
           second={true}
         />
         <ItemSteps
