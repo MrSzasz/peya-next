@@ -8,20 +8,12 @@ import PromoCarousel from "../components/PromoCarousel/PromoCarousel";
 import Steps from "../components/Steps/Steps";
 import Prices from "../components/Prices/Prices";
 import Hero from "../components/Hero/Hero";
-import {
-  collection,
-  getDocs,
-  getFirestore,
-  doc,
-  getDoc,
-} from "firebase/firestore"; // Importamos lo necesario
+import { collection, getDocs, getFirestore } from "firebase/firestore"; // Importamos lo necesario
 import { useEffect, useState } from "react";
 
 const Home = () => {
   const [heroDataFromDB, setHeroDataFromDB] = useState([]);
   const [promoDataFromDB, setPromoDataFromDB] = useState([]);
-  const [linksFromFirebase, setLinksFromFirebase] = useState({});
-  const [loading, setLoading] = useState(true);
 
   const getProductsFromFirebase = async (location) => {
     const db = getFirestore();
@@ -41,21 +33,6 @@ const Home = () => {
         )
       );
     }
-
-    setTimeout(() => {
-      setLoading(false);
-    }, 2000);
-  };
-  const getLinksFromFirebase = async () => {
-    const db = getFirestore();
-
-    const dbQuery = doc(db, "hero", "links");
-
-    getDoc(dbQuery)
-      .then((res) => {
-        setLinksFromFirebase({ ...res.data(), id: res.id });
-      })
-      .catch((err) => console.log(err));
   };
 
   useEffect(() => {
@@ -64,26 +41,18 @@ const Home = () => {
       : localStorage.setItem("userData", "null");
     getProductsFromFirebase("hero");
     getProductsFromFirebase("promos");
-    getLinksFromFirebase();
   }, []);
 
   return (
-    <Layout
-      pedirYa={linksFromFirebase.pedirYa}
-      androidLink={linksFromFirebase.android}
-      appleLink={linksFromFirebase.apple}
-    >
+    <Layout>
       <main className={styles.mainContainer}>
-        <Hero loading={loading} imagesArray={heroDataFromDB} />
+        <Hero imagesArray={heroDataFromDB} />
         <Cashback />
-        <Benefits pedirYa={linksFromFirebase.pedirYa} />
-        <Membership pedirYa={linksFromFirebase.pedirYa} />
+        <Benefits />
+        <Membership />
         <SecureCard />
-        <PromoCarousel loading={loading} imagesArray={promoDataFromDB} />
-        <Steps
-          androidLink={linksFromFirebase.android}
-          appleLink={linksFromFirebase.apple}
-        />
+        <PromoCarousel imagesArray={promoDataFromDB} />
+        <Steps />
         <Prices />
       </main>
     </Layout>

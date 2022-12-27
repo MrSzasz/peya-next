@@ -4,7 +4,7 @@ import SkeletonLoader from "../SkeletonLoader/SkeletonLoader";
 import SliderComponent from "../SliderComponent/SliderComponent";
 import styles from "./PromoCarousel.module.scss";
 
-const PromoCarousel = ({ loading, imagesArray }) => {
+const PromoCarousel = ({ imagesArray }) => {
   const [windowWidth, setWindowWidth] = useState(1000);
 
   useEffect(() => {
@@ -42,17 +42,13 @@ const PromoCarousel = ({ loading, imagesArray }) => {
             ))
         )}
       </SliderComponent>
+      <div className={styles.moreInfoLinkCarouselContainer}>
+        <a href="http://bit.ly/3YAXlzq" className={styles.moreInfoLinkCarousel}>
+          Más información
+        </a>
+      </div>
     </section>
   );
 };
 
 export default PromoCarousel;
-
-/*
-
-  {
-    imgAlt: "alt",
-    url: "http..."
-  } 
-
-*/

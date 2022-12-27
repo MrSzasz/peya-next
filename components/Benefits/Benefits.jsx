@@ -3,7 +3,7 @@ import MainButton from "../MainButton/MainButton";
 import styles from "./Benefits.module.scss";
 import { motion } from "framer-motion";
 
-const Benefits = ({pedirYa="#"}) => {
+const Benefits = () => {
   return (
     <section id="benefitsSection" className={styles.benefitsContainer}>
       <motion.div
@@ -47,7 +47,7 @@ const Benefits = ({pedirYa="#"}) => {
             alt={"Icono descuentos"}
           />
         </div>
-        <MainButton href={pedirYa} color="buttonBlue" />
+        <MainButton href={"https://www.pedidosya.com/fintech/cards/redirector?utm_medium=landing&utm_source=peya&utm_campaign=issuing&utm_content=BenefitsSection"} color="buttonBlue" />
       </motion.div>
       <motion.div
         key={2}

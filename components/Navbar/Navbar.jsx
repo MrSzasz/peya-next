@@ -4,7 +4,7 @@ import { AiOutlineMenu } from "react-icons/ai";
 import MainButton from "../MainButton/MainButton";
 import styles from "./Navbar.module.scss";
 
-const Navbar = ({ pedirYa="#" }) => {
+const Navbar = () => {
   const [windowWidth, setWindowWidth] = useState(null);
 
   useEffect(() => {
@@ -50,7 +50,7 @@ const Navbar = ({ pedirYa="#" }) => {
             <a href="#pricesSection">Costos</a>
           </li>
         </ul>
-        <MainButton href={pedirYa} />
+        <MainButton href={"https://www.pedidosya.com/fintech/cards/redirector?utm_medium=landing&utm_source=peya&utm_campaign=issuing&utm_content=head"} />
       </div>
       <button id="hideMenuButton" className={styles.menuNavbar}>
         <AiOutlineMenu color="#ffffff" size={40} />
@@ -70,7 +70,7 @@ const Navbar = ({ pedirYa="#" }) => {
             <a href="#pricesSection">Costos</a>
           </li>
         </ul>
-        <MainButton href={pedirYa} />
+        <MainButton href={"https://www.pedidosya.com/fintech/cards/redirector?utm_medium=landing&utm_source=peya&utm_campaign=issuing&utm_content=head"} />
       </div>
     </nav>
   );

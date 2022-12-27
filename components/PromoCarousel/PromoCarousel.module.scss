@@ -10,6 +10,17 @@
         overflow: hidden;
         width: 100%;
     }
+
+    .moreInfoLinkCarouselContainer {
+        width: 100%;
+        height: fit-content;
+        padding-top: 1em;
+        padding-left: 5em;
+
+        .moreInfoLinkCarousel {
+            text-decoration: underline;
+        }
+    }
 }
 
 @media (max-width: 500px) {

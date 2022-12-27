@@ -2,7 +2,7 @@ import MainButton from "../MainButton/MainButton";
 import styles from "./Membership.module.scss";
 import { motion } from "framer-motion";
 
-const Membership = ({pedirYa="#"}) => {
+const Membership = () => {
   return (
     <>
       <div className={styles.membershipContainerWrapper}>
@@ -11,7 +11,11 @@ const Membership = ({pedirYa="#"}) => {
             <p>
               Membresía <span>¡GRATIS!</span> por un año
             </p>
-            <MainButton href={pedirYa} />
+            <MainButton
+              href={
+                "https://www.pedidosya.com/fintech/cards/redirector?utm_medium=landing&utm_source=peya&utm_campaign=issuing&utm_content=Free"
+              }
+            />
           </div>
           <motion.img
             className={styles.membershipCardImg}

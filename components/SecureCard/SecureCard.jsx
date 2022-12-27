@@ -65,6 +65,9 @@ const SecureCard = () => {
                 img={"/icons/secureCard/icon4.svg"}
                 alt={"Icono precios bajos"}
               />
+              <a href="https://www.visa.com.pa/content/VISA/lac/spanishlanguagemaster/es_UY/home/pague-con-visa/tarjetas/beneficios/proteccion-de-precio.html" className={styles.moreInfoLink}>
+                Más información
+              </a>
             </div>
           </motion.div>
         </>

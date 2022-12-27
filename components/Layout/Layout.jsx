@@ -11,9 +11,6 @@ const Layout = ({
   children,
   title = "PedidosYa Pagos - Pide Ya tu Visa Crédito | PedidosYa",
   desc = "Accede a Cashback todos los días, dentro y fuera de la app",
-  pedirYa,
-  androidLink = "#",
-  appleLink = "#",
 }) => {
   return (
     <>
@@ -22,10 +19,10 @@ const Layout = ({
         <meta name="description" content={desc} />
         <link rel="icon" href="/icon.ico" />
       </Head>
-      <Header pedirYa={pedirYa} />
+      <Header />
       {children}
       <DynamicGoToTop />
-      <Footer androidLink={androidLink} appleLink={appleLink} />
+      <Footer />
     </>
   );
 };
