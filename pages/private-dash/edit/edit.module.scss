@@ -87,6 +87,11 @@
                     align-items: center;
                     padding-block: 1em;
                     gap: .5em;
+
+                    a {
+                        color: $blue;
+                        text-decoration: underline;
+                    }
                 }
 
                 button {

@@ -489,11 +489,11 @@ const index = () => {
                   </div>
                 </div>
               </div>
-              <Link
+              {/* <Link
                 className={styles.goToEdit}
                 href={"private-dash/edit/hero.html"}
-              >
-                {/* <Link className={styles.goToEdit} href={"private-dash/edit/hero"}> */}
+              > */}
+                <Link className={styles.goToEdit} href={"private-dash/edit/hero"}>
                 Editar imágenes guardadas
                 <AiOutlineRight />
               </Link>

@@ -63,8 +63,8 @@ const hero = () => {
         </div>
       ) : (
         <div className={styles.editContainer}>
-          <Link href="/private-dash.html" className={styles.goToMain}>
-          {/* <Link href="/private-dash" className={styles.goToMain}> */}
+          {/* <Link href="/private-dash.html" className={styles.goToMain}> */}
+          <Link href="/private-dash" className={styles.goToMain}>
             <AiOutlineLeft />
             Volver a la página principal
           </Link>
@@ -81,13 +81,13 @@ const hero = () => {
               ) : arrayFromFB.length === 0 ? (
                 <h2>No hay datos para mostrar</h2>
               ) : (
-                arrayFromFB.filter(item=> item.id !== "links").map((data) => (
+                arrayFromFB.map((data) => (
                   <div key={data.id} className={styles.heroCard}>
                     <img src={data.url} />
                     <div className={styles.bottomContentHeroCard}>
                       <h3>Titulo: {data.title}</h3>
                       <h3>Subtitulo: {data.subtitle}</h3>
-                      <h3>Link del botón: {data.buttonLink}</h3>
+                      <h3>Link del botón: <a target="_blank" href={data.buttonLink}>{data.buttonLink}</a></h3>
                     </div>
                     <button
                       data-loading="false"
