@@ -366,8 +366,22 @@ const index = () => {
                       <label htmlFor="heroAlt">*ALT: </label>
                       <input type="text" name="heroAlt" id="heroAlt" required />
                     </div>
+                    <p className={styles.bestFormat}>
+                      <h3>IMPORTANTE</h3>
+                      La opción de formato recomendado para
+                      <span> IMÁGENES GRANDES (IMAGEN PRINCIPAL) </span>es
+                      <span> WEBP</span>, ya que mantiene una mejor calidad pero
+                      sin tanto peso como un SVG, el cual beneficia al usuario
+                      final aligerando la carga de la misma. De no ser posible,
+                      el 2do formato recomendado es<span> PNG </span>. <br />
+                      En el caso de un<span> ÍCONO (IMAGEN EXTRA) </span>la
+                      opción de formato recomendado es<span> SVG</span>. <br />
+                      <br />
+                      Las imágenes<span> NO </span>deben tener espacios a su
+                      alrededor, para evitar conflictos con las posiciones.
+                    </p>
                     <div className={styles.inputGroupWithLabel}>
-                      <label htmlFor="heroImg">*IMÁGEN PRINCIPAL: </label>
+                      <label htmlFor="heroImg">*IMAGEN PRINCIPAL: </label>
                       <input
                         type="file"
                         name="heroImg"
@@ -382,13 +396,8 @@ const index = () => {
                         }}
                       />
                     </div>
-                    <p>
-                      Lo mejor siempre es que el formato de la imagen sea JPG y
-                      este comprimida, eso beneficia al usuario final con la
-                      carga de datos
-                    </p>
                     <div className={styles.inputGroupWithLabel}>
-                      <label htmlFor="heroImgTop">IMÁGEN SUPERIOR: </label>
+                      <label htmlFor="heroImgTop">IMAGEN EXTRA: </label>
                       <input
                         type="file"
                         name="heroImgTop"
@@ -434,7 +443,7 @@ const index = () => {
                       </div>
                     ) : (
                       <div className={styles.inputGroupWithLabel}>
-                        <label htmlFor="heroDesktopImage">*IMÁGEN: </label>
+                        <label htmlFor="heroDesktopImage">*IMAGEN: </label>
                         <select
                           name="heroDesktopImage"
                           id="heroDesktopImage"
@@ -480,8 +489,11 @@ const index = () => {
                   </div>
                 </div>
               </div>
-              <Link className={styles.goToEdit} href={"private-dash/edit/hero.html"}>
-              {/* <Link className={styles.goToEdit} href={"private-dash/edit/hero"}> */}
+              <Link
+                className={styles.goToEdit}
+                href={"private-dash/edit/hero.html"}
+              >
+                {/* <Link className={styles.goToEdit} href={"private-dash/edit/hero"}> */}
                 Editar imágenes guardadas
                 <AiOutlineRight />
               </Link>
@@ -520,7 +532,7 @@ const index = () => {
                 >
                   <div className={styles.inputGroup}>
                     <div className={styles.inputGroupWithLabel}>
-                      <label htmlFor="promosAlt">ALT: </label>
+                      <label htmlFor="promosAlt">*ALT: </label>
                       <input
                         type="text"
                         name="promosAlt"
@@ -561,6 +573,7 @@ const index = () => {
                     />
                   </div>
                   <button type="submit">Agregar</button>
+                  <small>* requerido</small>
                 </form>
                 <div className={styles.heroImageList}>
                   {arrayWithPromosData.length !== 0 ? (

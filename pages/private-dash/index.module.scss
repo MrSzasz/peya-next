@@ -133,6 +133,23 @@
                     padding: .5em 1em;
                     border-radius: 1.5em;
                 }
+
+                .bestFormat {
+                    width: 75%;
+                    margin-inline: auto;
+                    border-radius: 1.5em;
+                    background-color: $yellow;
+                    color: #000000;
+                    padding: 1.5em;
+                    margin-block: .5em;
+
+                    h3 {
+                        font-size: 2em;
+                        color: $red;
+                        font-family: textaHeavy;
+                        padding-bottom: .5em;
+                    }
+                }
             }
 
             .heroImageList {
@@ -169,7 +186,7 @@
                             height: auto;
                         }
 
-                        
+
                     }
                 }
             }
@@ -205,6 +222,7 @@
             text-align: center;
         }
     }
+
     .heroCardDeleteButton {
         display: flex;
         justify-content: center;
@@ -252,6 +270,7 @@
             }
         }
     }
+
     .heroCardDeleteButton {
         display: flex;
         justify-content: center;
