@@ -3,19 +3,20 @@ import { AiOutlineDelete, AiOutlineLeft, AiOutlineRight } from "react-icons/ai";
 import { uploadFileToFirebase } from "../../firebase/config";
 import { useState, useEffect } from "react";
 import { addDoc, collection, getDocs, getFirestore } from "firebase/firestore";
-import Loading from "../../components/Loading/Loading";
 import $ from "jquery";
-import { Swiper, SwiperSlide } from "swiper/react";
-import { Pagination, Autoplay } from "swiper";
 import "swiper/css";
 import Link from "next/link";
 import { useAppContext } from "../../context/AppContext";
 import { useRouter } from "next/router";
+import toast, { Toaster } from "react-hot-toast";
+
+const notifySuccess = () => toast.success("Datos subidos correctamente");
+const notifyLoading = () => toast.loading("Subiendo datos...");
+const notifyError = () => toast.error("Hubo un error al subir los datos");
 
 const index = () => {
   const [arrayWithHeroData, setArrayWithHeroData] = useState([]);
   const [arrayWithPromosData, setArrayWithPromosData] = useState([]);
-  const [loading, setLoading] = useState(true);
   const [userLoading, setUserLoading] = useState(true);
   const [selectedDevice, setSelectedDevice] = useState(null);
   const [lastOrderNumberHero, setLastOrderNumberHero] = useState();
@@ -68,7 +69,6 @@ const index = () => {
         setLastOrderNumberPromos(lastPromos.sort);
       });
     }
-    setLoading(false);
   };
 
   const handleDelete = (url, location) => {
@@ -99,7 +99,6 @@ const index = () => {
     heroTitle,
     heroSubtitle,
     heroButtonLink,
-    heroPosition,
     imageFileTop,
     mobileButtonPosition,
     desktopImagePosition
@@ -120,7 +119,6 @@ const index = () => {
                 title: heroTitle,
                 subtitle: heroSubtitle,
                 buttonLink: heroButtonLink,
-                heroPosition: heroPosition,
                 mobileButtonPosition: mobileButtonPosition,
                 desktopImagePosition: desktopImagePosition,
               },
@@ -138,7 +136,6 @@ const index = () => {
                 title: heroTitle,
                 subtitle: heroSubtitle,
                 buttonLink: heroButtonLink,
-                heroPosition: heroPosition,
                 mobileButtonPosition: mobileButtonPosition,
                 desktopImagePosition: desktopImagePosition,
               },
@@ -164,6 +161,7 @@ const index = () => {
   };
 
   const saveDataToFirebase = async (firebaseCollectionName) => {
+    notifyLoading();
     try {
       if (firebaseCollectionName === "hero") {
         for (const dataToUpload of arrayWithHeroData.filter(
@@ -183,14 +181,13 @@ const index = () => {
 
             await addDoc(collection(db, firebaseCollectionName), {
               url: generatedFirebaseUrl,
-              order: dataToUpload.order,
+              sort: dataToUpload.order,
               topUrl: generatedTopFirebaseUrl,
               imgAlt: dataToUpload.imgAlt,
               title: dataToUpload.title,
               device: dataToUpload.device,
               subtitle: dataToUpload.subtitle,
               buttonLink: dataToUpload.buttonLink,
-              heroPosition: dataToUpload.heroPosition,
               mobileButtonPosition: dataToUpload.mobileButtonPosition || null,
               desktopImagePosition: dataToUpload.desktopImagePosition || null,
             }).then(console.log("done"));
@@ -204,14 +201,13 @@ const index = () => {
 
             await addDoc(collection(db, firebaseCollectionName), {
               url: generatedFirebaseUrl,
-              order: dataToUpload.order,
+              sort: dataToUpload.order,
               imgAlt: dataToUpload.imgAlt,
               topUrl: null,
               title: dataToUpload.title,
               device: dataToUpload.device,
               subtitle: dataToUpload.subtitle,
               buttonLink: dataToUpload.buttonLink,
-              heroPosition: dataToUpload.heroPosition,
               mobileButtonPosition: dataToUpload.mobileButtonPosition || null,
               desktopImagePosition: dataToUpload.desktopImagePosition || null,
             }).then(console.log("done"));
@@ -230,23 +226,26 @@ const index = () => {
 
           await addDoc(collection(db, firebaseCollectionName), {
             url: generatedFirebaseUrl,
-            order: dataToUpload.order,
+            sort: dataToUpload.order,
             imgAlt: dataToUpload.imgAlt,
             device: dataToUpload.device,
           }).then(console.log("done"));
         }
       } else {
+        notifyError();
         return new Error(
           "Surgió un error al subir el archivo a la base de datos"
         );
       }
     } catch (err) {
+      notifyError();
       console.error(err);
+    } finally {
+      notifySuccess();
+      $("#heroImg").val("");
+      $("#heroImgTop").val("");
+      $("#promosImg").val("");
     }
-    alert("Completo");
-    $("#heroImg").val("");
-    $("#heroImgTop").val("");
-    $("#promosImg").val("");
   };
 
   useEffect(() => {
@@ -274,6 +273,7 @@ const index = () => {
 
   return (
     <>
+      <Toaster />
       {userLoading ? (
         <div className={styles.userLoading}>
           <h2>Cargando usuario...</h2>
@@ -291,19 +291,77 @@ const index = () => {
             <section className={styles.dashHeroSectionContainer}>
               <div className={styles.dashSectionTop}>
                 <h2>Agregar al Hero</h2>
-                <p>
-                  Para generar un hero se deberá seleccionar la imagen
-                  principal, agregar el titulo, subtitulo, link y la posición en
-                  el slider, deberá seleccionar si el mismo sera mobile o
-                  desktop junto a la posición de la imagen principal (desktop) y
-                  del botón (mobile), podrá cancelar la subida de cada uno
-                  eliminándola de la lista de imágenes,
-                  <span> SOLAMENTE CUANDO ESTÉ SEGURO </span>
-                  puede dar click en subir para aplicar los cambios.
+                <p className={styles.instructions}>
+                  <h3>INSTRUCCIONES</h3>
+                  Para generar el hero se deberán completar los campos
+                  obligatorios<span>(*)</span> a continuación. Cada uno cumple
+                  una función asignada de la siguiente manera:
                   <br />
-                  También puede eliminar las páginas que se encuentren en la
-                  base de datos haciendo click en el botón
-                  <span> EDITAR PÁGINAS GUARDADAS</span>
+                  <br />
+                  <span>DISPOSITIVO: </span> es el dispositivo en el que se
+                  deberá agregar el Hero en cuestión. Se debe generar un slider
+                  por posición (ejemplo, si se generará un slider con una promo
+                  del 50% se debe generar uno para desktop y uno para mobile)
+                  <br />
+                  <span>TÍTULO PRINCIPAL: </span> es el título que tendrá el
+                  Hero con sus respectivos estilos.
+                  <br />
+                  <span>SUBTÍTULO: </span> es el subtítulo que estará por debajo
+                  del título principal.
+                  <br />
+                  <span>POSICIÓN EN FILA (SOLO NÚMERO): </span> es el orden que
+                  tendrá (tiene que ser mayor al numero marcado como ultima
+                  posición).
+                  <br />
+                  <span>LINK: </span> es el link al que se redirigirá cuando se
+                  haga click en el botón.
+                  <br />
+                  <span>ALT: </span> es el texto alternativo (no videntes) que
+                  tendrá la imagen en el Hero.
+                  <br />
+                  <span>IMAGEN PRINCIPAL: </span> es la imagen principal
+                  (grande) del Hero.
+                  <br /> <br />
+                  <span className={styles.format}>
+                    NOTA, EL FORMATO RECOMENDADO DE LA IMAGEN PRINCIPAL ES WEBP,
+                    AYUDA CON LA CARGA AL TENER MENOS PESO PERO MEJOR CALIDAD,
+                    EL 2DO FORMATO RECOMENDADO ES PNG
+                  </span>{" "}
+                  <br />
+                  <br />
+                  <span>IMAGEN EXTRA: </span> es la imagen que ira por encima
+                  del título principal.
+                  <br /> <br />
+                  <span className={styles.format}>
+                    NOTA, EL FORMATO RECOMENDADO DE LA IMAGEN EXTRA ES SVG
+                  </span>{" "}
+                  <br />
+                  <br />
+                  <span>
+                    POSICIÓN DE LA IMAGEN PRINCIPAL (solo desktop):{" "}
+                  </span>{" "}
+                  es la posición que tendrá la imagen principal en el Hero.{" "}
+                  <br />
+                  <span>POSICIÓN DEL BOTÓN (solo mobile): </span> es la posición
+                  que tendrá el botón el Hero mobile (debajo de todo o sobre la
+                  imagen principal, es decir, en medio).
+                  <br />
+                  <br />
+                  Con todo esto completado se deberá hacer click en
+                  <span> AGREGAR </span>, el cual agregará el hero a una lista
+                  previa, cuando se tengan todos los slides del Hero que se
+                  desean agregar se deberá hacer click en
+                  <span> GUARDAR IMÁGENES EN BASE DE DATOS </span> para que
+                  estos se suban a la base de datos.
+                  <br />
+                  Si se desea eliminar una imagen antes de subirse a la base de
+                  datos se deberá hacer click en la imagen que se quiere borrar
+                  dentro de la lista de imágenes.
+                  <br />
+                  <br />
+                  Si se desea eliminar algún slider que ya se encuentre en la
+                  base de datos se deberá hacer click en el botón
+                  <span> EDITAR IMÁGENES GUARDADAS </span>
                 </p>
                 <form
                   onSubmit={(e) =>
@@ -317,7 +375,6 @@ const index = () => {
                       $("#heroTitle").val().trim(),
                       $("#heroSubtitle").val().trim(),
                       $("#heroLink").val().trim(),
-                      $("#heroPosition").val().trim(),
                       $("#heroImgTop").prop("files")[0],
                       $("#heroMobile_button option:selected").val(),
                       $("#heroDesktopImage option:selected").val()
@@ -326,7 +383,14 @@ const index = () => {
                 >
                   <div className={styles.inputGroup}>
                     <div className={styles.inputGroupWithLabel}>
-                      <label htmlFor="heroTitle">*TITLE: </label>
+                      <label htmlFor="heroDevice">*DISPOSITIVO: </label>
+                      <select name="heroDevice" id="heroDevice" required>
+                        <option value="desktop">DESKTOP</option>
+                        <option value="mobile">MOBILE</option>
+                      </select>
+                    </div>
+                    <div className={styles.inputGroupWithLabel}>
+                      <label htmlFor="heroTitle">*TÍTULO PRINCIPAL: </label>
                       <input
                         type="text"
                         name="heroTitle"
@@ -335,7 +399,7 @@ const index = () => {
                       />
                     </div>
                     <div className={styles.inputGroupWithLabel}>
-                      <label htmlFor="heroSubtitle">*SUBTITLE: </label>
+                      <label htmlFor="heroSubtitle">*SUBTÍTULO: </label>
                       <input
                         type="text"
                         name="heroSubtitle"
@@ -344,7 +408,7 @@ const index = () => {
                       />
                     </div>
                     <div className={styles.inputGroupWithLabel}>
-                      <label htmlFor="heroOrder">*POSICIÓN: </label>
+                      <label htmlFor="heroOrder">*POSICIÓN EN FILA: </label>
                       <input
                         type="number"
                         name="heroOrder"
@@ -352,7 +416,7 @@ const index = () => {
                         required
                       />
                     </div>
-                    <small>Ultima posición: {lastOrderNumberHero}</small>
+                    {/* <small>Ultima posición: {lastOrderNumberHero}</small> */}
                     <div className={styles.inputGroupWithLabel}>
                       <label htmlFor="heroLink">*LINK: </label>
                       <input
@@ -366,20 +430,6 @@ const index = () => {
                       <label htmlFor="heroAlt">*ALT: </label>
                       <input type="text" name="heroAlt" id="heroAlt" required />
                     </div>
-                    <p className={styles.bestFormat}>
-                      <h3>IMPORTANTE</h3>
-                      La opción de formato recomendado para
-                      <span> IMÁGENES GRANDES (IMAGEN PRINCIPAL) </span>es
-                      <span> WEBP</span>, ya que mantiene una mejor calidad pero
-                      sin tanto peso como un SVG, el cual beneficia al usuario
-                      final aligerando la carga de la misma. De no ser posible,
-                      el 2do formato recomendado es<span> PNG </span>. <br />
-                      En el caso de un<span> ÍCONO (IMAGEN EXTRA) </span>la
-                      opción de formato recomendado es<span> SVG</span>. <br />
-                      <br />
-                      Las imágenes<span> NO </span>deben tener espacios a su
-                      alrededor, para evitar conflictos con las posiciones.
-                    </p>
                     <div className={styles.inputGroupWithLabel}>
                       <label htmlFor="heroImg">*IMAGEN PRINCIPAL: </label>
                       <input
@@ -411,23 +461,6 @@ const index = () => {
                         }}
                       />
                     </div>
-                    <div className={styles.inputGroupWithLabel}>
-                      <label htmlFor="heroPosition">*POSICIÓN: </label>
-                      <input
-                        type="number"
-                        name="heroPosition"
-                        id="heroPosition"
-                        required
-                      />
-                    </div>
-                    <div className={styles.inputGroupWithLabel}>
-                      <label htmlFor="heroDevice">*DISPOSITIVO: </label>
-                      <select name="heroDevice" id="heroDevice" required>
-                        <option value="desktop">DESKTOP</option>
-                        <option value="mobile">MOBILE</option>
-                      </select>
-                    </div>
-
                     {selectedDevice === "mobile" ? (
                       <div className={styles.inputGroupWithLabel}>
                         <label htmlFor="heroMobile_button">*BOTÓN: </label>
@@ -443,7 +476,9 @@ const index = () => {
                       </div>
                     ) : (
                       <div className={styles.inputGroupWithLabel}>
-                        <label htmlFor="heroDesktopImage">*IMAGEN: </label>
+                        <label htmlFor="heroDesktopImage">
+                          *POSICIÓN DE LA IMAGEN PRINCIPAL:{" "}
+                        </label>
                         <select
                           name="heroDesktopImage"
                           id="heroDesktopImage"
@@ -489,35 +524,57 @@ const index = () => {
                   </div>
                 </div>
               </div>
-              {/* <Link
-                className={styles.goToEdit}
-                href={"private-dash/edit/hero.html"}
-              > */}
-                <Link className={styles.goToEdit} href={"private-dash/edit/hero"}>
-                Editar imágenes guardadas
-                <AiOutlineRight />
-              </Link>
               <button
                 className={styles.saveDataInFB}
                 onClick={() => saveDataToFirebase("hero")}
               >
                 Guardar imágenes en base de datos
               </button>
+              <Link className={styles.goToEdit} href={"private-dash/edit/hero"}>
+                Editar imágenes guardadas
+                <AiOutlineRight />
+              </Link>
             </section>
 
             <section className={styles.dashHeroSectionContainer}>
               <div className={styles.dashSectionTop}>
                 <h2>Agregar a las promos</h2>
-                <p>
-                  Para subir imágenes a las promos se deberá seleccionar la
-                  imagen deseada, la vista previa se actualiza cuando agrega una
-                  nueva imagen, podrá cancelar la subida de la imagen
-                  eliminándola de la lista de imágenes,
-                  <span> SOLAMENTE CUANDO ESTÉ SEGURO</span> puede dar click en
-                  subir para aplicar los cambios.
-                  <br /> También puede eliminar las imágenes que se encuentren
-                  en la base de datos haciendo click en el botón
-                  <span> EDITAR IMÁGENES GUARDADAS</span>
+                <p className={styles.instructions}>
+                  <h3>INSTRUCCIONES</h3>
+                  Para generar la promo se deberán completar los campos
+                  obligatorios<span>(*)</span> a continuación. Cada uno cumple
+                  una función asignada de la siguiente manera:
+                  <br />
+                  <br />
+                  <span>¿ES MOBILE?: </span> indica si el slider a agregar será
+                  mobile, si no se selecciona (no se deja el tick ✔), se
+                  agregará como desktop. Se debe generar un slider por posición
+                  (ejemplo, si se generará un slider con una promo del 50% se
+                  debe generar uno para mobile y uno para desktop)
+                  <br />
+                  <span>ALT: </span> es el texto alternativo (no videntes) que
+                  tendrá la imagen en promo.
+                  <br />
+                  <span>POSICIÓN EN FILA (SOLO NÚMERO): </span> es el orden que
+                  tendrá (tiene que ser mayor al numero marcado como ultima
+                  posición).
+                  <br />
+                  <br />
+                  Con todo esto completado se deberá hacer click en
+                  <span> AGREGAR </span>, el cual agregará la promo a una lista
+                  previa, cuando se tengan todos los slides que se desean
+                  agregar se deberá hacer click en
+                  <span> GUARDAR IMÁGENES EN BASE DE DATOS </span> para que
+                  estos se suban a la base de datos.
+                  <br />
+                  Si se desea eliminar una imagen antes de subirse a la base de
+                  datos se deberá hacer click en la imagen que se quiere borrar
+                  dentro de la lista de imágenes.
+                  <br />
+                  <br />
+                  Si se desea eliminar algún slide que ya se encuentre en la
+                  base de datos se deberá hacer click en el botón
+                  <span> EDITAR IMÁGENES GUARDADAS </span>
                 </p>
                 <form
                   onSubmit={(e) =>
@@ -526,11 +583,20 @@ const index = () => {
                       "promos",
                       e.target.elements[1].checked,
                       $("#promosImg").prop("files")[0],
+                      Number($("#promosOrder").val().trim()),
                       $("#promosAlt").val().trim()
                     )
                   }
                 >
                   <div className={styles.inputGroup}>
+                    <div className={styles.inputGroupWithLabel}>
+                      <label htmlFor="promosMobile">¿ES MOBILE? </label>
+                      <input
+                        type="checkbox"
+                        name="promosMobile"
+                        id="promosMobile"
+                      />
+                    </div>
                     <div className={styles.inputGroupWithLabel}>
                       <label htmlFor="promosAlt">*ALT: </label>
                       <input
@@ -541,7 +607,7 @@ const index = () => {
                       />
                     </div>
                     <div className={styles.inputGroupWithLabel}>
-                      <label htmlFor="promosOrder">*POSICIÓN: </label>
+                      <label htmlFor="promosOrder">*POSICIÓN EN FILA: </label>
                       <input
                         type="number"
                         name="promosOrder"
@@ -549,15 +615,16 @@ const index = () => {
                         required
                       />
                     </div>
-                    <small>Ultima posición: {lastOrderNumberPromos}</small>
-                    <div className={styles.inputGroupWithLabel}>
-                      <label htmlFor="promosMobile">¿ES MOBILE? </label>
-                      <input
-                        type="checkbox"
-                        name="promosMobile"
-                        id="promosMobile"
-                      />
-                    </div>
+                    {/* <small>
+                      Posiciones:{" "}
+                      {arrayWithPromosData
+                        .sort(function (a, b) {
+                          return a.sort - b.sort;
+                        })
+                        .map((data) => (
+                          <> {data.sort} </>
+                        ))}
+                    </small> */}
                     <input
                       type="file"
                       name="promosImg"
@@ -600,6 +667,12 @@ const index = () => {
                     ))}
                 </div>
               </div>
+              <button
+                className={styles.saveDataInFB}
+                onClick={() => saveDataToFirebase("promos")}
+              >
+                Guardar imágenes en base de datos
+              </button>
               <Link
                 className={styles.goToEdit}
                 href={"private-dash/edit/promos"}
@@ -607,12 +680,6 @@ const index = () => {
                 Editar imágenes guardadas
                 <AiOutlineRight />
               </Link>
-              <button
-                className={styles.saveDataInFB}
-                onClick={() => saveDataToFirebase("promos")}
-              >
-                Guardar imágenes en base de datos
-              </button>
             </section>
           </div>
         </div>

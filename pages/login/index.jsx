@@ -14,7 +14,6 @@ const index = () => {
     e.preventDefault();
     try {
       await userLogin($("#userMail").val(), $("#userPass").val());
-      // router.push("/private-dash.html");
       router.push("/private-dash");
     } catch (err) {
       console.error(err.message);
@@ -33,7 +32,6 @@ const index = () => {
       ? console.log(getUserFromStorage)
       : localStorage.setItem("userData", "null");
     if (getUserFromStorage !== "null") {
-      // router.push("/private-dash.html");
       router.push("/private-dash");
     }
   }, []);

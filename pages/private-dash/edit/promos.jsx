@@ -1,6 +1,7 @@
 import { useState, useEffect } from "react";
 import {
   deleteDoc,
+  updateDoc,
   doc,
   collection,
   getDocs,
@@ -12,6 +13,11 @@ import { AiOutlineDelete, AiOutlineLeft } from "react-icons/ai";
 import { useRouter } from "next/router";
 import Link from "next/link";
 import { useAppContext } from "../../../context/AppContext";
+import toast, { Toaster } from "react-hot-toast";
+
+const notifySuccess = () => toast.success("Datos subidos correctamente");
+const notifyLoading = () => toast.loading("Subiendo datos...");
+const notifyError = () => toast.error("Hubo un error al subir los datos");
 
 const hero = () => {
   const [arrayFromFB, setArrayFromFB] = useState([]);
@@ -40,6 +46,26 @@ const hero = () => {
     setArrayFromFB(arrayFromFB.filter((item) => item.id !== id));
   };
 
+  const handleUpdate = async (id, alt, sort) => {
+    notifyLoading();
+
+    try {
+      const db = await getFirestore();
+      const dataRef = doc(db, "promos", id);
+
+      await updateDoc(dataRef, {
+        imgAlt: alt,
+        sort,
+      });
+    } catch (err) {
+      notifyError();
+      console.log(err);
+    } finally {
+      notifySuccess();
+      alert("Editado correctamente");
+    }
+  };
+
   useEffect(() => {
     const getUserFromStorage = localStorage.getItem("userData");
     getUserFromStorage
@@ -63,18 +89,26 @@ const hero = () => {
         </div>
       ) : (
         <div className={styles.editContainer}>
-          {/* <Link href="/private-dash.html" className={styles.goToMain}> */}
           <Link href="/private-dash" className={styles.goToMain}>
             <AiOutlineLeft />
             Volver a la página principal
           </Link>
           <div className={styles.editContainer}>
             <h1>EDITAR CONTENIDO DE LAS PROMOS EN BASE DE DATOS</h1>
-            <p>
-              En esta sección se podrán eliminar los datos de las promos
-              guardadas en la base de datos, haciendo click en el botón
-              <span>ELIMINAR</span> que se encuentra debajo de cada uno de las
-              páginas
+            <p className={styles.instructions}>
+              <h3>INSTRUCCIONES</h3>
+              Para editar los datos se deben cambiar en sus respectivos campos,
+              luego hacer click en<span> EDITAR </span>
+              <br />
+              <br />
+              <span>
+                TODOS LOS SLIDES IGUALES DEBEN TENER LA MISMA POSICIÓN PARA
+                EVITAR CONFLICTOS
+              </span>
+              <br />
+              <br />
+              Si se desea eliminar un slide se debe hacer click en el botón
+              <span> ELIMINAR </span>
             </p>
             <div className={styles.dataCardContainer}>
               {loading ? (
@@ -82,18 +116,57 @@ const hero = () => {
               ) : arrayFromFB.length === 0 ? (
                 <h2>No hay datos para mostrar</h2>
               ) : (
-                arrayFromFB.map((data) => (
-                  <div key={data.id} className={styles.heroCard}>
-                    <img src={data.url} />
-                    <button
-                      data-loading="false"
-                      onClick={(e) => handleDelete(e, data.id)}
-                    >
-                      <AiOutlineDelete />
-                      ELIMINAR
-                    </button>
-                  </div>
-                ))
+                arrayFromFB
+                  .sort(function (a, b) {
+                    return a.sort - b.sort;
+                  })
+                  .map((data) => (
+                    <div key={data.id} className={styles.heroCard}>
+                      <img src={data.url} />
+                      <div className={styles.inputGroup}>
+                        <p>{data.device ? "mobile" : "desktop"}</p>
+                        <div className={styles.inputGroupWithLabel}>
+                          <label htmlFor={`promosAlt${data.id}`}>ALT: </label>
+                          <input
+                            type="text"
+                            name={`promosAlt${data.id}`}
+                            id={`promosAlt${data.id}`}
+                            defaultValue={data.imgAlt}
+                          />
+                        </div>
+                        <div className={styles.inputGroupWithLabel}>
+                          <label htmlFor={`promosOrder${data.id}`}>
+                            POSICIÓN EN FILA:{" "}
+                          </label>
+                          <input
+                            type="number"
+                            name={`promosOrder${data.id}`}
+                            id={`promosOrder${data.id}`}
+                            defaultValue={data.sort}
+                          />
+                        </div>
+                      </div>
+                      <button
+                        className={styles.editButton}
+                        onClick={() =>
+                          handleUpdate(
+                            data.id,
+                            $(`#promosAlt${data.id}`).val().trim(),
+                            Number($(`#promosOrder${data.id}`).val().trim())
+                          )
+                        }
+                      >
+                        EDITAR
+                      </button>
+                      <button
+                        data-loading="false"
+                        onClick={(e) => handleDelete(e, data.id)}
+                      >
+                        <AiOutlineDelete />
+                        ELIMINAR
+                      </button>
+                    </div>
+                  ))
               )}
             </div>
           </div>

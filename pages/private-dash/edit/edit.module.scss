@@ -21,6 +21,41 @@
     background-color: $dark;
     color: $white;
 
+    input,
+    select {
+        color: black;
+        text-align: center;
+        padding: .5em;
+    }
+
+    .instructions {
+        width: 75%;
+        margin-inline: auto;
+        border-radius: 1.5em;
+        background-color: $yellow;
+        color: #000000;
+        padding: 1.5em;
+        margin-block: .5em;
+
+        h3 {
+            font-size: 2em;
+            color: $red;
+            font-family: textaHeavy;
+            padding-bottom: .5em;
+        }
+
+        .format {
+            color: $blue;
+            text-decoration: underline double;
+        }
+
+        span {
+            font-size: 1.1em;
+            font-family: textaHeavy;
+            color: $red;
+        }
+    }
+
     .goToMain {
         justify-self: flex-start;
         width: 100%;
@@ -112,6 +147,14 @@
                         background-color: rgb(175, 0, 0);
                         gap: .65em;
                         border: 2px solid $white;
+                    }
+                }
+
+                .editButton {
+                    background-color: rgb(0, 128, 0);
+
+                    &:hover {
+                        background-color: rgb(0, 178, 0);
                     }
                 }
 

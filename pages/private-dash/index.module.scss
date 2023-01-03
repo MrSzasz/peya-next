@@ -75,6 +75,28 @@
             align-items: center;
             gap: 1em;
 
+            .instructions {
+                width: 75%;
+                margin-inline: auto;
+                border-radius: 1.5em;
+                background-color: $yellow;
+                color: #000000;
+                padding: 1.5em;
+                margin-block: .5em;
+
+                h3 {
+                    font-size: 2em;
+                    color: $red;
+                    font-family: textaHeavy;
+                    padding-bottom: .5em;
+                }
+
+                .format{
+                    color: $blue;
+                    text-decoration: underline double;
+                }
+            }
+
             form {
                 width: fit-content;
                 height: fit-content;
@@ -134,22 +156,6 @@
                     border-radius: 1.5em;
                 }
 
-                .bestFormat {
-                    width: 75%;
-                    margin-inline: auto;
-                    border-radius: 1.5em;
-                    background-color: $yellow;
-                    color: #000000;
-                    padding: 1.5em;
-                    margin-block: .5em;
-
-                    h3 {
-                        font-size: 2em;
-                        color: $red;
-                        font-family: textaHeavy;
-                        padding-bottom: .5em;
-                    }
-                }
             }
 
             .heroImageList {
