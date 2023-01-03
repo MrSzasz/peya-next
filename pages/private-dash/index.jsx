@@ -9,6 +9,7 @@ import Link from "next/link";
 import { useAppContext } from "../../context/AppContext";
 import { useRouter } from "next/router";
 import toast, { Toaster } from "react-hot-toast";
+import { FiExternalLink } from "react-icons/fi";
 
 const notifySuccess = () => toast.success("Datos subidos correctamente");
 const notifyLoading = () => toast.loading("Subiendo datos...");
@@ -342,9 +343,45 @@ const index = () => {
                   </span>{" "}
                   es la posición que tendrá la imagen principal en el Hero.{" "}
                   <br />
+                  <div className={styles.imgExample}>
+                    <Link
+                      href={"https://imgur.com/uGzotXE.png"}
+                      target="_blank"
+                    >
+                      Ejemplo Hero desktop con imagen en centro
+                      <FiExternalLink />
+                    </Link>
+                  </div>
+                  <div className={styles.imgExample}>
+                    <Link
+                      href={"https://imgur.com/raTO9D3.png"}
+                      target="_blank"
+                    >
+                      Ejemplo Hero desktop con imagen abajo
+                      <FiExternalLink />
+                    </Link>
+                  </div>
                   <span>POSICIÓN DEL BOTÓN (solo mobile): </span> es la posición
                   que tendrá el botón el Hero mobile (debajo de todo o sobre la
                   imagen principal, es decir, en medio).
+                  <div className={styles.imgExample}>
+                    <Link
+                      href={"https://imgur.com/ip3afH1.png"}
+                      target="_blank"
+                    >
+                      Ejemplo Hero mobile con botón arriba
+                      <FiExternalLink />
+                    </Link>
+                  </div>
+                  <div className={styles.imgExample}>
+                    <Link
+                      href={"https://imgur.com/tPu950Q.png"}
+                      target="_blank"
+                    >
+                      Ejemplo Hero mobile con botón abajo
+                      <FiExternalLink />
+                    </Link>
+                  </div>
                   <br />
                   <br />
                   Con todo esto completado se deberá hacer click en
@@ -424,7 +461,7 @@ const index = () => {
                         })
                         .filter((item) => item.device === "mobile")
                         .map((data) => (
-                          <> &#91; {data.sort} &#93;  </>
+                          <> &#91; {data.sort} &#93; </>
                         ))}
                     </small>
                     <div className={styles.inputGroupWithLabel}>
@@ -633,7 +670,7 @@ const index = () => {
                         })
                         .filter((item) => item.device !== true)
                         .map((data) => (
-                          <> &#91; {data.sort} &#93;  </>
+                          <> &#91; {data.sort} &#93; </>
                         ))}
                     </small>
                     <input

@@ -91,9 +91,19 @@
                     padding-bottom: .5em;
                 }
 
-                .format{
+                .format {
                     color: $blue;
                     text-decoration: underline double;
+                }
+
+                .imgExample {
+                    a {
+                        display: flex;
+                        justify-content: center;
+                        align-items: center;
+                        color: $blue;
+                        gap: .5em;
+                    }
                 }
             }
 
