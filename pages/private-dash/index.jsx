@@ -416,7 +416,17 @@ const index = () => {
                         required
                       />
                     </div>
-                    {/* <small>Ultima posición: {lastOrderNumberHero}</small> */}
+                    <small>
+                      Posiciones en uso:
+                      {arrayWithHeroData
+                        .sort(function (a, b) {
+                          return a.sort - b.sort;
+                        })
+                        .filter((item) => item.device === "mobile")
+                        .map((data) => (
+                          <> &#91; {data.sort} &#93;  </>
+                        ))}
+                    </small>
                     <div className={styles.inputGroupWithLabel}>
                       <label htmlFor="heroLink">*LINK: </label>
                       <input
@@ -615,16 +625,17 @@ const index = () => {
                         required
                       />
                     </div>
-                    {/* <small>
-                      Posiciones:{" "}
+                    <small>
+                      Posiciones en uso:
                       {arrayWithPromosData
                         .sort(function (a, b) {
                           return a.sort - b.sort;
                         })
+                        .filter((item) => item.device !== true)
                         .map((data) => (
-                          <> {data.sort} </>
+                          <> &#91; {data.sort} &#93;  </>
                         ))}
-                    </small> */}
+                    </small>
                     <input
                       type="file"
                       name="promosImg"
