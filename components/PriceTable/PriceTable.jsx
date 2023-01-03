@@ -24,7 +24,7 @@ const PriceTable = () => {
             <br />
           </span>
           <p className={styles.underlineFirstRow}>
-            A partir del año 2, US$50.00 con posibilidad de bonificación
+            A partir del año 2, US$50.00 con posibilidad de exoneración
           </p>
         </div>
       </div>

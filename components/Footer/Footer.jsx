@@ -27,9 +27,9 @@ const Footer = () => {
               Privacidad
             </a>
           </li>
-          <li>
+          {/* <li>
             <a href="pedidosya://onlinehelp">Preguntas frecuentes</a>
-          </li>
+          </li> */}
         </ul>
       </div>
       <div className={styles.rightFooterContainer}>

@@ -52,7 +52,7 @@ const Cashback = () => {
             img={"/icons/cashback/peya2.svg"}
             altImg={"PedidosYa Logo"}
             textTop={"en la app de"}
-            textBottom={"En Restaurantes, Mercados, Farmacias, y mucho más!"}
+            textBottom={"En Restaurantes, Mercados, Farmacias y mucho más!"}
             position={"secondCashbackCard"}
           />
         </motion.div>
