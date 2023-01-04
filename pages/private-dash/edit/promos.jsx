@@ -83,6 +83,7 @@ const hero = () => {
 
   return (
     <>
+      <Toaster />
       {userLoading ? (
         <div className={styles.userLoading}>
           <h2>Cargando usuario...</h2>

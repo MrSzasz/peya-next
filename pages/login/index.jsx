@@ -22,16 +22,12 @@ const index = () => {
   };
 
   useEffect(() => {
-    localStorage.getItem("userData")
-      ? console.log(localStorage.getItem("userData"))
-      : localStorage.setItem("userData", "null");
-  }, []);
-  useEffect(() => {
-    const getUserFromStorage = localStorage.getItem("userData");
-    getUserFromStorage
-      ? console.log(getUserFromStorage)
-      : localStorage.setItem("userData", "null");
-    if (getUserFromStorage !== "null") {
+    if (!localStorage.getItem("userData")) {
+      localStorage.setItem("userData", "null");
+    } else if (
+      localStorage.getItem("userData") &&
+      localStorage.getItem("userData") !== "null"
+    ) {
       router.push("/private-dash");
     }
   }, []);

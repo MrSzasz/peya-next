@@ -44,3 +44,6 @@ public/iconcds.ico
 iconcds
 /iconcds
 public/iconcds
+
+*.backup
+*.bu

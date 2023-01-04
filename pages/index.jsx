@@ -8,39 +8,13 @@ import PromoCarousel from "../components/PromoCarousel/PromoCarousel";
 import Steps from "../components/Steps/Steps";
 import Prices from "../components/Prices/Prices";
 import Hero from "../components/Hero/Hero";
-import { collection, getDocs, getFirestore } from "firebase/firestore"; // Importamos lo necesario
-import { useEffect, useState } from "react";
+import { collection, getDocs, getFirestore } from "firebase/firestore";
+import { useEffect } from "react";
 
-const Home = () => {
-  const [heroDataFromDB, setHeroDataFromDB] = useState([]);
-  const [promoDataFromDB, setPromoDataFromDB] = useState([]);
-
-  const getProductsFromFirebase = async (location) => {
-    const db = getFirestore();
-
-    const queryCollection = collection(db, location);
-
-    if (location === "hero") {
-      await getDocs(queryCollection).then((res) => {
-        setHeroDataFromDB(
-          res.docs.map((item) => ({ ...item.data(), id: item.id }))
-        );
-      });
-    } else {
-      await getDocs(queryCollection).then((res) =>
-        setPromoDataFromDB(
-          res.docs.map((item) => ({ ...item.data(), id: item.id }))
-        )
-      );
-    }
-  };
-
+const Home = ({ heroDataFromDB, promoDataFromDB }) => {
   useEffect(() => {
-    localStorage.getItem("userData")
-      ? console.log("data loaded")
-      : localStorage.setItem("userData", "null");
-    getProductsFromFirebase("hero");
-    getProductsFromFirebase("promos");
+    !localStorage.getItem("userData") &
+      localStorage.setItem("userData", "null");
   }, []);
 
   return (
@@ -57,6 +31,39 @@ const Home = () => {
       </main>
     </Layout>
   );
+};
+
+export const getServerSideProps = async (context) => {
+  try {
+    const db = getFirestore();
+
+    const queryCollectionHero = collection(db, "hero");
+    const heroDataFromDB = [];
+
+    await getDocs(queryCollectionHero).then((res) =>
+      res.docs.map((item) =>
+        heroDataFromDB.push({ ...item.data(), id: item.id })
+      )
+    );
+
+    const queryCollectionPromos = collection(db, "promos");
+    const promoDataFromDB = [];
+
+    await getDocs(queryCollectionPromos).then((res) =>
+      res.docs.map((item) =>
+        promoDataFromDB.push({ ...item.data(), id: item.id })
+      )
+    );
+
+    return {
+      props: {
+        heroDataFromDB,
+        promoDataFromDB,
+      },
+    };
+  } catch (err) {
+    console.log(err);
+  }
 };
 
 export default Home;
