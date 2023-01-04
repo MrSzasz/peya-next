@@ -1,11 +1,11 @@
-import { SwiperSlide } from "swiper/react";
 import SliderComponent from "../SliderComponent/SliderComponent";
-import styles from "./Hero.module.scss";
-import "swiper/css";
-import MainButton from "../MainButton/MainButton";
-import { useEffect, useState } from "react";
 import SkeletonLoader from "../SkeletonLoader/SkeletonLoader";
+import MainButton from "../MainButton/MainButton";
 import { motion } from "framer-motion";
+import { SwiperSlide } from "swiper/react";
+import "swiper/css";
+import styles from "./Hero.module.scss";
+import { useEffect, useState } from "react";
 
 const Hero = ({ imagesArray }) => {
   const [windowWidth, setWindowWidth] = useState(null);
@@ -24,9 +24,6 @@ const Hero = ({ imagesArray }) => {
         ) : windowWidth > 500 ? (
           imagesArray
             .filter((item) => item.device !== "mobile")
-            .sort(function (a, b) {
-              return a.sort - b.sort;
-            })
             .map((data) => (
               <SwiperSlide key={data.id}>
                 <div className={styles.heroSliderContainer}>
@@ -90,9 +87,6 @@ const Hero = ({ imagesArray }) => {
         ) : (
           imagesArray
             .filter((item) => item.device === "mobile")
-            .sort(function (a, b) {
-              return a.sort - b.sort;
-            })
             .map((data) => (
               <SwiperSlide key={data.id}>
                 <div className={styles.heroSliderContainer}>

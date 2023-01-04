@@ -8,7 +8,13 @@ import PromoCarousel from "../components/PromoCarousel/PromoCarousel";
 import Steps from "../components/Steps/Steps";
 import Prices from "../components/Prices/Prices";
 import Hero from "../components/Hero/Hero";
-import { collection, getDocs, getFirestore } from "firebase/firestore";
+import {
+  collection,
+  getDocs,
+  getFirestore,
+  orderBy,
+  query,
+} from "firebase/firestore";
 import { useEffect } from "react";
 
 const Home = ({ heroDataFromDB, promoDataFromDB }) => {
@@ -33,11 +39,15 @@ const Home = ({ heroDataFromDB, promoDataFromDB }) => {
   );
 };
 
-export const getServerSideProps = async (context) => {
+export const getServerSideProps = async () => {
   try {
     const db = getFirestore();
 
-    const queryCollectionHero = collection(db, "hero");
+    const queryCollectionHero = await query(
+      collection(db, "hero"),
+      orderBy("sort")
+    );
+
     const heroDataFromDB = [];
 
     await getDocs(queryCollectionHero).then((res) =>
@@ -46,7 +56,11 @@ export const getServerSideProps = async (context) => {
       )
     );
 
-    const queryCollectionPromos = collection(db, "promos");
+    const queryCollectionPromos = await query(
+      collection(db, "promos"),
+      orderBy("sort")
+    );
+
     const promoDataFromDB = [];
 
     await getDocs(queryCollectionPromos).then((res) =>

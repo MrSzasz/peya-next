@@ -1,7 +1,7 @@
-import { useEffect, useState } from "react";
-import { SwiperSlide } from "swiper/react";
 import SkeletonLoader from "../SkeletonLoader/SkeletonLoader";
 import SliderComponent from "../SliderComponent/SliderComponent";
+import { SwiperSlide } from "swiper/react";
+import { useEffect, useState } from "react";
 import styles from "./PromoCarousel.module.scss";
 
 const PromoCarousel = ({ imagesArray }) => {
@@ -21,9 +21,6 @@ const PromoCarousel = ({ imagesArray }) => {
         ) : windowWidth > 500 ? (
           imagesArray
             .filter((item) => item.device === false)
-            .sort(function (a, b) {
-              return a.sort - b.sort;
-            })
             .map((filteredItem) => (
               <SwiperSlide key={filteredItem.id}>
                 <img src={filteredItem.url} alt={filteredItem.imgAlt} />
@@ -32,9 +29,6 @@ const PromoCarousel = ({ imagesArray }) => {
         ) : (
           imagesArray
             .filter((item) => item.device === true)
-            .sort(function (a, b) {
-              return a.sort - b.sort;
-            })
             .map((filteredItem) => (
               <SwiperSlide key={filteredItem.id}>
                 <img src={filteredItem.url} alt={filteredItem.imgAlt} />
