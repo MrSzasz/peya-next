@@ -658,7 +658,7 @@ const index = () => {
                         $("#promosAlt").val().trim()
                       )
                     }
-                  >
+                  > 
                     <div className={styles.inputGroup}>
                       <div className={styles.inputGroupWithLabel}>
                         <label htmlFor="promosMobile">¿ES MOBILE? </label>
