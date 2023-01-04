@@ -25,9 +25,11 @@ const notifyLoading = () =>
   });
 const notifyError = () => toast.error("Hubo un error al subir los datos");
 
-const index = () => {
-  const [arrayWithHeroData, setArrayWithHeroData] = useState([]);
-  const [arrayWithPromosData, setArrayWithPromosData] = useState([]);
+const index = ({ arrayWithHeroData, arrayWithPromosData }) => {
+  const [arrayWithHeroDataToSave, setArrayWithHeroDataToSave] = useState([]);
+  const [arrayWithPromosDataToSave, setArrayWithPromosDataToSave] = useState(
+    []
+  );
   const [userLoading, setUserLoading] = useState(true);
   const [selectedDevice, setSelectedDevice] = useState(null);
 
@@ -41,50 +43,54 @@ const index = () => {
     });
   };
 
-  const getProductsFromFirebase = async (collectionToUse) => {
-    const db = getFirestore();
+  // const getProductsFromFirebase = async (collectionToUse) => {
+  //   const db = getFirestore();
 
-    if (collectionToUse === "hero") {
-      const queryCollection = collection(db, collectionToUse);
+  //   if (collectionToUse === "hero") {
+  //     const queryCollection = collection(db, collectionToUse);
 
-      await getDocs(queryCollection).then((res) => {
-        setArrayWithHeroData(
-          res.docs.map((item) => ({ ...item.data(), id: item.id }))
-        );
+  //     await getDocs(queryCollection).then((res) => {
+  //       setArrayWithHeroData(
+  //         res.docs.map((item) => ({ ...item.data(), id: item.id }))
+  //       );
 
-        let heroOrderedCollection = res.docs
-          .map((item) => ({ ...item.data(), id: item.id }))
-          .sort(function (a, b) {
-            return a.sort - b.sort;
-          });
-      });
-    } else {
-      const queryCollection = collection(db, collectionToUse);
+  //       let heroOrderedCollection = res.docs
+  //         .map((item) => ({ ...item.data(), id: item.id }))
+  //         .sort(function (a, b) {
+  //           return a.sort - b.sort;
+  //         });
+  //     });
+  //   } else {
+  //     const queryCollection = collection(db, collectionToUse);
 
-      await getDocs(queryCollection).then((res) => {
-        setArrayWithPromosData(
-          res.docs.map((item) => ({ ...item.data(), id: item.id }))
-        );
-        let promosOrderedCollection = res.docs
-          .map((item) => ({ ...item.data(), id: item.id }))
-          .sort(function (a, b) {
-            return a.sort - b.sort;
-          });
-        // const lastPromos =
-        //   promosOrderedCollection[promosOrderedCollection.length - 1];
-        // setLastOrderNumberPromos(lastPromos.sort);
-      });
-    }
-  };
+  //     await getDocs(queryCollection).then((res) => {
+  //       setArrayWithPromosData(
+  //         res.docs.map((item) => ({ ...item.data(), id: item.id }))
+  //       );
+  //       let promosOrderedCollection = res.docs
+  //         .map((item) => ({ ...item.data(), id: item.id }))
+  //         .sort(function (a, b) {
+  //           return a.sort - b.sort;
+  //         });
+  //       // const lastPromos =
+  //       //   promosOrderedCollection[promosOrderedCollection.length - 1];
+  //       // setLastOrderNumberPromos(lastPromos.sort);
+  //     });
+  //   }
+  // };
 
   const handleDelete = (url, location) => {
     if (location === "hero") {
-      setArrayWithHeroData((arrayWithHeroData) => {
-        return arrayWithHeroData.filter((value) => value.previewUrl !== url);
+      setArrayWithHeroDataToSave((arrayWithHeroDataToSave) => {
+        return arrayWithHeroDataToSave.filter(
+          (value) => value.previewUrl !== url
+        );
       });
     } else {
-      setArrayWithPromosData((arrayWithPromosData) => {
-        return arrayWithPromosData.filter((value) => value.previewUrl !== url);
+      setArrayWithPromosDataToSave((arrayWithPromosDataToSave) => {
+        return arrayWithPromosDataToSave.filter(
+          (value) => value.previewUrl !== url
+        );
       });
     }
   };
@@ -113,8 +119,8 @@ const index = () => {
     if (location === "hero") {
       Boolean(imageFileTop)
         ? readImageAndConvertToSrc(imageFile, (e) => {
-            setArrayWithHeroData([
-              ...arrayWithHeroData,
+            setArrayWithHeroDataToSave([
+              ...arrayWithHeroDataToSave,
               {
                 previewUrl: e.target.result,
                 url: imageFile,
@@ -131,8 +137,8 @@ const index = () => {
             ]);
           })
         : readImageAndConvertToSrc(imageFile, (e) => {
-            setArrayWithHeroData([
-              ...arrayWithHeroData,
+            setArrayWithHeroDataToSave([
+              ...arrayWithHeroDataToSave,
               {
                 previewUrl: e.target.result,
                 url: imageFile,
@@ -149,8 +155,8 @@ const index = () => {
           });
     } else if (location === "promos") {
       readImageAndConvertToSrc(imageFile, (e) => {
-        setArrayWithPromosData([
-          ...arrayWithPromosData,
+        setArrayWithPromosDataToSave([
+          ...arrayWithPromosDataToSave,
           {
             previewUrl: e.target.result,
             device: device,
@@ -170,9 +176,7 @@ const index = () => {
     notifyLoading();
     try {
       if (firebaseCollectionName === "hero") {
-        for (const dataToUpload of arrayWithHeroData.filter(
-          (dataToUpload) => dataToUpload.id == null
-        )) {
+        for (const dataToUpload of arrayWithHeroDataToSave) {
           if (dataToUpload.topUrl != null) {
             const generatedFirebaseUrl = await uploadFileToFirebase(
               dataToUpload.url,
@@ -220,9 +224,7 @@ const index = () => {
           }
         }
       } else if (firebaseCollectionName === "promos") {
-        for (const dataToUpload of arrayWithPromosData.filter(
-          (dataToUpload) => dataToUpload.id == null
-        )) {
+        for (const dataToUpload of arrayWithPromosDataToSave) {
           const generatedFirebaseUrl = await uploadFileToFirebase(
             dataToUpload.url,
             firebaseCollectionName
@@ -238,7 +240,7 @@ const index = () => {
           }).then(console.log("done"));
         }
       } else {
-        toast.dismiss("notifyLoadingID")
+        toast.dismiss("notifyLoadingID");
         notifyError();
         return new Error(
           "Surgió un error al subir el archivo a la base de datos"
@@ -269,10 +271,10 @@ const index = () => {
     }
   }, []);
 
-  useEffect(() => {
-    getProductsFromFirebase("hero");
-    getProductsFromFirebase("promos");
-  }, []);
+  // useEffect(() => {
+  //   getProductsFromFirebase("hero");
+  //   getProductsFromFirebase("promos");
+  // }, []);
 
   useEffect(() => {
     $("#heroDevice").on("change", function () {
@@ -469,9 +471,6 @@ const index = () => {
                       <small>
                         Posiciones en uso:
                         {arrayWithHeroData
-                          .sort(function (a, b) {
-                            return a.sort - b.sort;
-                          })
                           .filter((item) => item.device === "mobile")
                           .map((data) => (
                             <b key={data.id}> &#91; {data.sort} &#93; </b>
@@ -560,32 +559,30 @@ const index = () => {
                     <small>* requerido</small>
                   </form>
                   <div className={styles.heroImageList}>
-                    {arrayWithHeroData.length !== 0 ? (
+                    {arrayWithHeroDataToSave.length !== 0 ? (
                       <h2>Lista de imágenes</h2>
                     ) : null}
                     <div className={styles.heroImageListContainer}>
-                      {arrayWithHeroData
-                        .filter((data) => data.id == null)
-                        .map((image, i) => (
-                          <div
-                            className={styles.heroImageCard}
-                            key={`${i}${Math.random()}`}
+                      {arrayWithHeroDataToSave.map((image, i) => (
+                        <div
+                          className={styles.heroImageCard}
+                          key={`${i}${Math.random()}`}
+                        >
+                          <img
+                            src={image.previewUrl || image.url}
+                            alt={image.imgAlt}
+                          />
+                          <button
+                            className={styles.heroCardDeleteButton}
+                            onClick={() =>
+                              handleDelete(image.previewUrl, "hero")
+                            }
                           >
-                            <img
-                              src={image.previewUrl || image.url}
-                              alt={image.imgAlt}
-                            />
-                            <button
-                              className={styles.heroCardDeleteButton}
-                              onClick={() =>
-                                handleDelete(image.previewUrl, "hero")
-                              }
-                            >
-                              <AiOutlineDelete />
-                              BORRAR
-                            </button>
-                          </div>
-                        ))}
+                            <AiOutlineDelete />
+                            BORRAR
+                          </button>
+                        </div>
+                      ))}
                     </div>
                   </div>
                 </div>
@@ -658,7 +655,7 @@ const index = () => {
                         $("#promosAlt").val().trim()
                       )
                     }
-                  > 
+                  >
                     <div className={styles.inputGroup}>
                       <div className={styles.inputGroupWithLabel}>
                         <label htmlFor="promosMobile">¿ES MOBILE? </label>
@@ -689,9 +686,6 @@ const index = () => {
                       <small>
                         Posiciones en uso:
                         {arrayWithPromosData
-                          .sort(function (a, b) {
-                            return a.sort - b.sort;
-                          })
                           .filter((item) => item.device !== true)
                           .map((data) => (
                             <b key={data.id}> &#91; {data.sort} &#93; </b>
@@ -715,28 +709,26 @@ const index = () => {
                     <small>* requerido</small>
                   </form>
                   <div className={styles.heroImageList}>
-                    {arrayWithPromosData.length !== 0 ? (
+                    {arrayWithPromosDataToSave.length !== 0 ? (
                       <h2>Lista de imágenes</h2>
                     ) : null}
-                    {arrayWithPromosData
-                      .filter((data) => data.id == null)
-                      .map((image, i) => (
-                        <div
-                          className={styles.heroImageCard}
-                          key={`${i}${Math.random()}`}
+                    {arrayWithPromosDataToSave.map((image, i) => (
+                      <div
+                        className={styles.heroImageCard}
+                        key={`${i}${Math.random()}`}
+                      >
+                        <img src={image.previewUrl} alt={image.imgAlt} />
+                        <button
+                          className={styles.heroCardDeleteButton}
+                          onClick={() =>
+                            handleDelete(image.previewUrl, "promos")
+                          }
                         >
-                          <img src={image.previewUrl} alt={image.imgAlt} />
-                          <button
-                            className={styles.heroCardDeleteButton}
-                            onClick={() =>
-                              handleDelete(image.previewUrl, "promos")
-                            }
-                          >
-                            <AiOutlineDelete />
-                            BORRAR
-                          </button>
-                        </div>
-                      ))}
+                          <AiOutlineDelete />
+                          BORRAR
+                        </button>
+                      </div>
+                    ))}
                   </div>
                 </div>
                 <button
@@ -759,6 +751,47 @@ const index = () => {
       )}
     </>
   );
+};
+
+export const getServerSideProps = async () => {
+  try {
+    const db = getFirestore();
+
+    const queryCollectionHero = await query(
+      collection(db, "hero"),
+      orderBy("sort")
+    );
+
+    const arrayWithHeroData = [];
+
+    await getDocs(queryCollectionHero).then((res) =>
+      res.docs.map((item) =>
+        arrayWithHeroData.push({ ...item.data(), id: item.id })
+      )
+    );
+
+    const queryCollectionPromos = await query(
+      collection(db, "promos"),
+      orderBy("sort")
+    );
+
+    const arrayWithPromosData = [];
+
+    await getDocs(queryCollectionPromos).then((res) =>
+      res.docs.map((item) =>
+        arrayWithPromosData.push({ ...item.data(), id: item.id })
+      )
+    );
+
+    return {
+      props: {
+        arrayWithHeroData,
+        arrayWithPromosData,
+      },
+    };
+  } catch (err) {
+    console.log(err);
+  }
 };
 
 export default index;
