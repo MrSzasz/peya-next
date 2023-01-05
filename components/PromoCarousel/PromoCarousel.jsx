@@ -37,7 +37,8 @@ const PromoCarousel = ({ imagesArray }) => {
         )}
         <div className={styles.moreInfoLinkCarouselContainer}>
           <a
-            href="http://bit.ly/3YAXlzq"
+            target="_blank"
+            href="/docs/tyc-balon.html"
             className={styles.moreInfoLinkCarousel}
           >
             Más información

@@ -11,21 +11,21 @@ const Footer = () => {
       <div className={styles.centerFooterContainer}>
         <ul>
           <li>
-            <a href="https://terms.pystatic.com/about/wallet/creditcard/credit-offer/tyc_credit-offer_es-pa.html">
+            <a target="_blank" href="/docs/tyc.html">
               Términos y condiciones
             </a>
           </li>
           <li>
-            <a href="https://www.pedidosya.com.pa/about/tyc_wallet">
+            <Link href="https://www.pedidosya.com.pa/about/tyc_wallet">
               Términos cashback
-            </a>
+            </Link>
           </li>
         </ul>
         <ul>
           <li>
-            <a href="https://www.pedidosya.com.pa/about/privacy_policies">
+            <Link href="https://www.pedidosya.com.pa/about/privacy_policies">
               Privacidad
-            </a>
+            </Link>
           </li>
           {/* <li>
             <a href="pedidosya://onlinehelp">Preguntas frecuentes</a>
