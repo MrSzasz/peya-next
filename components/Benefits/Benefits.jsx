@@ -47,7 +47,12 @@ const Benefits = () => {
             alt={"Icono descuentos"}
           />
         </div>
-        <MainButton href={"https://app.adjust.com/jsr?url=https%3A%2F%2Fpwdh.adj.st%2Ffintech%2Fcards%2Fredirector%3Fadj_t%3D6t2xp9f_a7g3qbs%26adj_deep_link%3Dpedidosya%253A%252F%252Ffintech%252Fcards%252Fredirector%26adj_campaign%3Dtest%26adj_adgroup%3Dtest%26adj_creative%3Dtest"} color="buttonBlue" />
+        <MainButton
+          href={
+            "https://pwdh.adj.st/fintech/cards/redirector?adj_t=6t2xp9f_a7g3qbs&adj_deep_link=pedidosya%3A%2F%2Ffintech%2Fcards%2Fredirector&adj_campaign=Landing&adj_adgroup=CTA&adj_creative=BenefitsSection"
+          }
+          color="buttonBlue"
+        />
       </motion.div>
       <motion.div
         key={2}
