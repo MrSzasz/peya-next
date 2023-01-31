@@ -15,9 +15,16 @@ import {
   orderBy,
   query,
 } from "firebase/firestore";
-import { useEffect } from "react";
+import { useEffect, useState } from "react";
+import PopUp from "../components/PopUp/PopUp";
 
 const Home = ({ heroDataFromDB, promoDataFromDB }) => {
+  const [showPopUp, setShowPopUp] = useState(false);
+
+  const openModal = () => {
+    setShowPopUp((current) => !current);
+  };
+
   useEffect(() => {
     !localStorage.getItem("userData") &
       localStorage.setItem("userData", "null");
@@ -34,7 +41,9 @@ const Home = ({ heroDataFromDB, promoDataFromDB }) => {
         <PromoCarousel imagesArray={promoDataFromDB} />
         <Steps />
         <Prices />
+        <button onClick={openModal}>modal</button>
       </main>
+      {showPopUp ? <PopUp fn={openModal} /> : null}
     </Layout>
   );
 };
