@@ -3,6 +3,7 @@ import styles from "./PopUp.module.scss";
 import MainButton from "../../components/MainButton/MainButton";
 
 const PopUp = ({ fn }) => {
+  // const [isOpenForAnimation, setIsOpenForAnimation] = useState(true);
 
   const toggleModalOnClick = () => {
     // setIsOpenForAnimation(current => !current)
