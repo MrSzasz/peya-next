@@ -17,6 +17,7 @@ import {
 } from "firebase/firestore";
 import { useEffect, useState } from "react";
 import PopUp from "../components/PopUp/PopUp";
+import { AnimatePresence } from "framer-motion";
 
 const Home = ({ heroDataFromDB, promoDataFromDB }) => {
   const [showPopUp, setShowPopUp] = useState(false);
@@ -42,7 +43,9 @@ const Home = ({ heroDataFromDB, promoDataFromDB }) => {
         <Steps />
         <Prices />
       </main>
-      {showPopUp ? <PopUp fn={openModal} isOpen={showPopUp} /> : null}
+      <AnimatePresence>
+        {showPopUp ? <PopUp fn={openModal} isOpen={showPopUp} /> : null}
+      </AnimatePresence>
     </Layout>
   );
 };
