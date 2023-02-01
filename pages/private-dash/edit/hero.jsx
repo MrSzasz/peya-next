@@ -292,6 +292,7 @@ import { useRouter } from "next/router";
 import Link from "next/link";
 import { useAppContext } from "../../../context/AppContext";
 import toast, { Toaster } from "react-hot-toast";
+import $ from "jquery"
 
 const notifySuccess = () => toast.success("Datos subidos correctamente");
 const notifyLoading = () =>
@@ -404,21 +405,23 @@ const hero = () => {
             </Link>
             <div className={styles.editContainer}>
               <h1>EDITAR CONTENIDO DEL HERO EN BASE DE DATOS</h1>
-              <p className={styles.instructions}>
+              <div className={styles.instructions}>
                 <h3>INSTRUCCIONES</h3>
-                Para editar los datos se deben cambiar en sus respectivos
-                campos, luego hacer click en<span> EDITAR </span>
-                <br />
-                <br />
-                <span>
-                  TODOS LOS SLIDES IGUALES DEBEN TENER LA MISMA POSICIÓN PARA
-                  EVITAR CONFLICTOS
-                </span>
-                <br />
-                <br />
-                Si se desea eliminar un slide se debe hacer click en el botón
-                <span> ELIMINAR </span>
-              </p>
+                <p>
+                  Para editar los datos se deben cambiar en sus respectivos
+                  campos, luego hacer click en<span> EDITAR </span>
+                  <br />
+                  <br />
+                  <span>
+                    TODOS LOS SLIDES IGUALES DEBEN TENER LA MISMA POSICIÓN PARA
+                    EVITAR CONFLICTOS
+                  </span>
+                  <br />
+                  <br />
+                  Si se desea eliminar un slide se debe hacer click en el botón
+                  <span> ELIMINAR </span>
+                </p>
+              </div>
               <div className={styles.dataCardContainer}>
                 {loading ? (
                   <Loading />
