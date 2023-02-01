@@ -57,7 +57,7 @@ const PopUp = ({ fn }) => {
             />
           </>
         )}
-        <MainButton fn={fn} color="buttonBlue" text="Listo" />
+        <MainButton fn={fn} color="buttonBlue" text="Cerrar" />
       </motion.div>
     </motion.div>
   );

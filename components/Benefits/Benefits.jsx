@@ -2,6 +2,7 @@ import ItemBenefit from "../ItemBenefit/ItemBenefit";
 import MainButton from "../MainButton/MainButton";
 import styles from "./Benefits.module.scss";
 import { motion } from "framer-motion";
+import Image from "next/image";
 
 const Benefits = ({fn}) => {
   return (
@@ -29,20 +30,20 @@ const Benefits = ({fn}) => {
           opacity: 1,
         }}
       >
-        <h2>La tarjeta hecha a tu manera</h2>
+        <h2>Sección 2</h2>
         <div className={styles.benefitsList}>
           <ItemBenefit
-            text={"Sin burocracia y 100% digital"}
+            text={"Lorem ipsum dolor sit amet"}
             img={"/icons/benefits/icon1.svg"}
             alt={"Icono sin burocracia"}
           />
           <ItemBenefit
-            text={"Visa Internacional"}
+            text={"Lorem ipsum"}
             img={"/icons/benefits/icon2.svg"}
             alt={"Icono internacional"}
           />
           <ItemBenefit
-            text={"Con beneficios y descuentos"}
+            text={"Lorem ipsum dolor"}
             img={"/icons/benefits/icon3.svg"}
             alt={"Icono descuentos"}
           />
@@ -75,7 +76,9 @@ const Benefits = ({fn}) => {
           opacity: 1,
         }}
       >
-        <img src="/images/benefitsImg.png" alt="Mujer con tarjeta virtual" />
+        <div className={styles.benefitsImageContainer}>
+          <Image src="/demo/benefits/benefits.jpg" fill={true} alt="Mujer con tarjeta virtual" style={{objectFit: "cover"}} />
+        </div>
       </motion.div>
     </section>
   );

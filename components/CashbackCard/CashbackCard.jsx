@@ -1,3 +1,4 @@
+import Image from "next/image";
 import styles from "./CashbackCard.module.scss";
 
 const CashbackCard = ({
@@ -12,11 +13,17 @@ const CashbackCard = ({
     <div className={`${styles.cashbackCardContainer} ${styles[position]}`}>
       <h2>{number}%</h2>
       <p className={styles.textTop}>{textTop}</p>
-      <img
-        className={`${styles.cashbackCardImage} ${styles[position]}`}
-        src={img}
-        alt={altImg}
-      />
+      {img ? (
+        <div className={styles.logoImageContainer}>
+          <Image
+            className={`${styles.cashbackCardImage} ${styles[position]}`}
+            src={img}
+            alt={altImg}
+            fill={true}
+            style={{ objectFit: "cover" }}
+          />
+        </div>
+      ) : null}
       <p className={styles.textBottom}>{textBottom}</p>
     </div>
   );

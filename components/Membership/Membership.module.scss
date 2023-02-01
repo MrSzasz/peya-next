@@ -33,8 +33,9 @@
         img {
             position: absolute;
             right: 8em;
-            height: 15em;
-            bottom: 0;
+            height: 20em;
+            bottom: -6em;
+            object-fit: contain;
         }
     }
 }

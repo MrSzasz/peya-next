@@ -17,55 +17,55 @@ const PriceTable = () => {
   return (
     <div className={styles.priceTableContainer}>
       <div className={styles.tableRow}>
-        <p className={styles.tableRowLeft}>Membresía</p>
+        <p className={styles.tableRowLeft}>Lorem</p>
         <div className={styles.tableRowRight}>
           <span>
-            ¡Gratis por 1 año!
+            Lorem ipsum
             <br />
           </span>
           <p className={styles.underlineFirstRow}>
-            A partir del año 2, US$50.00 con posibilidad de exoneración
+          Lorem ipsum dolor sit amet consectetur adipisicing elit
           </p>
         </div>
       </div>
       <TableRow
-        type={"Cargo por reposición (deteriorada)"}
-        price={"¡Gratis!"}
+        type={"Lorem ipsum dolor sit amet consectetur"}
+        price={"Lorem"}
         special={true}
       />
       <TableRow
-        type={"Cargo por investigación de reclamos"}
-        price={"¡Gratis!"}
+        type={"Lorem ipsum dolor sit "}
+        price={"Lorem"}
         special={true}
       />
-      <TableRow type={"Tasa de interés anual"} price={"20%"} />
+      <TableRow type={"Lorem ipsum dolor"} price={"22%"} />
 
       <div
         id="hiddenTableId"
         className={styles.hiddenRowsTable}
         data-toggled={"closed"}
       >
-        <TableRow type={"Tiempo de financiamiento"} price={"60 días"} />
+        <TableRow type={"Lorem ipsum"} price={"22 días"} />
         <TableRow
-          type={"Seguro contra robo y fraude (mensual)"}
-          price={"US$3,50"}
+          type={"Lorem ipsum dolor sit amet"}
+          price={"US$1"}
         />
         <TableRow
-          type={"Seguro de vida (sobre saldo adeudado)"}
-          price={"US$2.47 por cada US$1,000.00 de saldo adeudado o fracción"}
+          type={"Lorem ipsum dolor sit"}
+          price={"US$1"}
         />
         <TableRow
-          type={"Cargo por pago atrasado"}
-          price={"4% del saldo adeudado, máximo US$25.00"}
+          type={"Lorem ipsum dolor sit amet consectetur"}
+          price={"1%"}
         />
-        <TableRow type={"Comisión sobregiro"} price={"US$20.00"} />
+        <TableRow type={"Lorem ipsum dolor"} price={"US$22.00"} />
         <TableRow
-          type={"Cargo por reposición (pérdida o robada)"}
-          price={"US$15.00"}
+          type={"Lorem ipsum dolor sit amet"}
+          price={"US$22.00"}
         />
         <TableRow
-          type={"Cargo por compra de saldo (Refinanciamiento)"}
-          price={"US$25.00"}
+          type={"Lorem ipsum dolor sit amet consectetur adipisicing elit"}
+          price={"US$22.00"}
         />
       </div>
       <div className={styles.tableButtonContainer}>

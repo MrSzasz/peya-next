@@ -1,4 +1,5 @@
 import $ from "jquery";
+import Image from "next/image";
 import { useEffect, useState } from "react";
 import { AiOutlineMenu } from "react-icons/ai";
 import MainButton from "../MainButton/MainButton";
@@ -26,28 +27,26 @@ const Navbar = ({ fn }) => {
   return (
     <nav id="nav" className={styles.navbar}>
       <a href="#hero">
-        <img
-          src={
-            windowWidth > 500
-              ? "/images/peyaPagosLogo.svg"
-              : "/images/logoMobile.svg"
-          }
+        <Image
+          src="/demo/logo.png"
+          height={45}
+          width={100}
           alt="Ir al inicio"
         />
       </a>
       <div className={styles.linksContainer}>
         <ul className={styles.linksContainerList}>
           <li>
-            <a href="#cashbackSection">Cashback</a>
+            <a href="#cashbackSection">Sección 1</a>
           </li>
           <li>
-            <a href="#benefitsSection">Beneficios</a>
+            <a href="#benefitsSection">Sección 2</a>
           </li>
           <li>
-            <a href="#secureCardSection">Tarjeta</a>
+            <a href="#secureCardSection">Sección 4</a>
           </li>
           <li>
-            <a href="#pricesSection">Costos</a>
+            <a href="#pricesSection">Sección 6</a>
           </li>
         </ul>
         <MainButton
@@ -63,24 +62,18 @@ const Navbar = ({ fn }) => {
       <div id="hideMenuContainer" className={styles.hiddenMenuContainer}>
         <ul className={styles.hiddenLinksContainerList}>
           <li onClick={hideNavMenu}>
-            <a href="#cashbackSection">Cashback</a>
+            <a href="#cashbackSection">Sección 1</a>
           </li>
           <li onClick={hideNavMenu}>
-            <a href="#benefitsSection">Beneficios</a>
+            <a href="#benefitsSection">Sección 2</a>
           </li>
           <li onClick={hideNavMenu}>
-            <a href="#secureCardSection">Tarjeta</a>
+            <a href="#secureCardSection">Sección 4</a>
           </li>
           <li onClick={hideNavMenu}>
-            <a href="#pricesSection">Costos</a>
+            <a href="#pricesSection">Sección 6</a>
           </li>
         </ul>
-        <MainButton
-          href={
-            "https://pwdh.adj.st/fintech/cards/redirector?adj_t=6t2xp9f_a7g3qbs&adj_deep_link=pedidosya%3A%2F%2Ffintech%2Fcards%2Fredirector&adj_campaign=Landing&adj_adgroup=CTA&adj_creative=Header"
-          }
-          color="navbar"
-        />
       </div>
     </nav>
   );

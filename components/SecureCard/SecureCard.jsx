@@ -14,10 +14,9 @@ const SecureCard = () => {
     <section id="secureCardSection" className={styles.secureCardContainer}>
       {windowWidth > 500 ? (
         <>
-          {" "}
           <img
             className={styles.secureCardImg}
-            src="/images/secureCardImg.png"
+            src="/demo/securecard/securecard.png"
             alt="Tarjeta física"
           />
           <motion.div
@@ -43,33 +42,35 @@ const SecureCard = () => {
             }}
             className={styles.secureCardTextDesktop}
           >
-            <h2>La tarjeta más segura</h2>
+            <h2>Sección 4</h2>
             <div className={styles.secureCardBenefitsContainer}>
               <ItemBenefit
-                text={"Con la seguridad de Visa y el respaldo de Banesco"}
+                text={"Lorem ipsum dolor sit amet consectetur adipisicing elit"}
                 img={"/icons/secureCard/icon1.svg"}
                 alt={"Icono seguridad"}
               />
               <ItemBenefit
-                text={"Sin datos impresos, solo tú puedes verlos desde la app"}
+                text={"Lorem ipsum dolor sit amet consectetur adipisicing"}
                 img={"/icons/secureCard/icon2.svg"}
                 alt={"Icono sin datos"}
               />
               <ItemBenefit
-                text={"Con tecnología contactless, paga sin contacto físico"}
+                text={
+                  "Lorem ipsum dolor sit amet consectetur adipisicing elit. Delectus"
+                }
                 img={"/icons/secureCard/icon3.svg"}
                 alt={"Icono contactless"}
               />
               <ItemBenefit
-                text={"Protección de precio, paga siempre el precio más bajo"}
+                text={"Lorem ipsum dolor sit amet consectetur"}
                 img={"/icons/secureCard/icon4.svg"}
                 alt={"Icono precios bajos"}
               />
               <a
-                href="https://www.visa.com.pa/content/VISA/lac/spanishlanguagemaster/es_UY/home/pague-con-visa/tarjetas/beneficios/proteccion-de-precio.html"
+                href="https://lugo-tomas-portfolio.netlify.app/"
                 className={styles.moreInfoLink}
               >
-                Más información
+                Portfolio :)
               </a>
             </div>
           </motion.div>
@@ -98,11 +99,11 @@ const SecureCard = () => {
               opacity: 1,
             }}
           >
-            La tarjeta más segura
+            Sección 4
           </motion.h2>
           <img
             className={styles.secureCardImg}
-            src="/images/secureCardImg.png"
+            src="/demo/securecard/securecard.png"
             alt="Tarjeta física"
           />
           <motion.div
@@ -129,30 +130,32 @@ const SecureCard = () => {
             }}
           >
             <ItemBenefit
-              text={"Con la seguridad de Visa y el respaldo de Banesco"}
+              text={
+                "Lorem ipsum dolor sit amet consectetur adipisicing elit. Porro, expedita"
+              }
               img={"/icons/secureCard/icon1.svg"}
               alt={"Icono seguridad"}
             />
             <ItemBenefit
-              text={"Sin datos impresos, solo tú puedes verlos desde la app"}
+              text={"Lorem ipsum dolor sit amet consectetur adipisicing elit"}
               img={"/icons/secureCard/icon2.svg"}
               alt={"Icono sin datos"}
             />
             <ItemBenefit
-              text={"Con tecnología contactless, paga sin contacto físico"}
+              text={"Lorem ipsum dolor sit amet consectetur"}
               img={"/icons/secureCard/icon3.svg"}
               alt={"Icono contactless"}
             />
             <ItemBenefit
-              text={"Protección de precio, paga siempre el precio más bajo"}
+              text={"Lorem ipsum dolor sit amet"}
               img={"/icons/secureCard/icon4.svg"}
               alt={"Icono precios bajos"}
             />
             <a
-              href="https://www.visa.com.pa/content/VISA/lac/spanishlanguagemaster/es_UY/home/pague-con-visa/tarjetas/beneficios/proteccion-de-precio.html"
+              href="https://lugo-tomas-portfolio.netlify.app/"
               className={styles.moreInfoLink}
             >
-              Más información
+              Portfolio :)
             </a>
           </motion.div>
         </>

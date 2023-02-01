@@ -5,27 +5,27 @@ import styles from "./Steps.module.scss";
 const Steps = () => {
   return (
     <section className={styles.stepsContainer}>
-      <h2>Disfrutala ya</h2>
+      <h2>Sección 5</h2>
       <div className={styles.itemStepsContainer}>
         <ItemSteps
-          title={"Regístrate"}
-          text={"Completa tus datos"}
+          title={"Titulo"}
+          text={"Lorem ipsum dolor"}
           img={"/icons/steps/icon1.svg"}
           imgAlt={"Registro"}
           special={true}
         />
         <ItemSteps
-          title={"Recibe"}
+          title={"Titulo"}
           text={
-            "Activamos tu tarjeta virtual de inmediato mientras enviamos la física en 72hs máximo"
+            "Lorem ipsum dolor, sit amet consectetur adipisicing elit. Aut?"
           }
           img={"/icons/steps/icon2.svg"}
           imgAlt={"Envío"}
           second={true}
         />
         <ItemSteps
-          title={"Compra ya"}
-          text={"¡Listo! Puedes disfrutar de tus cashback todos los días"}
+          title={"Titulo"}
+          text={"Lorem ipsum dolor, sit amet consectetur adipisicing elit"}
           img={"/icons/steps/icon3.svg"}
           imgAlt={"Uso"}
         />
@@ -33,20 +33,8 @@ const Steps = () => {
       <div className={styles.stepsDownloads}>
         <h3>Descarga la App</h3>
         <div className={styles.stepsDownloadsIcons}>
-          <Link
-            href={
-              "https://play.google.com/store/apps/details?id=com.pedidosya&hl=es&referrer=pycat=retention&utm_medium=landing&utm_source=peya&utm_campaign=issuing&utm_content=download"
-            }
-          >
-            <img src="/images/stepsAndroid.svg" alt="Link Google Play" />
-          </Link>
-          <Link
-            href={
-              "https://itunes.apple.com/app/pedidosya/id490099807?utm_medium=landing&utm_source=peya&utm_campaign=issuing&utm_content=download"
-            }
-          >
-            <img src="/images/stepsApple.svg" alt="Link App Store" />
-          </Link>
+          <img src="/images/stepsAndroid.svg" alt="Link Google Play" />
+          <img src="/images/stepsApple.svg" alt="Link App Store" />
         </div>
       </div>
     </section>

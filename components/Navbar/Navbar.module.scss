@@ -1,114 +1,117 @@
 @import "../../styles/_variables.scss";
 
 .navbar {
-    position: fixed;
-    top: 0;
-    width: 100%;
-    z-index: 100;
-    background-color: $blue;
+  position: fixed;
+  top: 0;
+  width: 100%;
+  z-index: 100;
+  background-color: $blue;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding-block: 1em;
+  padding-inline: 10%;
+  a {
+    img {
+      filter: invert(1);
+    }
+  }
+  .linksContainer {
+    width: fit-content;
     display: flex;
-    justify-content: space-between;
+    justify-content: center;
     align-items: center;
-    padding-block: 1em;
-    padding-inline: 10%;
+    gap: 2em;
 
-    .linksContainer {
-        width: fit-content;
-        display: flex;
-        justify-content: center;
-        align-items: center;
-        gap: 2em;
+    .linksContainerList {
+      width: fit-content;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 2em;
+      padding-inline: 3em;
+      color: $white;
 
-        .linksContainerList {
-            width: fit-content;
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            gap: 2em;
-            padding-inline: 3em;
-            color: $white;
+      li {
+        display: inline-block;
+        position: relative;
 
-            li {
-                display: inline-block;
-                position: relative;
-
-                &::after {
-                    content: '';
-                    position: absolute;
-                    width: 100%;
-                    transform: scaleX(0);
-                    height: 2px;
-                    bottom: 0;
-                    left: 0;
-                    background-color: $white;
-                    transform-origin: bottom right;
-                    transition: transform 0.25s ease-out;
-                }
-
-                &:hover::after {
-                    transform: scaleX(1);
-                    transform-origin: bottom left;
-                }
-            }
+        &::after {
+          content: "";
+          position: absolute;
+          width: 100%;
+          transform: scaleX(0);
+          height: 2px;
+          bottom: 0;
+          left: 0;
+          background-color: $white;
+          transform-origin: bottom right;
+          transition: transform 0.25s ease-out;
         }
-    }
 
-    .menuNavbar {
-        display: none;
-    }
-
-    .hiddenMenuContainer {
-        position: absolute;
-        top: 70px;
-        left: 0;
-        display: flex;
-        flex-direction: column;
-        justify-content: center;
-        align-items: center;
-        background-color: $blue;
-        height: calc(100vh - 70px);
-        width: 100%;
-        gap: 3em;
-        display: none;
-        padding-top: -10em;
-
-        .hiddenLinksContainerList {
-            width: 100%;
-            height: fit-content;
-            display: flex;
-            flex-direction: column;
-            justify-content: center;
-            align-items: center;
-            gap: 3em;
-
-            li {
-                font-family: textaHeavy;
-                font-size: 2em;
-                color: white;
-            }
+        &:hover::after {
+          transform: scaleX(1);
+          transform-origin: bottom left;
         }
+      }
     }
+  }
+
+  .menuNavbar {
+    display: none;
+  }
+
+  .hiddenMenuContainer {
+    position: absolute;
+    top: 70px;
+    left: 0;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    background-color: $blue;
+    height: calc(100vh - 70px);
+    width: 100%;
+    gap: 3em;
+    display: none;
+    padding-top: -10em;
+
+    .hiddenLinksContainerList {
+      width: 100%;
+      height: fit-content;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      gap: 3em;
+
+      li {
+        font-family: textaHeavy;
+        font-size: 2em;
+        color: white;
+      }
+    }
+  }
 }
 
 @media (max-width: 500px) {
-
-    .navbar {
-        img {
-            width: 90%;
-        }
-
-        .linksContainer {
-            display: none;
-        }
-
-        .menuNavbar {
-            width: fit-content;
-            display: contents;
-            width: 10px;
-        }
-
-        .hiddenMenuContainer {
-            display: none;
-        }
+  .navbar {
+    img {
+      width: 90%;
     }
+
+    .linksContainer {
+      display: none;
+    }
+
+    .menuNavbar {
+      width: fit-content;
+      display: contents;
+      width: 10px;
+    }
+
+    .hiddenMenuContainer {
+      display: none;
+    }
+  }
 }

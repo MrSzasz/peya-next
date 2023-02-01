@@ -1,42 +1,43 @@
 .promoCarouselContainer {
-    padding-inline: 15%;
+  padding-inline: 15%;
+  border-radius: 1.5em;
+  overflow: hidden;
+  padding-bottom: 4em;
+  position: relative;
+
+  img {
+    margin-inline: auto;
     border-radius: 1.5em;
     overflow: hidden;
-    padding-bottom: 4em;
-    position: relative;
+    margin-bottom: 3em;
+    max-height: 55vh;
+    object-fit: fill;
+  }
 
-    img {
-        margin-inline: auto;
-        border-radius: 1.5em;
-        overflow: hidden;
-        width: 100%;
-        margin-bottom: 3em;
+  .moreInfoLinkCarouselContainer {
+    position: absolute;
+    width: fit-content;
+    height: fit-content;
+    bottom: 0.6em;
+    left: 0;
+    z-index: 11;
+
+    .moreInfoLinkCarousel {
+      text-decoration: underline;
     }
-
-    .moreInfoLinkCarouselContainer {
-        position: absolute;
-        width: fit-content;
-        height: fit-content;
-        bottom: .6em;
-        left: 0;
-        z-index: 11;
-
-        .moreInfoLinkCarousel {
-            text-decoration: underline;
-        }
-    }
+  }
 }
 
 @media (max-width: 500px) {
-    .promoCarouselContainer {
-        padding-inline: 5%;
+  .promoCarouselContainer {
+    padding-inline: 5%;
 
-        .moreInfoLinkCarouselContainer {
-            left: 0%;
+    .moreInfoLinkCarouselContainer {
+      left: 0%;
 
-            .moreInfoLinkCarousel {
-                text-decoration: underline;
-            }
-        }
+      .moreInfoLinkCarousel {
+        text-decoration: underline;
+      }
     }
+  }
 }

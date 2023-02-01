@@ -21,8 +21,8 @@ const Cashback = () => {
   return (
     <section id="cashbackSection" className={styles.cashbackContainer}>
       <div className={styles.cashbackTopText}>
-        <h2>Cashback todos los días</h2>
-        <p>Dentro y fuera de la app</p>
+        <h2>Sección 1</h2>
+        <p>Lorem ipsum dolor, sit amet</p>
       </div>
       <motion.div
         className={styles.cashbackCardsMainContainer}
@@ -37,7 +37,7 @@ const Cashback = () => {
         >
           <CashbackCard
             number={9}
-            img={"/icons/cashback/peya1.svg"}
+            img={"/demo/logo.png"}
             textTop={"Lorem ipsum dolor"}
             textBottom={"Lorem ipsum dolor sit amet consectetur"}
             position={"firstCashbackCard"}
@@ -49,7 +49,7 @@ const Cashback = () => {
         >
           <CashbackCard
             number={6}
-            img={"/icons/cashback/peya2.svg"}
+            img={"/demo/logo.png"}
             altImg={"PedidosYa Logo"}
             textTop={"Lorem ipsum dolor"}
             textBottom={"Lorem ipsum dolor sit amet consectetur"}
