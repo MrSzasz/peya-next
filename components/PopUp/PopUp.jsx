@@ -2,6 +2,8 @@ import Image from "next/image";
 import styles from "./PopUp.module.scss";
 import MainButton from "../../components/MainButton/MainButton";
 import { motion } from "framer-motion";
+import { isMobile } from "react-device-detect";
+import Link from "next/link";
 
 const PopUp = ({ fn }) => {
   return (
@@ -11,7 +13,7 @@ const PopUp = ({ fn }) => {
       initial={{ opacity: 0 }}
       animate={{ opacity: 1 }}
       exit={{
-        opacity: 0
+        opacity: 0,
       }}
     >
       <motion.div
@@ -27,7 +29,7 @@ const PopUp = ({ fn }) => {
           },
         }}
         exit={{
-          y: "-100"
+          y: "-100",
         }}
         onClick={(e) => e.stopPropagation()}
       >
@@ -39,13 +41,22 @@ const PopUp = ({ fn }) => {
             alt="Botón para cerrar el modal"
           />
         </button>
-        <h3>Escanea el QR y pide tu tarjeta desde tu celular</h3>
-        <Image
-          src={"/images/qr.svg"}
-          height={250}
-          width={250}
-          alt="QR para pedir la tarjeta"
-        />
+        {isMobile ? (
+          <>
+            <h2>Mira mis otros trabajos</h2>
+            <Link href={"https://lugo-tomas-portfolio.netlify.app/"}>Ir al portfolio</Link>
+          </>
+        ) : (
+          <>
+            <h3>Escanea el QR y mira mis otros trabajos</h3>
+            <Image
+              src={"/demo/qr-demo.svg"}
+              height={250}
+              width={250}
+              alt="QR para pedir la tarjeta"
+            />
+          </>
+        )}
         <MainButton fn={fn} color="buttonBlue" text="Listo" />
       </motion.div>
     </motion.div>

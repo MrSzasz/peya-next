@@ -1,12 +1,10 @@
-import Link from "next/link";
 import styles from "./MainButton.module.scss";
-import { isMobile } from "react-device-detect";
 
 const MainButton = ({
   href = "#",
   id,
   color = "buttonWhite",
-  text = "Pedir Ya",
+  text = "CTA",
   fn,
 }) => {
   return (
@@ -15,7 +13,7 @@ const MainButton = ({
         <button id={id} className={`${styles.mainButton} ${styles[color]}`}>
           {text}
         </button>
-      ) : !isMobile && fn ? (
+      ) : (
         <button
           id={id}
           className={`${styles.mainButton} ${styles[color]}`}
@@ -23,14 +21,6 @@ const MainButton = ({
         >
           {text}
         </button>
-      ) : (
-        <Link
-          href={href}
-          id={id}
-          className={`${styles.mainButton} ${styles[color]}`}
-        >
-          {text}
-        </Link>
       )}
     </>
   );

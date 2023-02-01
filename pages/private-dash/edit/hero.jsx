@@ -292,6 +292,7 @@ import { useRouter } from "next/router";
 import Link from "next/link";
 import { useAppContext } from "../../../context/AppContext";
 import toast, { Toaster } from "react-hot-toast";
+import $ from "jquery"
 
 const notifySuccess = () => toast.success("Datos subidos correctamente");
 const notifyLoading = () =>

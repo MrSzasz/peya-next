@@ -47,3 +47,33 @@
     }
   }
 }
+
+@media (max-width: 500px) {
+  .popUpBlack {
+    .popUpContainer {
+      max-width: 75vw;
+      width: fit-content;
+      
+      h2 {
+        line-height: 1em;
+      }
+
+      a {
+        border-radius: 50px;
+        padding-inline: 2.5em;
+        padding-block: 0.5em;
+        width: fit-content;
+        font-weight: bold;
+        font-size: 1em;
+        background-color: $blue;
+        color: $white;
+        transition: ease all 0.25s;
+
+        &:hover {
+          background-color: $blueHover;
+          color: $white;
+        }
+      }
+    }
+  }
+}

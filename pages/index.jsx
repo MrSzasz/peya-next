@@ -26,11 +26,6 @@ const Home = ({ heroDataFromDB, promoDataFromDB }) => {
     setShowPopUp((current) => !current);
   };
 
-  useEffect(() => {
-    !localStorage.getItem("userData") &
-      localStorage.setItem("userData", "null");
-  }, []);
-
   return (
     <Layout fn={openModal}>
       <main className={styles.mainContainer}>
@@ -39,7 +34,7 @@ const Home = ({ heroDataFromDB, promoDataFromDB }) => {
         <Benefits fn={openModal} />
         <Membership fn={openModal} />
         <SecureCard />
-        <PromoCarousel imagesArray={promoDataFromDB} />
+        <PromoCarousel />
         <Steps />
         <Prices />
       </main>
@@ -50,12 +45,12 @@ const Home = ({ heroDataFromDB, promoDataFromDB }) => {
   );
 };
 
-export const getServerSideProps = async () => {
+export const getStaticProps = async () => {
   try {
     const db = getFirestore();
 
     const queryCollectionHero = await query(
-      collection(db, "hero"),
+      collection(db, "demo"),
       orderBy("sort")
     );
 
@@ -67,23 +62,9 @@ export const getServerSideProps = async () => {
       )
     );
 
-    const queryCollectionPromos = await query(
-      collection(db, "promos"),
-      orderBy("sort")
-    );
-
-    const promoDataFromDB = [];
-
-    await getDocs(queryCollectionPromos).then((res) =>
-      res.docs.map((item) =>
-        promoDataFromDB.push({ ...item.data(), id: item.id })
-      )
-    );
-
     return {
       props: {
         heroDataFromDB,
-        promoDataFromDB,
       },
     };
   } catch (err) {

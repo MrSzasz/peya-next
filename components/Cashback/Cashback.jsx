@@ -36,10 +36,10 @@ const Cashback = () => {
           variants={item}
         >
           <CashbackCard
-            number={7}
+            number={9}
             img={"/icons/cashback/peya1.svg"}
-            textTop={"en compras en"}
-            textBottom={"El Súper digital de PedidosYa"}
+            textTop={"Lorem ipsum dolor"}
+            textBottom={"Lorem ipsum dolor sit amet consectetur"}
             position={"firstCashbackCard"}
           />
         </motion.div>
@@ -48,11 +48,11 @@ const Cashback = () => {
           variants={item}
         >
           <CashbackCard
-            number={3}
+            number={6}
             img={"/icons/cashback/peya2.svg"}
             altImg={"PedidosYa Logo"}
-            textTop={"en la app de"}
-            textBottom={"En Restaurantes, Mercados, Farmacias y mucho más!"}
+            textTop={"Lorem ipsum dolor"}
+            textBottom={"Lorem ipsum dolor sit amet consectetur"}
             position={"secondCashbackCard"}
           />
         </motion.div>
@@ -61,9 +61,9 @@ const Cashback = () => {
           variants={item}
         >
           <CashbackCard
-            number={1}
-            textTop={"fuera de la app"}
-            textBottom={"En supermercados, tiendas de alimentos y bebidas"}
+            number={3}
+            textTop={"Lorem ipsum dolor"}
+            textBottom={"Lorem ipsum dolor sit amet consectetur"}
             position={"thirdCashbackCard"}
           />
         </motion.div>
