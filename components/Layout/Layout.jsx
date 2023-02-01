@@ -11,6 +11,7 @@ const Layout = ({
   children,
   title = "PedidosYa Pagos - Pide Ya tu Visa Crédito | PedidosYa",
   desc = "Accede a Cashback todos los días, dentro y fuera de la app",
+  fn,
 }) => {
   return (
     <>
@@ -19,7 +20,7 @@ const Layout = ({
         <meta name="description" content={desc} />
         <link rel="icon" href="/icon.ico" />
       </Head>
-      <Header />
+      <Header fn={fn} />
       {children}
       <DynamicGoToTop />
       <Footer />

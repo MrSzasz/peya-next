@@ -7,7 +7,7 @@ import "swiper/css";
 import styles from "./Hero.module.scss";
 import { useEffect, useState } from "react";
 
-const Hero = ({ imagesArray }) => {
+const Hero = ({ imagesArray, fn }) => {
   const [windowWidth, setWindowWidth] = useState(null);
 
   useEffect(() => {
@@ -33,7 +33,11 @@ const Hero = ({ imagesArray }) => {
                     ) : null}
                     <h1>{data.title}</h1>
                     <h3>{data.subtitle}</h3>
-                    <MainButton href={data.buttonLink} />
+                    {data.textButton === "Pedir Ya" ? (
+                      <MainButton href={data.buttonLink} fn={fn} />
+                    ) : (
+                      <MainButton href={data.buttonLink} />
+                    )}
                   </div>
                   {data.desktopImagePosition === "bottom" ? (
                     <motion.img

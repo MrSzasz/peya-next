@@ -31,19 +31,18 @@ const Home = ({ heroDataFromDB, promoDataFromDB }) => {
   }, []);
 
   return (
-    <Layout>
+    <Layout fn={openModal}>
       <main className={styles.mainContainer}>
-        <Hero imagesArray={heroDataFromDB} />
+        <Hero imagesArray={heroDataFromDB} fn={openModal} />
         <Cashback />
-        <Benefits />
-        <Membership />
+        <Benefits fn={openModal} />
+        <Membership fn={openModal} />
         <SecureCard />
         <PromoCarousel imagesArray={promoDataFromDB} />
         <Steps />
         <Prices />
-        <button onClick={openModal}>modal</button>
       </main>
-      {showPopUp ? <PopUp fn={openModal} /> : null}
+      {showPopUp ? <PopUp fn={openModal} isOpen={showPopUp} /> : null}
     </Layout>
   );
 };

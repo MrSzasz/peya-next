@@ -3,7 +3,7 @@ import MainButton from "../MainButton/MainButton";
 import styles from "./Benefits.module.scss";
 import { motion } from "framer-motion";
 
-const Benefits = () => {
+const Benefits = ({fn}) => {
   return (
     <section id="benefitsSection" className={styles.benefitsContainer}>
       <motion.div
@@ -48,9 +48,7 @@ const Benefits = () => {
           />
         </div>
         <MainButton
-          href={
-            "https://pwdh.adj.st/fintech/cards/redirector?adj_t=6t2xp9f_a7g3qbs&adj_deep_link=pedidosya%3A%2F%2Ffintech%2Fcards%2Fredirector&adj_campaign=Landing&adj_adgroup=CTA&adj_creative=BenefitsSection"
-          }
+          fn={fn}
           color="buttonBlue"
         />
       </motion.div>

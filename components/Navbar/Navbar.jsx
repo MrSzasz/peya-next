@@ -4,7 +4,7 @@ import { AiOutlineMenu } from "react-icons/ai";
 import MainButton from "../MainButton/MainButton";
 import styles from "./Navbar.module.scss";
 
-const Navbar = () => {
+const Navbar = ({ fn }) => {
   const [windowWidth, setWindowWidth] = useState(null);
 
   useEffect(() => {
@@ -54,6 +54,7 @@ const Navbar = () => {
           href={
             "https://pwdh.adj.st/fintech/cards/redirector?adj_t=6t2xp9f_a7g3qbs&adj_deep_link=pedidosya%3A%2F%2Ffintech%2Fcards%2Fredirector&adj_campaign=Landing&adj_adgroup=CTA&adj_creative=Header"
           }
+          fn={fn}
         />
       </div>
       <button id="hideMenuButton" className={styles.menuNavbar}>
