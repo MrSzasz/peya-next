@@ -44,7 +44,7 @@ const Home = ({ heroDataFromDB, promoDataFromDB }) => {
         <Prices />
       </main>
       <AnimatePresence>
-        {showPopUp ? <PopUp fn={openModal} isOpen={showPopUp} /> : null}
+        {showPopUp ? <PopUp fn={openModal} /> : null}
       </AnimatePresence>
     </Layout>
   );
