@@ -15,26 +15,38 @@ import {
   orderBy,
   query,
 } from "firebase/firestore";
-import { useEffect } from "react";
+import { useEffect, useState } from "react";
+import PopUp from "../components/PopUp/PopUp";
+import { AnimatePresence } from "framer-motion";
 
 const Home = ({ heroDataFromDB, promoDataFromDB }) => {
+  const [showPopUp, setShowPopUp] = useState(false);
+
+  const openModal = () => {
+    setShowPopUp((current) => !current);
+  };
+
   useEffect(() => {
     !localStorage.getItem("userData") &
       localStorage.setItem("userData", "null");
   }, []);
 
   return (
-    <Layout>
+    <Layout fn={openModal}>
       <main className={styles.mainContainer}>
-        <Hero imagesArray={heroDataFromDB} />
+        <Hero imagesArray={heroDataFromDB} fn={openModal} />
         <Cashback />
-        <Benefits />
-        <Membership />
+        <Benefits fn={openModal} />
+        <Membership fn={openModal} />
         <SecureCard />
         <PromoCarousel imagesArray={promoDataFromDB} />
         <Steps />
         <Prices />
+        <small>{process.env.NEXT_PUBLIC_FRBS_APIKEY_ENVKEY}</small>
       </main>
+      <AnimatePresence>
+        {showPopUp ? <PopUp fn={openModal} /> : null}
+      </AnimatePresence>
     </Layout>
   );
 };
