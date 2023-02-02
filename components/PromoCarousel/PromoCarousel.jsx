@@ -36,13 +36,13 @@ const PromoCarousel = ({ imagesArray }) => {
             ))
         )}
         <div className={styles.moreInfoLinkCarouselContainer}>
-          <a
+          {/* <a
             target="_blank"
             href="/docs/tyc-balon.html"
             className={styles.moreInfoLinkCarousel}
           >
             Más información
-          </a>
+          </a> */}
         </div>
       </SliderComponent>
     </section>

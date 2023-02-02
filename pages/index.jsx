@@ -42,7 +42,6 @@ const Home = ({ heroDataFromDB, promoDataFromDB }) => {
         <PromoCarousel imagesArray={promoDataFromDB} />
         <Steps />
         <Prices />
-        <small>{process.env.NEXT_PUBLIC_FRBS_APIKEY_ENVKEY}</small>
       </main>
       <AnimatePresence>
         {showPopUp ? <PopUp fn={openModal} /> : null}
