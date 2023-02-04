@@ -10,6 +10,9 @@ const nextConfig = {
     source: "/docs/tyc-balonTest",
     destination: "/pages/docs/tyc-balon.html",
   }]
+  },i18n: {
+    locales: ['es'],
+    defaultLocale: 'es',
   },
 }
 
