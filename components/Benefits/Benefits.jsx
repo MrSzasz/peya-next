@@ -34,17 +34,17 @@ const Benefits = ({fn}) => {
           <ItemBenefit
             text={"Sin burocracia y 100% digital"}
             img={"/icons/benefits/icon1.svg"}
-            alt={"Icono sin burocracia"}
+            imgAlt={"Icono sin burocracia"}
           />
           <ItemBenefit
             text={"Visa Internacional"}
             img={"/icons/benefits/icon2.svg"}
-            alt={"Icono internacional"}
+            imgAlt={"Icono internacional"}
           />
           <ItemBenefit
             text={"Con beneficios y descuentos"}
             img={"/icons/benefits/icon3.svg"}
-            alt={"Icono descuentos"}
+            imgAlt={"Icono descuentos"}
           />
         </div>
         <MainButton

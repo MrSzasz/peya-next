@@ -29,7 +29,11 @@ const Hero = ({ imagesArray, fn }) => {
                 <div className={styles.heroSliderContainer}>
                   <div className={styles.heroTopContainer}>
                     {data.topUrl !== null ? (
-                      <img src={data.topUrl} className={styles.heroImgTop} />
+                      <img
+                        src={data.topUrl}
+                        className={styles.heroImgTop}
+                        alt={`Imagen extra, que acompaña a ${data.imgAlt}`}
+                      />
                     ) : null}
                     <h1>{data.title}</h1>
                     <h3>{data.subtitle}</h3>
@@ -96,7 +100,11 @@ const Hero = ({ imagesArray, fn }) => {
                 <div className={styles.heroSliderContainer}>
                   <div className={styles.heroTopContainer}>
                     {data.topUrl !== null ? (
-                      <img src={data.topUrl} className={styles.heroImgTop} />
+                      <img
+                        src={data.topUrl}
+                        className={styles.heroImgTop}
+                        alt={`Imagen extra, que acompaña a ${data.imgAlt}`}
+                      />
                     ) : null}
                     <h1>{data.title}</h1>
                     <h3>{data.subtitle}</h3>

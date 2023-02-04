@@ -1,0 +1,6 @@
+User-Agent: *
+Allow: /
+Disallow: /login
+Disallow: /login/*
+Disallow: /private-dash
+Disallow: /private-dash/*

@@ -41,6 +41,7 @@ const Cashback = () => {
             textTop={"en compras en"}
             textBottom={"El Súper digital de PedidosYa"}
             position={"firstCashbackCard"}
+            altImg={"Logo PedidosYa Market"}
           />
         </motion.div>
         <motion.div

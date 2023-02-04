@@ -18,6 +18,7 @@ const Layout = ({
       <Head>
         <title>{title}</title>
         <meta name="description" content={desc} />
+        <meta name="keywords" content="Pagos, PedidosYa Pagos, PedidosYa, Visa, Visa Crédito, Crédito, pedidosya, pedidos, rápido, compra, tarjeta, visa, crédito, beneficios, compras, descuentos, cashback, pedidos, digital, app, precio, precios, financiamiento, supermercados, restaurantes" />
         <link rel="icon" href="/icon.ico" />
       </Head>
       <Header fn={fn} />
