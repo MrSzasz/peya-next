@@ -1,4 +1,5 @@
 import $ from "jquery";
+import Image from "next/image";
 import { useEffect, useState } from "react";
 import { AiOutlineMenu } from "react-icons/ai";
 import MainButton from "../MainButton/MainButton";
@@ -26,13 +27,22 @@ const Navbar = ({ fn }) => {
   return (
     <nav id="nav" className={styles.navbar}>
       <a href="#hero">
-        <img
+        <Image
           src={
             windowWidth > 500
               ? "/images/peyaPagosLogo.svg"
               : "/images/logoMobile.svg"
           }
           alt="Ir al inicio"
+          height={0}
+          width={0}
+          quality={100}
+          sizes="100vh"
+          className={`${
+            windowWidth > 500
+              ? "w-full"
+              : "w-32"
+          } h-auto`}
         />
       </a>
       <div className={styles.linksContainer}>

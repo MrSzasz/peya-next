@@ -3,6 +3,7 @@ import SliderComponent from "../SliderComponent/SliderComponent";
 import { SwiperSlide } from "swiper/react";
 import { useEffect, useState } from "react";
 import styles from "./PromoCarousel.module.scss";
+import Image from "next/image";
 
 const PromoCarousel = ({ imagesArray }) => {
   const [windowWidth, setWindowWidth] = useState(1000);
@@ -23,7 +24,15 @@ const PromoCarousel = ({ imagesArray }) => {
             .filter((item) => item.device === false)
             .map((filteredItem) => (
               <SwiperSlide key={filteredItem.id}>
-                <img src={filteredItem.url} alt={filteredItem.imgAlt} />
+                <Image
+                  src={filteredItem.url}
+                  alt={filteredItem.imgAlt}
+                  height={0}
+                  width={0}
+                  quality={100}
+                  sizes="100vw"
+                  className="w-auto h-auto"
+                />
               </SwiperSlide>
             ))
         ) : (
@@ -31,7 +40,15 @@ const PromoCarousel = ({ imagesArray }) => {
             .filter((item) => item.device === true)
             .map((filteredItem) => (
               <SwiperSlide key={filteredItem.id}>
-                <img src={filteredItem.url} alt={filteredItem.imgAlt} />
+                <Image
+                  src={filteredItem.url}
+                  alt={filteredItem.imgAlt}
+                  height={0}
+                  width={0}
+                  unoptimized
+                  sizes="100vw"
+                  className="w-auto h-auto"
+                />
               </SwiperSlide>
             ))
         )}

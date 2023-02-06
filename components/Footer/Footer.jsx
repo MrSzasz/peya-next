@@ -1,3 +1,4 @@
+import Image from "next/image";
 import Link from "next/link";
 import styles from "./Footer.module.scss";
 
@@ -5,7 +6,14 @@ const Footer = () => {
   return (
     <footer className={styles.footer}>
       <a href="#hero">
-        <img src="/images/peyaPagosLogo.svg" alt="Logo PedidosYa Pagos" />
+        <Image
+          src="/images/peyaPagosLogo.svg"
+          alt="Logo PedidosYa Pagos"
+          height={0}
+          width={0}
+          sizes="100vw"
+          className="w-44 h-auto"
+        />
       </a>
       <p className={styles.disclaimer}>Pedidos Ya © 2010 - 2022</p>
       <div className={styles.centerFooterContainer}>
@@ -39,14 +47,28 @@ const Footer = () => {
               "https://play.google.com/store/apps/details?id=com.pedidosya&hl=es&referrer=pycat=retention&utm_medium=landing&utm_source=peya&utm_campaign=issuing&utm_content=download"
             }
           >
-            <img src="/images/footerAndroid.svg" alt="Descargar App Android" />
+            <Image
+              src="/images/footerAndroid.svg"
+              alt="Descargar App Android"
+              height={0}
+              width={0}
+              sizes="100vw"
+              className="w-40 h-auto"
+            />
           </Link>
           <Link
             href={
               "https://itunes.apple.com/app/pedidosya/id490099807?utm_medium=landing&utm_source=peya&utm_campaign=issuing&utm_content=download"
             }
           >
-            <img src="/images/footerApple.svg" alt="Descargar App Apple" />
+            <Image
+              src="/images/footerApple.svg"
+              alt="Descargar App Apple"
+              height={0}
+              width={0}
+              sizes="100vw"
+              className="w-40 h-auto"
+            />
           </Link>
         </div>
       </div>

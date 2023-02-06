@@ -42,15 +42,8 @@
             gap: 2em;
 
             a {
-                width: fit-content;
                 height: fit-content;
                 width: 9em;
-
-                img {
-                    width: auto;
-                    object-fit: contain;
-                    height: 100%;
-                }
             }
         }
     }

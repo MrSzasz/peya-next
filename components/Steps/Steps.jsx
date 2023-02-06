@@ -1,3 +1,4 @@
+import Image from "next/image";
 import Link from "next/link";
 import ItemSteps from "../ItemSteps/ItemSteps";
 import styles from "./Steps.module.scss";
@@ -38,14 +39,30 @@ const Steps = () => {
               "https://play.google.com/store/apps/details?id=com.pedidosya&hl=es&referrer=pycat=retention&utm_medium=landing&utm_source=peya&utm_campaign=issuing&utm_content=download"
             }
           >
-            <img src="/images/stepsAndroid.svg" alt="Link Google Play" />
+            <Image
+              src="/images/stepsAndroid.svg"
+              alt="Link Google Play"
+              height={0}
+              width={0}
+              quality={100}
+              sizes="100vw"
+              className="w-40 h-auto"
+            />
           </Link>
           <Link
             href={
               "https://itunes.apple.com/app/pedidosya/id490099807?utm_medium=landing&utm_source=peya&utm_campaign=issuing&utm_content=download"
             }
           >
-            <img src="/images/stepsApple.svg" alt="Link App Store" />
+            <Image
+              src="/images/stepsApple.svg"
+              alt="Link App Store"
+              height={0}
+              width={0}
+              quality={100}
+              sizes="100vw"
+              className="w-40 h-auto"
+            />
           </Link>
         </div>
       </div>

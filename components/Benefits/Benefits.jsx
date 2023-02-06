@@ -2,8 +2,9 @@ import ItemBenefit from "../ItemBenefit/ItemBenefit";
 import MainButton from "../MainButton/MainButton";
 import styles from "./Benefits.module.scss";
 import { motion } from "framer-motion";
+import Image from "next/image";
 
-const Benefits = ({fn}) => {
+const Benefits = ({ fn }) => {
   return (
     <section id="benefitsSection" className={styles.benefitsContainer}>
       <motion.div
@@ -47,10 +48,7 @@ const Benefits = ({fn}) => {
             imgAlt={"Icono descuentos"}
           />
         </div>
-        <MainButton
-          fn={fn}
-          color="buttonBlue"
-        />
+        <MainButton fn={fn} color="buttonBlue" />
       </motion.div>
       <motion.div
         key={2}
@@ -75,7 +73,15 @@ const Benefits = ({fn}) => {
           opacity: 1,
         }}
       >
-        <img src="/images/benefitsImg.png" alt="Mujer con tarjeta virtual" />
+        <Image
+          src="/images/benefitsImg.png"
+          alt="Mujer con tarjeta virtual"
+          height={0}
+          width={0}
+          quality={100}
+          sizes="100vw"
+          className="w-full h-auto"
+        />
       </motion.div>
     </section>
   );

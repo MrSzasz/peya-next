@@ -1,4 +1,5 @@
 import $ from "jquery";
+import Image from "next/image";
 import { useEffect } from "react";
 import styles from "./GoToTop.module.scss";
 
@@ -19,7 +20,14 @@ const GoToTop = () => {
 
   return (
     <button id="goToTopButton" className={styles.goToTop}>
-      <img src="/icons/footer/Arrow.svg" alt="Ir arriba" />
+      <Image
+        src="/icons/footer/Arrow.svg"
+        alt="Ir arriba"
+        height={0}
+        width={0}
+        sizes="100vw"
+        className="w-4 h-auto"
+      />
     </button>
   );
 };

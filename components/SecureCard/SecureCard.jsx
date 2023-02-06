@@ -2,6 +2,7 @@ import ItemBenefit from "../ItemBenefit/ItemBenefit";
 import styles from "./SecureCard.module.scss";
 import { motion } from "framer-motion";
 import { useEffect, useState } from "react";
+import Image from "next/image";
 
 const SecureCard = () => {
   const [windowWidth, setWindowWidth] = useState(null);
@@ -14,11 +15,14 @@ const SecureCard = () => {
     <section id="secureCardSection" className={styles.secureCardContainer}>
       {windowWidth > 500 ? (
         <>
-          {" "}
-          <img
-            className={styles.secureCardImg}
+          <Image
+            className={`${styles.secureCardImg} w-auto h-auto`}
             src="/images/secureCardImg.png"
             alt="Tarjeta física"
+            height={0}
+            width={0}
+            quality={100}
+            sizes="100vw"
           />
           <motion.div
             key={3}
@@ -100,10 +104,14 @@ const SecureCard = () => {
           >
             La tarjeta más segura
           </motion.h2>
-          <img
-            className={styles.secureCardImg}
+          <Image
+            className={`${styles.secureCardImg} w-full h-auto`}
             src="/images/secureCardImg.png"
             alt="Tarjeta física"
+            height={0}
+            width={0}
+            quality={100}
+            sizes="100vw"
           />
           <motion.div
             className={styles.benefitsList}

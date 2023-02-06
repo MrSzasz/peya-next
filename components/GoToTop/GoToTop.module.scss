@@ -5,7 +5,7 @@
      z-index: 10;
      bottom: 2em;
      right: 2em;
-     display: flex;
+    //  display: flex;
      justify-content: center;
      align-items: center;
      border-radius: 50%;
@@ -25,10 +25,5 @@
      .goToTop {
          height: 2.5em;
          width: 2.5em;
-
-         img {
-             width: 1.5em;
-             height: 1.5em;
-         }
      }
  }
