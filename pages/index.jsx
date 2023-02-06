@@ -50,7 +50,7 @@ const Home = ({ heroDataFromDB, promoDataFromDB }) => {
   );
 };
 
-export const getServerSideProps = async () => {
+export const getStaticProps = async () => {
   try {
     const db = getFirestore();
 
@@ -85,6 +85,7 @@ export const getServerSideProps = async () => {
         heroDataFromDB,
         promoDataFromDB,
       },
+      revalidate: 600,
     };
   } catch (err) {
     console.log(err);
