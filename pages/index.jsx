@@ -85,7 +85,7 @@ export const getStaticProps = async () => {
         heroDataFromDB,
         promoDataFromDB,
       },
-      revalidate: 600,
+      revalidate: 60,
     };
   } catch (err) {
     console.log(err);
