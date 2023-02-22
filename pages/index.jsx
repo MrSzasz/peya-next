@@ -29,6 +29,9 @@ const Home = ({ heroDataFromDB, promoDataFromDB }) => {
   useEffect(() => {
     !localStorage.getItem("userData") &
       localStorage.setItem("userData", "null");
+      let height = document.getElementById('nav').offsetHeight;
+      console.log(height);
+      document.documentElement.style.setProperty('--top-navbar', height+"px");
   }, []);
 
   return (
