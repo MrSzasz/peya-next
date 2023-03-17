@@ -34,7 +34,7 @@
     p {
       overflow-y: auto;
     }
-    
+
     .closePopUpButton {
       position: absolute;
       top: 1em;
@@ -50,6 +50,14 @@
       font-family: textaHeavy;
       width: 100%;
       line-height: 1em;
+    }
+  }
+}
+
+@media (max-width: 500px) {
+  .popUpBlack {
+    .popUpContainer {
+      padding-inline: 1.5em;
     }
   }
 }
