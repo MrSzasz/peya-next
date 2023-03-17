@@ -12,6 +12,8 @@ const Hero = ({ imagesArray, fn }) => {
 
   useEffect(() => {
     setWindowWidth(window.innerWidth);
+  console.log(imagesArray)
+
   }, []);
 
   return (
@@ -37,11 +39,14 @@ const Hero = ({ imagesArray, fn }) => {
                     ) : null}
                     <h1>{data.title}</h1>
                     <h3>{data.subtitle}</h3>
-                    {data.textButton === "Pedir Ya" ? (
+                    {/* {data.textButton === "Pedir Ya" ? (
                       <MainButton href={data.buttonLink} fn={fn} />
                     ) : (
                       <MainButton href={data.buttonLink} />
-                    )}
+                    )} */}
+                  
+                      <MainButton href={data.buttonLink} fn={fn} />
+
                   </div>
                   {data.desktopImagePosition === "bottom" ? (
                     <motion.img
