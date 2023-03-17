@@ -1,0 +1,55 @@
+@import "../../styles/variables";
+
+.popUpBlack {
+  position: fixed;
+  top: 0;
+  right: 0;
+  width: 100vw;
+  width: 100dvw;
+  height: 100vh;
+  height: 100dvh;
+  background-color: rgba($color: #000000, $alpha: 0.75);
+  display: grid;
+  place-items: center;
+  z-index: 100000;
+
+  .popUpContainer {
+    border-radius: 1.5em;
+    max-width: 75vw;
+    width: fit-content;
+    // min-height: 50%;
+    max-height: 95vh;
+    max-height: 95svh;
+    height: fit-content;
+    position: relative;
+    padding: 2em 1em;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 1em;
+    background-color: $white;
+    text-align: center;
+    padding-inline: 5em;
+
+    p {
+      overflow-y: auto;
+    }
+    
+    .closePopUpButton {
+      position: absolute;
+      top: 1em;
+      right: 1em;
+    }
+
+    h3 {
+      color: #004add;
+      font-weight: 400;
+      font-size: 2em;
+      height: fit-content;
+      padding: 0;
+      font-family: textaHeavy;
+      width: 100%;
+      line-height: 1em;
+    }
+  }
+}

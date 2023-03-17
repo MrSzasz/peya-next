@@ -4,12 +4,14 @@ import { SwiperSlide } from "swiper/react";
 import { useEffect, useState } from "react";
 import styles from "./PromoCarousel.module.scss";
 
-const PromoCarousel = ({ imagesArray }) => {
+const PromoCarousel = ({ imagesArray, tyc }) => {
   const [windowWidth, setWindowWidth] = useState(1000);
 
   useEffect(() => {
     setWindowWidth(window.innerWidth);
   }, []);
+
+  console.log(imagesArray);
 
   return (
     <section className={styles.promoCarouselContainer}>
@@ -24,6 +26,11 @@ const PromoCarousel = ({ imagesArray }) => {
             .map((filteredItem) => (
               <SwiperSlide key={filteredItem.id}>
                 <img src={filteredItem.url} alt={filteredItem.imgAlt} />
+                {filteredItem.tyc !== "" && filteredItem.tyc !== null ? (
+                  <small onClick={() => tyc(filteredItem.tyc)}>
+                    Más información
+                  </small>
+                ) : null}
               </SwiperSlide>
             ))
         ) : (
@@ -32,18 +39,15 @@ const PromoCarousel = ({ imagesArray }) => {
             .map((filteredItem) => (
               <SwiperSlide key={filteredItem.id}>
                 <img src={filteredItem.url} alt={filteredItem.imgAlt} />
+                {filteredItem.tyc !== "" && filteredItem.tyc !== null ? (
+                  <small onClick={() => tyc(filteredItem.tyc)}>
+                    Más información
+                  </small>
+                ) : null}
               </SwiperSlide>
             ))
         )}
-        <div className={styles.moreInfoLinkCarouselContainer}>
-          {/* <a
-            target="_blank"
-            href="/docs/tyc-balon.html"
-            className={styles.moreInfoLinkCarousel}
-          >
-            Más información
-          </a> */}
-        </div>
+        <div className={styles.moreInfoLinkCarouselContainer}></div>
       </SliderComponent>
     </section>
   );

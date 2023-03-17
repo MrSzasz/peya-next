@@ -18,36 +18,59 @@ import {
 import { useEffect, useState } from "react";
 import PopUp from "../components/PopUp/PopUp";
 import { AnimatePresence } from "framer-motion";
+import PopUpTyC from "../components/PopUpTyC/PopUpTyC";
 
 const Home = ({ heroDataFromDB, promoDataFromDB }) => {
   const [showPopUp, setShowPopUp] = useState(false);
+  const [showTyCPopUp, setShowTyCPopUp] = useState(false);
+  const [termsAndConditionsForModal, setTermsAndConditionsForModal] =
+    useState("");
 
   const openModal = () => {
     setShowPopUp((current) => !current);
   };
 
+  const openTyCModal = () => {
+    setShowTyCPopUp((current) => !current);
+  };
+
+  const getTyCForModal = (data) => {
+    // console.log(data);
+    setTermsAndConditionsForModal(data);
+    openTyCModal();
+  };
+
   useEffect(() => {
     !localStorage.getItem("userData") &
       localStorage.setItem("userData", "null");
-      let height = document.getElementById('nav').offsetHeight;
-      console.log(height);
-      document.documentElement.style.setProperty('--top-navbar', height+"px");
+    let height = document.getElementById("nav").offsetHeight;
+    console.log(height);
+    document.documentElement.style.setProperty("--top-navbar", height + "px");
   }, []);
 
   return (
     <Layout fn={openModal}>
       <main className={styles.mainContainer}>
-        <Hero imagesArray={heroDataFromDB} fn={openModal} />
+        <Hero
+          imagesArray={heroDataFromDB}
+          fn={openModal}
+          tyc={getTyCForModal}
+        />
         <Cashback />
         <Benefits fn={openModal} />
         <Membership fn={openModal} />
         <SecureCard />
-        <PromoCarousel imagesArray={promoDataFromDB} />
+        <PromoCarousel tyc={getTyCForModal} imagesArray={promoDataFromDB} />
         <Steps />
         <Prices />
       </main>
       <AnimatePresence>
         {showPopUp ? <PopUp fn={openModal} /> : null}
+      </AnimatePresence>
+      <AnimatePresence>
+        {showTyCPopUp ? (
+          <PopUpTyC fn={openTyCModal} data={termsAndConditionsForModal} />
+        ) : null}
       </AnimatePresence>
     </Layout>
   );

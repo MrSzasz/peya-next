@@ -7,13 +7,12 @@ import "swiper/css";
 import styles from "./Hero.module.scss";
 import { useEffect, useState } from "react";
 
-const Hero = ({ imagesArray, fn }) => {
+const Hero = ({ imagesArray, fn, tyc }) => {
   const [windowWidth, setWindowWidth] = useState(null);
 
   useEffect(() => {
     setWindowWidth(window.innerWidth);
-  console.log(imagesArray)
-
+    console.log(imagesArray);
   }, []);
 
   return (
@@ -44,9 +43,12 @@ const Hero = ({ imagesArray, fn }) => {
                     ) : (
                       <MainButton href={data.buttonLink} />
                     )} */}
-                  
-                      <MainButton href={data.buttonLink} fn={fn} />
-
+                    <MainButton href={data.buttonLink} fn={fn} />
+                    {data.tyc !== "" && data.tyc !== null ? (
+                      <small onClick={() => tyc(data.tyc)}>
+                        Más información
+                      </small>
+                    ) : undefined}
                   </div>
                   {data.desktopImagePosition === "bottom" ? (
                     <motion.img
@@ -114,7 +116,14 @@ const Hero = ({ imagesArray, fn }) => {
                     <h1>{data.title}</h1>
                     <h3>{data.subtitle}</h3>
                     {data.mobileButtonPosition === "top" ? (
-                      <MainButton href={data.buttonLink} />
+                      <>
+                        <MainButton href={data.buttonLink} />
+                        {data.tyc !== "" && data.tyc !== null ? (
+                          <small onClick={() => tyc(data.tyc)}>
+                            Más información
+                          </small>
+                        ) : undefined}
+                      </>
                     ) : undefined}
                   </div>
                   <motion.img

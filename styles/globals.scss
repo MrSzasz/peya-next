@@ -3,67 +3,76 @@
 @tailwind utilities;
 
 @font-face {
-    font-family: textaRegular;
-    src: url("../assets/fonts/TextaAlt-Regular_0.otf");
+  font-family: textaRegular;
+  src: url("../assets/fonts/TextaAlt-Regular_0.otf");
 }
 
 @font-face {
-    font-family: textaHeavy;
-    src: url("../assets/fonts/TextaAlt-Heavy_0.otf");
+  font-family: textaHeavy;
+  src: url("../assets/fonts/TextaAlt-Heavy_0.otf");
 }
 
 @font-face {
-    font-family: textaBold;
-    src: url("../assets/fonts/TextaAlt-Bold_0.otf");
+  font-family: textaBold;
+  src: url("../assets/fonts/TextaAlt-Bold_0.otf");
 }
 
 @font-face {
-    font-family: textaBlack;
-    src: url("../assets/fonts/TextaAlt-Black_0.otf");
+  font-family: textaBlack;
+  src: url("../assets/fonts/TextaAlt-Black_0.otf");
 }
 
 :root {
-    --swiper-theme-color: white !important;
-    --top-navbar: 70px;
+  --swiper-theme-color: white !important;
+  --top-navbar: 70px;
 }
 
 #promosCarouselId .swiper-pagination-bullet-active {
-    background-color: #004ADD !important;
+  background-color: #004add !important;
 }
 
 html {
-    font-family: textaRegular;
-    scroll-behavior: smooth;
-    overflow-x: hidden;
-    scroll-padding-top: 70px;
+  font-family: textaRegular;
+  scroll-behavior: smooth;
+  overflow-x: hidden;
+  scroll-padding-top: 70px;
 }
 
 *:focus-visible {
-    outline: 2px solid #b0c7f4;
+  outline: 2px solid #b0c7f4;
 }
 
 h2 {
-    color: #004ADD;
-    font-weight: 400;
-    font-size: 3em;
-    height: fit-content;
-    padding: 0;
-    font-family: textaHeavy;
+  color: #004add;
+  font-weight: 400;
+  font-size: 3em;
+  height: fit-content;
+  padding: 0;
+  font-family: textaHeavy;
 }
 
 section {
-    padding-inline: 10%;
-    padding-block: 2em;
+  padding-inline: 10%;
+  padding-block: 2em;
 }
 
-
 @media (max-width: 500px) {
-    section {
-        padding-inline: 5%;
-        padding-block: 2em;
-    }
+  section {
+    padding-inline: 5%;
+    padding-block: 2em;
+  }
 }
 
 body {
-    overflow-x: hidden;
+  overflow-x: hidden;
+}
+
+.swiper-horizontal > .swiper-pagination-bullets,
+.swiper-pagination-bullets.swiper-pagination-horizontal,
+.swiper-pagination-custom,
+.swiper-pagination-fraction {
+  left: 50% !important;
+  width: fit-content !important;
+  margin: auto;
+  transform: translateX(-50%);
 }

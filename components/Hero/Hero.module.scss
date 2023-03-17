@@ -44,6 +44,12 @@
         width: auto;
         height: 10%;
       }
+
+      small {
+        color: $white;
+        text-decoration: underline;
+        cursor: pointer;
+      }
     }
 
     .heroImgBottom__bottom {
@@ -116,7 +122,7 @@
     }
 
     .heroSliderContainer {
-      img{
+      img {
         object-fit: contain !important;
       }
     }

@@ -25,6 +25,14 @@
             text-decoration: underline;
         }
     }
+
+    small{
+        position: absolute;
+        bottom: 1em;
+        text-decoration: underline;
+        cursor: pointer;      
+        z-index: 12; 
+    }
 }
 
 @media (max-width: 500px) {
