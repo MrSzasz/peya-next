@@ -58,6 +58,7 @@ const hero = () => {
     order,
     link,
     alt,
+    tyc,
     buttonPosition,
     imagePosition
   ) => {
@@ -74,6 +75,7 @@ const hero = () => {
           sort: order,
           buttonLink: link,
           imgAlt: alt,
+          tyc,
           mobileButtonPosition: buttonPosition,
         });
       } else {
@@ -83,6 +85,7 @@ const hero = () => {
           sort: order,
           buttonLink: link,
           imgAlt: alt,
+          tyc,
           desktopImagePosition: imagePosition,
         });
       }
@@ -212,6 +215,14 @@ const hero = () => {
                               defaultValue={data.imgAlt}
                             />
                           </div>
+                          <div className={styles.inputGroupWithLabel}>
+                            <label htmlFor={`heroTyC${data.id}`}>TÉRMINOS Y CONDICIONES: </label>
+                            <textarea
+                              name={`heroTyC${data.id}`}
+                              id={`heroTyC${data.id}`}
+                              defaultValue={data.tyc}
+                            />
+                          </div>
                           {data.device === "mobile" ? (
                             <div className={styles.inputGroupWithLabel}>
                               <label htmlFor={`heroMobile_button${data.id}`}>
@@ -253,6 +264,7 @@ const hero = () => {
                               Number($(`#heroOrder${data.id}`).val().trim()),
                               $(`#heroLink${data.id}`).val().trim(),
                               $(`#heroAlt${data.id}`).val().trim(),
+                              $(`#heroTyC${data.id}`).val().trim(),
                               $(
                                 `#heroMobile_button${data.id} option:selected`
                               ).val(),

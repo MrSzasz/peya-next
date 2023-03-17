@@ -102,6 +102,7 @@ const index = () => {
     imageFile,
     order,
     imageAlt,
+    tyc,
     heroTitle,
     heroSubtitle,
     heroButtonLink,
@@ -122,6 +123,7 @@ const index = () => {
                 topUrl: imageFileTop,
                 device: device,
                 imgAlt: imageAlt,
+                tyc: tyc,
                 title: heroTitle,
                 subtitle: heroSubtitle,
                 buttonLink: heroButtonLink,
@@ -139,6 +141,7 @@ const index = () => {
                 order: order,
                 device: device,
                 imgAlt: imageAlt,
+                tyc: tyc,
                 title: heroTitle,
                 subtitle: heroSubtitle,
                 buttonLink: heroButtonLink,
@@ -157,6 +160,7 @@ const index = () => {
             url: imageFile,
             order: order,
             imgAlt: imageAlt,
+            tyc: tyc
           },
         ]);
       });
@@ -190,6 +194,7 @@ const index = () => {
               sort: dataToUpload.order,
               topUrl: generatedTopFirebaseUrl,
               imgAlt: dataToUpload.imgAlt,
+              tyc: dataToUpload.tyc || "",
               title: dataToUpload.title,
               device: dataToUpload.device,
               subtitle: dataToUpload.subtitle,
@@ -209,6 +214,7 @@ const index = () => {
               url: generatedFirebaseUrl,
               sort: dataToUpload.order,
               imgAlt: dataToUpload.imgAlt,
+              tyc: dataToUpload.tyc || "",
               topUrl: null,
               title: dataToUpload.title,
               device: dataToUpload.device,
@@ -234,11 +240,12 @@ const index = () => {
             url: generatedFirebaseUrl,
             sort: dataToUpload.order,
             imgAlt: dataToUpload.imgAlt,
+            tyc: dataToUpload.tyc || "",
             device: dataToUpload.device,
           }).then(console.log("done"));
         }
       } else {
-        toast.dismiss("notifyLoadingID")
+        toast.dismiss("notifyLoadingID");
         notifyError();
         return new Error(
           "Surgió un error al subir el archivo a la base de datos"
@@ -331,6 +338,11 @@ const index = () => {
                       <span>ALT: </span> es el texto alternativo (no videntes)
                       que tendrá la imagen en el Hero.
                       <br />
+                      <span>TYC (Términos y condiciones): </span> son los
+                      términos y condiciones del hero que se está creando, el
+                      mismo se mostrará en el popup. Si no posee términos y
+                      condiciones deberá dejarse vacío.
+                      <br />
                       <span>IMAGEN PRINCIPAL: </span> es la imagen principal
                       (grande) del Hero.
                       <br /> <br />
@@ -422,6 +434,7 @@ const index = () => {
                         $("#heroImg").prop("files")[0],
                         Number($("#heroOrder").val().trim()),
                         $("#heroAlt").val().trim(),
+                        $("#heroTyC").val().trim(),
                         $("#heroTitle").val().trim(),
                         $("#heroSubtitle").val().trim(),
                         $("#heroLink").val().trim(),
@@ -429,8 +442,7 @@ const index = () => {
                         $("#heroMobile_button option:selected").val(),
                         $("#heroDesktopImage option:selected").val()
                       )
-                    }
-                  >
+                      }>
                     <div className={styles.inputGroup}>
                       <div className={styles.inputGroupWithLabel}>
                         <label htmlFor="heroDevice">*DISPOSITIVO: </label>
@@ -493,6 +505,15 @@ const index = () => {
                           name="heroAlt"
                           id="heroAlt"
                           required
+                        />
+                      </div>
+                      <div className={styles.inputGroupWithLabel}>
+                        <label htmlFor="heroAlt">TYC: </label>
+                        <textarea
+                          name="heroTyC"
+                          id="heroTyC"
+                          cols={30}
+                          rows={10}
                         />
                       </div>
                       <div className={styles.inputGroupWithLabel}>
@@ -625,6 +646,11 @@ const index = () => {
                       <span>ALT: </span> es el texto alternativo (no videntes)
                       que tendrá la imagen en promo.
                       <br />
+                      <span>TYC (Términos y condiciones): </span> son los
+                      términos y condiciones del hero que se está creando, el
+                      mismo se mostrará en el popup. Si no posee términos y
+                      condiciones deberá dejarse vacío.
+                      <br />
                       <span>POSICIÓN EN FILA (SOLO NÚMERO): </span> es el orden
                       que tendrá (tiene que ser mayor al numero marcado como
                       ultima posición).
@@ -655,10 +681,11 @@ const index = () => {
                         e.target.elements[0].checked,
                         $("#promosImg").prop("files")[0],
                         Number($("#promosOrder").val().trim()),
-                        $("#promosAlt").val().trim()
+                        $("#promosAlt").val().trim(),
+                        $("#promosTyC").val().trim()
                       )
                     }
-                  > 
+                  >
                     <div className={styles.inputGroup}>
                       <div className={styles.inputGroupWithLabel}>
                         <label htmlFor="promosMobile">¿ES MOBILE? </label>
@@ -675,6 +702,14 @@ const index = () => {
                           name="promosAlt"
                           id="promosAlt"
                           required
+                        />
+                      </div>
+                      <div className={styles.inputGroupWithLabel}>
+                        <label htmlFor="promosTyC">TyC: </label>
+                        <textarea
+                          name="promosTyC"
+                          id="promosTyC"
+                          cols={30}
                         />
                       </div>
                       <div className={styles.inputGroupWithLabel}>

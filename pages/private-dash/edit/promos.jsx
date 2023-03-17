@@ -14,6 +14,7 @@ import { useRouter } from "next/router";
 import Link from "next/link";
 import { useAppContext } from "../../../context/AppContext";
 import toast, { Toaster } from "react-hot-toast";
+import $ from "jquery"
 
 const notifySuccess = () => toast.success("Datos subidos correctamente");
 const notifyLoading = () =>
@@ -49,7 +50,7 @@ const hero = () => {
     setArrayFromFB(arrayFromFB.filter((item) => item.id !== id));
   };
 
-  const handleUpdate = async (id, alt, sort) => {
+  const handleUpdate = async (id, alt, tyc, sort) => {
     notifyLoading();
 
     try {
@@ -58,6 +59,7 @@ const hero = () => {
 
       await updateDoc(dataRef, {
         imgAlt: alt,
+        tyc,
         sort,
       });
     } catch (err) {
@@ -141,6 +143,14 @@ const hero = () => {
                             />
                           </div>
                           <div className={styles.inputGroupWithLabel}>
+                            <label htmlFor={`promosTyC${data.id}`}>Términos y condiciones: </label>
+                            <textarea
+                              name={`promosTyC${data.id}`}
+                              id={`promosTyC${data.id}`}
+                              defaultValue={data.tyc}
+                            />
+                          </div>
+                          <div className={styles.inputGroupWithLabel}>
                             <label htmlFor={`promosOrder${data.id}`}>
                               POSICIÓN EN FILA:{" "}
                             </label>
@@ -158,6 +168,7 @@ const hero = () => {
                             handleUpdate(
                               data.id,
                               $(`#promosAlt${data.id}`).val().trim(),
+                              $(`#promosTyC${data.id}`).val().trim(),
                               Number($(`#promosOrder${data.id}`).val().trim())
                             )
                           }
