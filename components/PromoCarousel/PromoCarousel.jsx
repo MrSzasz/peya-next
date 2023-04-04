@@ -11,7 +11,6 @@ const PromoCarousel = ({ imagesArray, tyc }) => {
     setWindowWidth(window.innerWidth);
   }, []);
 
-  console.log(imagesArray);
 
   return (
     <section className={styles.promoCarouselContainer}>

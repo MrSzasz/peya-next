@@ -6,13 +6,14 @@ import { SwiperSlide } from "swiper/react";
 import "swiper/css";
 import styles from "./Hero.module.scss";
 import { useEffect, useState } from "react";
+import { useAppContext } from "../../context/AppContext";
 
 const Hero = ({ imagesArray, fn, tyc }) => {
   const [windowWidth, setWindowWidth] = useState(null);
+  const { componentLoaded } = useAppContext();
 
   useEffect(() => {
     setWindowWidth(window.innerWidth);
-    console.log(imagesArray);
   }, []);
 
   return (
@@ -43,9 +44,23 @@ const Hero = ({ imagesArray, fn, tyc }) => {
                     ) : (
                       <MainButton href={data.buttonLink} />
                     )} */}
-                    <MainButton href={data.buttonLink} fn={fn} />
+                    <MainButton
+                      href={data.buttonLink}
+                      fn={fn}
+                      component="Hero"
+                    />
                     {data.tyc !== "" && data.tyc !== null ? (
-                      <small onClick={() => tyc(data.tyc)}>
+                      <small
+                        onClick={() => {
+                          tyc(data.tyc),
+                            componentLoaded(
+                              "clickedButtons",
+                              "campaing_name",
+                              data.title,
+                              "cobranded_campaign_info.clicked"
+                            );
+                        }}
+                      >
                         Más información
                       </small>
                     ) : undefined}
@@ -117,9 +132,19 @@ const Hero = ({ imagesArray, fn, tyc }) => {
                     <h3>{data.subtitle}</h3>
                     {data.mobileButtonPosition === "top" ? (
                       <>
-                        <MainButton href={data.buttonLink} />
+                        <MainButton href={data.buttonLink} component="Hero" />
                         {data.tyc !== "" && data.tyc !== null ? (
-                          <small onClick={() => tyc(data.tyc)}>
+                          <small
+                            onClick={() => {
+                              tyc(data.tyc),
+                                componentLoaded(
+                                  "clickedButtons",
+                                  "campaing_name",
+                                  data.title,
+                                  "cobranded_campaign_info.clicked"
+                                );
+                            }}
+                          >
                             Más información
                           </small>
                         ) : undefined}
@@ -154,7 +179,7 @@ const Hero = ({ imagesArray, fn, tyc }) => {
                   />
                   {data.mobileButtonPosition === "bottom" ? (
                     <div className={styles.bottomButtonContainer}>
-                      <MainButton href={data.buttonLink} />
+                      <MainButton href={data.buttonLink} component="Hero" />
                     </div>
                   ) : undefined}
                 </div>

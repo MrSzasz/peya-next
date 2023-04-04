@@ -2,8 +2,20 @@ import ItemBenefit from "../ItemBenefit/ItemBenefit";
 import MainButton from "../MainButton/MainButton";
 import styles from "./Benefits.module.scss";
 import { motion } from "framer-motion";
+import { useAppContext } from "../../context/AppContext";
+import { useEffect } from "react";
 
-const Benefits = ({fn}) => {
+const Benefits = ({ fn }) => {
+  const { componentLoaded } = useAppContext();
+
+  useEffect(() => {
+    componentLoaded(
+      "componentLoadings",
+      "sectionName",
+      "Benefits",
+      "cobranded_section.loaded"
+    );
+  }, []);
   return (
     <section id="benefitsSection" className={styles.benefitsContainer}>
       <motion.div
@@ -47,10 +59,7 @@ const Benefits = ({fn}) => {
             imgAlt={"Icono descuentos"}
           />
         </div>
-        <MainButton
-          fn={fn}
-          color="buttonBlue"
-        />
+        <MainButton fn={fn} color="buttonBlue" component="Benefits" />
       </motion.div>
       <motion.div
         key={2}

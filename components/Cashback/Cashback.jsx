@@ -1,8 +1,12 @@
 import CashbackCard from "../CashbackCard/CashbackCard";
 import styles from "./Cashback.module.scss";
 import { motion } from "framer-motion";
+import { useAppContext } from "../../context/AppContext";
+import { useEffect } from "react";
 
 const Cashback = () => {
+  const { componentLoaded } = useAppContext();
+
   const container = {
     hidden: { opacity: 0 },
     show: {
@@ -17,6 +21,15 @@ const Cashback = () => {
     hidden: { opacity: 0 },
     show: { opacity: 1 },
   };
+
+  useEffect(() => {
+    componentLoaded(
+      "componentLoadings",
+      "sectionName",
+      "Cashback",
+      "cobranded_section.loaded"
+    );
+  }, []);
 
   return (
     <section id="cashbackSection" className={styles.cashbackContainer}>

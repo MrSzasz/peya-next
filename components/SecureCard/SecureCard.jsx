@@ -2,15 +2,24 @@ import ItemBenefit from "../ItemBenefit/ItemBenefit";
 import styles from "./SecureCard.module.scss";
 import { motion } from "framer-motion";
 import { useEffect, useState } from "react";
+import { useAppContext } from "../../context/AppContext";
 
 const SecureCard = () => {
   const [windowWidth, setWindowWidth] = useState(null);
+  const { componentLoaded } = useAppContext();
 
   useEffect(() => {
+    componentLoaded(
+      "componentLoadings",
+      "sectionName",
+      "Cards",
+      "cobranded_section.loaded"
+    );
     setWindowWidth(window.innerWidth);
   }, []);
 
-  const moreInfoUrl = "https://www.visa.com.pa/pague-con-visa/tarjetas/beneficios/proteccion-de-compra.html"
+  const moreInfoUrl =
+    "https://www.visa.com.pa/pague-con-visa/tarjetas/beneficios/proteccion-de-compra.html";
 
   return (
     <section id="secureCardSection" className={styles.secureCardContainer}>
@@ -71,6 +80,14 @@ const SecureCard = () => {
                 href={moreInfoUrl}
                 target="_blank"
                 className={styles.moreInfoLink}
+                onClick={() => {
+                  componentLoaded(
+                    "clickedButtons",
+                    "sessionID",
+                    null,
+                    "cobranded_cards_more_info.clicked"
+                  );
+                }}
               >
                 Más información
               </a>
@@ -155,6 +172,14 @@ const SecureCard = () => {
               href={moreInfoUrl}
               target="_blank"
               className={styles.moreInfoLink}
+              onClick={() => {
+                componentLoaded(
+                  "clickedButtons",
+                  "sessionID",
+                  null,
+                  "cobranded_cards_more_info.clicked"
+                );
+              }}
             >
               Más información
             </a>

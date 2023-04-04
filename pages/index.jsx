@@ -35,7 +35,6 @@ const Home = ({ heroDataFromDB, promoDataFromDB }) => {
   };
 
   const getTyCForModal = (data) => {
-    // console.log(data);
     setTermsAndConditionsForModal(data);
     openTyCModal();
   };
@@ -44,7 +43,6 @@ const Home = ({ heroDataFromDB, promoDataFromDB }) => {
     !localStorage.getItem("userData") &
       localStorage.setItem("userData", "null");
     let height = document.getElementById("nav").offsetHeight;
-    console.log(height);
     document.documentElement.style.setProperty("--top-navbar", height + "px");
   }, []);
 

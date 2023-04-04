@@ -16,6 +16,7 @@ const Membership = ({ fn }) => {
                 "https://pwdh.adj.st/fintech/cards/redirector?adj_t=6t2xp9f_a7g3qbs&adj_deep_link=pedidosya%3A%2F%2Ffintech%2Fcards%2Fredirector&adj_campaign=Landing&adj_adgroup=CTA&adj_creative=Free"
               }
               fn={fn}
+              component="Membership"
             />
           </div>
           <motion.img

@@ -11,7 +11,7 @@ const PopUp = ({ fn }) => {
       initial={{ opacity: 0 }}
       animate={{ opacity: 1 }}
       exit={{
-        opacity: 0
+        opacity: 0,
       }}
     >
       <motion.div
@@ -27,7 +27,7 @@ const PopUp = ({ fn }) => {
           },
         }}
         exit={{
-          y: "-100"
+          y: "-100",
         }}
         onClick={(e) => e.stopPropagation()}
       >
@@ -46,7 +46,7 @@ const PopUp = ({ fn }) => {
           width={250}
           alt="QR para pedir la tarjeta"
         />
-        <MainButton fn={fn} color="buttonBlue" text="Listo" />
+        <MainButton fn={fn} color="buttonBlue" text="Listo" component="popUp" />
       </motion.div>
     </motion.div>
   );
