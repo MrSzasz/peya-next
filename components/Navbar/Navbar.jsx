@@ -1,13 +1,26 @@
 import $ from "jquery";
 import { useEffect, useState } from "react";
 import { AiOutlineMenu } from "react-icons/ai";
-import { useAppContext } from "../../context/AppContext";
+// import { useAppContext } from "../../context/AppContext";
 import MainButton from "../MainButton/MainButton";
 import styles from "./Navbar.module.scss";
+import TagManager from "react-gtm-module";
 
 const Navbar = ({ fn }) => {
   const [windowWidth, setWindowWidth] = useState(null);
-  const { componentLoaded } = useAppContext();
+  // const { componentLoaded } = useAppContext();
+
+  const GTMClick = (clickedButtonName) => {
+    const tagManagerDev = {
+      dataLayer: {
+        event: "cobranded_request.clicked",
+        screenName: clickedButtonName,
+      },
+      dataLayerName: "userLog",
+    };
+
+    TagManager.dataLayer(tagManagerDev);
+  };
 
   useEffect(() => {
     setWindowWidth(window.innerWidth);
@@ -40,54 +53,17 @@ const Navbar = ({ fn }) => {
       <div className={styles.linksContainer}>
         <ul className={styles.linksContainerList}>
           <li>
-            <a
-              href="#cashbackSection"
-              onClick={() =>
-                componentLoaded(
-                  "clickedButtons",
-                  "buttonName",
-                  "Cashback",
-                  "cobranded_section_button.clicked"
-                )
-              }
-            >
+            <a href="#cashbackSection" onClick={() => GTMClick("Cashback")}>
               Cashback
             </a>
           </li>
-          <li
-            onClick={() =>
-              componentLoaded(
-                "clickedButtons",
-                "buttonName",
-                "Benefits",
-                "cobranded_section_button.clicked"
-              )
-            }
-          >
+          <li onClick={() => GTMClick("Benefits")}>
             <a href="#benefitsSection">Beneficios</a>
           </li>
-          <li
-            onClick={() =>
-              componentLoaded(
-                "clickedButtons",
-                "buttonName",
-                "Cards",
-                "cobranded_section_button.clicked"
-              )
-            }
-          >
+          <li onClick={() => GTMClick("Cards")}>
             <a href="#secureCardSection">Tarjeta</a>
           </li>
-          <li
-            onClick={() =>
-              componentLoaded(
-                "clickedButtons",
-                "buttonName",
-                "Costs",
-                "cobranded_section_button.clicked"
-              )
-            }
-          >
+          <li onClick={() => GTMClick("Costs")}>
             <a href="#pricesSection">Costos</a>
           </li>
         </ul>
@@ -106,52 +82,28 @@ const Navbar = ({ fn }) => {
         <ul className={styles.hiddenLinksContainerList}>
           <li
             onClick={() => {
-              hideNavMenu,
-                componentLoaded(
-                  "clickedButtons",
-                  "buttonName",
-                  "Cashback",
-                  "cobranded_section_button.clicked"
-                );
+              hideNavMenu, GTMClick("Cashback");
             }}
           >
             <a href="#cashbackSection">Cashback</a>
           </li>
           <li
             onClick={() => {
-              hideNavMenu,
-                componentLoaded(
-                  "clickedButtons",
-                  "buttonName",
-                  "Benefits",
-                  "cobranded_section_button.clicked"
-                );
+              hideNavMenu, GTMClick("Benefits");
             }}
           >
             <a href="#benefitsSection">Beneficios</a>
           </li>
           <li
             onClick={() => {
-              hideNavMenu,
-                componentLoaded(
-                  "clickedButtons",
-                  "buttonName",
-                  "Cards",
-                  "cobranded_section_button.clicked"
-                );
+              hideNavMenu, GTMClick("Cards");
             }}
           >
             <a href="#secureCardSection">Tarjeta</a>
           </li>
           <li
             onClick={() => {
-              hideNavMenu,
-                componentLoaded(
-                  "clickedButtons",
-                  "buttonName",
-                  "Costs",
-                  "cobranded_section_button.clicked"
-                );
+              hideNavMenu, GTMClick("Costs");
             }}
           >
             <a href="#pricesSection">Costos</a>

@@ -2,19 +2,44 @@ import ItemBenefit from "../ItemBenefit/ItemBenefit";
 import styles from "./SecureCard.module.scss";
 import { motion } from "framer-motion";
 import { useEffect, useState } from "react";
-import { useAppContext } from "../../context/AppContext";
+// import { useAppContext } from "../../context/AppContext";
+import TagManager from "react-gtm-module";
 
 const SecureCard = () => {
   const [windowWidth, setWindowWidth] = useState(null);
-  const { componentLoaded } = useAppContext();
+  // const { componentLoaded } = useAppContext();
+
+  const GTMClick = () => {
+    const userId = localStorage.getItem("sessionId");
+
+    const tagManagerDev = {
+      dataLayer: {
+        event: "cobranded_cards_more_info.clicked",
+        sessionId: userId,
+      },
+      dataLayerName: "userLog",
+    };
+
+    TagManager.dataLayer(tagManagerDev);
+  };
 
   useEffect(() => {
-    componentLoaded(
-      "componentLoadings",
-      "sectionName",
-      "Cards",
-      "cobranded_section.loaded"
-    );
+    const tagManagerDev = {
+      dataLayer: {
+        event: "cobranded_section.loaded",
+        sectionName: "Cards",
+      },
+      dataLayerName: "userLog",
+    };
+
+    TagManager.dataLayer(tagManagerDev);
+
+    // componentLoaded(
+    //   "componentLoadings",
+    //   "sectionName",
+    //   "Cards",
+    //   "cobranded_section.loaded"
+    // );
     setWindowWidth(window.innerWidth);
   }, []);
 
@@ -81,12 +106,7 @@ const SecureCard = () => {
                 target="_blank"
                 className={styles.moreInfoLink}
                 onClick={() => {
-                  componentLoaded(
-                    "clickedButtons",
-                    "sessionID",
-                    null,
-                    "cobranded_cards_more_info.clicked"
-                  );
+                  GTMClick();
                 }}
               >
                 Más información
@@ -173,12 +193,7 @@ const SecureCard = () => {
               target="_blank"
               className={styles.moreInfoLink}
               onClick={() => {
-                componentLoaded(
-                  "clickedButtons",
-                  "sessionID",
-                  null,
-                  "cobranded_cards_more_info.clicked"
-                );
+                GTMClick();
               }}
             >
               Más información

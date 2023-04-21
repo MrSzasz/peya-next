@@ -6,15 +6,42 @@ import { SwiperSlide } from "swiper/react";
 import "swiper/css";
 import styles from "./Hero.module.scss";
 import { useEffect, useState } from "react";
-import { useAppContext } from "../../context/AppContext";
+// import { useAppContext } from "../../context/AppContext";
+import TagManager from "react-gtm-module";
 
 const Hero = ({ imagesArray, fn, tyc }) => {
   const [windowWidth, setWindowWidth] = useState(null);
-  const { componentLoaded } = useAppContext();
+  // const [campaignName, setCampaignName] = useState("");
+  // const { componentLoaded } = useAppContext();
 
   useEffect(() => {
     setWindowWidth(window.innerWidth);
   }, []);
+
+  // useEffect(() => {
+  //   const tagManagerDev = {
+  //     gtmId: process.env.NEXT_PUBLIC_GOOAN_GTMID_DEV,
+  //     events: {
+  //       "cobranded_campaign_info.clicked": {
+  //         campaing_name: campaignName,
+  //       },
+  //     },
+  //   };
+
+  //   TagManager.initialize(tagManagerDev);
+  // }, [campaignName]);
+
+  const GTMClick = (campaignName) => {
+    const tagManagerDev = {
+      dataLayer: {
+        event: "cobranded_campaign_info.clicked",
+        campaing_name: campaignName,
+      },
+      dataLayerName: "userLog",
+    };
+
+    TagManager.dataLayer(tagManagerDev);
+  };
 
   return (
     <section id="hero" className={styles.heroContainer}>
@@ -52,13 +79,8 @@ const Hero = ({ imagesArray, fn, tyc }) => {
                     {data.tyc !== "" && data.tyc !== null ? (
                       <small
                         onClick={() => {
-                          tyc(data.tyc),
-                            componentLoaded(
-                              "clickedButtons",
-                              "campaing_name",
-                              data.title,
-                              "cobranded_campaign_info.clicked"
-                            );
+                          tyc(data.tyc);
+                          GTMClick(data.title);
                         }}
                       >
                         Más información
@@ -136,13 +158,8 @@ const Hero = ({ imagesArray, fn, tyc }) => {
                         {data.tyc !== "" && data.tyc !== null ? (
                           <small
                             onClick={() => {
-                              tyc(data.tyc),
-                                componentLoaded(
-                                  "clickedButtons",
-                                  "campaing_name",
-                                  data.title,
-                                  "cobranded_campaign_info.clicked"
-                                );
+                              tyc(data.tyc);
+                              GTMClick(data.title);
                             }}
                           >
                             Más información

@@ -1,9 +1,23 @@
 import Link from "next/link";
-import { useAppContext } from "../../context/AppContext";
+// import { useAppContext } from "../../context/AppContext";
 import styles from "./Footer.module.scss";
+import TagManager from "react-gtm-module";
 
 const Footer = () => {
-  const { componentLoaded } = useAppContext();
+  // const { componentLoaded } = useAppContext();
+
+  const GTMClick = (sectionNameDownload, platformNameDownload) => {
+    const tagManagerDev = {
+      dataLayer: {
+        event: "cobranded_download.clicked",
+        sectionName: sectionNameDownload,
+        platform: platformNameDownload,
+      },
+      dataLayerName: "userLog",
+    };
+
+    TagManager.dataLayer(tagManagerDev);
+  };
 
   return (
     <footer className={styles.footer}>
@@ -39,13 +53,7 @@ const Footer = () => {
         <div className={styles.storeLinks}>
           <Link
             onClick={() => {
-              componentLoaded(
-                "clickedButtons",
-                "sectionName",
-                "Footer",
-                "cobranded_download.clicked",
-                "android"
-              );
+              GTMClick("Footer", "android");
             }}
             href={
               "https://play.google.com/store/apps/details?id=com.pedidosya&hl=es&referrer=pycat=retention&utm_medium=landing&utm_source=peya&utm_campaign=issuing&utm_content=download"
@@ -56,13 +64,7 @@ const Footer = () => {
           </Link>
           <Link
             onClick={() => {
-              componentLoaded(
-                "clickedButtons",
-                "sectionName",
-                "Footer",
-                "cobranded_download.clicked",
-                "android"
-              );
+              GTMClick("Footer", "android");
             }}
             href={
               "https://itunes.apple.com/app/pedidosya/id490099807?utm_medium=landing&utm_source=peya&utm_campaign=issuing&utm_content=download"

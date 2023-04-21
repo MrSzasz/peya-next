@@ -1,10 +1,24 @@
 import Link from "next/link";
-import { useAppContext } from "../../context/AppContext";
+// import { useAppContext } from "../../context/AppContext";
 import ItemSteps from "../ItemSteps/ItemSteps";
 import styles from "./Steps.module.scss";
+import TagManager from "react-gtm-module";
 
 const Steps = () => {
-  const { componentLoaded } = useAppContext();
+  // const { componentLoaded } = useAppContext();
+
+  const GTMClick = (sectionNameDownload, platformNameDownload) => {
+    const tagManagerDev = {
+      dataLayer: {
+        event: "cobranded_download.clicked",
+        sectionName: sectionNameDownload,
+        platform: platformNameDownload,
+      },
+      dataLayerName: "userLog",
+    };
+
+    TagManager.dataLayer(tagManagerDev);
+  };
 
   return (
     <section className={styles.stepsContainer}>
@@ -38,13 +52,7 @@ const Steps = () => {
         <div className={styles.stepsDownloadsIcons}>
           <Link
             onClick={() => {
-              componentLoaded(
-                "clickedButtons",
-                "sectionName",
-                "Instructions",
-                "cobranded_download.clicked",
-                "android"
-              );
+              GTMClick("Instructions", "android");
             }}
             href={
               "https://play.google.com/store/apps/details?id=com.pedidosya&hl=es&referrer=pycat=retention&utm_medium=landing&utm_source=peya&utm_campaign=issuing&utm_content=download"
@@ -55,13 +63,7 @@ const Steps = () => {
           </Link>
           <Link
             onClick={() => {
-              componentLoaded(
-                "clickedButtons",
-                "sectionName",
-                "Instructions",
-                "cobranded_download.clicked",
-                "apple"
-              );
+              GTMClick("Instructions", "apple");
             }}
             href={
               "https://itunes.apple.com/app/pedidosya/id490099807?utm_medium=landing&utm_source=peya&utm_campaign=issuing&utm_content=download"

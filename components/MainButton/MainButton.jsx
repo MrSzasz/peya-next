@@ -1,7 +1,8 @@
 import Link from "next/link";
 import styles from "./MainButton.module.scss";
 import { isMobile } from "react-device-detect";
-import { useAppContext } from "../../context/AppContext";
+// import { useAppContext } from "../../context/AppContext";
+import TagManager from "react-gtm-module";
 
 const MainButton = ({
   href = "#",
@@ -11,7 +12,33 @@ const MainButton = ({
   fn,
   component,
 }) => {
-  const { componentLoaded } = useAppContext();
+  // const { componentLoaded } = useAppContext();
+
+  const GTMClickTable = () => {
+    const userId = localStorage.getItem("sessionId");
+
+    const tagManagerDev = {
+      dataLayer: {
+        event: "cobranded_costs_see_more.clicked",
+        sessionId: userId,
+      },
+      dataLayerName: "userLog",
+    };
+
+    TagManager.dataLayer(tagManagerDev);
+  };
+
+  const GTMClick = (componentName) => {
+    const tagManagerDev = {
+      dataLayer: {
+        event: "cobranded_request.clicked",
+        screenName: componentName,
+      },
+      dataLayerName: "userLog",
+    };
+
+    TagManager.dataLayer(tagManagerDev);
+  };
 
   return (
     <>
@@ -20,12 +47,7 @@ const MainButton = ({
           id={id}
           className={`${styles.mainButton} ${styles[color]}`}
           onClick={() => {
-            componentLoaded(
-              "clickedButtons",
-              "sessionID",
-              null,
-              "cobranded_costs_see_more.clicked"
-            );
+            GTMClickTable();
           }}
         >
           {text}
@@ -36,12 +58,7 @@ const MainButton = ({
           className={`${styles.mainButton} ${styles[color]}`}
           onClick={() => {
             fn();
-            componentLoaded(
-              "clickedButtons",
-              "screenName",
-              component,
-              "cobranded_request.clicked"
-            );
+            GTMClick(component);
           }}
         >
           {text}
@@ -51,14 +68,7 @@ const MainButton = ({
           href={href}
           id={id}
           className={`${styles.mainButton} ${styles[color]}`}
-          onClick={() =>
-            componentLoaded(
-              "clickedButtons",
-              "screenName",
-              component,
-              "cobranded_request.clicked"
-            )
-          }
+          onClick={() => GTMClick(component)}
         >
           {text}
         </Link>

@@ -2,19 +2,30 @@ import ItemBenefit from "../ItemBenefit/ItemBenefit";
 import MainButton from "../MainButton/MainButton";
 import styles from "./Benefits.module.scss";
 import { motion } from "framer-motion";
-import { useAppContext } from "../../context/AppContext";
+// import { useAppContext } from "../../context/AppContext";
 import { useEffect } from "react";
+import TagManager from "react-gtm-module";
 
 const Benefits = ({ fn }) => {
-  const { componentLoaded } = useAppContext();
+  // const { componentLoaded } = useAppContext();
 
   useEffect(() => {
-    componentLoaded(
-      "componentLoadings",
-      "sectionName",
-      "Benefits",
-      "cobranded_section.loaded"
-    );
+    const tagManagerDev = {
+      dataLayer: {
+        event: "cobranded_section.loaded",
+        sectionName: "Benefits",
+      },
+      dataLayerName: "userLog",
+    };
+
+    TagManager.dataLayer(tagManagerDev);
+
+    // componentLoaded(
+    //   "componentLoadings",
+    //   "sectionName",
+    //   "Benefits",
+    //   "cobranded_section.loaded"
+    // );
   }, []);
   return (
     <section id="benefitsSection" className={styles.benefitsContainer}>

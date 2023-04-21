@@ -1,11 +1,12 @@
 import CashbackCard from "../CashbackCard/CashbackCard";
 import styles from "./Cashback.module.scss";
 import { motion } from "framer-motion";
-import { useAppContext } from "../../context/AppContext";
+// import { useAppContext } from "../../context/AppContext";
 import { useEffect } from "react";
+import TagManager from "react-gtm-module";
 
 const Cashback = () => {
-  const { componentLoaded } = useAppContext();
+  // const { componentLoaded } = useAppContext();
 
   const container = {
     hidden: { opacity: 0 },
@@ -23,12 +24,22 @@ const Cashback = () => {
   };
 
   useEffect(() => {
-    componentLoaded(
-      "componentLoadings",
-      "sectionName",
-      "Cashback",
-      "cobranded_section.loaded"
-    );
+    const tagManagerDev = {
+      dataLayer: {
+        event: "cobranded_section.loaded",
+        sectionName: "Cashback",
+      },
+      dataLayerName: "userLog",
+    };
+
+    TagManager.dataLayer(tagManagerDev);
+
+    // componentLoaded(
+    //   "componentLoadings",
+    //   "sectionName",
+    //   "Cashback",
+    //   "cobranded_section.loaded"
+    // );
   }, []);
 
   return (

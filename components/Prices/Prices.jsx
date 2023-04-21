@@ -1,18 +1,29 @@
 import { useEffect } from "react";
-import { useAppContext } from "../../context/AppContext";
+// import { useAppContext } from "../../context/AppContext";
 import PriceTable from "../PriceTable/PriceTable";
 import styles from "./Prices.module.scss";
+import TagManager from "react-gtm-module";
 
 const Prices = () => {
-  const { componentLoaded } = useAppContext();
+  // const { componentLoaded } = useAppContext();
 
   useEffect(() => {
-    componentLoaded(
-      "componentLoadings",
-      "sectionName",
-      "Costs",
-      "cobranded_section.loaded"
-    );
+    const tagManagerDev = {
+      dataLayer: {
+        event: "cobranded_section.loaded",
+        sectionName: "Costs",
+      },
+      dataLayerName: "userLog",
+    };
+
+    TagManager.dataLayer(tagManagerDev);
+
+    // componentLoaded(
+    //   "componentLoadings",
+    //   "sectionName",
+    //   "Costs",
+    //   "cobranded_section.loaded"
+    // );
   }, []);
   return (
     <section id="pricesSection" className={styles.pricesContainer}>
