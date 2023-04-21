@@ -28,18 +28,6 @@ function MyApp({ Component, pageProps }) {
   useEffect(() => {
     // console.log({sessionId: setUserId()})
 
-    // const tagManagerArgs = {
-    //   gtmId: process.env.NEXT_PUBLIC_GOOAN_GTMID_WEB,
-    // }
-
-    // const tagManagerDev = {
-    //   gtmId: process.env.NEXT_PUBLIC_GOOAN_GTMID_DEV,
-    //   dataLayerName: "userLog",
-    //   dataLayer: {
-    //     event: "cobranded_landing.loaded",
-    //     sessionId: setUserId()
-    //   }
-    // }
     
     TagManager.initialize({
       // gtmId: process.env.NEXT_PUBLIC_GOOAN_GTMID_DEV,
@@ -47,10 +35,10 @@ function MyApp({ Component, pageProps }) {
       dataLayerName: "userLog",
     });
 
-    TagManager.initialize({
-      gtmId: process.env.NEXT_PUBLIC_GOOAN_GTMID,
-      dataLayerName: "firstGTM",
-    });
+    // TagManager.initialize({
+    //   gtmId: process.env.NEXT_PUBLIC_GOOAN_GTMID,
+    //   dataLayerName: "firstGTM",
+    // });
 
     const tagManagerDev = {
       dataLayerName: "userLog",
