@@ -16,9 +16,11 @@ function MyApp({ Component, pageProps }) {
 
     let savedId = localStorage.getItem("sessionId");
 
-    savedId
-      ? console.log(savedId)
-      : (localStorage.setItem("sessionId", userID), (savedId = userID));
+    // savedId
+    //   ? null
+    //   : (localStorage.setItem("sessionId", userID), (savedId = userID));
+
+    !savedId && (localStorage.setItem("sessionId", userID), (savedId = userID));
 
     return savedId;
   };
@@ -38,9 +40,15 @@ function MyApp({ Component, pageProps }) {
     //     sessionId: setUserId()
     //   }
     // }
+    
     TagManager.initialize({
       gtmId: process.env.NEXT_PUBLIC_GOOAN_GTMID_DEV,
       dataLayerName: "userLog",
+    });
+
+    TagManager.initialize({
+      gtmId: process.env.NEXT_PUBLIC_GOOAN_GTMID,
+      dataLayerName: "firstGTM",
     });
 
     const tagManagerDev = {

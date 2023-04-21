@@ -11,6 +11,9 @@ const Navbar = ({ fn }) => {
   // const { componentLoaded } = useAppContext();
 
   const GTMClick = (clickedButtonName) => {
+
+
+
     const tagManagerDev = {
       dataLayer: {
         event: "cobranded_request.clicked",
@@ -20,6 +23,8 @@ const Navbar = ({ fn }) => {
     };
 
     TagManager.dataLayer(tagManagerDev);
+
+
   };
 
   useEffect(() => {

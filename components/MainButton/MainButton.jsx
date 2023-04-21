@@ -29,6 +29,7 @@ const MainButton = ({
   };
 
   const GTMClick = (componentName) => {
+
     const tagManagerDev = {
       dataLayer: {
         event: "cobranded_request.clicked",
