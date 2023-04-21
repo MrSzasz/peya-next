@@ -30,8 +30,8 @@ function MyApp({ Component, pageProps }) {
 
     
     TagManager.initialize({
-      gtmId: process.env.NEXT_PUBLIC_GOOAN_GTMID_DEV,
-      // gtmId: process.env.NEXT_PUBLIC_GOOAN_GTMID,
+      // gtmId: process.env.NEXT_PUBLIC_GOOAN_GTMID_DEV,
+      gtmId: process.env.NEXT_PUBLIC_GOOAN_GTMID,
       dataLayerName: "userLog",
     });
 
