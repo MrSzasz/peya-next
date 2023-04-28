@@ -30,7 +30,7 @@ function MyApp({ Component, pageProps }) {
 
     
     TagManager.initialize({
-      gtmId: process.env.NEXT_PUBLIC_GOOAN_GTMID_DEV,
+      gtmId: "GTM-PH8GQH",
       // gtmId: process.env.NEXT_PUBLIC_GOOAN_GTMID,
       // gtmId:"GTM-a",
       dataLayerName: "userLog",
