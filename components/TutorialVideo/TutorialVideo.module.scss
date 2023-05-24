@@ -1,0 +1,39 @@
+.videoResponsive {
+  .iframeContainer {
+    height: 75vh;
+    width: 100%;
+    border-radius: 1.5em;
+    position: relative;
+    overflow: hidden;
+    margin-top: 1em;
+  }
+
+  iframe {
+    left: 0;
+    top: 0;
+    height: 100%;
+    width: 100%;
+    position: absolute;
+  }
+}
+
+@media (max-width: 500px) {
+  .videoResponsive {
+    .iframeContainer {
+      height: 55vw;
+      width: 100%;
+      border-radius: 1.5em;
+      position: relative;
+      overflow: hidden;
+      margin-top: 1em;
+    }
+  
+    iframe {
+      left: 0;
+      top: 0;
+      height: 100%;
+      width: 100%;
+      position: absolute;
+    }
+  }
+}

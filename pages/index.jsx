@@ -19,6 +19,7 @@ import { useEffect, useState } from "react";
 import PopUp from "../components/PopUp/PopUp";
 import { AnimatePresence } from "framer-motion";
 import PopUpTyC from "../components/PopUpTyC/PopUpTyC";
+import TutorialVideo from "../components/TutorialVideo/TutorialVideo";
 
 const Home = ({ heroDataFromDB, promoDataFromDB }) => {
   const [showPopUp, setShowPopUp] = useState(false);
@@ -56,6 +57,7 @@ const Home = ({ heroDataFromDB, promoDataFromDB }) => {
         />
         <Cashback />
         <Benefits fn={openModal} />
+        <TutorialVideo />
         <Membership fn={openModal} />
         <SecureCard />
         <PromoCarousel tyc={getTyCForModal} imagesArray={promoDataFromDB} />

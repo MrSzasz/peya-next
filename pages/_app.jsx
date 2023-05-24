@@ -16,30 +16,17 @@ function MyApp({ Component, pageProps }) {
 
     let savedId = localStorage.getItem("sessionId");
 
-    // savedId
-    //   ? null
-    //   : (localStorage.setItem("sessionId", userID), (savedId = userID));
-
     !savedId && (localStorage.setItem("sessionId", userID), (savedId = userID));
 
     return savedId;
   };
 
   useEffect(() => {
-    // console.log({sessionId: setUserId()})
-
-    
+   
     TagManager.initialize({
       gtmId: "GTM-PH8GQH",
-      // gtmId: process.env.NEXT_PUBLIC_GOOAN_GTMID,
-      // gtmId:"GTM-a",
       dataLayerName: "userLog",
     });
-
-    // TagManager.initialize({
-    //   gtmId: process.env.NEXT_PUBLIC_GOOAN_GTMID,
-    //   dataLayerName: "firstGTM",
-    // });
 
     const tagManagerDev = {
       dataLayerName: "userLog",
@@ -50,8 +37,6 @@ function MyApp({ Component, pageProps }) {
     };
 
     TagManager.dataLayer(tagManagerDev);
-
-    // TagManager.initialize(tagManagerDev)
   }, []);
 
   return (

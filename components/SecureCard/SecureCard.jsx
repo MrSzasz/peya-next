@@ -82,7 +82,12 @@ const SecureCard = () => {
             <h2>La tarjeta más segura</h2>
             <div className={styles.secureCardBenefitsContainer}>
               <ItemBenefit
-                text={"Con la seguridad de Visa y el respaldo de Banesco"}
+                text={[
+                  "Con la seguridad de ",
+                  <strong>Visa </strong>,
+                  "y el respaldo de ",
+                  <span>Banesco</span>
+                ]}
                 img={"/icons/secureCard/icon1.svg"}
                 imgAlt={"Icono seguridad"}
               />
@@ -92,12 +97,12 @@ const SecureCard = () => {
                 imgAlt={"Icono sin datos"}
               />
               <ItemBenefit
-                text={"Con tecnología contactless, paga sin contacto físico"}
+                text={"Con tecnología contactless, paga sin contacto"}
                 img={"/icons/secureCard/icon3.svg"}
                 imgAlt={"Icono contactless"}
               />
               <ItemBenefit
-                text={"Protección de precio, paga siempre el precio más bajo"}
+                text={"Programa contra robo y fraude"}
                 img={"/icons/secureCard/icon4.svg"}
                 imgAlt={"Icono precios bajos"}
               />

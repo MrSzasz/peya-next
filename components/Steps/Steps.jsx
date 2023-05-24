@@ -34,7 +34,7 @@ const Steps = () => {
         <ItemSteps
           title={"Recibe"}
           text={
-            "Activamos tu tarjeta virtual de inmediato mientras enviamos la física en 72hs máximo"
+            "Activamos tu tarjeta virtual al instante."
           }
           img={"/icons/steps/icon2.svg"}
           imgAlt={"Envío"}
@@ -42,7 +42,7 @@ const Steps = () => {
         />
         <ItemSteps
           title={"Compra ya"}
-          text={"¡Listo! Puedes disfrutar de tus cashback todos los días"}
+          text={"¡Listo! Puedes disfrutar de tu cashback todos los días"}
           img={"/icons/steps/icon3.svg"}
           imgAlt={"Uso"}
         />

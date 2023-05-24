@@ -28,7 +28,7 @@ const Prices = () => {
   return (
     <section id="pricesSection" className={styles.pricesContainer}>
       <h2>Costos</h2>
-      <h3>La tarjeta con la tasa más baja del mercado</h3>
+      <h3>Las mejores tarifas y sin costos ocultos.</h3>
       <PriceTable />
     </section>
   );
