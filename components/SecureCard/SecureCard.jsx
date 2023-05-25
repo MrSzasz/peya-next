@@ -86,7 +86,7 @@ const SecureCard = () => {
                   "Con la seguridad de ",
                   <strong>Visa </strong>,
                   "y el respaldo de ",
-                  <span>Banesco</span>
+                  <span>Banesco</span>,
                 ]}
                 img={"/icons/secureCard/icon1.svg"}
                 imgAlt={"Icono seguridad"}
@@ -174,12 +174,12 @@ const SecureCard = () => {
             }}
           >
             <ItemBenefit
-                text={[
-                  "Con la seguridad de ",
-                  <strong>Visa </strong>,
-                  "y el respaldo de ",
-                  <span>Banesco</span>
-                ]}
+              text={[
+                "Con la seguridad de ",
+                <strong>Visa </strong>,
+                "y el respaldo de ",
+                <span>Banesco</span>,
+              ]}
               img={"/icons/secureCard/icon1.svg"}
               imgAlt={"Icono seguridad"}
             />

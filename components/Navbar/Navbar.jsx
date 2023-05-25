@@ -11,9 +11,6 @@ const Navbar = ({ fn }) => {
   // const { componentLoaded } = useAppContext();
 
   const GTMClick = (clickedButtonName) => {
-
-
-
     const tagManagerDev = {
       dataLayer: {
         event: "cobranded_request.clicked",
@@ -23,8 +20,6 @@ const Navbar = ({ fn }) => {
     };
 
     TagManager.dataLayer(tagManagerDev);
-
-
   };
 
   useEffect(() => {
@@ -87,28 +82,32 @@ const Navbar = ({ fn }) => {
         <ul className={styles.hiddenLinksContainerList}>
           <li
             onClick={() => {
-              hideNavMenu, GTMClick("Cashback");
+              hideNavMenu();
+              GTMClick("Cashback");
             }}
           >
             <a href="#cashbackSection">Cashback</a>
           </li>
           <li
             onClick={() => {
-              hideNavMenu, GTMClick("Benefits");
+              hideNavMenu();
+              GTMClick("Benefits");
             }}
           >
             <a href="#benefitsSection">Beneficios</a>
           </li>
           <li
             onClick={() => {
-              hideNavMenu, GTMClick("Cards");
+              hideNavMenu();
+              GTMClick("Cards");
             }}
           >
             <a href="#secureCardSection">Tarjeta</a>
           </li>
           <li
             onClick={() => {
-              hideNavMenu, GTMClick("Costs");
+              hideNavMenu();
+              GTMClick("Costs");
             }}
           >
             <a href="#pricesSection">Costos</a>
