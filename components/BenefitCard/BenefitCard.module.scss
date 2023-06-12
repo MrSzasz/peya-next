@@ -1,0 +1,81 @@
+@import "../../styles/variables";
+
+.benefitCardContainer {
+  display: flex;
+  flex-direction: column;
+  max-width: 15em;
+  width: fit-content;
+  gap: 0.5em;
+  cursor: pointer;
+
+  .imageBenefitCardContainer {
+    position: relative;
+    border-radius: 1.5em;
+    overflow: hidden;
+    width: 15em;
+    height: 10em;
+
+    p {
+      position: absolute;
+      bottom: 0;
+      right: 0;
+      font-family: textaHeavy;
+      color: $white;
+      background-color: $blue;
+      padding: 0.5em;
+      text-align: center;
+      width: 100%;
+      height: min-content;
+      border-radius: 0 0 1.5em 1.5em;
+      font-size: 0.75em;
+    }
+  }
+
+  h3 {
+    font-family: textaHeavy;
+    color: $blue;
+    font-size: 1.25em;
+    text-transform: capitalize;
+  }
+}
+
+@media (max-width: 500px) {
+  .benefitCardContainer {
+    display: flex;
+    flex-direction: column;
+    max-width: 100vw;
+    width: 90%;
+    gap: 0.5em;
+    cursor: pointer;
+
+    .imageBenefitCardContainer {
+      position: relative;
+      border-radius: 1.5em;
+      overflow: hidden;
+
+      width: 100%;
+      height: auto;
+      p {
+        position: absolute;
+        bottom: 0;
+        right: 0;
+        font-family: textaHeavy;
+        color: $white;
+        background-color: $blue;
+        padding: 0.5em;
+        text-align: center;
+        width: 100%;
+        height: min-content;
+        border-radius: 0 0 1.5em 1.5em;
+        font-size: 0.75em;
+      }
+    }
+
+    h3 {
+      font-family: textaHeavy;
+      color: $blue;
+      font-size: 1.25em;
+      text-transform: capitalize;
+    }
+  }
+}

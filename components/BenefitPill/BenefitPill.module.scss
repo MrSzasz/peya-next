@@ -1,0 +1,26 @@
+@import "../../styles/variables";
+
+.benefitPill {
+  padding: 0.25em 2em;
+  font-family: textaHeavy;
+  color: $blue;
+  border: 1px solid $blue;
+  border-radius: 1.5em;
+  transition: ease all 0.25s;
+  text-transform: capitalize;
+
+  &:hover {
+    background-color: $blue;
+    color: $white;
+  }
+
+  &[data-selected="true"] {
+    background-color: $blue;
+    color: $white;
+  }
+}
+
+.benefitPillSelected {
+  background-color: $blue;
+  color: $white;
+}

@@ -54,6 +54,7 @@ h2 {
 section {
   padding-inline: 10%;
   padding-block: 2em;
+  // margin-top: var(--top-navbar);
 }
 
 @media (max-width: 500px) {
@@ -75,4 +76,13 @@ body {
   width: fit-content !important;
   margin: auto;
   transform: translateX(-50%);
+}
+
+.accordion__panel {
+  padding: 0 !important;
+}
+
+.accordion {
+  border: 0px !important;
+  border-radius: 0px !important;
 }

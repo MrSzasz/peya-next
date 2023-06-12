@@ -15,6 +15,7 @@ import Link from "next/link";
 import { useAppContext } from "../../../context/AppContext";
 import toast, { Toaster } from "react-hot-toast";
 import $ from "jquery"
+import { deleteImageInStorage } from "../../../firebase/config";
 
 const notifySuccess = () => toast.success("Datos subidos correctamente");
 const notifyLoading = () =>
@@ -43,9 +44,10 @@ const hero = () => {
     setLoading(false);
   };
 
-  const handleDelete = async (e, id) => {
+  const handleDelete = async (e, id, imageUrl) => {
     e.target.dataset.loading = "true";
     const db = await getFirestore();
+    await deleteImageInStorage("hero", imageUrl);
     await deleteDoc(doc(db, "hero", id));
     setArrayFromFB(arrayFromFB.filter((item) => item.id !== id));
   };
@@ -278,7 +280,7 @@ const hero = () => {
                         </button>
                         <button
                           data-loading="false"
-                          onClick={(e) => handleDelete(e, data.id)}
+                          onClick={(e) => handleDelete(e, data.id, data.url)}
                         >
                           <AiOutlineDelete />
                           ELIMINAR

@@ -1,0 +1,47 @@
+.topInfoFAQ {
+  text-align: center;
+  padding-block: 0.5em;
+
+  h2 {
+    text-align: center;
+    line-height: 1em;
+    padding-bottom: 0.25em;
+  }
+}
+
+.FAQAccordionContainer {
+  .FAQAccordionMainButton {
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    padding-block: 1em;
+    align-items: center;
+    border-bottom: 1px solid rgba(0, 0, 0, 0.2);
+    font-family: textaHeavy;
+
+    &[aria-expanded="true"] {
+      img {
+        transform: rotate(180deg);
+      }
+    }
+  }
+
+  .FAQAccordionInnerButton {
+    display: flex;
+    justify-content: space-between;
+    padding-block: 1em;
+    align-items: center;
+    border-bottom: 1px solid rgba(0, 0, 0, 0.2);
+
+    &[aria-expanded="true"] {
+      img {
+        transform: rotate(180deg);
+      }
+    }
+  }
+
+  p {
+    color: rgba($color: #000000, $alpha: 0.5);
+    padding: 2em;
+  }
+}

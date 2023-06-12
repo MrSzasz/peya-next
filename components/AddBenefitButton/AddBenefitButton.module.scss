@@ -1,0 +1,18 @@
+@import "../../styles/variables";
+
+.addBenefitButtonContainer {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 1em;
+
+  input {
+    border-bottom: 1px solid black;
+  }
+
+  button {
+    background-color: $red;
+    color: white;
+    padding: 0.5em;
+  }
+}

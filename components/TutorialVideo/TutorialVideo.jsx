@@ -1,16 +1,16 @@
 import React from "react";
 import styles from "./TutorialVideo.module.scss";
 
-const TutorialVideo = () => {
+const TutorialVideo = ({srcYtVideo = "https://www.youtube.com/embed/AyOOFLsE9wI", title}) => {
   return (
     <section className={styles.membershipContainer}>
-      <h2>Conócenos</h2>
+      {title && <h2>Conócenos</h2>}
       <div className={styles.videoResponsive}>
         <div className={styles.iframeContainer}>
         <iframe
           width="853"
           height="480"
-          src={`https://www.youtube.com/embed/AyOOFLsE9wI`}
+          src={srcYtVideo}
           frameBorder="0"
           allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
           allowFullScreen

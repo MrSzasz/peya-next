@@ -47,3 +47,5 @@ public/iconcds
 
 *.backup
 *.bu
+
+testData.json

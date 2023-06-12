@@ -1,0 +1,26 @@
+@import "../../styles/variables";
+
+.benefitsCardsContainer {
+  min-height: 70vh;
+  display: flex;
+  gap: 2em;
+  flex-wrap: wrap;
+  justify-content: center;
+  align-items: center;
+  padding-block: 2em;
+
+  h3 {
+    color: $blue;
+  }
+}
+
+@media (max-width: 500px) {
+  .benefitsCardsContainer {
+    min-height: fit-content;
+    padding-block: 4em;
+
+    h3 {
+      width: 75%;
+    }
+  }
+}

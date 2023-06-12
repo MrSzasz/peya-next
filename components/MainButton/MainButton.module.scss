@@ -44,6 +44,17 @@
     }
 }
 
+.buttonTransparent {
+    color: $white;
+    border: 1px solid $white;
+    transition: ease all .25s;
+
+    &:hover {
+        background-color: $blueHover;
+        color: $white;
+    }
+}
+
 .navbar {
     background-color: $white;
     color: $blue;

@@ -303,6 +303,7 @@ const index = () => {
             </Link>
             <div className={styles.logOutContainer}>
               <button onClick={handleLogOut}>Cerrar sesión</button>
+              <Link href={"/private-dash/benefits"} className={styles.goToBenefits}>Sección "Beneficios"  &gt;</Link>
             </div>
             <div className={styles.sectionsContainer}>
               <section className={styles.dashHeroSectionContainer}>

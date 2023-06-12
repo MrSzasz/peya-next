@@ -1,0 +1,86 @@
+@import "../../styles/variables";
+
+.benefitsPageContainer {
+  h2 {
+    text-align: center;
+    padding-block: 1rem;
+  }
+}
+
+.benefitsImageHero{
+  margin-top: var(--top-navbar);
+}
+
+.benefitsPopUpContainer {
+  overflow: auto;
+  padding-inline: 5%;
+  display: flex;
+  flex-direction: column;
+  gap: 2em;
+  text-align: left;
+
+  &::-webkit-scrollbar {
+    width: 5px;
+  }
+
+  &::-webkit-scrollbar-thumb {
+    background-color: $blue;
+    border-radius: 1.5em;
+  }
+
+  .topPopUpContent {
+    display: grid;
+    grid-template-columns: 35% auto;
+    gap: 2em;
+    align-items: center;
+
+    .topLeftPopUp {
+      height: fit-content;
+      grid-column: 1/2;
+
+      h4 {
+        font-family: textaHeavy;
+        text-transform: capitalize;
+        font-size: 3em;
+        color: $blue;
+      }
+    }
+
+    .topRightPopUp {
+      grid-column: 2/3;
+
+      img {
+        border-radius: 1.5em;
+      }
+    }
+  }
+
+  .bottomPopUpContent {
+    display: flex;
+    flex-direction: column;
+    gap: 1em;
+
+    h5 {
+      font-family: textaHeavy;
+    }
+  }
+}
+
+@media (max-width: 500px) {
+  .benefitsPageContainer {
+    h2 {
+      line-height: 1em;
+    }
+  }
+
+  .benefitsPopUpContainer {
+    .topPopUpContent {
+      display: flex;
+      flex-direction: column-reverse;
+
+      .topRightPopUp {
+        width: 100%;
+      }
+    }
+  }
+}

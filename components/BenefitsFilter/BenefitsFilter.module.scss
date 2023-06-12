@@ -1,0 +1,29 @@
+@import "../../styles/variables";
+
+.benefitsFilterContainer {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-wrap: wrap;
+  width: 75%;
+  margin-inline: auto;
+  height: fit-content;
+  gap: 0.5em;
+}
+
+@media (max-width: 500px) {
+  .benefitsFilterContainer {
+    display: flex;
+    justify-content: flex-start;
+    width: 85%;
+    flex-wrap: nowrap;
+    overflow-x: scroll;
+
+    -ms-overflow-style: none; /* IE and Edge */
+    scrollbar-width: none; /* Firefox */
+
+    &::-webkit-scrollbar {
+      display: none;
+    }
+  }
+}

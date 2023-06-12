@@ -43,12 +43,35 @@ const Home = ({ heroDataFromDB, promoDataFromDB }) => {
   useEffect(() => {
     !localStorage.getItem("userData") &
       localStorage.setItem("userData", "null");
-    let height = document.getElementById("nav").offsetHeight;
-    document.documentElement.style.setProperty("--top-navbar", height + "px");
+    // let height = document.getElementById("nav").offsetHeight;
+    // document.documentElement.style.setProperty("--top-navbar", height + "px");
   }, []);
 
   return (
-    <Layout fn={openModal}>
+    <Layout
+      fn={openModal}
+      links={[
+        // { href: "/beneficios", page: "Beneficios" },
+        { href: "/cashback", page: "Cashback" },
+      ]}
+      footerLinks={[
+        {
+          href: "#pricesSection",
+          title: "Tasas y Tarifas",
+          target: "_self",
+        },
+        {
+          href: "/ayuda#faq",
+          title: "Preguntas Frecuentes",
+          target: "_self",
+        },
+        {
+          href: "/ayuda",
+          title: "Centro de Ayuda",
+          target: "_self",
+        },
+      ]}
+    >
       <main className={styles.mainContainer}>
         <Hero
           imagesArray={heroDataFromDB}
@@ -57,7 +80,7 @@ const Home = ({ heroDataFromDB, promoDataFromDB }) => {
         />
         <Cashback />
         <Benefits fn={openModal} />
-        <TutorialVideo />
+        <TutorialVideo title />
         <Membership fn={openModal} />
         <SecureCard />
         <PromoCarousel tyc={getTyCForModal} imagesArray={promoDataFromDB} />

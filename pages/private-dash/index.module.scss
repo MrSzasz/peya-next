@@ -1,299 +1,304 @@
 @import "../../styles/variables";
 
 .userLoading {
-    position: fixed;
-    width: 100vw;
-    height: 100vh;
-    background-color: black;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    backdrop-filter: blur(5px);
+  position: fixed;
+  width: 100vw;
+  height: 100vh;
+  background-color: black;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  backdrop-filter: blur(5px);
 
-    h2 {
-        font-size: 2em;
-        font-family: textaHeavy;
-    }
+  h2 {
+    font-size: 2em;
+    font-family: textaHeavy;
+  }
 }
 
 .dashContainer {
-    background-color: $dark;
+  background-color: $dark;
+  color: $white;
+  text-align: center;
+
+  span {
+    font-size: 1.1em;
+    font-family: textaHeavy;
+    color: $red;
+  }
+
+  .goToMain {
+    justify-self: flex-start;
+    width: 100%;
+    background-color: $blue;
     color: $white;
-    text-align: center;
+    display: flex;
+    align-items: center;
+    gap: 0.5em;
+    transition: ease all 0.25s;
+    padding: 0.5em;
 
-    span {
-        font-size: 1.1em;
-        font-family: textaHeavy;
-        color: $red;
+    &:hover {
+      gap: 1em;
     }
+  }
 
-    .goToMain {
-        justify-self: flex-start;
-        width: 100%;
+  .logOutContainer {
+    width: 100%;
+    height: fit-content;
+    padding-top: 1em;
+    display: flex;
+    gap: 1em;
+    // flex-direction: column;
+    justify-content: center;
+    align-items: center;
+
+    button,
+    .goToBenefits {
+      background-color: $red;
+      color: $white;
+      font-family: textaHeavy;
+      padding: 1em 2em;
+      border-radius: 1.5em;
+      transition: ease all 0.25s;
+      
+      &:hover {
+          background-color: #c4003e;
+      }
+    }
+    
+    .goToBenefits{
         background-color: $blue;
-        color: $white;
-        display: flex;
-        align-items: center;
-        gap: .5em;
-        transition: ease all .25s;
-        padding: .5em;
-
+    
         &:hover {
-            gap: 1em;
+            background-color: $blueHover;
         }
     }
+  }
 
-    .logOutContainer {
-        width: 100%;
+  .sectionsContainer {
+    .dashSectionTop {
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      gap: 1em;
+
+      .instructions {
+        width: 75%;
+        margin-inline: auto;
+        border-radius: 1.5em;
+        background-color: $yellow;
+        color: #000000;
+        padding: 1.5em;
+        margin-block: 0.5em;
+
+        h3 {
+          font-size: 2em;
+          color: $red;
+          font-family: textaHeavy;
+          padding-bottom: 0.5em;
+        }
+
+        .format {
+          color: $blue;
+          text-decoration: underline double;
+        }
+
+        .imgExample {
+          a {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            color: $blue;
+            gap: 0.5em;
+          }
+        }
+      }
+
+      form {
+        width: fit-content;
         height: fit-content;
-        padding-top: 1em;
+        padding: 1em;
+        border-radius: 1.5em;
+        background-color: $blue;
         display: flex;
         flex-direction: column;
         justify-content: center;
         align-items: center;
+        gap: 1em;
+
+        .inputGroup {
+          display: flex;
+          flex-direction: column;
+          justify-content: center;
+
+          .inputGroupWithLabel {
+            display: flex;
+            align-items: center;
+            gap: 1em;
+            padding-left: 1em;
+          }
+        }
+
+        input[type="file"] {
+          padding: 0.5em 1em;
+          cursor: pointer;
+        }
+
+        input[type="text"] {
+          width: 75%;
+          color: black;
+          padding: 0 0.5em;
+          margin-block: 0.5em;
+          border-radius: 1.5em;
+        }
+
+        input[type="number"] {
+          width: 75%;
+          color: black;
+          padding: 0 0.5em;
+          margin-block: 0.5em;
+          border-radius: 1.5em;
+        }
 
         button {
-            background-color: $red;
-            color: $white;
-            font-family: textaHeavy;
-            padding: 1em 2em;
-            border-radius: 1.5em;
-            transition: ease all .25s;
-
-            &:hover {
-                background-color: #c4003e
-            }
+          background-color: $white;
+          color: $blue;
+          padding: 0.5em 1em;
+          border-radius: 1.5em;
         }
-    }
 
-    .sectionsContainer {
-        .dashSectionTop {
+        select,
+        textarea {
+          color: black;
+          padding: 0.5em 1em;
+          border-radius: 1.5em;
+        }
+      }
+
+      .heroImageList {
+        width: 100%;
+        height: fit-content;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        gap: 1em;
+
+        .heroImageListContainer {
+          width: 100%;
+          height: fit-content;
+          display: flex;
+          justify-content: center;
+          align-items: center;
+          gap: 1em;
+
+          .heroImageCard {
+            position: relative;
+            overflow: hidden;
+            border-radius: 1.5em;
             display: flex;
             flex-direction: column;
             justify-content: center;
             align-items: center;
-            gap: 1em;
+            background-color: white;
+            padding: 1em;
 
-            .instructions {
-                width: 75%;
-                margin-inline: auto;
-                border-radius: 1.5em;
-                background-color: $yellow;
-                color: #000000;
-                padding: 1.5em;
-                margin-block: .5em;
-
-                h3 {
-                    font-size: 2em;
-                    color: $red;
-                    font-family: textaHeavy;
-                    padding-bottom: .5em;
-                }
-
-                .format {
-                    color: $blue;
-                    text-decoration: underline double;
-                }
-
-                .imgExample {
-                    a {
-                        display: flex;
-                        justify-content: center;
-                        align-items: center;
-                        color: $blue;
-                        gap: .5em;
-                    }
-                }
+            img {
+              width: 20em;
+              height: auto;
             }
-
-            form {
-                width: fit-content;
-                height: fit-content;
-                padding: 1em;
-                border-radius: 1.5em;
-                background-color: $blue;
-                display: flex;
-                flex-direction: column;
-                justify-content: center;
-                align-items: center;
-                gap: 1em;
-
-                .inputGroup {
-                    display: flex;
-                    flex-direction: column;
-                    justify-content: center;
-
-                    .inputGroupWithLabel {
-                        display: flex;
-                        align-items: center;
-                        gap: 1em;
-                        padding-left: 1em;
-                    }
-                }
-
-                input[type="file"] {
-                    padding: .5em 1em;
-                    cursor: pointer;
-                }
-
-                input[type="text"] {
-                    width: 75%;
-                    color: black;
-                    padding: 0 .5em;
-                    margin-block: .5em;
-                    border-radius: 1.5em;
-                }
-
-                input[type="number"] {
-                    width: 75%;
-                    color: black;
-                    padding: 0 .5em;
-                    margin-block: .5em;
-                    border-radius: 1.5em;
-                }
-
-                button {
-                    background-color: $white;
-                    color: $blue;
-                    padding: .5em 1em;
-                    border-radius: 1.5em;
-                }
-
-                select, textarea {
-                    color: black;
-                    padding: .5em 1em;
-                    border-radius: 1.5em;
-                }
-
-            }
-
-            .heroImageList {
-                width: 100%;
-                height: fit-content;
-                display: flex;
-                flex-direction: column;
-                justify-content: center;
-                align-items: center;
-                gap: 1em;
-
-
-                .heroImageListContainer {
-                    width: 100%;
-                    height: fit-content;
-                    display: flex;
-                    justify-content: center;
-                    align-items: center;
-                    gap: 1em;
-
-                    .heroImageCard {
-                        position: relative;
-                        overflow: hidden;
-                        border-radius: 1.5em;
-                        display: flex;
-                        flex-direction: column;
-                        justify-content: center;
-                        align-items: center;
-                        background-color: white;
-                        padding: 1em;
-
-                        img {
-                            width: 20em;
-                            height: auto;
-                        }
-
-
-                    }
-                }
-            }
+          }
         }
+      }
+    }
 
-        .goToEdit {
-            @extend .goToMain;
-            margin-block: 1em;
-            border-radius: 1.5em;
-            text-align: center;
-            width: fit-content;
-            margin-inline: auto;
-            padding: 1em 1.5em;
-            background-color: $red;
-        }
+    .goToEdit {
+      @extend .goToMain;
+      margin-block: 1em;
+      border-radius: 1.5em;
+      text-align: center;
+      width: fit-content;
+      margin-inline: auto;
+      padding: 1em 1.5em;
+      background-color: $red;
+    }
 
-        .saveDataInFB {
-            @extend .goToEdit;
-            background-color: green;
-            width: 75%;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            font-size: 1.25em;
+    .saveDataInFB {
+      @extend .goToEdit;
+      background-color: green;
+      width: 75%;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      font-size: 1.25em;
+    }
+  }
+
+  .dashSliderContainer {
+    padding-inline: 10%;
+
+    h2 {
+      width: 100%;
+      text-align: center;
+    }
+  }
+
+  .heroCardDeleteButton {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    height: 100%;
+    padding: 1em;
+    background-color: rgba(255, 0, 0, 0.75);
+  }
+}
+
+@media (max-width: 500px) {
+  .dashContainer {
+    h2 {
+      font-size: 2.5em;
+      line-height: 1em;
+    }
+
+    .sectionsContainer {
+      .dashSectionTop {
+        padding-inline: 5%;
+
+        form {
+          flex-direction: column;
+
+          input {
+            padding: 0.5em;
+          }
+
+          button {
+            width: 100%;
+            padding: 0.5em;
+          }
         }
+      }
     }
 
     .dashSliderContainer {
-        padding-inline: 10%;
+      padding-inline: 5%;
 
-        h2 {
-            width: 100%;
-            text-align: center;
-        }
+      h2 {
+        padding-block: 1em 0.5em;
+      }
     }
+  }
 
-    .heroCardDeleteButton {
-        display: flex;
-        justify-content: center;
-        align-items: center;
-        width: 100%;
-        height: 100%;
-        padding: 1em;
-        background-color: rgba(255, 0, 0, .75);
-    }
-}
-
-
-@media (max-width: 500px) {
-    .dashContainer {
-
-        h2 {
-            font-size: 2.5em;
-            line-height: 1em;
-        }
-
-        .sectionsContainer {
-            .dashSectionTop {
-                padding-inline: 5%;
-
-                form {
-                    flex-direction: column;
-
-                    input {
-                        padding: .5em;
-                    }
-
-                    button {
-                        width: 100%;
-                        padding: .5em;
-                    }
-                }
-            }
-        }
-
-        .dashSliderContainer {
-            padding-inline: 5%;
-
-            h2 {
-                padding-block: 1em .5em;
-            }
-        }
-    }
-
-    .heroCardDeleteButton {
-        display: flex;
-        justify-content: center;
-        align-items: center;
-        width: 100%;
-        height: 100%;
-        padding: 1em;
-        background-color: rgba(255, 0, 0, .75);
-    }
+  .heroCardDeleteButton {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    height: 100%;
+    padding: 1em;
+    background-color: rgba(255, 0, 0, 0.75);
+  }
 }

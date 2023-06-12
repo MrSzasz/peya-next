@@ -106,7 +106,7 @@ const SecureCard = () => {
                 img={"/icons/secureCard/icon4.svg"}
                 imgAlt={"Icono precios bajos"}
               />
-              <a
+              {/* <a
                 href={moreInfoUrl}
                 target="_blank"
                 className={styles.moreInfoLink}
@@ -115,7 +115,7 @@ const SecureCard = () => {
                 }}
               >
                 Más información
-              </a>
+              </a> */}
             </div>
           </motion.div>
         </>

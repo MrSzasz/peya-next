@@ -3,7 +3,7 @@ import Link from "next/link";
 import styles from "./Footer.module.scss";
 import TagManager from "react-gtm-module";
 
-const Footer = () => {
+const Footer = ({footerLinks}) => {
   // const { componentLoaded } = useAppContext();
 
   const GTMClick = (sectionNameDownload, platformNameDownload) => {
@@ -32,21 +32,13 @@ const Footer = () => {
               Términos y condiciones
             </a>
           </li>
-          <li>
-            <Link href="https://www.pedidosya.com.pa/about/tyc_wallet">
-              Términos cashback
-            </Link>
-          </li>
-        </ul>
-        <ul>
-          <li>
-            <Link href="https://www.pedidosya.com.pa/about/privacy_policies">
-              Privacidad
-            </Link>
-          </li>
-          {/* <li>
-            <a href="pedidosya://onlinehelp">Preguntas frecuentes</a>
-          </li> */}
+          {footerLinks?.map((link, i) => (
+            <li>
+              <Link href={link.href} target={link.target}>
+                {link.title}
+              </Link>
+            </li>
+          ))}
         </ul>
       </div>
       <div className={styles.rightFooterContainer}>
