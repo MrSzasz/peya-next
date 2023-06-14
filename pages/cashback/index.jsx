@@ -109,10 +109,29 @@ const index = () => {
             >
               {windowWidth > 500 ? (
                 <>
-                  <img
+                  <motion.img
                     className={styles.secureCardImg}
                     src="/images/benefits/twoPhone.webp"
                     alt="Tarjeta física"
+                    initial={{
+                    
+                      opacity: 0,
+                    }}
+                    whileInView={{
+                      
+                      opacity: 1,
+                      transition: {
+                        duration: 1,
+                        type: "tween",
+                        damping: 25,
+                        stiffness: 500,
+                      },
+                    }}
+                    viewport={{ once: true }}
+                    exit={{
+                      
+                      opacity: 1,
+                    }}
                   />
                   <motion.div
                     key={3}
@@ -192,10 +211,29 @@ const index = () => {
                     Verás acreditados los cashback en tu billetera de PedidosYa
                     Pagos
                   </motion.h4>
-                  <img
+                  <motion.img
                     className={styles.secureCardImg}
                     src="/images/benefits/twoPhone.webp"
                     alt="Tarjeta física"
+                    initial={{
+                      
+                      opacity: 0,
+                    }}
+                    whileInView={{
+                      
+                      opacity: 1,
+                      transition: {
+                        duration: 1,
+                        type: "tween",
+                        damping: 25,
+                        stiffness: 500,
+                      },
+                    }}
+                    viewport={{ once: true }}
+                    exit={{
+                      
+                      opacity: 1,
+                    }}
                   />
                   <motion.div
                     className={styles.benefitsList}

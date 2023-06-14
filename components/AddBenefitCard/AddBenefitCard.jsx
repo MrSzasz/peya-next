@@ -1,6 +1,12 @@
 import styles from "./AddBenefitCard.module.scss";
 
-const AddBenefitCard = ({ categories, edit, benefit, deleteElementFn, saveElementFn }) => {
+const AddBenefitCard = ({
+  categories,
+  edit,
+  benefit,
+  deleteElementFn,
+  saveElementFn,
+}) => {
   return (
     <div className={styles.benefitCardContainer}>
       {edit && <img src={benefit.benefitImage} />}
@@ -15,7 +21,20 @@ const AddBenefitCard = ({ categories, edit, benefit, deleteElementFn, saveElemen
           </option>
         ))}
       </select>
-      {!edit && <input type="file" name="benefitImage" id="benefitImage" />}
+      {!edit && (
+        <input
+          type="file"
+          name="benefitImage"
+          id="benefitImage"
+          accept="image/webp"
+          onChange={(e) => {
+            if (e.target.files[0].size > 2097152) {
+              alert("La imagen tiene que pesar menos de 2MB");
+              e.target.value = "";
+            }
+          }}
+        />
+      )}
       <input
         type="text"
         id="benefitTitle"

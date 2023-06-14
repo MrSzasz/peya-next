@@ -5,9 +5,6 @@ import styles from "./EditSavedBenefitsCategories.module.scss";
 const EditSavedBenefitsCategories = ({ categories }) => {
   const [savedCategories, setSavedCategories] = useState([]);
 
-  // console.log(categories)
-  // setSavedCategories(categories)
-
   useEffect(() => {
     setSavedCategories(categories);
   }, []);
@@ -26,6 +23,7 @@ const EditSavedBenefitsCategories = ({ categories }) => {
           onClick={() => {
             setSavedCategories([...savedCategories, ""]);
           }}
+          className="px-6 py-2 bg-yellow-500 rounded-full"
         >
           Add
         </button>

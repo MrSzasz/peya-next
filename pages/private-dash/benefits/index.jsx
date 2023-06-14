@@ -109,15 +109,14 @@ const index = () => {
     getCategoriesFromFB();
   }, []);
 
-  const handleUpdate = async () => {
-    // Creamos la función
+  const handleUpdate = async (newCategoriesForUpdate) => {
     const db = await getFirestore();
     const dataRef = doc(db, "benefits", "benefitsCategories"); // Buscamos el dato, pasando la base de datos, la colección y el ID del objeto
 
-    await updateDoc(dataRef, { categories: categories });
+    await updateDoc(dataRef, { categories: newCategoriesForUpdate });
   };
 
-  const handleSaveBenefitsModule = () => {
+  const handleSaveBenefitsModule = async () => {
     const benefitsContainer = Array.from(
       $("#currentBenefitsContainer")[0].children
     );
@@ -135,12 +134,18 @@ const index = () => {
     ) {
       alert("No pueden haber categorías vacías");
     } else {
+      toast.loading("Guardando...", { id: "loadingEditCategories" });
       setCategories(arrayWithNewCategories);
+      await handleUpdate(arrayWithNewCategories)
+      toast.dismiss("loadingEditCategories");
+      toast.success("Categorías guardadas");
       modal.close();
     }
   };
 
   const handleSaveBenefits = async () => {
+    toast.loading("Guardando...", { id: "loadingCreateData" });
+
     const cardContainer = Array.from(
       $("#benefitCardsContainerRef")[0].children
     );
@@ -166,12 +171,10 @@ const index = () => {
       });
     }
 
-    // console.log(arrayToSave);
-
     createNewBenefit(arrayToSave);
 
-    toast.success("saved");
-    // handleUpdate();
+    toast.dismiss("loadingCreateData");
+    toast.success("Guardado!");
   };
 
   const handleDeleteBenefit = (e) => {
@@ -195,8 +198,15 @@ const index = () => {
             </Link>
             <div className={styles.sectionsContainer}>
               <section className={styles.dashHeroSectionContainer}>
+                <p className="bg-yellow-500 text-black p-8">
+                  Para editar las categorias se debe hacer click en{" "}
+                  <strong>editar categorias guardadas</strong>, en el mismo se
+                  podran eliminar las necesarias, editar o agregar. Cuando se
+                  haya terminado se deberá tocar guardar <strong>SOLAMENTE SI SE AGREGO O EDITO ALGUNA CATEGORIA</strong>, sino tocar cerrar <br />
+                  La imagen para la promocion <strong>DEBERA SER EN FORMATO WEBP</strong>, el tamaño maximo es 2mb, es recomendable usar una resolucion 1280x720
+                </p>
                 <Link className={styles.goToEdit} href={"edit/benefits"}>
-                  Editar beneficios guardados
+                  Editar promociones guardadas
                   <AiOutlineRight />
                 </Link>
                 <div>
@@ -205,6 +215,8 @@ const index = () => {
                       modal = document.querySelector("#modal");
                       modal.showModal();
                     }}
+                    className={styles.goToEdit}
+                    style={{ backgroundColor: "green" }}
                   >
                     Editar categorías
                   </button>

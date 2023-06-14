@@ -80,6 +80,7 @@ const index = () => {
   };
 
   const handleDelete = async (e, id, imageUrl) => {
+    toast.loading("Eliminando...", { id: "deleteItemToast" });
     e.target.dataset.loading = "true";
     const db = await getFirestore();
     await deleteImageInStorage("benefits", imageUrl);
@@ -87,9 +88,12 @@ const index = () => {
       const parentElement = e.target.parentElement;
       parentElement.remove();
     });
+    toast.dismiss("deleteItemToast");
+    toast.success("Eliminado correctamente!");
   };
 
   const handleUpdate = async (e, id) => {
+    toast.loading("Guardando...", { id: "loadingCreateData" });
     const cardContainer = Array.from(e.target.parentElement.children);
 
     const objForUpdate = {
@@ -106,6 +110,7 @@ const index = () => {
 
     await updateDoc(dataRef, objForUpdate);
 
+    toast.dismiss("loadingCreateData");
     toast.success("Guardado!");
   };
 
@@ -169,7 +174,8 @@ const index = () => {
       });
     });
 
-    toast.success("saved");
+    toast.dismiss("loadingCreateData");
+    toast.success("Guardado!");
   };
 
   return (
@@ -192,16 +198,20 @@ const index = () => {
                   className={styles.benefitsCardContainer}
                   id="benefitCardsContainerRef"
                 >
-                  {benefitsArray.map((benefit, i) => (
-                    <AddBenefitCard
-                      key={i}
-                      edit
-                      categories={categoriesArray}
-                      benefit={benefit}
-                      deleteElementFn={handleDelete}
-                      saveElementFn={handleUpdate}
-                    />
-                  ))}
+                  {benefitsArray.length === 0 ? (
+                    <h2 className="col-span-full">No hay promociones para editar</h2>
+                  ) : (
+                    benefitsArray.map((benefit, i) => (
+                      <AddBenefitCard
+                        key={i}
+                        edit
+                        categories={categoriesArray}
+                        benefit={benefit}
+                        deleteElementFn={handleDelete}
+                        saveElementFn={handleUpdate}
+                      />
+                    ))
+                  )}
                 </div>
               </section>
             </div>

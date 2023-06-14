@@ -51,10 +51,29 @@ const index = () => {
             >
               {windowWidth > 500 ? (
                 <>
-                  <img
+                  <motion.img
                     className={styles.secureCardImg}
                     src="/images/help/phoneHelp.png"
                     alt="Tarjeta física"
+                    initial={{
+                      transform: "translateX(+100%)",
+                      opacity: 0,
+                    }}
+                    whileInView={{
+                      transform: "translateX(0%)",
+                      opacity: 1,
+                      transition: {
+                        duration: 1,
+                        type: "tween",
+                        damping: 25,
+                        stiffness: 500,
+                      },
+                    }}
+                    viewport={{ once: true }}
+                    exit={{
+                      transform: "translateX(0%)",
+                      opacity: 1,
+                    }}
                   />
                   <motion.div
                     key={3}
@@ -202,7 +221,7 @@ const index = () => {
               )}
             </div>
 
-            <div className={styles.helpVideoSectionContainer}>
+            {/* <div className={styles.helpVideoSectionContainer}>
               <h3>Videos de ayuda</h3>
               <div className={styles.helpVideoContainer}>
                 <div className={styles.helpVideo}>
@@ -236,7 +255,7 @@ const index = () => {
                   </div>
                 </div>
               </div>
-            </div>
+            </div> */}
 
             <FAQAccordion />
           </section>

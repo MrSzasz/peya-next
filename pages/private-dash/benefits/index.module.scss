@@ -301,6 +301,8 @@
   .benefitsModalButtonsContainer {
     display: flex;
     gap: 1em;
+    justify-content: center;
+    padding-block: 1em;
 
     button {
       background-color: green;
