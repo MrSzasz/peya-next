@@ -5,6 +5,7 @@ import { v4 as uuidv4 } from "uuid";
 import { AppContext } from "../context/AppContext";
 import getFirestoreApp from "../firebase/config";
 import "../styles/globals.scss";
+import { GoogleAnalytics } from "nextjs-google-analytics";
 
 getFirestoreApp();
 
@@ -41,6 +42,7 @@ function MyApp({ Component, pageProps }) {
 
   return (
     <>
+      {/* <GoogleAnalytics /> */}
       <Script id="hotjar-analytics">{`
       (function(h,o,t,j,a,r){
         h.hj=h.hj||function(){(h.hj.q=h.hj.q||[]).push(arguments)};
