@@ -22,7 +22,7 @@ const Steps = () => {
 
   return (
     <section className={styles.stepsContainer}>
-      <h2>Disfrutala ya</h2>
+      <h2>Disfrútala ya</h2>
       <div className={styles.itemStepsContainer}>
         <ItemSteps
           title={"Regístrate"}

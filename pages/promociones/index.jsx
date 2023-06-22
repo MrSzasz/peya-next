@@ -119,7 +119,7 @@ const index = () => {
           /> */}
           <img className={styles.benefitsImageHero} src="/images/promos/promocionesHero.webp" alt="" />
           <section className={styles.benefitsPageContainer}>
-            <h2>Conocé todas nuestras promociones</h2>
+            <h2>Conoce todas nuestras promociones</h2>
             <BenefitsFilter
               category={categoriesArray}
               selectedCategory={selectedCategory}
