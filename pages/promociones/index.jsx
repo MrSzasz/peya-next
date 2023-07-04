@@ -78,9 +78,9 @@ const index = () => {
     handleOpenModal();
   };
 
-  // useEffect(() => {
-  //   getProductsFromFirebase();
-  // }, []);
+  useEffect(() => {
+    getProductsFromFirebase();
+  }, []);
 
   useEffect(() => {
     orderProducts(dataFromDB);
