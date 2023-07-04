@@ -115,8 +115,8 @@ const index = () => {
         <main>
           <div className="overflow-hidden bg-peya-blue h-[50vh] md:h-[75vh] mt-[var(--top-navbar)] grid grid-cols-1 md:grid-cols-promos-hero">
             <div className="flex flex-col justify-center h-full md:px-[10%] py-[10%] md:py-0">
-              <h1 className="text-6xl text-center md:text-left md:text-7xl text-peya-turquoise font-peya-titles">70% OFF</h1>
-              <h2 className="leading-[1em] text-white text-center md:text-left md:text-6xl">En pizzas todos los Domingos</h2>
+              <h1 className="text-5xl text-center md:text-left md:text-7xl text-peya-turquoise font-peya-titles">70% OFF</h1>
+              <h2 className="leading-[1em] text-white text-center md:text-left text-4xl md:text-6xl">En pizzas todos los Domingos</h2>
             </div>
             <img src="/images/promos/promosHeroPizza.webp" className="object-cover md:object-bottom h-full w-full"/>
           </div>
