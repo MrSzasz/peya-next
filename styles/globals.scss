@@ -25,6 +25,7 @@
 :root {
   --swiper-theme-color: white !important;
   --top-navbar: 70px;
+  --top-negative-navbar: calc(var(--top-navbar) * -1);
 }
 
 #promosCarouselId .swiper-pagination-bullet-active {

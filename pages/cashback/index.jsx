@@ -111,7 +111,7 @@ const index = () => {
                 <>
                   <motion.img
                     className={styles.secureCardImg}
-                    src="/images/benefits/twoPhone.webp"
+                    src="/images/benefits/cashbackPhone.webp"
                     alt="Tarjeta física"
                     initial={{
                     
@@ -213,7 +213,7 @@ const index = () => {
                   </motion.h4>
                   <motion.img
                     className={styles.secureCardImg}
-                    src="/images/benefits/twoPhone.webp"
+                    src="/images/benefits/cashbackPhone.webp"
                     alt="Tarjeta física"
                     initial={{
                       

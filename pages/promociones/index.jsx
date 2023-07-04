@@ -113,11 +113,13 @@ const index = () => {
         ]}
       >
         <main>
-          {/* <PageTag page="Beneficios" /> */}
-          {/* <PageHero
-            
-          /> */}
-          <img className={styles.benefitsImageHero} src="/images/promos/promocionesHero.webp" alt="" />
+          <div className="bg-peya-blue h-[50vh] md:h-[75vh] mt-[var(--top-navbar)] grid grid-cols-1 md:grid-cols-promos-hero">
+            <div className="flex flex-col justify-center md:px-[10%] py-[10%] md:py-0 md:mt-[var(--top-negative-navbar)]">
+              <h1 className="text-6xl text-center md:text-left md:text-8xl text-peya-turquoise font-peya-titles">70% OFF</h1>
+              <h2 className="leading-[1em] text-white text-center md:text-left md:text-7xl">En pizzas todos los Domingos</h2>
+            </div>
+            <img src="/images/promos/promosHeroPizza.webp" className="object-cover md:object-bottom w-full h-full"/>
+          </div>
           <section className={styles.benefitsPageContainer}>
             <h2>Conoce todas nuestras promociones</h2>
             <BenefitsFilter

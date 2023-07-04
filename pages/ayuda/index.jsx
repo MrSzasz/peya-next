@@ -53,7 +53,7 @@ const index = () => {
                 <>
                   <motion.img
                     className={styles.secureCardImg}
-                    src="/images/help/phoneHelp.png"
+                    src="/images/help/helpPhone.webp"
                     alt="Tarjeta física"
                     initial={{
                       transform: "translateX(+100%)",
@@ -151,7 +151,7 @@ const index = () => {
                   </motion.h2>
                   <motion.img
                     className={styles.secureCardImg}
-                    src="/images/help/phoneHelp.png"
+                    src="/images/help/helpPhone.webp"
                     alt="Tarjeta física"
                     initial={{
                       transform: "translateX(+100%)",
