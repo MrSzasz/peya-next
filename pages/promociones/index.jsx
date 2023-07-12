@@ -79,7 +79,7 @@ const index = () => {
   };
 
   useEffect(() => {
-    getProductsFromFirebase();
+    // getProductsFromFirebase();
   }, []);
 
   useEffect(() => {
@@ -115,11 +115,11 @@ const index = () => {
         <main>
           <div className="overflow-hidden bg-peya-blue max-h-[calc(80vh-var(--top-navbar))] h-fit mt-[var(--top-navbar)] grid grid-cols-1 md:grid-cols-promos-hero">
             <div className="flex flex-col self-center h-fit md:px-[10%] py-[10%] md:py-0">
-              <h1 className="text-5xl text-center md:text-left md:text-7xl text-peya-turquoise font-peya-titles">
+              <h1 className="text-5xl text-center md:text-left md:text-8xl text-peya-turquoise font-peya-titles">
                 70% OFF
               </h1>
-              <h2 className="leading-[1em] text-white text-center md:text-left text-4xl md:text-6xl">
-                En pizzas todos los Domingos
+              <h2 className="leading-[1em] text-white text-center md:text-left text-4xl md:text-7xl">
+                En pizzas todos<br/>los Domingos
               </h2>
             </div>
             <img
