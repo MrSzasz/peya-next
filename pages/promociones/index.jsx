@@ -79,7 +79,7 @@ const index = () => {
   };
 
   useEffect(() => {
-    // getProductsFromFirebase();
+    getProductsFromFirebase();
   }, []);
 
   useEffect(() => {
