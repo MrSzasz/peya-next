@@ -4,7 +4,6 @@ import BenefitCard from "../../components/BenefitCard/BenefitCard";
 import PopUp from "../../components/PopUp/PopUp";
 import styles from "./benefits.module.scss";
 import Image from "next/image";
-import PageHero from "../../components/PageHero/PageHero";
 import { collection, getDocs, getFirestore } from "firebase/firestore"; // Importamos lo necesario
 import { useEffect, useState } from "react";
 import BenefitsCardContainer from "../../components/BenefitsCardContainer/BenefitsCardContainer";
@@ -91,7 +90,7 @@ const index = () => {
       <Layout
         fn={openModal}
         links={[
-          // { href: "/beneficios", page: "Beneficios", current: true },
+          // { href: "/beneficios", page: "Beneficios", current: true }, 
           { href: "/cashback", page: "Cashback" },
         ]}
         footerLinks={[
