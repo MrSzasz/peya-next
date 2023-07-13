@@ -84,7 +84,7 @@ const index = () => {
                 imgUrl={"/icons/cashback/peya2.svg"}
                 textColor={"#FFF"}
                 inverted={"row-reverse"}
-                mainImgUrl={"/images/benefits/benefits2.webp"}
+                mainImgUrl={"/images/benefits/logos.gif"}
                 bgSizeSpecial="75%"
                 fn={openModal}
               />
